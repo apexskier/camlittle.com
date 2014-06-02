@@ -1,0 +1,10 @@
+# Site settings
+title: Cameron Little
+email: cameron@camlittle.com
+description: "A collection of Cameron Little's thoughts and projects."
+baseurl: ""
+url: "http://camlittle.com"
+
+# Build settings
+markdown: kramdown
+permalink: /posts/:title
