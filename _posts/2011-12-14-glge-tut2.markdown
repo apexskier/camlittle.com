@@ -393,7 +393,7 @@ Here is the complete javascript code.
 
 <canvas id="flatTriangle" width="400" height="300"></canvas>
 
-<script src="/assets/js/libs/glge-compiled-min.js"></script>
+<script src="/assets/libs/glge-compiled-min.js"></script>
 
 <script type="text/javascript">
 var canvasElement = document.getElementById('flatTriangle');
