@@ -4,6 +4,9 @@ title:  "Live Share"
 date:   2015-10-28 11:15:00
 ---
 
+
+<img src="{{ site.url }}/assets/posts/live-share/thumb.jpg" alt="Live Share icon" style="float: right">
+
 Live Share is an app that allows you to export, edit, and create [Live
 Photos](http://www.apple.com/iphone-6s/cameras/).
 
@@ -27,4 +30,13 @@ This app is under active development, and may contain a few bugs. Tweet
 You can try deleting data from the app if things are behaving badly. Just tap
 the info icon in the upper right and tap the "Wipe Generated Data" button.
 
-![Live Share icon]({{ site.url }}/assets/posts/live-share/thumb.jpg)
+### Privacy Policy
+
+Live Share does not store any of your photos or videos outside of your device
+and claims no ownership or liability for them. Your media will not be shared
+with anyone. You use the app at your own risk; by using it you imply consent to
+the information on this page even if it changes. Some anonymous information is
+automatically collected by the developers and Apple for analytics and to
+improve the quality of the app, but it will never be shared with a third party.
+You can contact the developer at anytime via social media described on this
+website.

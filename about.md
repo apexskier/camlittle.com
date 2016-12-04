@@ -4,13 +4,15 @@ title: About
 permalink: /about/
 ---
 
-I’m currently attending Western Washington University, majoring in Computer
-Science, and enrolled in the Honors program. I’m the Web Usability Coordinator
-for Western's University Residences. During the winter I like to ski; I’ve
-instructed at Mt Baker and coached at Apex Mountain Resort. In the summer I
-whitewater kayak and raft guide, both on the Wenatchee and Elwha. I film and
-edit videos of me and my friends doing cool things. I also make websites, like
-the one you’re looking at now. I recently completed my first marathon, with a time
-of 3:42.
+I’m the front-end developer at
+[Remitly](https://www.remitly.com/us/en/home/careers) where I’m working on our
+new web platform. I graduated with a degree in Computer Science from Western
+Washington University, where I worked for
+[ResTek](http://restek.wwu.edu/about/jobs/). During the winter I ski, when
+there’s water I’m on the river, and the rest of the time I hike.
 
-I can be contacted at: <cameron@camlittle.com> or [@apexskier](http://twitter.com/apexskier).
+I’ve got lots of projects, from Arduino, to mobile applications, to 3D
+printing.
+
+I can be contacted at: <cameron@camlittle.com> or
+[@apexskier](http://twitter.com/apexskier).

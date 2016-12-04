@@ -8,9 +8,9 @@ layout: default
     <ul class="posts">
         {% for post in site.posts %}
             <li class="post-link clearfix">
-            <div class="thumb"><img src="{{ post.url | replace:'/posts/','/assets/posts/' }}/thumb.jpg" data-parallax="4" class="post-thumb parallax" alt="thumbnail"></div>
+            <div class="thumb"><img src="{{ post.url | replace:'/posts/','/assets/posts/' }}/thumb.jpg" class="post-thumb" alt="thumbnail"></div>
                 <div class="post-desc">
-                    <p class="date " data-parallax="-2">{{ post.date | date: "%-d %B %Y" }}</p>
+                    <p class="date">{{ post.date | date: "%-d %B %Y" }}</p>
                     <h3>
                         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
                     </h3>
