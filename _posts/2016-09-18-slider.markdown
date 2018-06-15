@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Slider"
-date:   2016-09-18 16:54:00
+date:   2016-09-18 16:54:00 -0700
 ---
 
 Earlier this year my friend Cole approached me about motorizing his [video

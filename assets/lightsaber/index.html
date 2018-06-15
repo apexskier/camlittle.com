@@ -1,0 +1,388 @@
+<!doctype html>  
+
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>CSS + Javascript Lightsaber</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	
+	<link rel="stylesheet" href="css/style.css?v=2">
+	<script src="js/libs/modernizr-1.6.min.js"></script>
+	
+</head>
+
+<body>
+
+<div id="audio">
+	<audio id="hum" loop preload>
+		<source src="audio/hum01.wav" />
+	</audio>
+	<audio id="open" preload>
+		<source src="audio/SaberOn.wav" />
+	</audio>
+	<audio id="close" preload>
+		<source src="audio/close2.wav" />
+	</audio>
+	<div class="swing">
+		<audio class="swing s1" preload>
+			<source src="audio/swing1-1.wav" />
+		</audio>
+		<audio class="swing s2" preload>
+			<source src="audio/swing1-2.wav" />
+		</audio>
+		<audio class="swing s3" preload>
+			<source src="audio/swing1-3.wav" />
+		</audio>
+		<audio class="swing s4" preload>
+			<source src="audio/swing1-4.wav" />
+		</audio>
+		<audio class="swing s5" preload>
+			<source src="audio/swing1-5.wav" />
+		</audio>
+		<audio class="swing s6" preload>
+			<source src="audio/swing1-6.wav" />
+		</audio>
+		<audio class="swing s7" preload>
+			<source src="audio/swing1-7.wav" />
+		</audio>
+	</div>
+</div>
+
+<div id="container">
+	<header>
+	
+	</header>
+	
+	<div id="main">
+		
+		<div id="controls">
+			<div class="on-off">open</div>
+			<div class="left lr">&lt;</div>
+			<div class="right lr">&gt;</div>
+		</div>
+		
+		<div class="skywalker lightsaber">
+		
+			<div class="section blade"></div>
+		
+			<div class="hilt">
+			
+				<div class="section silver b1"></div>
+				<div class="section silver b2"></div>
+				<div class="section silver b3"></div>
+				<div class="section silver b4"></div>
+				<div class="section silver b5"></div>
+				<div class="section orange b6"></div>
+				<div class="section orange b7"></div>
+				<div class="section silver b8"></div>
+				<div class="section black b9"></div>
+				<div class="section black b10"></div>
+				<div class="section b11">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section silver b12"></div>
+				<div class="section b13">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section b11">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section silver b12"></div>
+				<div class="section b13">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section b11">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section silver b12"></div>
+				<div class="section b13">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section b11">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section silver b12"></div>
+				<div class="section b13">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section b11">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section silver b12"></div>
+				<div class="section b13">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section b11">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section silver b12"></div>
+				<div class="section b13">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section b11">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section silver b12"></div>
+				<div class="section b13">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section b11">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section silver b12"></div>
+				<div class="section b13">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section b11">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section silver b12"></div>
+				<div class="section b13">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section b11">
+					<div class="left black"></div>
+					<div class="center black"></div>
+					<div class="right black"></div>
+				</div>
+				<div class="section black b14"></div>
+				<div class="section silver b15">
+					<div class="box">
+						<div class="silver"></div>
+						<div class="orange c1"></div>
+						<div class="orange c2"></div>
+					</div>
+				</div>
+				<div class="section silver b16"></div>
+				<div class="section b17">
+					<div class="section ba1">
+						<div class="left"></div>
+						<div class="center"></div>
+						<div class="right"></div>
+					</div>
+					<div class="section silver ba2"></div>
+					<div class="section ba3">
+						<div class="left"></div>
+						<div class="center"></div>
+						<div class="right"></div>
+					</div>
+					<div class="ba4">
+						<div class="baa1">
+							<div class="top"></div>
+							<div class="center"></div>
+							<div class="bottom"></div>
+						</div>
+						<div class="baa2"></div>
+						<div class="baa3"></div>
+						<div class="baa4">
+							<div class="top"></div>
+							<div class="center"></div>
+							<div class="bottom"></div>
+						</div>
+						<div class="baa5"></div>
+						<div class="baa6">
+							<div class="top"></div>
+							<div class="center"></div>
+							<div class="bottom"></div>
+						</div>
+						<div class="baa3"></div>
+						<div class="baa2"></div>
+						<div class="baa7">
+							<div class="top"></div>
+							<div class="center"></div>
+							<div class="bottom"></div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+				
+		<div class="vader lightsaber">
+			
+			<div class="section blade"></div>
+			
+			<div class="hilt">
+			
+				<div class="section v1 black angle"></div>
+				<div class="section v2"></div>
+				<div class="v3"></div>
+				<div class="section v4 black"></div>
+				<div class="v5"></div>
+				<div class="v6 silver"></div>
+				<div class="section v7 silver"></div>
+				<div class="v8 box2 clearfix">
+					<div class="vv1"></div>
+					<div class="vv2"></div>
+					<div class="vv3"></div>
+				</div>
+				<div class="section v9">
+					<div class="v10"></div>
+				</div>
+				<div class="section v11 silver">
+					<div class="v12">
+						<div class="v12g grip"></div>
+					</div>
+					<div class="v13">
+						<div class="v13g grip"></div>
+					</div>
+					<div class="v14">
+						<div class="v14g grip"></div>
+					</div>
+					<div class="v15">
+						<div class="v15g grip"></div>
+					</div>
+					<div class="round">
+						<div class="round2"></div>
+					</div>
+				</div>
+				<div class="section v16 silver"></div>
+				<div class="section v17 silver"></div>
+				<div class="section v18 silver"></div>
+				<div class="section v19 silver"></div>
+				<div class="section v20 silver"></div>
+				<div class="section v21 silver"></div>
+			
+			</div>
+			
+		</div>
+		
+		<div class="windu lightsaber">
+		
+			<div class="section blade"></div>
+			
+			<div class="section w1 gold"></div>
+			<div class="section w2 gold"></div>
+			<div class="section w3 silver"></div>
+			<div class="section w4 silver">
+				<div class="w5 gold"></div>
+				<div class="w6 gold"></div>
+				<div class="w7 gold"></div>
+				<div class="w8 silver"></div>
+				<div class="w9 black"></div>
+			</div>
+			<div class="section w10 silver"></div>
+			<div class="section w11 silver"></div>
+			<div class="section w12 gold"></div>
+			<div class="section w13 gold"></div>
+			<div class="section w12 gold"></div>
+			<div class="section w13 gold"></div>
+			<div class="section w12 gold"></div>
+			<div class="section w13 gold"></div>
+			<div class="section w12 gold"></div>
+			<div class="section w14 gold"></div>
+			<div class="section w15 silver">
+				<div class="w16 black"></div>
+				<div class="w17 black"></div>
+				<div class="w18 black"></div>
+				<div class="w19 black"></div>
+				<div class="w20 black"></div>
+			</div>
+			<div class="section w21 gold">
+				<div class="round">
+					<div class="round2"></div>
+				</div>
+			</div>
+			<div class="section w22 silver"></div>
+			<div class="section w23 silver"></div>
+			<div class="section w24 silver"></div>
+			<div class="section w25 black"></div>
+			<div class="section w26 silver"></div>
+			<div class="section w27 gold"></div>
+			<div class="section w28 silver"></div>
+			<div class="section w29 silver"></div>
+			<div class="section w30 silver"></div>
+			<div class="section w31 gold"></div>
+
+		</div>
+	
+	</div>
+	
+	<footer>
+	</footer>
+</div> <!-- end of #container -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
+
+
+<!-- scripts concatenated and minified via ant build script-->
+<script src="js/plugins.js"></script>
+<script src="js/script.js"></script>
+<!-- end concatenated and minified scripts-->
+
+
+<!--[if lt IE 7 ]>
+<script src="js/libs/dd_belatedpng.js"></script>
+<script> DD_belatedPNG.fix('img, .png_bg'); </script>
+<![endif]-->
+
+<!-- yui profiler and profileviewer - remove for production -->
+<script src="js/profiling/yahoo-profiling.min.js"></script>
+<script src="js/profiling/config.js"></script>
+<!-- end profiling code -->
+
+
+
+<!-- change the UA-XXXXX-X to be your site's ID -->
+<script>
+var _gaq = [['_setAccount', 'UA-18767205-1'], ['_trackPageview']];
+(function(d, t) {
+var g = d.createElement(t),
+s = d.getElementsByTagName(t)[0];
+g.async = true;
+g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g, s);
+})(document, 'script');
+</script>
+
+</body>
+</html>

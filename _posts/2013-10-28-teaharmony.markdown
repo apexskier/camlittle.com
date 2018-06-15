@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "TeaHarmony"
-date:   2013-10-28 00:00:00
+date:   2013-10-28 00:00:00 -0700
 ---
 
 I'm part of the Brewing Club here at WWU, which is funny, because I pretty much
@@ -76,5 +76,5 @@ To make my life easier, I went with [Bootstrap](http://getbootstrap.com/) for
 the frontend.
 
 If you want to check the project out (or checkout the project <small>(git
-joke)</small>) visit [http://wwubrew.com/](http://wwubrew.com/). The code's all
+joke)</small>) ~~visit [http://wwubrew.com/](http://wwubrew.com/)~~. The code's all
 on [github](https://github.com/apexskier/teaharmony).

@@ -1,12 +1,13 @@
 ---
 layout: post
 title:  "Max-height and focusing"
-date:   2013-11-26 00:00:00
+date:   2013-11-26 00:00:00 -0700
 ---
 
 Click on the box below, and tab through the subsequent links in Chrome (or
 Safari) and Firefox (or Opera).
 
+{% highlight html %}
 <div class="set-focus" tabindex="0">Set Focus</div>
 
 <style>
@@ -156,3 +157,4 @@ The relevant style and html is below.
     <a href="#" class="skip3 skip sr-only">skip3</a>
     <a href="#" class="skip4 skip sr-only">skip4</a>
     <a href="#" class="skip5 skip sr-only">skip5</a>
+{% endhighlight %}

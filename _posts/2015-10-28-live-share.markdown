@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Live Share"
-date:   2015-10-28 11:15:00
+date:   2015-10-28 11:15:00 -0700
 ---
 
 
@@ -9,6 +9,8 @@ date:   2015-10-28 11:15:00
 
 Live Share is an app that allows you to export, edit, and create [Live
 Photos](http://www.apple.com/iphone-6s/cameras/).
+
+Edit: I've since abandoned this, but you can [view the code on GitHub](https://github.com/apexskier/LiveGifs).
 
 ### Description
 

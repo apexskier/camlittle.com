@@ -4,7 +4,15 @@ email: cameron@camlittle.com
 description: "A collection of Cameron Little's thoughts and projects."
 baseurl: ""
 url: "http://camlittle.com"
+timezone: America/Vancouver
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  auto_ids: true
+  input: GFM
+  syntax_highlighter: rouge
+
 permalink: /posts/:title
