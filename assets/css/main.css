@@ -30,12 +30,12 @@ html {
  */
 
 ::-moz-selection {
-    background: #b3d4fc;
+    background-color: #b3d4fc;
     text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
+    background-color: #b3d4fc;
     text-shadow: none;
 }
 
@@ -168,19 +168,14 @@ hr {
 }
 a,
 a:visited {
-    color: #268bd2;
     text-decoration: none;
     border-bottom: 1px dotted;
-}
-a:hover,
-a:focus {
-    color: #2aa198;
 }
 input[type=submit] {
     line-height: 20px;
     color: #fdf6e3;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    background: #cb4b16;
+    background-color: #cb4b16;
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -479,16 +474,17 @@ footer {
 }
 
 code {
-    background: #001d25;
+    background-color: #001d25;
     color: #fdf6e3;
 }
 pre {
     padding: 0.5em 1em;
-    overflow-x: scroll;
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
 pre code {
-    background: transparent;
+    background-color: inherit;
+    color: inherit;
 }
 canvas {
     border: 1px dotted #333;
@@ -705,6 +701,7 @@ canvas {
 .highlight {
   background-color: #f8f8f8;
 }
+
 
 /*
  * Clearfix: contain floats
