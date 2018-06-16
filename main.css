@@ -199,83 +199,6 @@ input[type=text], textarea {
     border: 1px dotted #cb4b16;
 }
 
-h1 a {
-    /* display: inline-block;*/
-}
-/* TODO: This is broken */
-/*
-h1 > a {
-    animation: popDown 500ms;
-}
-h1 small a:nth-child(5n+1) {
-    animation: popDown 500ms;
-}
-h1 small a:nth-child(5n+2) {
-    animation: popDown 550ms;
-}
-h1 small a:nth-child(5n+3) {
-    animation: popDown 600ms;
-}
-h1 small a:nth-child(5n+4) {
-    animation: popDown 650ms;
-}
-h1 small a:nth-child(5n) {
-    animation: popDown 700ms;
-}
-*/
-@keyframes popDown {
-    0% {
-        transform: translateY(-300px);
-    }
-    10% {
-        transform: translateY(-50px);
-    }
-    20% {
-        transform: translateY(25px);
-    }
-    25% {
-        transform: translateY(30.618621784789724px);
-    }
-    30% {
-        transform: translateY(20.225424859373675px);
-    }
-    40% {
-        transform: translateY(-6.25px);
-    }
-    50% {
-        transform: translateY(-3.125px);
-    }
-    55% {
-        transform: translateY(-3.827327723098705px);;
-    }
-    60% {
-        transform: translateY(-3.125px);
-    }
-    70% {
-        transform: translateY(-0.78125px);
-    }
-    80% {
-        transform: translateY(0.390625px);
-    }
-    90% {
-        transform: translateY(0.23020px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-@keyframes popIn {
-    0% {
-        transform: scale(1);
-    }
-    30% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
 #sidebar {
     text-align: center;
 
@@ -330,6 +253,18 @@ nav {
             color: #111;
             border-bottom: none;
         }
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
