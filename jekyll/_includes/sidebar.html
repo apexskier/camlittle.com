@@ -1,0 +1,12 @@
+<aside id="sidebar">
+    <nav>
+        <ul>
+            <li><a href="{{ site.baseurl }}/" title="Home">Home</a></li>
+            {% for page in site.pages %}
+                {% if page.title %}
+                    <li><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+</aside>

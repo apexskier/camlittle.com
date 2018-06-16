@@ -4,6 +4,7 @@ title:  "GLGE Tutorial 1"
 date:   2011-12-01 00:00:00 -0700
 ---
 
+content:
 [the HTML file](#html) | [the XML file](#xml) | [the javascript](#javascript) | [demo/download](#example)
 
 ### A basic scene

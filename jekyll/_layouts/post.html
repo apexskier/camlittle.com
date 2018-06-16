@@ -1,11 +1,11 @@
 ---
 layout: default
 ---
-<div id="content">
+<main>
     <h2><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></h2>
     <p><small>{{ page.date | date: '%B %d, %Y' }}</small></p>
 
     <article class="post-content">
     {{ content }}
     </article>
-</div>
+</main>

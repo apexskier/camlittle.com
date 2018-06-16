@@ -1,61 +1,48 @@
-/*
- * HTML5 Boilerplate
- *
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-html,
-button,
-input,
-select,
-textarea {
-    color: #222;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
-
-html {
-    font-size: 1em;
-    line-height: 1.4;
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
-
-/*
- * Remove text-shadow in selection highlight: h5bp.com/i
- * These selection rule sets have to be separate.
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-    background-color: #b3d4fc;
-    text-shadow: none;
+ol, ul {
+	list-style: none;
 }
-
-::selection {
-    background-color: #b3d4fc;
-    text-shadow: none;
+blockquote, q {
+	quotes: none;
 }
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
 }
-
-/*
- * Remove the gap between images, videos, audio and canvas and the bottom of
- * their containers: h5bp.com/i/440
- */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 
 audio,
 canvas,
@@ -64,27 +51,9 @@ video {
     vertical-align: middle;
 }
 
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-/*
- * Allow only vertical resizing of textareas.
- */
-
 textarea {
     resize: vertical;
 }
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
 
 body {
     background-color: #fff;
@@ -92,6 +61,8 @@ body {
     color: #222;
     font-size: 16px;
     font-weight: 300;
+    line-height: 1.4;
+    margin: 0;
 }
 
 #container {
@@ -104,71 +75,107 @@ body {
 
 header {
     text-align: center;
+
+    @media only screen and (min-width: 45em) {
+        text-align: left;
+        margin-top: 1em;
+        margin-bottom: 2em;
+    }
+
+    & h1 {
+        color: #333;
+        font-size: 300%;
+        font-weight: 100;
+        padding: 0;
+        margin: 0;
+
+        & a {
+            &,
+            &:visited,
+            &:focus,
+            &:hover {
+                color: #333;
+                text-decoration: none;
+                border-bottom: none;
+            }
+        }
+
+        & small {
+            font-size: 50%;
+            display: block;
+            margin-bottom: 6px;
+
+            @media only screen and (min-width: 45em) {
+                display: inline;
+                padding-left: 0.4em;
+            }
+
+            & i {
+                padding: 0 0.2em;
+            }
+        }
+    }
 }
-h1 {
-    color: #333;
-    font-size: 300%;
-    font-weight: 100;
-    padding: 0;
-    margin: 0;
-}
-h1 a,
-h1 a:visited,
-h1 a:focus,
-h1 a:hover {
-    color: #333;
-    text-decoration: none;
-    border-bottom:none;
-}
-h1 small {
-    font-size: 50%;
-    display: block;
-}
-h1 small i {
-    padding: 0 0.2em;
-}
+
 h2 {
     font-size: 170%;
-    margin: 0;
     font-weight: 200;
+    margin-bottom: .6em;
+
+    & a {
+        &,
+        &:visited {
+            color: #333;
+            text-decoration: none;
+            border-bottom: none;
+        }
+
+        &:focus,
+        &:hover {
+            color: #333;
+            text-decoration: none;
+            border-bottom: none;
+        }
+    }
 }
-h2 a,
-h2 a:visited {
-    text-decoration: none;
-    color: #333;
-    border-bottom: none;
-}
-h2 a:focus,
-h2 a:hover {
-    color: #333;
-    text-decoration: none;
-    border-bottom: none;
-}
-h3 {
-    font-size: 130%;
-}
+
 h3, h4, h5, h6 {
     margin-top: 1em;
     margin-bottom: .6em;
     font-weight: 300;
 }
+
+h3 {
+    font-size: 130%;
+}
+
 h4 {
     font-size: 120%;
 }
+
 h5 {
     font-size: 117%;
 }
+
 h6 {
     font-size: 108%;
 }
+
 hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    margin: 1em 0;
+    padding: 0;
     border-top: 1px dotted #333;
 }
+
 a,
 a:visited {
     text-decoration: none;
     border-bottom: 1px dotted;
 }
+
 input[type=submit] {
     line-height: 20px;
     color: #fdf6e3;
@@ -180,18 +187,16 @@ input[type=submit] {
     margin: 0;
     padding: 3px 4px 2px;
 }
+
 input[type=text], textarea,
 :input-placeholder {
     background-color: #fdf6e3;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     color: #c2a586;
 }
+
 input[type=text], textarea {
     border: 1px dotted #cb4b16;
-}
-
-.fourohfour {
-    text-align: center;
 }
 
 h1 a {
@@ -272,130 +277,157 @@ h1 small a:nth-child(5n) {
 }
 
 #sidebar {
-    padding: 0;
-    text-align: left;
-}
-#sidebar > li {
-    list-style: none;
-}
-#sidebar #nav {
-    padding: 0 0 1em;
     text-align: center;
+
+    @media only screen and (min-width: 45em) {
+        margin-bottom: 2em;
+        margin-right: 2em;
+        width: 10em;
+        text-align: left;
+        float: left;
+    }
+
+    & nav {
+        margin-bottom: 12px;
+
+        & ul {
+            margin: 0;
+            padding-left: 0;
+
+            & > li {
+                padding: 0;
+                list-style: none;
+                display: inline;
+                margin-left: 0.3em;
+
+                @media only screen and (min-width: 45em) {
+                    display: block;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
 }
-#sidebar nav ul {
-    padding-left: 0;
-}
-#sidebar nav ul > li {
-    padding: 0;
-    list-style: none;
-    display: inline;
-    margin-left: 0.3em;
-}
+
 nav {
     color: #333;
 	font-size: 120%;
-}
-nav a {
-    border-bottom: none;
-    text-decoration: none;
-    color: #333;
-    background-position-x: 0;
-}
-nav a:visited {
-    color: #333;
-    border-bottom: none;
-}
-nav a:hover,
-nav a:focus {
-    text-decoration: underline;
-    color: #111;
-    border-bottom: none;
-}
-#ad {
-    display: none;
-}
 
-.image img {
-    max-width: 100%;
-}
-.image {
-    margin-bottom: 1em;
+    & a {
+        border-bottom: none;
+        text-decoration: none;
+        color: #333;
+        background-position-x: 0;
+
+        &:visited {
+            color: #333;
+            border-bottom: none;
+        }
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            color: #111;
+            border-bottom: none;
+        }
+    }
 }
 
 .posts {
     margin: 0;
     padding: 0;
+
+    & .post-link {
+        list-style: none;
+        margin: 0 0 1em;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        zoom: 1;
+
+        & .date {
+            margin: 0;
+        }
+
+        & h3 {
+            margin: 0;
+        }
+
+        &:nth-child(10n+1) .thumb img {
+            animation: popIn 200ms;
+        }
+        &:nth-child(10n+2) .thumb img {
+            animation: popIn 200ms 50ms;
+        }
+        &:nth-child(10n+3) .thumb img {
+            animation: popIn 200ms 150ms;
+        }
+        &:nth-child(10n+4) .thumb img {
+            animation: popIn 200ms 250ms;
+        }
+        &:nth-child(10n+6) .thumb img {
+            animation: popIn 200ms 300ms;
+        }
+        &:nth-child(10n+7) .thumb img {
+            animation: popIn 200ms 350ms;
+        }
+        &:nth-child(10n+8) .thumb img {
+            animation: popIn 200ms 400ms;
+        }
+        &:nth-child(10n+9) .thumb img {
+            animation: popIn 200ms 450ms;
+        }
+        &:nth-child(10n+10) .thumb img {
+            animation: popIn 200ms 500ms;
+        }
+    }
+
+    & .thumb {
+        float: left;
+        margin-right: 1em;
+        overflow: hidden;
+        border: 1px dotted #666;
+        width: 66px;
+        height: 66px;
+
+        & img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    & .post-desc {
+        overflow: hidden;
+        zoom: 1;
+    }
 }
-.posts .post-link {
-    list-style: none;
-    margin: 0 0 1em;
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-    zoom: 1;
-}
-.posts .thumb {
-    float: left;
-    margin-right: 1em;
-    overflow: hidden;
-    border: 1px dotted #666;
-    width: 66px;
-    height: 66px;
-}
-.posts .post-link:nth-child(10n+1) .thumb img {
-    animation: popIn 200ms;
-}
-.posts .post-link:nth-child(10n+2) .thumb img {
-    animation: popIn 200ms 50ms;
-}
-.posts .post-link:nth-child(10n+3) .thumb img {
-    animation: popIn 200ms 150ms;
-}
-.posts .post-link:nth-child(10n+4) .thumb img {
-    animation: popIn 200ms 250ms;
-}
-.posts .post-link:nth-child(10n+6) .thumb img {
-    animation: popIn 200ms 300ms;
-}
-.posts .post-link:nth-child(10n+7) .thumb img {
-    animation: popIn 200ms 350ms;
-}
-.posts .post-link:nth-child(10n+8) .thumb img {
-    animation: popIn 200ms 400ms;
-}
-.posts .post-link:nth-child(10n+9) .thumb img {
-    animation: popIn 200ms 450ms;
-}
-.posts .post-link:nth-child(10n+10) .thumb img {
-    animation: popIn 200ms 500ms;
-}
-.posts .post-desc {
-    overflow: hidden;
-    zoom: 1;
-}
-.posts .post-link .date {
-    margin: 0;
-}
-#content .posts .thumb img {
-    width: 100%;
-    height: 100%;
-}
-.posts .post-link h3 {
-    margin: 0;
+
+main {
+    @media only screen and (min-width: 45em) {
+        margin-left: 12em;
+    }
+
+    & img,
+    & video {
+        max-width: 100%;
+        height: auto;
+    }
+
+    & p,
+    & blockquote,
+    & img,
+    & video,
+    & figure {
+        margin-bottom: 14px;
+    }
 }
 
 iframe {
     max-width: 100%;
 }
 
-#content img,
-#content video {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-#content figure {
-    margin: 0 0 10px;
+canvas {
+    border: 1px dotted #333;
 }
 
 footer {
@@ -403,21 +435,19 @@ footer {
     font-size: 90%;
 }
 
-code {
-    background-color: #001d25;
-    color: #fdf6e3;
+pre, code {
+    font-family: monospace;
 }
+
 pre {
     padding: 0.5em 1em;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
+
 pre code {
     background-color: inherit;
     color: inherit;
-}
-canvas {
-    border: 1px dotted #333;
 }
 
 /* syntax highlighting */
@@ -632,6 +662,11 @@ canvas {
   background-color: #f8f8f8;
 }
 
+code {
+    background-color: #f8f8f8;
+    padding: 2px 4px;
+}
+
 
 /*
  * Clearfix: contain floats
@@ -645,52 +680,20 @@ canvas {
  *    `:before` to contain the top-margins of child elements.
  */
 
-.clearfix:before,
-.clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-/*
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-
 .clearfix {
+    /*
+     * For IE 6/7 only
+     * Include this rule to trigger hasLayout and contain floats.
+     */
     *zoom: 1;
-}
 
-@media only screen and (min-width: 45em) {
-    /* Style adjustments for viewports that meet the condition */
-    header {
-        text-align: left;
-        margin: 1em 10em 2em 0;
+    &:before,
+    &:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
     }
-    h1 small {
-        display: inline;
-        padding-left: 0.4em;
-    }
-    #sidebar {
-        margin: 0 2em 2em 0;
-        width: 10em;
-        float: left;
-    }
-    #sidebar #nav {
-        text-align: left;
-    }
-    #sidebar nav ul > li {
-        display: block;
-        margin-left: 0;
-    }
-    #ad {
-        display: block;
-    }
-    #content {
-        margin-left: 12em;
+
+    &:after {
+        clear: both;
     }
 }
-

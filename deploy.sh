@@ -2,5 +2,4 @@
 
 set -e
 
-jekyll build
-rsync -avzhC ./_site/ /var/www/camlittle.com/
+rsync -avzhC ./out/ /var/www/camlittle.com/

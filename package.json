@@ -1,0 +1,18 @@
+{
+  "name": "camlittle.com",
+  "version": "1.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apexskier/camlittle.com.git"
+  },
+  "author": "Cameron Little <cameron@camlittle.com>",
+  "homepage": "https://camlittle.com",
+  "devDependencies": {
+    "cssnano": "^3.10.0",
+    "postcss": "^6.0.22",
+    "postcss-cli": "^5.0.0",
+    "postcss-preset-env": "^5.1.0",
+    "prettier": "^1.13.5"
+  }
+}
