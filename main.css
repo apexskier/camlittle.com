@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -12,8 +12,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -24,7 +24,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -256,18 +256,6 @@ nav {
     }
 }
 
-@keyframes popIn {
-    0% {
-        transform: scale(1);
-    }
-    30% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
 .posts {
     margin: 0;
     padding: 0;
@@ -286,34 +274,6 @@ nav {
 
         & h3 {
             margin: 0;
-        }
-
-        &:nth-child(10n+1) .thumb img {
-            animation: popIn 200ms;
-        }
-        &:nth-child(10n+2) .thumb img {
-            animation: popIn 200ms 50ms;
-        }
-        &:nth-child(10n+3) .thumb img {
-            animation: popIn 200ms 150ms;
-        }
-        &:nth-child(10n+4) .thumb img {
-            animation: popIn 200ms 250ms;
-        }
-        &:nth-child(10n+6) .thumb img {
-            animation: popIn 200ms 300ms;
-        }
-        &:nth-child(10n+7) .thumb img {
-            animation: popIn 200ms 350ms;
-        }
-        &:nth-child(10n+8) .thumb img {
-            animation: popIn 200ms 400ms;
-        }
-        &:nth-child(10n+9) .thumb img {
-            animation: popIn 200ms 450ms;
-        }
-        &:nth-child(10n+10) .thumb img {
-            animation: popIn 200ms 500ms;
         }
     }
 
