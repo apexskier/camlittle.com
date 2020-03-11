@@ -1,8 +1,8 @@
 <aside id="sidebar">
     <nav>
         <ul>
-            <li><a href="{{ .Site.BaseURL }}/" title="Home">Home</a></li>
-            {{ range .Site.RegularPages -}}
+            <li><a href="{{ .Site.BaseURL }}" title="Home">Home</a></li>
+            {{ range where .Site.RegularPages "Type" "pages" -}}
                 {{ if .Title -}}
                     <li><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></li>
                 {{- end }}

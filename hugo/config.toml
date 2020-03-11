@@ -4,6 +4,10 @@ title = "Cameron Little's Website"
 author = "Cameron Little"
 theme = "camlittle"
 
+[permalinks]
+  posts = "/posts/:title"
+  pages = ":title"
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]

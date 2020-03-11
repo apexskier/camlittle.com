@@ -3,11 +3,15 @@
     <p class="lead">{{ .Description }}</p>
 
     <ul class="posts">
-        {{ range (first 5 .Site.RegularPages) -}}
+        {{ range first 50 (where .Site.RegularPages "Type" "posts") -}}
         <li class="post-link clearfix">
+            {{ if .Resources.Match "thumb.*" -}}
+            {{ with (index (.Resources.Match "thumb.*") 0) -}}
             <div class="thumb">
-                <img src="/thumb.jpg" class="post-thumb" alt="thumbnail">
+                <img src="{{- .Permalink -}}" class="post-thumb" alt="thumbnail">
             </div>
+            {{- end }}
+            {{- end }}
             <div class="post-desc">
                 <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
                 <h3>

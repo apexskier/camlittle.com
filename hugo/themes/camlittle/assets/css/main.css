@@ -103,6 +103,26 @@ body {
     margin: 0;
 }
 
+ul, ol {
+  margin-left: 1em;
+  margin-bottom: 14px;
+}
+
+li {
+  margin-left: 1em;
+  margin-bottom: 8px;
+  list-style: disc;
+
+  & li {
+    margin-bottom: 0;
+    list-style: circle;
+    
+    & li {
+      list-style: square;
+    }
+  }
+}
+
 #container {
     width: auto;
     max-width: 1024px;
@@ -360,6 +380,7 @@ main {
     & blockquote,
     & img,
     & video,
+    & pre,
     & figure {
         margin-bottom: 14px;
     }
