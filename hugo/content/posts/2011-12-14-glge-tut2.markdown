@@ -40,10 +40,10 @@ compared to the last one.
 
 ##### Cube
 
-{% highlight xml %}
+```xml
 <mesh id="cube">
 </mesh>
-{% endhighlight %}
+```
 
 The cube is composed of six sides. Each side is made of two flat triangles
 (like the one from the last tutorial). This will make a total of 36 corners or
@@ -57,14 +57,14 @@ composed of 6 coordinates.
 
 For the top face, a flat square, we will need...
 
-{% highlight xml %}
+```xml
   1, 1, 1,   // right 1 unit, forward 1 unit, up 1 unit
  -1, 1, 1,   // left  1 unit, forward 1 unit, up 1 unit
   1,-1, 1,   // right 1 unit, back    1 unit, up 1 unit
  -1, 1, 1,   // left  1 unit, forward 1 unit, up 1 unit
  -1,-1, 1,   // left  1 unit, back    1 unit, up 1 unit
   1,-1, 1... // right 1 unit, back    1 unit, up 1 unit
-{% endhighlight %}
+```
 
 Now we have the `<normals>` for the top face. Each line is an x, y, z
 coordinate and defines which direction the light is reflected towards. A good
@@ -74,14 +74,14 @@ For the top face, each corner of the face is +1 at the z axis, so each normal
 is 0, 0, 1. The light is reflected up (to the z axis) for each corner and the
 space in between corners.
 
-{% highlight xml %}
+```xml
 0, 0, 1,
 0, 0, 1,
 0, 0, 1,
 0, 0, 1,
 0, 0, 1,
 0, 0, 1...
-{% endhighlight %}
+```
 
 Since our example will not have images associated with objects and because all
 of the corners are defined separately, we don't need a `<uv1>` section or a
@@ -90,7 +90,7 @@ corners with the same position element.
 
 Lets build the rest of the `<positions>` and `<normals>` elements.
 
-{% highlight xml %}
+```xml
 <positions>
     /* back */
      1,  1, 1,
@@ -189,7 +189,7 @@ Lets build the rest of the `<positions>` and `<normals>` elements.
     0, 0,-1,
     0, 0,-1
 </normals>
-{% endhighlight %}
+```
 
 *don't include comments in your XML file, they're just here to help clear things up.
 
@@ -199,9 +199,9 @@ Now we can define the material for the cube. This is pretty easy and no
 different than the last tutorial, an `id`, the `specular` value, and a `color`
 (this time, blue).
 
-{% highlight xml %}
+```xml
 <material id="cubeMat" specular="1" color="#0088bb" />
-{% endhighlight %}
+```
 
 ##### Sphere
 
@@ -214,9 +214,9 @@ target="_blank">click here</a> to see the code I'm using if you really want to.
 
 For the sphere material, I'm going to make it red, and a bit less shiny.
 
-{% highlight xml %}
+```xml
 <material id="sphereMat" specular="0.5" color="#cc0000" />
-{% endhighlight %}
+```
 
 <h4 id="animation">Animation</h4>
 
@@ -228,41 +228,41 @@ I want the cube to rotate on the y and z axises.
 
 First, I define this animation in an `<animation_vector>`. An `<animation_vector>` contains and id and the number of frames. These frames contribute to the speed of the animation (more on this later) and determine how we set keyframes.
 
-{% highlight xml %}
+```xml
 <animation_vector id="spin" frames="240">
 
 </animation_vector>
-{% endhighlight %}
+```
 
 Inside the `<animation_vector>` we can set the attribute changes that will occur. To do this we add an `<animation_curve>` for each changing attribute.
 
 So, we first add an `<animation_curve>` that changes the rotation around the y axis.
 
-{% highlight xml %}
+```xml
 <animation_curve channel="RotY">
 
 </animation_curve>
-{% endhighlight %}
+```
 
 Inside this, we add the keyframes by adding `<linear_point>`s. Each has a `x` value that sets what frame it happens on, and a `y` value that sets the attribute value on that frame. So, in this example, at 0 frames in the animation (remember, the animation lasts 240 frames) the rotation on the y value is 0 radians, then it increases to 6.282 radians (about 360 degrees) on the 240th frame.
 
-{% highlight xml %}
+```xml
 <linear_point x="0" y="0" />
 <linear_point x="240" y="6.282" />
-{% endhighlight %}
+```
 
 I also want it to rotate around the z axis, so we'll add another `<animation_curve>` inside the `<animation_vector>`. It's almost exaclty the same, only the `<animation_curve>`'s channel is set to the z axis.
 
-{% highlight xml %}
+```xml
 <animation_curve channel="RotZ">
     <linear_point x="0" y="0" />
     <linear_point x="240" y="6.282" />
 </animation_curve>
-{% endhighlight %}
+```
 
 So here's the final code for the sphere's animation.
 
-{% highlight xml %}
+```xml
 <animation_vector id="spin" frames="240">
     <animation_curve channel="RotY">
         <linear_point x="0" y="0" />
@@ -273,7 +273,7 @@ So here's the final code for the sphere's animation.
         <linear_point x="240" y="6.282" />
     </animation_curve>
 </animation_vector>
-{% endhighlight %}
+```
 
 ##### Sphere circling
 
@@ -283,36 +283,36 @@ What we really want to do is move the sphere out 3 units, then rotate the whole 
 
 To do this, we need to introduce a new element into the XML file, a `<group>`. Then we can apply the animation to the group. I'll go over the animation quickly, since it is very simple, then move onto the `<object>`s and `<group>`s. The only difference in this animation is that it has a total of 480 frames, rather than 240. This will make it take two times longer than the cube's animation.
 
-{% highlight xml %}
+```xml
 <animation_vector id="circle" frames="480">
     <animation_curve channel="RotZ">
         <linear_point x="0" y="0" />
         <linear_point x="480" y="6.282" />
     </animation_curve>
 </animation_vector>
-{% endhighlight %}
+```
 
 <h4 id="rest">The rest (including groups)</h4>
 
 Next we need to add a camera (see the <a href="/posts/glge-tut1/">previous tutorial</a> for more info).
 
-{% highlight xml %}
+```xml
 <camera id="mainCamera" />
-{% endhighlight %}
+```
 
 and make a scene, with a light in it (again, see the <a href="/posts/glge-tut1/">previous tutorial</a> for more info).
 
-{% highlight xml %}
+```xml
 <scene id="mainScene" camera="#mainCamera" ambient_color="#fff">
     <light id="mainlight" loc_x="10" loc_y="15" loc_z="10" rot_x="-1.3" color="#fff" type="L_POINT" />
 </scene>
-{% endhighlight %}
+```
 
 Now we'll add the cube. It has an `id`, references the mesh set up earlier, the material set up earlier, has some location and rotation attributes, and some new attributes. The first new attribute is the frame rate. This sets how many frames per second is applied to the animation. So, a frame rate of 60 means that an animation with a length of 240 will take (240 / 60 = 4) 4 seconds to complete and an animation with a length 480 will take 8 seconds to complete.
 
-{% highlight xml %}
+```xml
 <object id="cube" mesh="#cube" material="#cubeMat" frame_rate="60" animation="#spin" loc_z="-10" rot_y="1" rot_x="1" />
-{% endhighlight %}
+```
 
 ##### Groups
 
@@ -322,15 +322,15 @@ I want to do two things separately to the sphere, so I need to surround it with 
 
 The group is moved down 10 units (same level as the cube) with a location attribute, and has the `#circle` animation applied to it. Inside the group is the sphere object moved out 3. It also has, the mesh defined above, material defined above, and scale attributes that make it 80% of the original size.
 
-{% highlight xml %}
+```xml
 <group id="sphereGroup" animation="#circle" frame_rate="60" loc_z="-10">
     <object id="sphere" mesh="#sphere" material="#sphereMat" loc_x="3" scale_x="0.8" scale_y="0.8" scale_z="0.8" />
 </group>
-{% endhighlight %}
+```
 
 Woohoo! We're done with the XML file for this tutorial. Here's the whole thing.
 
-{% highlight xml %}
+```xml
 <?xml version="1.0"?>
 <glge>
 
@@ -374,13 +374,13 @@ Woohoo! We're done with the XML file for this tutorial. Here's the whole thing.
     </scene>
 
 </glge>
-{% endhighlight %}
+```
 
 <h4 id="javascript">Javascript</h4>
 
 Last thing to do to make the animation work is to modify our javascript file a bit. If you use the javascript from the previous tutorial, it will render one frame of the animation and no more than that. Let's look at the javascript for a static scene first.
 
-{% highlight js %}
+```js
 var canvasElement = document.getElementById("canvas");
 var doc = new GLGE.Document();
 
@@ -393,27 +393,27 @@ doc.onLoad = function() {
     renderer.setScene(scene);
     renderer.render();
 }
-{% endhighlight %}
+```
 
 The line we need to look at is here.
 
-{% highlight js %}
+```js
 renderer.render();
-{% endhighlight %}
+```
 
 This renders the scene once.
 
 We need to set it to render over and over again with a `setInterval()` function. GLGE has logic that slows the animation down, so you can set it to render every 1 millisecond.
 
-{% highlight js %}
+```js
 setInterval(function(){
     renderer.render();
 }, 1);
-{% endhighlight %}
+```
 
 Here is the complete javascript code.
 
-{% highlight js %}
+```js
 var canvasElement = document.getElementById("canvas");
 var doc = new GLGE.Document();
 
@@ -429,7 +429,7 @@ doc.onLoad = function() {
         renderer.render();
     }, 1);
 }
-{% endhighlight %}
+```
 
 <h4 id="example"><s>Here it is</s> -- update, glge isn't supported any more</h4>
 

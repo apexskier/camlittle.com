@@ -9,7 +9,7 @@
                 <img src="/thumb.jpg" class="post-thumb" alt="thumbnail">
             </div>
             <div class="post-desc">
-                <p class="date">{{ .Date }}</p>
+                <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
                 <h3>
                     <a href="{{ .Permalink }}">{{ .Title }}</a>
                 </h3>

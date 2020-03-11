@@ -4,3 +4,11 @@ title = "Cameron Little's Website"
 author = "Cameron Little"
 theme = "camlittle"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      strikethrough = true
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.highlight]
+      style = "github"

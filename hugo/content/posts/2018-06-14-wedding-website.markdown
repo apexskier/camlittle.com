@@ -34,10 +34,10 @@ recently upgraded to `https` using [Let's Encrypt](http://letsencrypt.org). I
 took an additional step with this site and made the upgrade to `http2`. This
 wasn't quite the learning experience I expected...
 
-{% highlight patch %}
+```patch
 -  listen 443 ssl;
 +  listen 443 ssl http2;
-{% endhighlight %}
+```
 
 I still managed to have some fun setting up my domain names.
 
@@ -50,15 +50,15 @@ each domain to work, across both http and https, with or without `www`, with
 minimal redirects. To do this, I created a shared ssl certificate for all six
 domains.
 
-{% highlight conf %}
+```conf
   Certificate Name: aishaandcameron.love
     Domains: aishaandcameron.love cameronandaisha.love ourlittlewedding.love www.aishaandcameron.love www.cameronandaisha.love www.ourlittlewedding.love
-{% endhighlight %}
+```
 
 Then it was a fairly simple matter of redirecting http traffic to the primary
 domain to ssl
 
-{% highlight conf %}
+```conf
 server {
     server_name ourlittlewedding.love;
 
@@ -70,7 +70,7 @@ server {
 
 and redirecting any traffic to a non primary domain directly to the primary one
 
-{% highlight conf %}
+```conf
 server {
     server_name cameronandaisha.love www.cameronandaisha.love aishaandcameron.love www.aishaandcameron.love www.ourlittlewedding.love;
 
@@ -84,7 +84,7 @@ server {
 
     return 301 https://ourlittlewedding.love$request_uri;
 }
-{% endhighlight %}
+```
 
 There might be a more efficent way to structure the configuration, but this
 works well for me.

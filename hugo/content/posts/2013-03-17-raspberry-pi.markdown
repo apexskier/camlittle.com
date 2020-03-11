@@ -39,7 +39,7 @@ record is already set correctly, and stops if so.
 
 Here's the code.
 
-{% highlight python %}
+```python
 import urllib
 import xml.dom.minidom as minidom
 from sys import exit
@@ -123,7 +123,7 @@ for record in range(len(hostnames)):
     request_command += "&TTL" + str(num) + "=" + ttls[record]
 response = request(request_command).read()
 print "response is...\n" + response
-{% endhighlight %}
+```
 
 It's worked so far, but as I haven't moved my Pi to a network with a different
 IP address, I can't say for sure. I'll be testing more fully over Spring break.

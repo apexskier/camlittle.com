@@ -7,7 +7,6 @@ date:   2013-11-26 00:00:00 -0700
 Click on the box below, and tab through the subsequent links in Chrome (or
 Safari) and Firefox (or Opera).
 
-{% highlight html %}
 <div class="set-focus" tabindex="0">Set Focus</div>
 
 <style>
@@ -80,7 +79,7 @@ Safari) and Firefox (or Opera).
     <a href="#" class="skip5 skip sr-only">skip5</a>
 </div>
 
-In webkit browsers, you're able to focus links unless they have the css ``max-height: 0``. In
+In webkit browsers, you're able to focus links unless they have the css `max-height: 0`. In
 Firefox and Opera you can access all links.
 
 I stumbled across this quirk when animating a [skip to content
@@ -100,61 +99,62 @@ similar.
 
 The relevant style and html is below.
 
-    <style>
-        .sr-only {
-            position: absolute;
-            border: 0;
-        }
-        .skip {
-            margin: 0 auto;
-            background: #000;
-            color: red;
-            height: auto;
-            width: 100px;
-            padding: 0px;
-            -webkit-transition: max-height 200ms, padding 200ms;
-               -moz-transition: max-height 200ms, padding 200ms;
-                    transition: max-height 200ms, padding 200ms;
-        }
-        .skip:focus,
-        .skip:active {
-            padding: 0.5em 1.3em;
-            max-height: 40px;
-            z-index: 1000;
-        }
-        .skip1 {
-            right: 20px;
-            max-height: 1px;
-        }
-        .skip2 {
-            right: 130px;
-            overflow: visible;
-            max-height: 0px;
-        }
-        .skip3 {
-            right: 240px;
-            clip: rect(0 0 0 0);
-            max-height: 0px;
-        }
-        .skip4 {
-            right: 350px;
-            display: block;
-            max-height: 0px;
-        }
-        .skip5 {
-            right: 460px;
-            clip: rect(0 0 0 0);
-            max-height: 1px;
-        }
-        .skip3:focus,
-        .skip5:focus {
-            clip: auto;
-        }
-    </style>
+```html
+<style>
+    .sr-only {
+        position: absolute;
+        border: 0;
+    }
+    .skip {
+        margin: 0 auto;
+        background: #000;
+        color: red;
+        height: auto;
+        width: 100px;
+        padding: 0px;
+        -webkit-transition: max-height 200ms, padding 200ms;
+            -moz-transition: max-height 200ms, padding 200ms;
+                transition: max-height 200ms, padding 200ms;
+    }
+    .skip:focus,
+    .skip:active {
+        padding: 0.5em 1.3em;
+        max-height: 40px;
+        z-index: 1000;
+    }
+    .skip1 {
+        right: 20px;
+        max-height: 1px;
+    }
+    .skip2 {
+        right: 130px;
+        overflow: visible;
+        max-height: 0px;
+    }
+    .skip3 {
+        right: 240px;
+        clip: rect(0 0 0 0);
+        max-height: 0px;
+    }
+    .skip4 {
+        right: 350px;
+        display: block;
+        max-height: 0px;
+    }
+    .skip5 {
+        right: 460px;
+        clip: rect(0 0 0 0);
+        max-height: 1px;
+    }
+    .skip3:focus,
+    .skip5:focus {
+        clip: auto;
+    }
+</style>
 
-    <a href="#" class="skip1 skip sr-only">skip1</a>
-    <a href="#" class="skip2 skip sr-only">skip2</a>
-    <a href="#" class="skip3 skip sr-only">skip3</a>
-    <a href="#" class="skip4 skip sr-only">skip4</a>
-    <a href="#" class="skip5 skip sr-only">skip5</a>
-{% endhighlight %}
+<a href="#" class="skip1 skip sr-only">skip1</a>
+<a href="#" class="skip2 skip sr-only">skip2</a>
+<a href="#" class="skip3 skip sr-only">skip3</a>
+<a href="#" class="skip4 skip sr-only">skip4</a>
+<a href="#" class="skip5 skip sr-only">skip5</a>
+```
