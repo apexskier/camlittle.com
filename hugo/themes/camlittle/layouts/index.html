@@ -1,0 +1,21 @@
+{{ define "main" -}}
+<main>
+    <p class="lead">{{ .Description }}</p>
+
+    <ul class="posts">
+        {{ range (first 5 .Site.RegularPages) -}}
+        <li class="post-link clearfix">
+            <div class="thumb">
+                <img src="/thumb.jpg" class="post-thumb" alt="thumbnail">
+            </div>
+            <div class="post-desc">
+                <p class="date">{{ .Date }}</p>
+                <h3>
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h3>
+            </div>
+        </li>
+        {{- end }}
+    </ul>
+</main>
+{{- end }}

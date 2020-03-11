@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ .Site.Language }}">
+    {{- partial "head.html" . -}}
+    <body>
+        <div id="container">
+            {{- partial "header.html" . -}}
+
+            <div class="clearfix">
+                {{- partial "sidebar.html" . -}}
+
+                {{- block "main" . }}{{- end }}
+            </div>
+
+            {{- partial "footer.html" . -}}
+        </div>
+    </body>
+</html>
