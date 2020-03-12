@@ -1,6 +1,6 @@
 ---
 title: Video
-permalink: /video/
+url: /video/
 ---
 
 [Vimeo](https://vimeo.com/apexskier)

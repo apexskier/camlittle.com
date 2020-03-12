@@ -1,5 +1,6 @@
 ---
 title: "Live Share"
+slug: "live-share"
 date: 2015-10-28 11:15:00 -0700
 tags: ["tech", "apps"]
 ---

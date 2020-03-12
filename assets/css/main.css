@@ -481,14 +481,15 @@ pre {
     -webkit-overflow-scrolling: touch;
 }
 
-pre code {
-    background-color: inherit;
-    color: inherit;
-}
-
 code {
     background-color: var(--code-bg);
     padding: 2px 4px;
+}
+
+pre code {
+    background-color: inherit;
+    color: inherit;
+    padding: 0;
 }
 
 /*

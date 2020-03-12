@@ -9,10 +9,6 @@ title = "Cameron Little's Website"
 [taxonomies]
   tag = "tags"
 
-[permalinks]
-  posts = "/posts/:title"
-  pages = ":title"
-
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]

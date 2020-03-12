@@ -1,6 +1,6 @@
 ---
 title: GPX to Photos
-permalink: /gpx-to-photos/
+url: /gpx-to-photos/
 ---
 
 GPX to Photos is an app I've written that allows you to geotag photos in your

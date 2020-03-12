@@ -1,5 +1,6 @@
 ---
 title: "Homedo"
+slug: "homedo"
 date: 2014-02-28 00:00:00 -0700
 tags: ["tech", "iot", "raspberry-pi"]
 ---

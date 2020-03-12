@@ -1,5 +1,6 @@
 ---
 title: "GLGE Tutorial 2"
+slug: "glge-tut2"
 date: 2011-12-14 00:00:00 -0700
 tags: ["tech", "web", "tutorial"]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "CSS Lightsabers"
+slug: "css-lightsaber"
 date: 2012-02-01 00:00:00 -0700
 tags: ["tech", "web"]
 ---

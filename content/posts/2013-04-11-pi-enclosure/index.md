@@ -1,5 +1,6 @@
 ---
 title: "Raspberry Pi: Enclosure"
+slug: "pi-enclosure"
 date: 2013-04-11 00:00:00 -0700
 tags: ["tech", "raspberry-pi"]
 ---

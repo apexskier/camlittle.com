@@ -1,5 +1,6 @@
 ---
 title: "TeaHarmony"
+slug: "teaharmony"
 date: 2013-10-28 00:00:00 -0700
 tags: ["tech", "web"]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Slider"
+slug: "slider"
 date: 2016-09-18 16:54:00 -0700
 tags: ["tech", "3d-printing", "arduino"]
 ---

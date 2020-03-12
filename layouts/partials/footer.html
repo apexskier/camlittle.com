@@ -1,9 +1,11 @@
 <hr>
 <footer>
     <p>
-        &copy; Copyright {{ .Site.Params.Author }} |
+        &copy; {{ .Site.Params.Author }}
         {{ with .OutputFormats.Get "RSS" -}}
-        <a class="atom-rss" href="{{ .RelPermalink }}">RSS</a>
+        {{ if . -}}
+        | <a class="atom-rss" href="{{ .RelPermalink }}">RSS</a>
+        {{- end }}
         {{- end }}
     </p>
 </footer>

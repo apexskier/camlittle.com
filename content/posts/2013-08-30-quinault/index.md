@@ -1,5 +1,6 @@
 ---
 title: "Quinault River"
+slug: "quinault"
 date: 2013-08-30 00:00:00 -0700
 tags: ["outdoors"]
 ---

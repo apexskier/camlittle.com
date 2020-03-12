@@ -1,6 +1,6 @@
 ---
 title: About
-permalink: /about/
+url: /about/
 ---
 
 I’m a software engineer at [Remitly](https://grnh.se/3c4028751) where I’m

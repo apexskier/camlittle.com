@@ -1,5 +1,6 @@
 ---
 title: "Max-height and focusing"
+slug: "max-height-focusing"
 date: 2013-11-26 00:00:00 -0700
 tags: ["tech", "web"]
 ---

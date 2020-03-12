@@ -1,5 +1,6 @@
 ---
 title: "Raspberry Pi: Setup and first steps"
+slug: "raspberry-pi"
 date: 2013-03-17 00:00:00 -0700
 tags: ["tech", "raspberry-pi"]
 ---
