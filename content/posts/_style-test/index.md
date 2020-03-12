@@ -4,7 +4,6 @@ date: 2020-03-12T19:38:55+01:00
 draft: true
 ---
 
-# This is an &lt;h1&gt; tag
 ## This is an &lt;h2&gt; tag
 ### This is an &lt;h3&gt; tag
 #### This is an &lt;h4&gt; tag
@@ -23,17 +22,21 @@ _You **can** combine them_
 * Item 2
   * Item 2a
   * Item 2b
+    * Item 2bi
+    * Item 2bii
 
 1. Item 1
 1. Item 2
 1. Item 3
    1. Item 3a
    1. Item 3b
+      1. Item 3bi
+      1. Item 3bii
 
-![GitHub Logo](/images/logo.png)
-Format: ![Alt Text](url)
+![GitHub Logo](http://placekitten.com/200/300)  
+Format: ![Alt Text](https://placekitten.com/g/200/300)
 
-http://github.com - automatic!
+http://github.com - automatic!  
 [GitHub](http://github.com)
 
 As Kanye West said:

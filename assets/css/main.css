@@ -192,8 +192,13 @@ ol {
 
 li {
   margin-left: 1em;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   list-style: disc;
+
+  & ul,
+  & ol {
+    margin-left: 0;
+  }
 
   & li {
     margin-bottom: 0;
@@ -201,6 +206,26 @@ li {
 
     & li {
       list-style: square;
+
+      & li {
+        list-style: disc;
+      }
+    }
+  }
+}
+
+ol li {
+  list-style: decimal;
+
+  & li {
+    list-style: lower-latin;
+
+    & li {
+      list-style: lower-roman;
+
+      & li {
+        list-style: decimal;
+      }
     }
   }
 }
@@ -381,11 +406,11 @@ textarea {
         list-style: none;
         display: inline;
         margin-left: 0.3em;
-        margin-bottom: 0.2em;
 
         @media only screen and (min-width: 45em) {
           display: block;
           margin-left: 0;
+          margin-bottom: 0.2em;
         }
       }
     }
@@ -475,8 +500,13 @@ main {
   & img,
   & video,
   & pre,
-  & figure {
+  & figure,
+  & table {
     margin-bottom: 14px;
+  }
+
+  & p img:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -486,6 +516,44 @@ iframe {
 
 canvas {
   border: 1px dotted var(--text);
+}
+
+blockquote {
+  border-left: 7px solid var(--code-bg);
+  padding-left: 7px;
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+table {
+  display: block;
+  max-width: 100%;
+
+  & thead,
+  & th {
+    font-weight: bold;
+  }
+
+  & th,
+  & td {
+    padding: 6px 14px;
+    border: 1px solid;
+  }
+
+  & tr {
+    background-color: #fff;
+    border-top: 1px solid;
+
+    &:nth-child(2n) {
+      background-color: var(--code-bg);
+    }
+  }
+
+  img {
+    background-color: transparent;
+  }
 }
 
 footer {
@@ -512,6 +580,10 @@ footer {
     margin-bottom: 8px;
   }
 
+  & > p:last-child {
+    margin-bottom: 0;
+  }
+
   & .tags {
     display: flex;
     flex-wrap: wrap;
@@ -526,12 +598,10 @@ footer {
   }
 }
 
-.tags {
-  & li {
-    display: inline-block;
-    margin: 0;
-    list-style: none;
-  }
+.tags li {
+  display: inline-block;
+  margin: 0;
+  list-style: none;
 }
 
 h1 .tag,
