@@ -3,7 +3,6 @@ languageCode = "en-us"
 title = "Cameron Little's Website"
 description = "A collection of Cameron Little's thoughts and projects."
 author = "Cameron Little"
-theme = "camlittle"
 
 [permalinks]
   posts = "/posts/:title"
