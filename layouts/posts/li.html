@@ -1,6 +1,6 @@
 <li class="post-link clearfix">
-    {{ if .Resources.Match "thumb.*" -}}
-    {{ with (index (.Resources.Match "thumb.*") 0) -}}
+    {{ if .Resources.Match "thumbnail.*" -}}
+    {{ with (index (.Resources.Match "thumbnail.*") 0) -}}
     <div class="thumb">
         <img src="{{- .Permalink -}}" class="post-thumb" alt="thumbnail">
     </div>
