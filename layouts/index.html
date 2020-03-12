@@ -2,7 +2,7 @@
 <main>
     <p class="lead">{{ .Site.Params.Description }}</p>
 
-    <h3>Latest posts</h3>
+    <h2>Latest posts</h2>
     <ul class="posts">
         {{ range first 5 (where .Site.RegularPages "Type" "posts") -}}
         {{ .Render "li" }}

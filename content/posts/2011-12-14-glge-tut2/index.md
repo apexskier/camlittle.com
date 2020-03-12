@@ -6,9 +6,9 @@ tags: ["tech", "web", "tutorial"]
 ---
 
 content:
-[elements needed](#elements) | [the meshes](#meshes) | [animation](#animation) | [the rest](#rest) | [the javascript](#javascript) | [demo/download](#example)
+[elements needed](#elements-needed) | [meshes](#meshes) | [animation](#animation) | [the rest](#the-rest-including-groups) | [javascript](#javascript) | [demo/download](#here-it-is---update-glge-isnt-supported-any-more)
 
-### 3D objects with movement
+## 3D objects with movement
 
 If you haven't already, go and read the [first tutorial](/posts/glge-tut1/) in
 this series. This tutorial will expand on the XML file from the first tutorial.
@@ -17,7 +17,7 @@ The javascript and html are exactly the same.
 The XML file is the only one that will change. This example will include a
 rotating cube and a sphere circling around it.
 
-<h4 id="elements">Elements needed</h4>
+### Elements needed
 
 If you'll remember, there are several things needed in our XML file. For this
 one we will need...
@@ -33,13 +33,13 @@ one we will need...
     - Two `<object>`s
     - Two `<light>`s.
 
-<h4 id="meshes">Meshes</h4>
+### Meshes
 
 We need to define two meshes for two separate objects in the scene: a cube and
 a sphere. I'll go into a little more detail on making them in this tutorial
 compared to the last one.
 
-##### Cube
+#### Cube
 
 ```xml
 <mesh id="cube">
@@ -204,7 +204,7 @@ different than the last tutorial, an `id`, the `specular` value, and a `color`
 <material id="cubeMat" specular="1" color="#0088bb" />
 ```
 
-##### Sphere
+#### Sphere
 
 Now we will make the sphere. GLGE doesn't have a very good way of dealing with
 spheres, so it has to be defined in the same way as the cube. The sphere in
@@ -219,11 +219,11 @@ For the sphere material, I'm going to make it red, and a bit less shiny.
 <material id="sphereMat" specular="0.5" color="#cc0000" />
 ```
 
-<h4 id="animation">Animation</h4>
+### Animation
 
 There are two ways to animate objects in GLGE. Animation can be defined in the javascript or the XML file. Usually animations are defined in the XML file and manipulated in the javascript file. For example, there could be an animation for a character walking and an animation for a character jumping (both in the XML file) and they could be switched via javascript. In this example, I'm only using the XML file.
 
-##### Cube spin
+#### Cube spin
 
 I want the cube to rotate on the y and z axises.
 
@@ -276,7 +276,7 @@ So here's the final code for the sphere's animation.
 </animation_vector>
 ```
 
-##### Sphere circling
+#### Sphere circling
 
 I want the sphere to circle around the cube (or circling around the z axis. I could set an x and y location attribute for each frame, but there's a much more efficient way to do this.
 
@@ -293,7 +293,7 @@ To do this, we need to introduce a new element into the XML file, a `<group>`. T
 </animation_vector>
 ```
 
-<h4 id="rest">The rest (including groups)</h4>
+### The rest (including groups)
 
 Next we need to add a camera (see the <a href="/posts/glge-tut1/">previous tutorial</a> for more info).
 
@@ -315,7 +315,7 @@ Now we'll add the cube. It has an `id`, references the mesh set up earlier, the 
 <object id="cube" mesh="#cube" material="#cubeMat" frame_rate="60" animation="#spin" loc_z="-10" rot_y="1" rot_x="1" />
 ```
 
-##### Groups
+#### Groups
 
 Well, one group.
 
@@ -377,7 +377,7 @@ Woohoo! We're done with the XML file for this tutorial. Here's the whole thing.
 </glge>
 ```
 
-<h4 id="javascript">Javascript</h4>
+### Javascript
 
 Last thing to do to make the animation work is to modify our javascript file a bit. If you use the javascript from the previous tutorial, it will render one frame of the animation and no more than that. Let's look at the javascript for a static scene first.
 
@@ -432,7 +432,7 @@ doc.onLoad = function() {
 }
 ```
 
-<h4 id="example"><s>Here it is</s> -- update, glge isn't supported any more</h4>
+### ~~Here it is~~---update, glge isn't supported any more
 
 <canvas id="flatTriangle" width="400" height="300"></canvas>
 

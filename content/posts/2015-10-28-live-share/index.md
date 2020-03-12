@@ -12,7 +12,7 @@ Photos](http://www.apple.com/iphone-6s/cameras/).
 
 Edit: I've since abandoned this, but you can [view the code on GitHub](https://github.com/apexskier/LiveGifs).
 
-### Description
+## Description
 
 Share your Live Photos as GIFs or quicktime movies quickly and easily. Send
 motion to friends using other platforms.
@@ -24,7 +24,7 @@ Create Live Photos from videos or GIFs. Create custom slow motion live
 wallpapers or use your favorite meme on your lock screen. Create and share,
 even from older iPhones such as the iPhone 6 and iPhone 5C.
 
-### Support
+## Support
 
 This app is under active development, and may contain a few bugs. Tweet
 [@apexskier](https://twitter.com/apexskier) with any issues.
@@ -32,7 +32,7 @@ This app is under active development, and may contain a few bugs. Tweet
 You can try deleting data from the app if things are behaving badly. Just tap
 the info icon in the upper right and tap the "Wipe Generated Data" button.
 
-### Privacy Policy
+## Privacy Policy
 
 Live Share does not store any of your photos or videos outside of your device
 and claims no ownership or liability for them. Your media will not be shared

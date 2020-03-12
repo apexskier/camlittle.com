@@ -19,7 +19,7 @@ The slider can oscillate back and forth or move in a single direction.
 
 [Source Code and Model files](https://github.com/apexskier/slider)
 
-### 3D Printing
+## 3D Printing
 
 I've been using [OpenSCAD](http://www.openscad.org/) to model my prints.
 
@@ -35,7 +35,7 @@ I've been using [OpenSCAD](http://www.openscad.org/) to model my prints.
     <figcaption>Timing belt mount for the camera platform</figcaption>
 </figure>
 
-### Arduino
+## Arduino
 
 I decided on an Arduino Pro Mini because of its small size. I had no need for
 internet connectivity so the feature set of the Mini worked well.
@@ -53,7 +53,7 @@ potentiometer sets speed and a button starts and stops oscillation.
     <img src="wiring.jpg" alt="Arduino breadboarded wiring" />
 </figure>
 
-### Final Product
+## Final Product
 
 <figure>
     <img src="final-enclosure.jpg" width="360" alt="Slider control box" />
@@ -65,7 +65,7 @@ final product.
 
 {{< instagram BLUP33gD0N9 >}}
 
-#### What I Learned
+### What I Learned
 
 I was worried about excessive vibration and noise, but it's not noticeable
 especially when using a heavier camera.

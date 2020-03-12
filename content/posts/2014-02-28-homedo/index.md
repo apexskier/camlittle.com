@@ -10,7 +10,7 @@ wanting to do something that takes advantage of the Pi's hardware. What follows
 is a description of the home automation system I've built so far, called
 [Homedo](https://github.com/apexskier/homedo).
 
-### Inspiration
+## Inspiration
 
 I live in a small apartment, so it's hard to do much interfacing with the house
 without violating my lease by ripping holes in the walls. It was really cold
@@ -19,7 +19,7 @@ as basic as I can imagine: just a basic [temperature controlled
 switch](http://en.wikipedia.org/wiki/Thermostat#Simple_two_wire_thermostats)
 opening and closing the circuit to our living room's baseboard heater.
 
-### Hardware
+## Hardware
 
 Before this project I hadn't messed with physical circuits since my elementary
 school days and some simple connect the dots type kits. I did quite a bit of
@@ -35,7 +35,7 @@ I've got a few circuits set up on the Pi currently: gpio to the pcb, gpio to a
 lower current relay, and gpio to an Adafruit I2C controller for some [led
 lights](https://github.com/apexskier/ledDriver).
 
-### Software
+## Software
 
 I wanted to create something intelligent, similar to the Nest, that would make
 my life easier. This involves stuff I know nothing about: machine learning.
@@ -45,7 +45,7 @@ Python, using the WiringPi2 library and the Bottle web framework to put it
 online. The user interface uses gevent-websockets for real time information and
 updating.
 
-#### Intelligence
+### Intelligence
 
 My machine learning algorithm went through several iterations. Initially my
 algorithm simply checked the temperature every five minutes, compared it to
@@ -77,7 +77,7 @@ event into the chain, for saving if something similar happens on the next walk
 through. I've also got logic that accounts for the user changing their mind,
 and making minor adjustment.
 
-### User interface
+## User interface
 
 I've built a web based user interface using the [D3.js](http://d3js.org)
 javascript library and a little bit of [Bootstrap](http://getbootstrap.com).
@@ -89,7 +89,7 @@ user set events not saved as certain.
 <img src="on.png" alt="Thermostat on" style="max-width: 250px;">
 <img src="off.png" alt="Thermostat off" style="max-width: 250px;">
 
-### Using it in the real world
+## Using it in the real world
 
 I've had the thermostat running for a couple weeks, and the machine learning
 stuff for about a week. I'm still fixing bugs, and with the amount of variation
