@@ -2,4 +2,5 @@
 
 set -e
 
-rsync -avzhC ./out/ /var/www/camlittle.com/
+./build.sh
+rsync -avzC --delete ./public/ matheny:/var/www/camlittle.com/
