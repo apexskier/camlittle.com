@@ -1,25 +1,13 @@
 {{ define "main" -}}
 <main>
-    <p class="lead">{{ .Description }}</p>
+    <p class="lead">{{ .Site.Params.Description }}</p>
 
+    <h3>Latest posts</h3>
     <ul class="posts">
-        {{ range first 50 (where .Site.RegularPages "Type" "posts") -}}
-        <li class="post-link clearfix">
-            {{ if .Resources.Match "thumb.*" -}}
-            {{ with (index (.Resources.Match "thumb.*") 0) -}}
-            <div class="thumb">
-                <img src="{{- .Permalink -}}" class="post-thumb" alt="thumbnail">
-            </div>
-            {{- end }}
-            {{- end }}
-            <div class="post-desc">
-                <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
-                <h3>
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
-                </h3>
-            </div>
-        </li>
+        {{ range first 5 (where .Site.RegularPages "Type" "posts") -}}
+        {{ .Render "li" }}
         {{- end }}
     </ul>
+    <a href="/posts">See all posts</a>
 </main>
 {{- end }}

@@ -1,6 +1,7 @@
 ---
-title:  "Max-height and focusing"
-date:   2013-11-26 00:00:00 -0700
+title: "Max-height and focusing"
+date: 2013-11-26 00:00:00 -0700
+tags: ["tech", "web"]
 ---
 
 Click on the box below, and tab through the subsequent links in Chrome (or

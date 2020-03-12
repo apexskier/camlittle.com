@@ -1,6 +1,7 @@
 ---
-title:  "Live Share"
-date:   2015-10-28 11:15:00 -0700
+title: "Live Share"
+date: 2015-10-28 11:15:00 -0700
+tags: ["tech", "apps"]
 ---
 
 <img src="thumb.jpg" alt="Live Share icon" style="float: right">

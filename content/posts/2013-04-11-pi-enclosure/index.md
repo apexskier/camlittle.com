@@ -1,6 +1,7 @@
 ---
-title:  "Raspberry Pi: Enclosure"
-date:   2013-04-11 00:00:00 -0700
+title: "Raspberry Pi: Enclosure"
+date: 2013-04-11 00:00:00 -0700
+tags: ["tech", "raspberry-pi"]
 ---
 
 I wanted to make my Raspberry Pi look good, be accessible, and be protected. I decided to house it in an old metal socket set box my dad gave me a while back. Besides the fact that the box was free and looks pretty awesome, I chose it because it has plenty of room. I've always wanted my Pi to be portable, so I purchased an [Anker Astro3](http://www.amazon.com/gp/product/B005NGKR54) external battery pack. I chose this model for a few reasons...

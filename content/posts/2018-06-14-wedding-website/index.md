@@ -1,6 +1,7 @@
 ---
-title:  "Wedding Website"
-date:   2018-06-14 00:00:00 -0700
+title: "Wedding Website"
+date: 2018-06-14 00:00:00 -0700
+tags: ["tech", "web"]
 ---
 
 I'm getting married!
@@ -49,7 +50,7 @@ each domain to work, across both http and https, with or without `www`, with
 minimal redirects. To do this, I created a shared ssl certificate for all six
 domains.
 
-```conf
+```sh
   Certificate Name: aishaandcameron.love
     Domains: aishaandcameron.love cameronandaisha.love ourlittlewedding.love www.aishaandcameron.love www.cameronandaisha.love www.ourlittlewedding.love
 ```
@@ -57,7 +58,7 @@ domains.
 Then it was a fairly simple matter of redirecting http traffic to the primary
 domain to ssl
 
-```conf
+```nginx
 server {
     server_name ourlittlewedding.love;
 
@@ -69,7 +70,7 @@ server {
 
 and redirecting any traffic to a non primary domain directly to the primary one
 
-```conf
+```nginx
 server {
     server_name cameronandaisha.love www.cameronandaisha.love aishaandcameron.love www.aishaandcameron.love www.ourlittlewedding.love;
 

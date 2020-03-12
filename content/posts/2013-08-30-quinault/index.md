@@ -1,6 +1,7 @@
 ---
-title:  "Quinault River"
-date:   2013-08-30 00:00:00 -0700
+title: "Quinault River"
+date: 2013-08-30 00:00:00 -0700
+tags: ["outdoors"]
 ---
 
 Earlier this month I was fortunate enough to journey out to the Quinault river,

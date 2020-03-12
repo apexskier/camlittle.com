@@ -1,6 +1,7 @@
 ---
-title:  "TeaHarmony"
-date:   2013-10-28 00:00:00 -0700
+title: "TeaHarmony"
+date: 2013-10-28 00:00:00 -0700
+tags: ["tech", "web"]
 ---
 
 I'm part of the Brewing Club here at WWU, which is funny, because I pretty much

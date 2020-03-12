@@ -1,6 +1,7 @@
 ---
-title:  "Raspberry Pi: Setup and first steps"
-date:   2013-03-17 00:00:00 -0700
+title: "Raspberry Pi: Setup and first steps"
+date: 2013-03-17 00:00:00 -0700
+tags: ["tech", "raspberry-pi"]
 ---
 
 I recently purchased a [Raspberry Pi](http://www.raspberrypi.org) to play

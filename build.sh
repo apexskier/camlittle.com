@@ -2,5 +2,6 @@
 
 set -e
 
-$(npm bin)/postcss main.css --output jekyll/assets/css/main.css
-jekyll build
+hugo gen chromastyles --style=manni > assets/css/highlight_light.css
+hugo gen chromastyles --style=native > assets/css/highlight_dark.css
+hugo

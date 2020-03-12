@@ -1,6 +1,7 @@
 ---
-title:  "GLGE Tutorial 1"
-date:   2011-12-01 00:00:00 -07:00
+title: "GLGE Tutorial 1"
+date: 2011-12-01 00:00:00 -07:00
+tags: ["tech", "web", "tutorial"]
 ---
 
 content:

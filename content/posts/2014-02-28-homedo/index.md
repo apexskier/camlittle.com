@@ -1,6 +1,7 @@
 ---
-title:  "Homedo"
-date:   2014-02-28 00:00:00 -0700
+title: "Homedo"
+date: 2014-02-28 00:00:00 -0700
+tags: ["tech", "iot", "raspberry-pi"]
 ---
 
 After playing with my Raspberry Pi for the better part of the year, I'd been

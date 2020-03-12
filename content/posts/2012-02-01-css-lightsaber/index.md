@@ -1,6 +1,7 @@
 ---
-title:  "CSS Lightsabers"
-date:   2012-02-01 00:00:00 -0700
+title: "CSS Lightsabers"
+date: 2012-02-01 00:00:00 -0700
+tags: ["tech", "web"]
 ---
 
 I made some lightsabers with CSS and Javascript. You can [play with them](/lightsaber). Space will open and close them and arrow keys will switch between them while deactivated.

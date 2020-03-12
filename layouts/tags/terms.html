@@ -1,0 +1,16 @@
+{{ define "main" }}
+<main>
+    <h2>All tags</h2>
+
+    <p>
+        {{range .Data.Terms.Alphabetical -}}
+        <span class="tag">
+            <a href="{{ "tags" | absURL }}/{{ .Name | urlize }}/">
+                {{ .Name }}
+                ({{ len .Pages }})
+            </a>
+        </span>{{" "}}
+        {{- end}}
+    </p>
+</main>
+{{ end }}

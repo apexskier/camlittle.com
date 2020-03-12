@@ -1,11 +1,16 @@
 <aside id="sidebar">
     <nav>
         <ul>
-            <li><a href="{{ .Site.BaseURL }}" title="Home">Home</a></li>
-            {{ range where .Site.RegularPages "Type" "pages" -}}
-                {{ if .Title -}}
-                    <li><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></li>
-                {{- end }}
+            {{ $currentPage := . }}
+            <li><a href="{{ .Site.BaseURL }}" title="Home">Home</a> {{ if .IsHome }}<span aria-label="Active">←</span>{{ end }}</li>
+            {{ $pages := where .Site.RegularPages "Type" "pages" -}}
+            {{ $taxonomies := where .Site.Pages "Kind" "taxonomyTerm" -}}
+            {{ $sections := (where .Site.Pages "Kind" "section") | intersect (where .Site.Pages "Type" "!=" "pages") -}}
+            {{ range $taxonomies | union $sections | union $pages -}}
+            <li>
+                <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                {{ if eq . $ }}<span aria-label="active">←</span>{{ end }}
+            </li>
             {{- end }}
         </ul>
     </nav>

@@ -1,6 +1,7 @@
 ---
-title:  "Slider"
-date:   2016-09-18 16:54:00 -0700
+title: "Slider"
+date: 2016-09-18 16:54:00 -0700
+tags: ["tech", "3d-printing", "arduino"]
 ---
 
 Earlier this year my friend Cole approached me about motorizing his [video

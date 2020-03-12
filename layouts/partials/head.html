@@ -7,8 +7,13 @@
     <meta name="viewport" content="width=device-width">
     <link rel="canonical" href="{{ .Permalink }}">
 
-    {{ $style := resources.Get "css/main.css" | toCSS | minify | fingerprint }}
+    {{ $style := resources.Get "css/main.css" | postCSS | toCSS | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $style.Permalink }}">
+    {{ $highlight_light_style := resources.Get "css/highlight_light.css" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $highlight_light_style.Permalink }}">
+    {{ $highlight_dark_style := resources.Get "css/highlight_dark.css" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $highlight_dark_style.Permalink }}" media="(prefers-color-scheme: dark)">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
     {{ if .OutputFormats.Get "RSS" }}

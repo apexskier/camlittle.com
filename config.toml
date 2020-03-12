@@ -1,8 +1,13 @@
 baseURL = "http://camlittle.com/"
 languageCode = "en-us"
 title = "Cameron Little's Website"
-description = "A collection of Cameron Little's thoughts and projects."
-author = "Cameron Little"
+
+[params]
+  description = "A collection of Cameron Little's thoughts and projects."
+  author = "Cameron Little"
+
+[taxonomies]
+  tag = "tags"
 
 [permalinks]
   posts = "/posts/:title"
@@ -14,5 +19,5 @@ author = "Cameron Little"
       strikethrough = true
     [markup.goldmark.renderer]
       unsafe = true
-    [markup.highlight]
-      style = "github"
+  [markup.highlight]
+    noClasses = false

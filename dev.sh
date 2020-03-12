@@ -4,9 +4,7 @@ set -e
 
 pids=()
 
-$(npm bin)/postcss main.css --verbose --watch --output jekyll/assets/css/main.css &
-pids+=("$!")
-jekyll serve &
+hugo server -D --disableFastRender &
 pids+=("$!")
 
 for pid in $pids

@@ -1,3 +1,4 @@
 node_modules/
 _gen/
-/themes/ananke
+public/
+assets/css/highlight_*
