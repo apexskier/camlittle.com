@@ -269,19 +269,16 @@ header {
         color: var(--text-hover);
       }
     }
+  }
 
-    & small {
-      font-size: 50%;
-      display: block;
-      margin-bottom: 6px;
+  & nav {
+    margin-bottom: 6px;
 
-      @media only screen and (min-width: 45em) {
-        display: inline;
-        padding-left: 0.4em;
-      }
+    & a {
+      padding-right: 0.4em;
 
-      & i {
-        padding: 0 0.2em;
+      &:last-child {
+        padding-right: 0;
       }
     }
   }
@@ -393,25 +390,55 @@ textarea {
     float: left;
   }
 
-  & nav {
-    margin-bottom: 12px;
-    font-family: Georgia, serif;
+  margin-bottom: 12px;
+  font-family: Georgia, serif;
 
-    & ul {
-      margin: 0;
-      padding-left: 0;
+  & ul {
+    margin: 0;
+    padding-left: 0;
 
-      & > li {
-        padding: 0;
-        list-style: none;
-        display: inline;
-        margin-left: 0.3em;
+    & > li {
+      display: block;
+      margin-left: 0;
+      margin-bottom: 0.2em;
+    }
+  }
+}
 
-        @media only screen and (min-width: 45em) {
-          display: block;
-          margin-left: 0;
-          margin-bottom: 0.2em;
-        }
+nav {
+  & .mobile-toggle,
+  & .mobile-toggle-off {
+    display: none;
+
+    font-size: 90%;
+  }
+
+  @media only screen and (max-width: 45em) {
+    & input.mobile-toggle {
+      display: none;
+
+      & ~ .links {
+        display: none;
+      }
+
+      &:checked ~ .links {
+        display: block;
+      }
+
+      & ~ .mobile-toggle {
+        display: initial;
+      }
+
+      &:checked ~ label.mobile-toggle {
+        display: none;
+      }
+
+      & ~ label.mobile-toggle-off {
+        display: none;
+      }
+
+      &:checked ~ label.mobile-toggle-off {
+        display: initial;
       }
     }
   }

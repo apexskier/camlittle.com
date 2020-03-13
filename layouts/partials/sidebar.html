@@ -1,6 +1,9 @@
 <aside id="sidebar">
-    <nav>
-        <ul>
+    <nav aria-label="Primary menu">
+        <input class="mobile-toggle" type="checkbox" id="menu-toggle">
+        <label class="mobile-toggle" for="menu-toggle">Menu</label>
+        <label class="mobile-toggle-off" for="menu-toggle">Close</label>
+        <ul class="links">
             {{ $currentPage := . }}
             <li><a href="{{ .Site.BaseURL }}" title="Home">Home</a> {{ if .IsHome }}<span aria-label="Active">←</span>{{ end }}</li>
             {{ $pages := where .Site.RegularPages "Type" "pages" -}}
