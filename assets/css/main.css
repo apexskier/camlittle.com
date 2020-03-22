@@ -139,7 +139,7 @@ textarea {
   --code-bg: #f8f8f8;
 
   --copy-spacing: 1em;
-  --copy-spacing-sm: 0.5em;
+  --copy-spacing-sm: 0.2em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -193,6 +193,11 @@ li {
   & ul,
   & ol {
     margin-left: 0;
+    margin-bottom: var(--copy-spacing-sm);
+
+    &:first-child {
+      margin-top: var(--copy-spacing-sm);
+    }
   }
 
   & li {
@@ -517,8 +522,10 @@ main {
 
   & img,
   & video {
-    max-width: 100%;
-    height: auto;
+    &:not([height]):not([width]) {
+      max-width: 100%;
+      height: auto;
+    }
   }
 
   & p,
@@ -533,6 +540,27 @@ main {
 
   & p img:last-child {
     margin-bottom: 0;
+  }
+
+  & .post-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0;
+
+    & li {
+      margin-right: 1em;
+      margin-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    & img {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -633,23 +661,19 @@ footer {
     margin-bottom: -4px;
     margin-right: -4px;
 
-    & > li {
-      margin-bottom: 4px;
-      margin-right: 4px;
+    & li {
+      display: inline-block;
+      list-style: none;
     }
   }
-}
-
-.tags li {
-  display: inline-block;
-  margin: 0;
-  list-style: none;
 }
 
 h1 .tag,
 .tag {
   background-color: var(--text);
   display: inline-block;
+  margin-bottom: 4px;
+  margin-right: 4px;
 
   &,
   & a {

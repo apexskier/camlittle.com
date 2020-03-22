@@ -1,0 +1,30 @@
+{{ $minWidth := 10000000.0 }}
+{{ $minHeight := 10000000.0 }}
+{{ range .Params -}}
+    {{ $img := $.Page.Resources.GetMatch . }}
+    {{ $w := $img.Width -}}
+    {{ if lt $w $minWidth -}}
+    {{ $minWidth = float $w }}
+    {{ end -}}
+    {{ $h := $img.Height -}}
+    {{ if lt $h $minHeight -}}
+    {{ $minHeight = float $h }}
+    {{ end -}}
+{{- end -}}
+{{/*
+Each image should be the same height, but a natural width.
+The full row should be 100% width.
+
+Math will scale everything to min height.
+*/}}
+<ul class="post-gallery">
+{{ range .Params -}}
+    {{ $img := $.Page.Resources.GetMatch . -}}
+    {{ $flex := mul (div $img.Width (float $img.Height)) $minHeight -}}
+    <li style="flex: {{ $flex }};">
+        <a href="{{ $img.RelPermalink }}" target="_blank">
+            <img src="{{ ($img.Resize "600x").RelPermalink }}" alt="{{ $img.Title }}" />
+        </a>
+    </li>
+{{- end }}
+</ul>
