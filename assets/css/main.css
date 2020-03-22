@@ -137,6 +137,9 @@ textarea {
   --anchor-engaged: slateblue;
   --anchor-visited: darkmagenta;
   --code-bg: #f8f8f8;
+
+  --copy-spacing: 1em;
+  --copy-spacing-sm: 0.5em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -178,13 +181,13 @@ body {
 
 ul,
 ol {
-  margin-left: 1em;
-  margin-bottom: 14px;
+  margin-left: var(--copy-spacing);
+  margin-bottom: var(--copy-spacing);
 }
 
 li {
-  margin-left: 1em;
-  margin-bottom: 2px;
+  margin-left: var(--copy-spacing);
+  margin-bottom: var(--copy-spacing-sm);
   list-style: disc;
 
   & ul,
@@ -280,7 +283,7 @@ h1 {
   font-size: 170%;
   font-weight: 300;
   font-family: Georgia, serif;
-  margin-bottom: 0.6em;
+  margin-bottom: var(--copy-spacing-sm);
 
   & a {
     &,
@@ -305,7 +308,7 @@ h4,
 h5,
 h6 {
   margin-top: 1em;
-  margin-bottom: 0.6em;
+  margin-bottom: var(--copy-spacing-sm);
   font-weight: 400;
 }
 
@@ -333,9 +336,13 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  margin: 1em 0;
+  margin: var(--copy-spacing) 0;
   padding: 0;
   border-top: 1px dotted var(--text);
+}
+
+small {
+  font-size: 80%;
 }
 
 a,
@@ -521,7 +528,7 @@ main {
   & pre,
   & figure,
   & table {
-    margin-bottom: 14px;
+    margin-bottom: var(--copy-spacing);
   }
 
   & p img:last-child {
@@ -565,13 +572,29 @@ table {
     background-color: #fff;
     border-top: 1px solid;
 
-    &:nth-child(2n) {
+    &:nth-child(2n + 1) {
       background-color: var(--code-bg);
     }
   }
 
   img {
     background-color: transparent;
+  }
+}
+
+dl {
+  & dt {
+    font-weight: bold;
+    margin-bottom: var(--copy-spacing-sm);
+  }
+
+  & dd {
+    margin-bottom: var(--copy-spacing-sm);
+    margin-left: var(--copy-spacing);
+
+    &:last-child {
+      margin-bottom: var(--copy-spacing);
+    }
   }
 }
 
@@ -586,8 +609,8 @@ footer {
   padding: 8px;
   background-color: var(--code-bg);
   float: right;
-  margin-bottom: 14px;
-  margin-left: 14px;
+  margin-bottom: var(--copy-spacing);
+  margin-left: var(--copy-spacing);
   text-align: right;
 
   display: flex;

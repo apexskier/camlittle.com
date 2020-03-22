@@ -4,17 +4,24 @@
         <label class="mobile-toggle" for="menu-toggle">Menu</label>
         <label class="mobile-toggle-off" for="menu-toggle">Close</label>
         <ul class="links">
-            {{ $currentPage := . }}
+            {{- $currentPage := . }}
             <li><a href="{{ .Site.BaseURL }}" title="Home">Home</a> {{ if .IsHome }}<span aria-label="Active">←</span>{{ end }}</li>
-            {{ $pages := where .Site.RegularPages "Type" "pages" -}}
+            {{ range .Site.Menus.main -}}
+            <li>{{- "" -}}
+                <a href="{{ .URL }}">{{ .Title }}</a>
+                {{- if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) -}}
+                <span aria-label="active"> ←</span>
+                {{- end -}}
+            </li>
+            {{ end }}
             {{ $taxonomies := where .Site.Pages "Kind" "taxonomyTerm" -}}
             {{ $sections := (where .Site.Pages "Kind" "section") | intersect (where .Site.Pages "Type" "!=" "pages") -}}
-            {{ range $taxonomies | union $sections | union $pages -}}
-            <li>
-                <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
-                {{ if eq . $ }}<span aria-label="active">←</span>{{ end }}
+            {{ range $taxonomies | union $sections -}}
+            <li>{{- "" -}}
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                {{- if eq . $ }}<span aria-label="active"> ←</span>{{ end -}}
             </li>
-            {{- end }}
+            {{ end }}
         </ul>
     </nav>
 </aside>

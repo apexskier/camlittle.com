@@ -1,6 +1,7 @@
 ---
 title: Video
 url: /video/
+menu: main
 ---
 
 [Vimeo](https://vimeo.com/apexskier)

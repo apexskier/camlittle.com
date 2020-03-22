@@ -1,6 +1,7 @@
 ---
 title: About
 url: /about/
+menu: main
 ---
 
 I’m a software engineer at [Remitly](https://grnh.se/3c4028751) where I’m

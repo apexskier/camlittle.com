@@ -35,6 +35,18 @@ _You **can** combine them_
       1. Item 3bi
       1. Item 3bii
 
+Item 1
+: description of item 1
+
+Item 2a
+Item 2b
+: description of item 2
+
+Item 3
+: description of item 3
+: description of item 3
+: description of item 3
+
 ![GitHub Logo](http://placekitten.com/200/300)  
 Format: ![Alt Text](https://placekitten.com/g/200/300)
 
