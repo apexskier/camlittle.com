@@ -167,6 +167,19 @@ a {
   &:visited {
     color: var(--anchor-visited);
   }
+
+  &,
+  &:visited {
+    text-decoration: none;
+    border-bottom: 1px dotted;
+  }
+
+  &.a-no-border {
+    &,
+    &:visited {
+      border-bottom: none;
+    }
+  }
 }
 
 body {
@@ -348,12 +361,6 @@ hr {
 
 small {
   font-size: 80%;
-}
-
-a,
-a:visited {
-  text-decoration: none;
-  border-bottom: 1px dotted;
 }
 
 input[type="submit"] {
@@ -723,6 +730,13 @@ pre code {
   background-color: inherit;
   color: inherit;
   padding: 0;
+}
+
+.kitchen-source {
+  padding: 1em;
+  background-color: var(--code-bg);
+  display: inline-block;
+  font-size: 120%;
 }
 
 /*

@@ -1,0 +1,16 @@
+{{ define "main" }}
+<main>
+    <h1>In the kitchen</h1>
+
+    <p class="lead">A selection of things I'm cooking.</p>
+
+    <ul class="posts">
+        {{ range .Paginator.Pages }}
+        {{ .Render "li" }}
+        {{ end }}
+    </ul>
+
+    <hr />
+    {{ partial "pagination.html" . }}
+</main>
+{{ end }}

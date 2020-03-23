@@ -1,0 +1,44 @@
+{{ define "main" -}}
+<main>
+    <aside class="meta">
+        <p>
+            <small>{{ .Date.Format "January 2, 2006" }}</small>
+        </p>
+
+        {{ with .Params.tags -}}
+        {{ if len . -}}
+        <ul class="tags">
+        {{ range . -}}
+            <li class="tag"><a href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a></li>{{" "}}
+        {{- end }}
+        </ul>
+        {{- end }}
+        {{- end }}
+    </aside>
+
+    <h1>{{ .Title }}</h1>
+
+    {{if .Params.recipe_link -}}
+    <p class="kitchen-source">
+        <a href="{{ .Params.recipe_link }}" target="_blank">Recipe{{if .Params.recipe_source }} from {{ .Params.recipe_source }}{{ end }}</a>
+    </p>
+    {{- end }}
+
+    <article class="post-content">
+        {{- .Content -}}
+
+        <p>
+        {{ range .Resources -}}
+        {{ if eq .MediaType.MainType "image" }}
+            <a href="{{ .Permalink }}" class="a-no-border">{{- "" -}}
+                <img height="300" style="margin-bottom: 1em; margin-right: 1em;" src="{{ .RelPermalink }}" alt="{{ .Title }}" />
+            {{- "" -}}</a>
+        {{ end }}
+        {{ if eq .MediaType.MainType "video" }}
+            <video controls height="300" style="margin-bottom: 1em; margin-right: 1em;" src="{{ .RelPermalink }}" alt="{{ .Title }}"></video>
+        {{ end }}
+        {{- end }}
+        </p>
+    </article>
+</main>
+{{ end }}
