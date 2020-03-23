@@ -41,17 +41,17 @@ This site's tech stack throughout the years.
 
   [Hugo](https://gohugo.io) static site with a custom theme written from
   scratch. I chose Hugo since it's the top starred static site generator on
-  [StaticGen](https://www.staticgen.com) that doesn't use client-side rendering
-  at all. It has a good mix of power and simplicity and ships as a standalone
+  [StaticGen](https://www.staticgen.com) that doesn't rely on client-side rendering.
+  It has a good mix of power and simplicity and ships as a standalone
   binary (no ruby installation to deal with). I still use Digital Ocean and
-  nginx, but now have several other sites and [tools](/apps) are hosted as well.
+  nginx, but now host several other sites and [tools](/apps).
   I'm using [docker](https://www.docker.com) and 
   [docker-compose](https://docs.docker.com/compose/) to provision and isolate
   each app.
 
-  For newer apps, I'm generally using docker from the start to deploy. Some have
+  For newer apps, I generally use docker from the start. Some have
   images published to [GitHub packages](https://github.com/features/packages),
-  some don't. For older projects that I'm really planning to revisit or have
+  some don't. For older projects I'm not really planning to revisit or have
   archived, I reverse-engineered Dockerfiles and stored them in my
   host-configuration repo.
 
