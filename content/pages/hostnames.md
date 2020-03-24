@@ -48,16 +48,14 @@ const comparer = (i, asc) => (a, b) => ((v1, v2) =>
 )(getCellValue(asc ? a : b, i), getCellValue(asc ? b : a, i));
 
 document.querySelectorAll("th").forEach(function sorter(th, thi) {
-    if (thi === 0) { // first column is already sorted
-        this.asc = true;
-    }
     th.style.cursor = "pointer";
     th.role = "button";
     th.tabIndex = 0;
+    let asc = Array.from(th.parentNode.children).indexOf(th) === 0; // first column is already sorted
     const sort = () => {
         const tbody = th.closest("table").querySelector("tbody");
         Array.from(tbody.querySelectorAll("tr"))
-            .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+            .sort(comparer(Array.from(th.parentNode.children).indexOf(th), asc = !asc))
             .forEach(tr => tbody.appendChild(tr) );
     }
     th.addEventListener("click", sort);
