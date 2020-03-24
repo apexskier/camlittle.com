@@ -1,15 +1,12 @@
 {{ define "main" }}
 <main>
     <h1>
-        <span class="tag"><a href="{{ .Permalink }}">{{ .Title }}</a></span>
+        <span class="tag">{{ .Title }} </span>
+        {{- partial "sectionTitlePagination" . }}
     </h1>
 
     <p class="lead">Everything tagged with <span class="tag"><a href="{{ .Permalink }}">{{ .Title }}</a></span>. See <a href="/tags">all tags</a>.</a></p>
 
-    <ul class="posts">
-        {{ range .Pages }}
-        {{ .Render "li" }}
-        {{ end }}
-    </ul>
+    {{ partial "sectionList" . }}
 </main>
 {{ end }}

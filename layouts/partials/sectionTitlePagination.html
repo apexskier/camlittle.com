@@ -1,0 +1,5 @@
+{{ with .Paginator -}}
+{{ if gt .TotalPages 1 -}}
+<small> — {{ .PageNumber }} / {{ .TotalPages }}</small>
+{{- end }}
+{{- end }}

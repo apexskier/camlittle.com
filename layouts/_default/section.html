@@ -1,14 +1,10 @@
 {{ define "main" }}
 <main>
-    <h1>{{ .Title }}</h1>
+    <h1>
+        {{ .Title }}
+        {{- partial "sectionTitlePagination" . }}
+    </h1>
 
-    <ul class="posts">
-        {{ range .Paginator.Pages }}
-        {{ .Render "li" }}
-        {{ end }}
-    </ul>
-
-    <hr />
-    {{ partial "pagination.html" . }}
+    {{ partial "sectionList" . }}
 </main>
 {{ end }}

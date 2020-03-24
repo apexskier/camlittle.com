@@ -301,7 +301,7 @@ h1 {
   font-size: 170%;
   font-weight: 300;
   font-family: Georgia, serif;
-  margin-bottom: var(--copy-spacing-sm);
+  margin-bottom: 0.5em;
 
   & a {
     &,
@@ -701,6 +701,11 @@ h1 .tag,
   &:focus {
     background-color: var(--text-hover);
   }
+}
+
+h1 .tag {
+  padding: 0 4px;
+  margin: 0;
 }
 
 ul.pagination {
