@@ -633,9 +633,13 @@ dl {
   }
 }
 
+footer,
+.footnotes {
+  font-size: 90%;
+}
+
 footer {
   text-align: left;
-  font-size: 90%;
   margin-bottom: 2em;
 }
 
