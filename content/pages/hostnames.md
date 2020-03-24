@@ -35,9 +35,40 @@ I've also started naming non-computers after bodies of water
 | Name | Description | Year acquired | Active |
 | ---- | ----------- | ------------- | ------ |
 | Crescent | Seagate 4TB drive | 2013 | ✅ |
-| Sutherland | Backblaze B2 bucket | 2019 | ✅ |
 | Padden | DigitalOcean Kubernetes cluster | 2019 |
+| Sutherland | Backblaze B2 bucket | 2019 | ✅ |
 
+<script>
+// adapted from https://stackoverflow.com/a/49041392/2178159
+
+const getCellValue = (tr, i) => tr.children[i].innerText || tr.children[i].textContent;
+
+const comparer = (i, asc) => (a, b) => ((v1, v2) => 
+    v1 !== "" && v2 !== "" && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+)(getCellValue(asc ? a : b, i), getCellValue(asc ? b : a, i));
+
+document.querySelectorAll("th").forEach(function sorter(th, thi) {
+    if (thi === 0) { // first column is already sorted
+        this.asc = true;
+    }
+    th.style.cursor = "pointer";
+    th.role = "button";
+    th.tabIndex = 0;
+    const sort = () => {
+        const tbody = th.closest("table").querySelector("tbody");
+        Array.from(tbody.querySelectorAll("tr"))
+            .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+            .forEach(tr => tbody.appendChild(tr) );
+    }
+    th.addEventListener("click", sort);
+    th.addEventListener("keydown", (e) => {
+        if (e.code == "Enter" || e.code == "Space") {
+            e.preventDefault();
+            sort();
+        }
+    });
+});
+</script>
 
 [^1]: When I worked there, the server admins had started using Norse gods, and apparently a previous generation had used Sesame Street characters.
 
