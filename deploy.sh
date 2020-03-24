@@ -3,4 +3,4 @@
 set -e
 
 ./build.sh
-rsync -avzC --delete ./public/ matheny:/var/www/camlittle.com/
+rsync -avz --checksum --delete ./public/ matheny:/var/www/camlittle.com/
