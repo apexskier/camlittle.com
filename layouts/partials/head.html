@@ -4,7 +4,7 @@
     <title>{{ block "title" . }}{{ if .Params.Title }}{{ .Params.Title }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
 
     {{ template "_internal/schema.html" . }}
-    <meta name="description" content="{{ .Params.Description }}">
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
     <meta name="author" content="Cameron Little">
     <meta name="viewport" content="width=device-width">
     <link rel="canonical" href="{{ .Permalink }}">

@@ -1,11 +1,5 @@
 <li class="post-link clearfix">
-    {{ if len (.Resources.ByType "image") -}}
-    {{ with (index (last 1 (.Resources.ByType "image")) 0).Fill "132x132" -}}
-    <div class="thumb">
-        <img src="{{- .Permalink -}}" class="post-thumb" alt="thumbnail">
-    </div>
-    {{- end }}
-    {{- end }}
+    {{ partial "singleThumbnail" (index (last 1 (.Resources.ByType "image")) 0) }}
     <div class="post-desc">
         <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
         <h3>
