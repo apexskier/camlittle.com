@@ -19,7 +19,7 @@ Math will scale everything to min height.
 */}}
 <ul class="post-gallery">
 {{ range .Params -}}
-    {{ $img := $.Page.Resources.GetMatch . -}}
+    {{ $img := ($.Page.Resources.GetMatch .).Resize "600x" -}}
     {{ $flex := mul (div $img.Width (float $img.Height)) $minHeight -}}
     <li style="flex: {{ $flex }};">
         <a href="{{ $img.RelPermalink }}" target="_blank">
