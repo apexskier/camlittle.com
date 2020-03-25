@@ -648,8 +648,12 @@ canvas {
 }
 
 blockquote {
-  border-left: 7px solid var(--callout-bg);
-  padding-left: 7px;
+  background-color: var(--callout-bg);
+  box-shadow: var(--inset-box-shadow);
+  padding: var(--copy-spacing);
+  margin-left: var(--copy-spacing);
+  margin-right: var(--copy-spacing);
+  display: inline-block;
 
   & > *:last-child {
     margin-bottom: 0;

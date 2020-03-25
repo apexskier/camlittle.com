@@ -100,9 +100,14 @@ the heat in the house even, but I'm very proud of where I'm at so far.
 
 Check out the project [on GitHub](https://github.com/apexskier/homedo).
 
-<hr>
-<img src="graph.png" alt="Thermostat off">
-<hr>
-<img src="IMG_1279.JPG" alt="Pretty">
-<hr>
-<img src="homedohardware.jpg" alt="Not pretty">
+---
+
+![Thermostat off](graph.png)
+
+---
+
+![Pretty](IMG_1279.JPG)
+
+---
+
+![not pretty](homedohardware.jpg)
