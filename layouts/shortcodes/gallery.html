@@ -23,7 +23,7 @@ Math will scale everything to min height.
     {{ $flex := mul (div $img.Width (float $img.Height)) $minHeight -}}
     <li style="flex: {{ $flex }};">
         <a href="{{ $img.RelPermalink }}" target="_blank">
-            <img src="{{ ($img.Resize "600x").RelPermalink }}" alt="{{ $img.Title }}" />
+            {{- partial "img" (dict "Resource" $img) -}}
         </a>
     </li>
 {{- end }}

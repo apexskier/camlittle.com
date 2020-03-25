@@ -27,17 +27,17 @@
     <article class="post-content">
         {{- .Content -}}
 
-        <p>
+        <p style="display: flex; flex-wrap: wrap;">
         {{ range .Resources -}}
-        {{ if eq .MediaType.MainType "image" }}
-            <a href="{{ .Permalink }}" class="a-no-border">{{- "" -}}
-                <img height="300" style="margin-bottom: 1em; margin-right: 1em;" src="{{ .RelPermalink }}" alt="{{ .Title }}" />
-            {{- "" -}}</a>
-        {{ end }}
-        {{ if eq .MediaType.MainType "video" }}
+        {{ if eq .MediaType.MainType "image" -}}
+            <a href="{{ .Permalink }}" class="a-no-border" style="margin-bottom: 1em; margin-right: 1em;">
+                {{- partial "img" (dict "Resource" . "height" 300) -}}
+            </a>
+        {{- end -}}
+        {{ if eq .MediaType.MainType "video" -}}
             <video controls height="300" style="margin-bottom: 1em; margin-right: 1em;" src="{{ .RelPermalink }}" alt="{{ .Title }}"></video>
-        {{ end }}
-        {{- end }}
+        {{- end -}}
+        {{- end -}}
         </p>
     </article>
 </main>

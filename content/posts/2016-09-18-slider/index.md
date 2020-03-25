@@ -49,9 +49,7 @@ Switches on either end of the slider are used for initial calibration, as a
 safeguard throughout operation, and to trigger single directional movement. A
 potentiometer sets speed and a button starts and stops oscillation.
 
-<figure>
-    <img src="wiring.jpg" alt="Arduino breadboarded wiring" />
-</figure>
+{{< img src="wiring.jpg" alt="Arduino breadboarded wiring" >}}
 
 ## Final Product
 

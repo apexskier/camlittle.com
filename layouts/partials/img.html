@@ -1,0 +1,23 @@
+{{ $img := default .Resource -}}
+{{ $alt := default $img.Title .alt -}}
+{{ $h := default $img.Height .height -}}
+{{ $w := default $img.Width .width -}}
+{{ if (and (not $w) $h) -}}
+{{ $w = mul $h (div $img.Width (float $img.Height)) -}}
+{{ end -}}
+{{ if (and (not $h) $w) -}}
+{{ $h = mul $w (div $img.Height (float $img.Width)) -}}
+{{ end -}}
+<picture>
+    {{/* order matters here - but it's behaving in reverse of the equivalent css */ -}}
+    {{ partial "imgSource" (dict "img" $img "x" 1200 "h" $h "w" $w ) }}{{/* Laptops (and langer) */}}
+    {{ partial "imgSource" (dict "img" $img "x" 992 "h" $h "w" $w ) }}{{/* Tablet-landscape (and larger) */}}
+    {{ partial "imgSource" (dict "img" $img "x" 768 "h" $h "w" $w ) }}{{/* Tablet-portrait (and larger) */}}
+    {{ partial "imgSource" (dict "img" $img "x" 480 "h" $h "w" $w ) }}{{/* Mobile-landscape (and larger) */}}
+    <img
+        {{ if .height }}height="{{ $h }}"{{ end -}}
+        {{ if .width }}width="{{ $w }}"{{ end -}}
+        src="{{ $img.Permalink }}"
+        alt="{{ $alt }}"
+    />
+</picture>

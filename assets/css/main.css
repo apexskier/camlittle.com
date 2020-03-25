@@ -192,6 +192,50 @@ body {
   margin: 0;
 }
 
+/* Media query debugging... (used for responsive image testing) */
+/*
+@media (min-width: 480px) {
+  body {
+    background-color: red;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: 480px) {
+  body {
+    background-color: pink;
+  }
+}
+@media (min-width: 768px) {
+  body {
+    background-color: green;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: 768px) {
+  body {
+    background-color: greenyellow;
+  }
+}
+@media (min-width: 992px) {
+  body {
+    background-color: blue;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: 992px) {
+  body {
+    background-color: lightblue;
+  }
+}
+@media (min-width: 1200px) {
+  body {
+    background-color: purple;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: 1200px) {
+  body {
+    background-color: plum;
+  }
+}
+*/
+
 ul,
 ol {
   margin-left: var(--copy-spacing);

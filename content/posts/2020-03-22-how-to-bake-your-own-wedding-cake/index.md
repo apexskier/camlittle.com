@@ -10,7 +10,7 @@ The idea started back in August or September of 2018, as we were approaching Ais
 
 Overall it was a bit rough around the edges. I didn't make enough fondant or frosting, I only had green food coloring, I didn't have quite the right tools---but the scale made up for it. 
 
-<img src="aisha_reaction.jpeg" height="300" alt="Aisha's reaction was priceless" />
+{{< img src="aisha_reaction.jpeg" height="300" alt="Aisha's reaction was priceless" >}}
 
 After this first tiered cake, we committed---I was going to make our wedding cake.
 
