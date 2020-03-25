@@ -2,9 +2,9 @@
 <main>
     <h1>
         {{ .Title }}
-        {{- partial "sectionTitlePagination" . }}
+        {{- partial "section/titlePagination" . }}
     </h1>
 
-    {{ partial "sectionList" . }}
+    {{ partial "section/list" . }}
 </main>
 {{ end }}

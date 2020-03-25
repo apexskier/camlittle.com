@@ -1,20 +1,6 @@
 {{ define "main" -}}
 <main>
-    <aside class="meta">
-        <p>
-            <small>{{ .Date.Format "January 2, 2006" }}</small>
-        </p>
-
-        {{ with .Params.tags -}}
-        {{ if len . -}}
-        <ul class="tags">
-        {{ range . -}}
-            <li class="tag"><a href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a></li>{{" "}}
-        {{- end }}
-        </ul>
-        {{- end }}
-        {{- end }}
-    </aside>
+    {{ partial "single/meta" . }}
 
     <h1>{{ .Title }}</h1>
 

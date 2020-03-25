@@ -1,5 +1,5 @@
 <li class="post-link clearfix">
-    {{ partial "singleThumbnail" (index (last 1 (.Resources.ByType "image")) 0) }}
+    {{ partial "single/thumbnail" (index (last 1 (.Resources.ByType "image")) 0) }}
     <div class="post-desc">
         <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
         <h3>

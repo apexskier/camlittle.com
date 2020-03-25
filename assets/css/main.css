@@ -137,11 +137,12 @@ textarea {
   --anchor: darkslateblue;
   --anchor-engaged: slateblue;
   --anchor-visited: darkmagenta;
-  --code-bg: #f8f8f8;
+  --callout-bg: #f8f8f8;
 
   --minimal-box-shadow: 0 0 1px rgba(0, 0, 80, 0.08),
     0 2px 2px rgba(0, 0, 80, 0.08), 0 4px 4px rgba(0, 0, 80, 0.03),
     0 8px 8px rgba(0, 0, 80, 0.03), 0 16px 16px rgba(0, 0, 80, 0.03);
+  --inset-box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
 
   --copy-spacing: 1em;
   --copy-spacing-sm: 0.2em;
@@ -157,7 +158,7 @@ textarea {
     --anchor: skyblue;
     --anchor-engaged: fuchsia;
     --anchor-visited: violet;
-    --code-bg: #121212;
+    --callout-bg: #121212;
   }
 }
 
@@ -257,57 +258,6 @@ body {
   }
 }
 */
-
-ul,
-ol {
-  margin-left: var(--copy-spacing);
-  margin-bottom: var(--copy-spacing);
-}
-
-li {
-  margin-left: var(--copy-spacing);
-  margin-bottom: var(--copy-spacing-sm);
-  list-style: disc;
-
-  & ul,
-  & ol {
-    margin-left: 0;
-    margin-bottom: var(--copy-spacing-sm);
-
-    &:first-child {
-      margin-top: var(--copy-spacing-sm);
-    }
-  }
-
-  & li {
-    margin-bottom: 0;
-    list-style: circle;
-
-    & li {
-      list-style: square;
-
-      & li {
-        list-style: disc;
-      }
-    }
-  }
-}
-
-ol li {
-  list-style: decimal;
-
-  & li {
-    list-style: lower-latin;
-
-    & li {
-      list-style: lower-roman;
-
-      & li {
-        list-style: decimal;
-      }
-    }
-  }
-}
 
 #container {
   width: auto;
@@ -612,6 +562,57 @@ main {
     margin-bottom: var(--copy-spacing);
   }
 
+  & ul,
+  & ol {
+    margin-left: var(--copy-spacing);
+    margin-bottom: var(--copy-spacing);
+  }
+
+  & li {
+    margin-left: var(--copy-spacing);
+    margin-bottom: var(--copy-spacing-sm);
+    list-style: disc;
+
+    & ul,
+    & ol {
+      margin-left: 0;
+      margin-bottom: var(--copy-spacing-sm);
+
+      &:first-child {
+        margin-top: var(--copy-spacing-sm);
+      }
+    }
+
+    & li {
+      margin-bottom: 0;
+      list-style: circle;
+
+      & li {
+        list-style: square;
+
+        & li {
+          list-style: disc;
+        }
+      }
+    }
+  }
+
+  & ol li {
+    list-style: decimal;
+
+    & li {
+      list-style: lower-latin;
+
+      & li {
+        list-style: lower-roman;
+
+        & li {
+          list-style: decimal;
+        }
+      }
+    }
+  }
+
   & p img:last-child {
     margin-bottom: 0;
   }
@@ -647,7 +648,7 @@ canvas {
 }
 
 blockquote {
-  border-left: 7px solid var(--code-bg);
+  border-left: 7px solid var(--callout-bg);
   padding-left: 7px;
 
   & > *:last-child {
@@ -678,7 +679,7 @@ table {
     border: 1px solid var(--muted);
 
     &:nth-child(odd) {
-      background-color: var(--code-bg);
+      background-color: var(--callout-bg);
     }
   }
 
@@ -727,9 +728,10 @@ footer {
 }
 
 .meta {
-  border: 1px dotted;
   padding: 8px;
-  background-color: var(--code-bg);
+  background-color: var(--callout-bg);
+  box-shadow: var(--inset-box-shadow);
+  border-radius: 3px;
   float: right;
   margin-bottom: var(--copy-spacing);
   margin-left: var(--copy-spacing);
@@ -739,12 +741,14 @@ footer {
   flex-direction: column;
   max-width: min-content;
 
-  & > p:first-child {
+  & time {
+    font-size: 90%;
     white-space: nowrap;
+
     margin-bottom: 8px;
   }
 
-  & > p:last-child {
+  & > *:last-child {
     margin-bottom: 0;
   }
 
@@ -757,9 +761,14 @@ footer {
 
     & li {
       display: inline-block;
+      margin-left: 0;
       list-style: none;
     }
   }
+}
+
+.highlight .chroma {
+  border-radius: 3px;
 }
 
 h1 .tag,
@@ -768,6 +777,9 @@ h1 .tag,
   display: inline-block;
   margin-bottom: 4px;
   margin-right: 4px;
+  white-space: nowrap;
+  border-radius: 2px;
+  box-shadow: var(--minimal-box-shadow);
 
   &,
   & a {
@@ -814,7 +826,7 @@ pre {
 }
 
 code {
-  background-color: var(--code-bg);
+  background-color: var(--callout-bg);
   padding: 2px 4px;
 }
 
@@ -826,7 +838,7 @@ pre code {
 
 .kitchen-source {
   padding: 1em;
-  background-color: var(--code-bg);
+  background-color: var(--callout-bg);
   display: inline-block;
   font-size: 120%;
 }
