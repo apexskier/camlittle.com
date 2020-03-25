@@ -130,6 +130,7 @@ textarea {
 
 :root {
   --background: #fff;
+  --muted: #999;
   --body-text: #222;
   --text: #333;
   --text-hover: #000;
@@ -138,6 +139,10 @@ textarea {
   --anchor-visited: darkmagenta;
   --code-bg: #f8f8f8;
 
+  --minimal-box-shadow: 0 0 1px rgba(0, 0, 80, 0.08),
+    0 2px 2px rgba(0, 0, 80, 0.08), 0 4px 4px rgba(0, 0, 80, 0.03),
+    0 8px 8px rgba(0, 0, 80, 0.03), 0 16px 16px rgba(0, 0, 80, 0.03);
+
   --copy-spacing: 1em;
   --copy-spacing-sm: 0.2em;
 }
@@ -145,6 +150,7 @@ textarea {
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #000;
+    --muted: #666;
     --body-text: #ddd;
     --text: #ccc;
     --text-hover: #fff;
@@ -179,6 +185,22 @@ a {
     &:visited {
       border-bottom: none;
     }
+  }
+}
+
+html {
+  &::before {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: rgba(255, 165, 0, 0.08) transparent transparent transparent;
+    mix-blend-mode: color;
+    border-width: 300px 300px 0 0;
   }
 }
 
@@ -548,7 +570,8 @@ nav {
     float: left;
     margin-right: 1em;
     overflow: hidden;
-    border: 1px dotted #666;
+    box-shadow: var(--minimal-box-shadow);
+    border-radius: 3px;
     width: 66px;
     height: 66px;
 
@@ -644,15 +667,24 @@ table {
   & th,
   & td {
     padding: 6px 14px;
-    border: 1px solid;
   }
 
-  & tr {
-    background-color: var(--background);
-    border-top: 1px solid;
+  & th {
+    text-align: left;
+  }
 
-    &:nth-child(2n + 1) {
+  & tbody tr {
+    background-color: var(--background);
+    border: 1px solid var(--muted);
+
+    &:nth-child(odd) {
       background-color: var(--code-bg);
+    }
+  }
+
+  thead {
+    & tr {
+      background-color: var(--background);
     }
   }
 
@@ -685,6 +717,13 @@ footer,
 footer {
   text-align: left;
   margin-bottom: 2em;
+}
+
+.post-content {
+  & img {
+    box-shadow: var(--minimal-box-shadow);
+    border-radius: 3px;
+  }
 }
 
 .meta {
