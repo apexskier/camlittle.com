@@ -432,6 +432,9 @@ textarea {
 }
 
 nav {
+  color: var(--text);
+  font-size: 120%;
+
   & .mobile-toggle,
   & .mobile-toggle-off {
     display: none;
@@ -468,11 +471,6 @@ nav {
       }
     }
   }
-}
-
-nav {
-  color: var(--text);
-  font-size: 120%;
 
   & a {
     border-bottom: none;
@@ -545,10 +543,8 @@ main {
 
   & img,
   & video {
-    &:not([height]):not([width]) {
       max-width: 100%;
       height: auto;
-    }
   }
 
   & p,

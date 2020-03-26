@@ -16,15 +16,14 @@ towards Pony Creek Falls. I was able to borrow a homemade kayak backpack rig,
 which made the trip much easier by distributing the weight over my hips and
 shoulders.
 
-<img src="quinault-1.jpeg" alt="Obligatory trailhead
-shot" style="max-width: 400px;">
+<img src="quinault-1.jpeg" alt="Obligatory trailhead shot" width="400">
 
 At about two miles, one hour, we made it to an old picnic table and started
 following an elk trail Mike Hoover found that puts you just below the first set
 of class V rapids. It's tricky to follow, but after nearly an hour we found the
 correct gully leading down to the river and started lowering boats.
 
-<img src="IMG_0020.jpg" alt="Tom finishing the last rappel" style="max-width: 400px;">
+<img src="IMG_0020.jpg" alt="Tom finishing the last rappel" width="400">
 
 Eventually, at about one o'clock, we were at the river. It's incredible.
 
@@ -62,4 +61,4 @@ allowfullscreen></iframe> <p><a href="http://vimeo.com/72834549">Quinault</a>
 from <a href="http://vimeo.com/apexskier">Cameron Little</a> on <a
 href="https://vimeo.com">Vimeo</a>.</p>
 
-<img src="IMG_0022.JPG" alt="" style="max-width: 400px;">
+<img src="IMG_0022.JPG" alt="" width="400">

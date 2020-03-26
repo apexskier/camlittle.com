@@ -23,9 +23,15 @@ I can be contacted at: <cameron@camlittle.com>.
 
 This site's tech stack throughout the years.
 
-* Feb 2012[^1]--June 2014
+* Sep 2010
 
-  [Stacey](http://www.staceyapp.com) content management system with a custom
+  Registered [camlittle.com](https://camlittle.com) with GoDaddy and set up a
+  homemade PHP website.
+
+* Feb 2012--June 2014
+
+  Transferred my domain name to [Namecheap](https://namecheap.com). At some
+  point, I switched to the [Stacey](http://www.staceyapp.com) CMS with a custom
   theme. I chose Stacey because it's very lightweight and PHP was the language I
   was primarily using at the time. Hosted on 
   [Dreamhost](https://www.dreamhost.com) with [Apache](https://httpd.apache.org).
@@ -39,8 +45,8 @@ This site's tech stack throughout the years.
 
 * March 2020--
 
-  [Hugo](https://gohugo.io) static site with a custom theme written from
-  scratch. I chose Hugo since it's the top starred static site generator on
+  [Hugo](https://gohugo.io) static site with a custom theme. I chose Hugo since
+  it's the top starred static site generator on
   [StaticGen](https://www.staticgen.com) that doesn't rely on client-side rendering.
   It has a good mix of power and simplicity and ships as a standalone
   binary (no ruby installation to deal with). I still use Digital Ocean and
@@ -54,5 +60,3 @@ This site's tech stack throughout the years.
   some don't. For older projects I'm not really planning to revisit or have
   archived, I reverse-engineered Dockerfiles and stored them in my
   host-configuration repo.
-
-[^1]: I'm not 100% sure this is when I first set up this site, but I think so based on when I registered it with Namecheap.

@@ -5,7 +5,7 @@
 
     {{ template "_internal/schema.html" . }}
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-    <meta name="author" content="Cameron Little">
+    <meta name="author" content="{{ .Site.Params.author }}">
     <meta name="viewport" content="width=device-width">
     <link rel="canonical" href="{{ .Permalink }}">
 
