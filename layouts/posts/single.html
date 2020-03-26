@@ -7,5 +7,14 @@
     <article class="post-content">
         {{- .Content -}}
     </article>
+
+    <aside class="chaser">
+        <p>
+            Thanks for reading! I'm <a href="/about/">{{ .Site.Params.author }}</a>,
+            a software developer from the Pacific Northwest living in Kraków, Poland.
+        </p>
+
+        <p>You might be interested in my <a href="/posts/">other posts</a> or following me on <a href="#social-links">social media</a>.</p>
+    </aside>
 </main>
 {{ end }}
