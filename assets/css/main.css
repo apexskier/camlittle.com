@@ -200,7 +200,6 @@ html {
     height: 0;
     border-style: solid;
     border-color: rgba(255, 165, 0, 0.08) transparent transparent transparent;
-    mix-blend-mode: color;
     border-width: 300px 300px 0 0;
   }
 }
