@@ -378,6 +378,11 @@ small {
   font-size: 80%;
 }
 
+sub,
+sup {
+  line-height: 1;
+}
+
 input[type="submit"] {
   line-height: 20px;
   color: #fdf6e3;
@@ -720,6 +725,13 @@ footer {
 }
 
 .post-content {
+  /* try to keep things readable
+   * https://baymard.com/blog/line-length-readability
+  */
+  & > *:not(table) {
+    max-width: 520px;
+  }
+
   & img {
     box-shadow: var(--minimal-box-shadow);
     border-radius: 3px;
