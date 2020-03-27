@@ -553,9 +553,7 @@ nav {
     list-style: none;
     margin: 0 0 1em;
     padding: 0;
-    position: relative;
-    overflow: hidden;
-    zoom: 1;
+    display: flex;
 
     & time {
       margin: 0;
@@ -566,24 +564,13 @@ nav {
     }
   }
 
-  & .thumb {
-    float: left;
-    margin-right: 1em;
-    overflow: hidden;
+  & .thumbnail {
+    margin-right: var(--copy-spacing);
+    margin-bottom: 0;
     box-shadow: var(--minimal-box-shadow);
     border-radius: 3px;
     width: 66px;
     height: 66px;
-
-    & img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  & .post-desc {
-    overflow: hidden;
-    zoom: 1;
   }
 }
 
@@ -627,10 +614,25 @@ main {
     margin-bottom: var(--copy-spacing);
   }
 
+  & ul li {
+    list-style: disc;
+
+    & li {
+      list-style: circle;
+
+      & li {
+        list-style: square;
+
+        & li {
+          list-style: disc;
+        }
+      }
+    }
+  }
+
   & li {
     margin-left: var(--copy-spacing);
     margin-bottom: var(--copy-spacing-sm);
-    list-style: disc;
 
     & ul,
     & ol {
@@ -644,15 +646,6 @@ main {
 
     & li {
       margin-bottom: 0;
-      list-style: circle;
-
-      & li {
-        list-style: square;
-
-        & li {
-          list-style: disc;
-        }
-      }
     }
   }
 

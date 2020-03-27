@@ -1,6 +1,6 @@
-<li class="post-link clearfix">
+<li class="post-link">
     {{ partial "single/thumbnail" (.Resources.GetMatch "thumbnail.*") }}
-    <div class="post-desc">
+    <div>
         {{ partial "time" .Date }}
         <h3>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>

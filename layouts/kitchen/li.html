@@ -1,6 +1,6 @@
-<li class="post-link clearfix">
+<li class="post-link">
     {{ partial "single/thumbnail" (index (last 1 (.Resources.ByType "image")) 0) }}
-    <div class="post-desc">
+    <div>
         {{ partial "time" .Date }}
         <h3>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>

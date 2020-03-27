@@ -28,7 +28,7 @@ This site's tech stack throughout the years.
   Registered [camlittle.com](https://camlittle.com) with GoDaddy and set up a
   homemade PHP website.
 
-* Feb 2012--June 2014
+* Feb 2012
 
   Transferred my domain name to [Namecheap](https://namecheap.com). At some
   point, I switched to the [Stacey](http://www.staceyapp.com) CMS with a custom
@@ -36,14 +36,14 @@ This site's tech stack throughout the years.
   was primarily using at the time. Hosted on 
   [Dreamhost](https://www.dreamhost.com) with [Apache](https://httpd.apache.org).
 
-* June 2014--March 2020
+* June 2014
 
   [Jekyll](https://jekyllrb.com) static site with a custom theme. I chose Jekyll
   because it's pretty universal and produces a static site. Around this time I
   also switched to [DigitalOcean](https://www.digitalocean.com) for hosting and
   an [nginx](https://www.nginx.com) web server.
 
-* March 2020--
+* March 2020
 
   [Hugo](https://gohugo.io) static site with a custom theme. I chose Hugo since
   it's the top starred static site generator on

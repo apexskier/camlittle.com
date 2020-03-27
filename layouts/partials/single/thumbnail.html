@@ -1,11 +1,7 @@
 {{ if and (eq .MediaType.SubType "svg") (eq .Width .Height) -}}
-<div class="thumb">
-    <img src="{{- .RelPermalink -}}" class="post-thumb" alt="thumbnail">
-</div>
+<img src="{{- .RelPermalink -}}" class="thumbnail" alt="thumbnail">
 {{- else -}}
 {{ with .Fill "132x132" -}}
-<div class="thumb">
-    <img src="{{- .RelPermalink -}}" class="post-thumb" alt="thumbnail">
-</div>
+<img src="{{- .RelPermalink -}}" class="thumbnail" alt="thumbnail">
 {{- end }}
 {{- end }}
