@@ -1,8 +1,14 @@
-<ul class="posts">
+{{ $pageIndex := sub .Paginator.TotalPages .Paginator.PageNumber }}
+{{ $start := add (mul (sub $pageIndex 1) .Paginator.PageSize) .Paginator.Last.NumberOfElements }}
+<ol
+    class="posts"
+    reversed
+    {{ if .Paginator.HasNext }}start="{{ add .Paginator.NumberOfElements $start }}"{{ end }}
+>
     {{ range .Paginator.Pages }}
     {{ .Render "li" }}
     {{ end }}
-</ul>
+</ol>
 
 <hr />
 {{ partial "pagination.html" . }}
