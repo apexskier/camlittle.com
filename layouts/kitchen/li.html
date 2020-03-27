@@ -1,7 +1,7 @@
 <li class="post-link clearfix">
     {{ partial "single/thumbnail" (index (last 1 (.Resources.ByType "image")) 0) }}
     <div class="post-desc">
-        <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
+        {{ partial "time" .Date }}
         <h3>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </h3>
