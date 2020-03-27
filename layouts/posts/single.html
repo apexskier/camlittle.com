@@ -1,13 +1,11 @@
 {{ define "main" -}}
-<main>
-    {{ partial "single/meta" . }}
+{{ partial "single/meta" . }}
 
-    <h1>{{ .Title }}</h1>
+<h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
 
-    <article class="post-content">
-        {{- .Content -}}
-    </article>
+<article class="post-content">
+    {{- .Content -}}
+</article>
 
-    {{ partial "chaser" . }}
-</main>
+{{ partial "chaser" . }}
 {{ end }}

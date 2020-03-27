@@ -1,44 +1,42 @@
 {{ define "main" }}
-<main>
-    <h1>All tags</h1>
+<h1>All tags</h1>
 
-    <ul class="all-tags">
-        {{/*make common tags bigger */ -}}
-        {{ $minSize := 1 -}}
-        {{ $maxSize := 1.6 -}}
-        {{ $sizeDelta := sub $maxSize $minSize -}}
+<ul class="all-tags">
+    {{/*make common tags bigger */ -}}
+    {{ $minSize := 1 -}}
+    {{ $maxSize := 1.6 -}}
+    {{ $sizeDelta := sub $maxSize $minSize -}}
 
-        {{ $minCount := float 1 -}}
-        {{ $maxCount := float 1 -}}
-        {{ range .Data.Terms.Alphabetical -}}
-        {{ if gt (len .Pages) $maxCount -}}
-        {{ $maxCount = len .Pages -}}
-        {{ else if lt (len .Pages) $minCount -}}
-        {{ $minCount = len .Pages -}}
-        {{ end -}}
-        {{ end -}}
-        {{ $countDelta := sub $maxCount $minCount -}}
+    {{ $minCount := float 1 -}}
+    {{ $maxCount := float 1 -}}
+    {{ range .Data.Terms.Alphabetical -}}
+    {{ if gt (len .Pages) $maxCount -}}
+    {{ $maxCount = len .Pages -}}
+    {{ else if lt (len .Pages) $minCount -}}
+    {{ $minCount = len .Pages -}}
+    {{ end -}}
+    {{ end -}}
+    {{ $countDelta := sub $maxCount $minCount -}}
 
-        {{ $baseMargin := 4.0 }}
+    {{ $baseMargin := 4.0 }}
 
-        {{range .Data.Terms.Alphabetical -}}
-        {{ $countPercent := div (sub (len .Pages) $minCount) $countDelta -}}
-        {{ $sizePercent := add $minSize (mul $countPercent $sizeDelta) -}}
-        {{ $margin := math.Floor (mul $baseMargin $sizePercent) }}
-        <li
-            class="tag"
-            style="font-size: {{ math.Round (mul $sizePercent 100) }}%;"
-            data-count-percent="{{ math.Floor (mul $countPercent 10) }}"
+    {{range .Data.Terms.Alphabetical -}}
+    {{ $countPercent := div (sub (len .Pages) $minCount) $countDelta -}}
+    {{ $sizePercent := add $minSize (mul $countPercent $sizeDelta) -}}
+    {{ $margin := math.Floor (mul $baseMargin $sizePercent) }}
+    <li
+        class="tag"
+        style="font-size: {{ math.Round (mul $sizePercent 100) }}%;"
+        data-count-percent="{{ math.Floor (mul $countPercent 10) }}"
+    >
+        <a
+            href="{{ "tags" | absURL }}/{{ .Name | urlize }}/"
+            style="margin: 0 {{ $margin }}px {{ $margin }}px;"
         >
-            <a
-                href="{{ "tags" | absURL }}/{{ .Name | urlize }}/"
-                style="margin: 0 {{ $margin }}px {{ $margin }}px;"
-            >
-                {{ .Name }}
-                ({{ len .Pages }})
-            </a>
-        </li>{{" "}}
-        {{- end}}
-    </p>
-</main>
+            {{ .Name }}
+            ({{ len .Pages }})
+        </a>
+    </li>{{" "}}
+    {{- end}}
+</p>
 {{ end }}

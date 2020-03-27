@@ -1,12 +1,10 @@
 {{ define "main" }}
-<main>
-    <h1>
-        In the kitchen
-        {{- partial "section/titlePagination" . }}
-    </h1>
+<h1>
+    In the kitchen
+    {{- partial "section/titlePagination" . }}
+</h1>
 
-    <p class="lead">A selection of things I'm cooking.</p>
+<p class="lead">A selection of things I'm cooking.</p>
 
-    {{ partial "section/list" . }}
-</main>
+{{ partial "section/list" . }}
 {{ end }}

@@ -311,29 +311,46 @@ header {
   }
 
   & nav {
-    margin-bottom: 6px;
     display: inline-block;
+    line-height: 0;
 
     &:target {
       border-radius: 3px;
       background-color: var(--text);
-      padding: var(--copy-spacing-sm) 0.4em;
+      padding: calc(var(--copy-spacing-sm) * 2);
 
       & a {
         &,
-        &:hover,
         &:focus,
-        &:visited {
-          color: var(--background);
+        &:hover {
+          & svg path {
+            fill: var(--background);
+          }
         }
       }
     }
 
+    & svg {
+      height: 20px;
+
+      & path {
+        fill: var(--text);
+      }
+    }
+
     & a {
-      padding-right: 0.4em;
+      padding-right: 0.5em;
+      display: inline-block;
 
       &:last-child {
         padding-right: 0;
+      }
+
+      &:focus,
+      &:hover {
+        & svg path {
+          fill: var(--text-hover);
+        }
       }
     }
   }
@@ -522,6 +539,10 @@ nav {
       border-bottom: none;
     }
   }
+}
+
+.lead {
+  font-size: 120%;
 }
 
 .posts {
@@ -884,7 +905,6 @@ h1 .tag {
   padding: 0 4px;
   margin: 0;
 }
-
 
 /* https://stackoverflow.com/a/40815884/2178159
  * attr() isn't supported in calc(), so this is a cool hack

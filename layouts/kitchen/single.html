@@ -1,30 +1,28 @@
 {{ define "main" -}}
-<main>
-    {{ partial "single/meta" . }}
+{{ partial "single/meta" . }}
 
-    <h1>{{ .Title }}</h1>
+<h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
 
-    {{if .Params.recipe_link -}}
-    <p class="kitchen-source">
-        <a href="{{ .Params.recipe_link }}" target="_blank">Recipe{{if .Params.recipe_source }} from {{ .Params.recipe_source }}{{ end }}</a>
+{{if .Params.recipe_link -}}
+<p class="kitchen-source">
+    <a href="{{ .Params.recipe_link }}" target="_blank">Recipe{{if .Params.recipe_source }} from {{ .Params.recipe_source }}{{ end }}</a>
+</p>
+{{- end }}
+
+<article class="post-content">
+    {{- .Content -}}
+
+    <p style="display: flex; flex-wrap: wrap;">
+    {{ range .Resources -}}
+    {{ if eq .MediaType.MainType "image" -}}
+        <a href="{{ .RelPermalink }}" class="a-no-border" style="margin-bottom: 1em; margin-right: 1em;">
+            {{- partial "img" (dict "Resource" . "height" 300) -}}
+        </a>
+    {{- end -}}
+    {{ if eq .MediaType.MainType "video" -}}
+        <video controls height="300" style="margin-bottom: 1em; margin-right: 1em;" src="{{ .RelPermalink }}" alt="{{ .Title }}"></video>
+    {{- end -}}
+    {{- end -}}
     </p>
-    {{- end }}
-
-    <article class="post-content">
-        {{- .Content -}}
-
-        <p style="display: flex; flex-wrap: wrap;">
-        {{ range .Resources -}}
-        {{ if eq .MediaType.MainType "image" -}}
-            <a href="{{ .RelPermalink }}" class="a-no-border" style="margin-bottom: 1em; margin-right: 1em;">
-                {{- partial "img" (dict "Resource" . "height" 300) -}}
-            </a>
-        {{- end -}}
-        {{ if eq .MediaType.MainType "video" -}}
-            <video controls height="300" style="margin-bottom: 1em; margin-right: 1em;" src="{{ .RelPermalink }}" alt="{{ .Title }}"></video>
-        {{- end -}}
-        {{- end -}}
-        </p>
-    </article>
-</main>
+</article>
 {{ end }}
