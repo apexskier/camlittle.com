@@ -2,14 +2,42 @@
 <main>
     <h1>All tags</h1>
 
-    <p>
+    <ul class="all-tags">
+        {{/*make common tags bigger */ -}}
+        {{ $minSize := 1 -}}
+        {{ $maxSize := 1.6 -}}
+        {{ $sizeDelta := sub $maxSize $minSize -}}
+
+        {{ $minCount := float 1 -}}
+        {{ $maxCount := float 1 -}}
+        {{ range .Data.Terms.Alphabetical -}}
+        {{ if gt (len .Pages) $maxCount -}}
+        {{ $maxCount = len .Pages -}}
+        {{ else if lt (len .Pages) $minCount -}}
+        {{ $minCount = len .Pages -}}
+        {{ end -}}
+        {{ end -}}
+        {{ $countDelta := sub $maxCount $minCount -}}
+
+        {{ $baseMargin := 4.0 }}
+
         {{range .Data.Terms.Alphabetical -}}
-        <span class="tag">
-            <a href="{{ "tags" | absURL }}/{{ .Name | urlize }}/">
+        {{ $countPercent := div (sub (len .Pages) $minCount) $countDelta -}}
+        {{ $sizePercent := add $minSize (mul $countPercent $sizeDelta) -}}
+        {{ $margin := math.Floor (mul $baseMargin $sizePercent) }}
+        <li
+            class="tag"
+            style="font-size: {{ math.Round (mul $sizePercent 100) }}%;"
+            data-count-percent="{{ math.Floor (mul $countPercent 10) }}"
+        >
+            <a
+                href="{{ "tags" | absURL }}/{{ .Name | urlize }}/"
+                style="margin: 0 {{ $margin }}px {{ $margin }}px;"
+            >
                 {{ .Name }}
                 ({{ len .Pages }})
             </a>
-        </span>{{" "}}
+        </li>{{" "}}
         {{- end}}
     </p>
 </main>

@@ -885,6 +885,59 @@ h1 .tag {
   margin: 0;
 }
 
+
+/* https://stackoverflow.com/a/40815884/2178159
+ * attr() isn't supported in calc(), so this is a cool hack
+ */
+[data-count-percent="0"] {
+  --count-percent: 0%;
+}
+[data-count-percent="1"] {
+  --count-percent: 10%;
+}
+[data-count-percent="2"] {
+  --count-percent: 20%;
+}
+[data-count-percent="3"] {
+  --count-percent: 30%;
+}
+[data-count-percent="4"] {
+  --count-percent: 40%;
+}
+[data-count-percent="5"] {
+  --count-percent: 50%;
+}
+[data-count-percent="6"] {
+  --count-percent: 60%;
+}
+[data-count-percent="7"] {
+  --count-percent: 70%;
+}
+[data-count-percent="8"] {
+  --count-percent: 80%;
+}
+[data-count-percent="9"] {
+  --count-percent: 90%;
+}
+[data-count-percent="10"] {
+  --count-percent: 100%;
+}
+
+.all-tags {
+  margin-left: 0;
+
+  & li.tag {
+    margin-left: 0;
+  }
+
+  & .tag[data-count-percent] {
+    background-color: hsl(0, 0%, calc((100% - var(--count-percent)) * 0.25));
+    @media (prefers-color-scheme: dark) {
+      background-color: hsl(0, 0%, calc(var(--count-percent) * 0.25 + 75%));
+    }
+  }
+}
+
 ul.pagination {
   margin: 0;
   font-variant-numeric: tabular-nums;
