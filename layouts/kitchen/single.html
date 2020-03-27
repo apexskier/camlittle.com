@@ -16,7 +16,7 @@
         <p style="display: flex; flex-wrap: wrap;">
         {{ range .Resources -}}
         {{ if eq .MediaType.MainType "image" -}}
-            <a href="{{ .Permalink }}" class="a-no-border" style="margin-bottom: 1em; margin-right: 1em;">
+            <a href="{{ .RelPermalink }}" class="a-no-border" style="margin-bottom: 1em; margin-right: 1em;">
                 {{- partial "img" (dict "Resource" . "height" 300) -}}
             </a>
         {{- end -}}

@@ -17,7 +17,7 @@
     <img
         {{ if .height }}height="{{ $h }}"{{ end -}}
         {{ if .width }}width="{{ $w }}"{{ end -}}
-        src="{{ $img.Permalink }}"
+        src="{{ $img.RelPermalink }}"
         alt="{{ $alt }}"
     />
 </picture>

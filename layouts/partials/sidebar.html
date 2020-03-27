@@ -5,7 +5,7 @@
         <label class="mobile-toggle-off" for="menu-toggle">Close</label>
         <ul class="links">
             {{- $currentPage := . }}
-            <li><a href="{{ .Site.BaseURL }}" title="Home">Home</a> {{ if .IsHome }}<span aria-label="Active">←</span>{{ end }}</li>
+            <li><a href="{{ relref . "/" }}" title="Home">Home</a> {{ if .IsHome }}<span aria-label="Active">←</span>{{ end }}</li>
             {{ range .Site.Menus.main -}}
             <li>{{- "" -}}
                 <a href="{{ .URL }}">{{ .Title }}</a>
@@ -16,19 +16,19 @@
             {{ end }}
             {{ with .Site.GetPage "/posts" }}
             <li>{{- "" -}}
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                 {{- if eq . $ }}<span aria-label="active"> ←</span>{{ end -}}
             </li>
             {{ end }}
             {{ with .Site.GetPage "/kitchen" }}
             <li>{{- "" -}}
-                <a href="{{ .Permalink }}">In the kitchen</a>
+                <a href="{{ .RelPermalink }}">In the kitchen</a>
                 {{- if eq . $ }}<span aria-label="active"> ←</span>{{ end -}}
             </li>
             {{ end }}
             {{ range where .Site.Pages "Kind" "taxonomyTerm" -}}
             <li>{{- "" -}}
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                 {{- if eq . $ }}<span aria-label="active"> ←</span>{{ end -}}
             </li>
             {{ end }}

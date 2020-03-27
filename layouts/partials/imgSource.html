@@ -1,7 +1,7 @@
 {{ if and (gt .img.Width .x) (gt .img.Width .x) -}}
 <source
     media="(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: {{ .x }}px)"
-    srcset="{{ (.img.Resize (printf "%dx q90" (mul .x 2))).Permalink }}"
+    srcset="{{ (.img.Resize (printf "%dx q90" (mul .x 2))).RelPermalink }}"
 />
-<source media="(min-width: {{ .x }}px)" srcset="{{ (.img.Resize (printf "%dx q90" .x)).Permalink }}" />
+<source media="(min-width: {{ .x }}px)" srcset="{{ (.img.Resize (printf "%dx q90" .x)).RelPermalink }}" />
 {{- end }}
