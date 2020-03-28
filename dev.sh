@@ -4,7 +4,7 @@ set -e
 
 pids=()
 
-hugo server -D --disableFastRender $@ &
+hugo server -D --minify $@ &
 pids+=("$!")
 
 for pid in $pids

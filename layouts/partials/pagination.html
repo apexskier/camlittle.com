@@ -1,13 +1,15 @@
 {{ $pag := $.Paginator }}
 {{ if gt $pag.TotalPages 1 }}
+<nav>
 <ul class="pagination">
     {{ with $pag.First }}
     <li class="page-item">
         <a href="{{ .URL }}" class="page-link" aria-label="First"><span aria-hidden="true">⇤</span></a>
     </li>
     {{ end }}
+    &nbsp;
     <li class="page-item{{ if not $pag.HasPrev }} disabled{{ end }}">
-    <a {{ if $pag.HasPrev }}href="{{ $pag.Prev.URL }}"{{ end }} class="page-link" aria-label="Previous"><span aria-hidden="true">⇠</span></a>
+        <a {{ if $pag.HasPrev }}href="{{ $pag.Prev.URL }}"{{ end }} class="page-link" aria-label="Previous"><span aria-hidden="true">⇠</span></a>
     </li>
     {{ $ellipsed := false }}
     {{ $shouldEllipse := false }}
@@ -23,18 +25,23 @@
         {{ $ellipsed = true }}
     {{ end }}
     {{ if $showNumber }}
+    &nbsp;
     <li class="page-item{{ if eq . $pag }} active{{ end }}"><a class="page-link" href="{{ .URL }}">{{ .PageNumber }}</a></li>
     {{ else if $shouldEllipse }}
+    &nbsp;
     <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
     {{ end }}
     {{ end }}
+    &nbsp;
     <li class="page-item{{ if not $pag.HasNext }} disabled{{ end }}">
     <a {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}"{{ end }} class="page-link" aria-label="Next"><span aria-hidden="true">⇢</span></a>
     </li>
     {{ with $pag.Last }}
+    &nbsp;
     <li class="page-item">
         <a href="{{ .URL }}" class="page-link" aria-label="Last"><span aria-hidden="true">⇥</span></a>
     </li>
     {{ end }}
 </ul>
+</nav>
 {{ end }}
