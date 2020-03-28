@@ -4,7 +4,6 @@ date: {{ .Date }}
 tags: ["kitchen"]
 recipe_link: 
 recipe_source: 
-draft: true
 
 resources:
 - src: ""
