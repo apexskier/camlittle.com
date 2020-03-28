@@ -268,6 +268,32 @@ body {
   color: var(--background);
   padding: var(--copy-spacing-sm) 0.4em;
   box-shadow: var(--highlight-box-shadow);
+
+  & a {
+    &,
+    &:focus,
+    &:hover,
+    &:visited {
+      color: var(--background);
+      display: inline-block;
+      margin-bottom: 1px;
+    }
+  }
+}
+
+li:target {
+  display: list-item;
+  color: var(--text);
+
+  margin-bottom: var(--copy-spacing);
+
+  & *:last-child {
+    margin-bottom: 0;
+  }
+
+  & * {
+    color: var(--background);
+  }
 }
 
 #container {
