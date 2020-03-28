@@ -637,11 +637,6 @@ nav {
   }
 }
 
-.table {
-  max-width: 100%;
-  overflow: auto;
-}
-
 main {
   & img,
   & video {
@@ -831,12 +826,14 @@ footer {
   /* try to keep things readable
    * https://baymard.com/blog/line-length-readability
   */
-  & > *:not(table) {
+  & > * {
     max-width: 520px;
   }
 
-  .table {
+  & > .table,
+  & > .highlight {
     max-width: calc(100% + 1.5em * 2);
+    overflow: auto;
     margin-left: -1.5em;
     margin-right: -1.5em;
 
