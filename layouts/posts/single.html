@@ -1,10 +1,8 @@
 {{ define "main" }}
-<div class="with-meta">
-    {{ partial "single/meta" . }}
-    <article class="post-content">
-        <h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
-        {{- .Content -}}
-        {{ partial "chaser" . }}
-    </article>
-</div>
+{{ partial "single/meta" . }}
+<article class="post-content">
+    <h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
+    {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
+    {{ partial "chaser" . }}
+</article>
 {{ end }}

@@ -2,6 +2,6 @@
 <h1>{{ .Title }}</h1>
 
 <article class="post-content">
-    {{- .Content -}}
+    {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
 </article>
 {{ end }}
