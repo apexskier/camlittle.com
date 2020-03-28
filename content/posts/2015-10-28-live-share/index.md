@@ -5,7 +5,7 @@ date: 2015-10-28 11:15:00 -0700
 tags: ["tech", "apps"]
 ---
 
-<img src="thumbnail.jpg" alt="Live Share icon" style="float: right">
+<img src="thumbnail.jpg" alt="Live Share icon" style="float: right;margin-left: 12px;">
 
 Live Share is an app that allows you to export, edit, and create [Live
 Photos](http://www.apple.com/iphone-6s/cameras/).
