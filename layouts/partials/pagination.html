@@ -1,6 +1,6 @@
 {{ $pag := $.Paginator }}
 {{ if gt $pag.TotalPages 1 }}
-<nav>
+<nav class="pagination-nav">
 <ul class="pagination">
     {{ with $pag.First }}
     <li class="page-item">

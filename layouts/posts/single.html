@@ -1,8 +1,17 @@
 {{ define "main" }}
 {{ partial "single/meta" . }}
+
+<h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
+
+{{ if .Params.toc -}}
+{{ .TableOfContents }}
+{{- end }}
+
 <article class="post-content">
-    <h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
-    {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
+    {{ $content := .Content -}}
+    {{ $content = .Content | replaceRE "<table" "<div class='table'><table" -}}
+    {{ $content = .Content | replaceRE "</table>" "</div></table>" -}}
+    {{ .Content | safeHTML }}
     {{ partial "chaser" . }}
 </article>
 {{ end }}
