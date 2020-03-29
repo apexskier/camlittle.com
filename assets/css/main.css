@@ -1011,6 +1011,10 @@ ul.pagination {
     list-style: none;
     display: inline;
   }
+
+  & .active {
+    font-weight: bold;
+  }
 }
 
 pre,

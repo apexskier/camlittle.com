@@ -2,18 +2,25 @@
 {{ if gt $pag.TotalPages 1 }}
 <nav class="pagination-nav">
 <ul class="pagination">
-    {{ with $pag.First }}
+
+    {{ if (and (ne $pag.First $pag) (gt $pag.PageNumber 3)) }}
     <li class="page-item">
-        <a href="{{ .URL }}" class="page-link" aria-label="First"><span aria-hidden="true">⇤</span></a>
+        <a href="{{ $pag.First.URL }}" class="page-link" aria-label="First"><span aria-hidden="true">⇤</span></a>
     </li>
-    {{ end }}
     &nbsp;
+    {{ end }}
+
+    {{ if and (ne $pag.First $pag.Prev) $pag.HasPrev }}
     <li class="page-item{{ if not $pag.HasPrev }} disabled{{ end }}">
         <a {{ if $pag.HasPrev }}href="{{ $pag.Prev.URL }}"{{ end }} class="page-link" aria-label="Previous"><span aria-hidden="true">⇠</span></a>
     </li>
+    &nbsp;
+    {{ end }}
+
     {{ $ellipsed := false }}
     {{ $shouldEllipse := false }}
-    {{ range $pag.Pagers }}
+    {{ range $i, $v := $pag.Pagers }}
+    {{ with $v }}
     {{ $right := sub .TotalPages .PageNumber }}
     {{ $showNumber := or (le .PageNumber 3) (eq $right 0) }}
     {{ $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2)))  }}
@@ -24,22 +31,31 @@
         {{ $shouldEllipse = not $ellipsed }}
         {{ $ellipsed = true }}
     {{ end }}
-    {{ if $showNumber }}
+    {{ if ne $i 0 }}
     &nbsp;
+    •
+    &nbsp;
+    {{ else }}
+    {{ end }}
+    {{ if $showNumber }}
     <li class="page-item{{ if eq . $pag }} active{{ end }}"><a class="page-link" href="{{ .URL }}">{{ .PageNumber }}</a></li>
     {{ else if $shouldEllipse }}
-    &nbsp;
     <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
     {{ end }}
     {{ end }}
+    {{ end }}
+
+    {{ if and (ne $pag.Last $pag.Next) $pag.HasNext }}
     &nbsp;
     <li class="page-item{{ if not $pag.HasNext }} disabled{{ end }}">
-    <a {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}"{{ end }} class="page-link" aria-label="Next"><span aria-hidden="true">⇢</span></a>
+        <a {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}"{{ end }} class="page-link" aria-label="Next"><span aria-hidden="true">⇢</span></a>
     </li>
-    {{ with $pag.Last }}
+    {{ end }}
+
+    {{ if (and (ne $pag.Last $pag) (gt (sub $pag.TotalPages $pag.PageNumber) 3)) }}
     &nbsp;
     <li class="page-item">
-        <a href="{{ .URL }}" class="page-link" aria-label="Last"><span aria-hidden="true">⇥</span></a>
+        <a href="{{ $pag.Last.URL }}" class="page-link" aria-label="Last"><span aria-hidden="true">⇥</span></a>
     </li>
     {{ end }}
 </ul>
