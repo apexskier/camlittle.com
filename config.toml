@@ -5,6 +5,7 @@ title = "Cameron Little's Website"
 [params]
   description = "A collection of Cameron Little's thoughts and projects."
   author = "Cameron Little"
+  email = "cameron@camlittle.com"
 
 [taxonomies]
   tag = "tags"
