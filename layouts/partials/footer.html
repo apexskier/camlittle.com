@@ -8,4 +8,10 @@
         {{- end }}
         {{- end }}
     </p>
+
+    {{ with .GitInfo }}
+    <p><small>
+        This page last modified <a href="{{ $.Site.Params.gitUrl -}}{{ .Hash }}">{{ partial "time" .AuthorDate }}</a>
+    </small><p>
+    {{ end }}
 </footer>

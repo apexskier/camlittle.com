@@ -147,7 +147,7 @@ textarea {
     0 1px 4px rgba(255, 165, 0, 0.2);
 
   --copy-spacing: 1em;
-  --copy-spacing-sm: 0.2em;
+  --copy-spacing-sm: 4px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -857,7 +857,7 @@ footer {
     margin-bottom: var(--copy-spacing-sm);
   }
 
-  & time {
+  & > time {
     font-size: 90%;
     white-space: nowrap;
   }
@@ -888,16 +888,12 @@ footer {
     text-align: right;
     align-items: flex-end;
 
-    & time {
-      margin-bottom: 8px;
-    }
-
     & > *:last-child {
       margin-bottom: 0;
     }
 
     & .tags {
-      margin-bottom: 4px; /* -4px + 8px */
+      margin-bottom: -4px;
 
       & .tag {
         margin-bottom: 4px;

@@ -2,10 +2,14 @@ baseURL = "https://camlittle.com/"
 languageCode = "en-us"
 title = "Cameron Little's Website"
 
+enableGitInfo = true
+
 [params]
   description = "A collection of Cameron Little's thoughts and projects."
   author = "Cameron Little"
   email = "cameron@camlittle.com"
+
+  gitUrl = "https://github.com/apexskier/camlittle.com/commit/"
 
 [taxonomies]
   tag = "tags"
