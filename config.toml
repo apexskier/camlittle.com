@@ -11,6 +11,19 @@ enableGitInfo = true
 
   gitUrl = "https://github.com/apexskier/camlittle.com/commit/"
 
+  [params.sitemap]
+    [[params.sitemap.entries]]
+      absURL = "/go-template-validation"
+    [[params.sitemap.entries]]
+      absURL = "/lightsaber"
+      lastMod = 2018-06-15T05:59:20
+    [[params.sitemap.entries]]
+      absURL = "/highschool-portfolio"
+      lastMod = 2018-06-15T06:09:32
+    [[params.sitemap.entries]]
+      absURL = "/web-usability-coordinator"
+      lastMod = 2018-06-15T06:09:32
+
 [taxonomies]
   tag = "tags"
 
