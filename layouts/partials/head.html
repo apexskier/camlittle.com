@@ -4,7 +4,9 @@
     <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
 
     {{ with .Site.Params.email -}}
-    <link rel="icon" type="image/png" href="//www.gravatar.com/avatar/{{ . | lower | md5 }}.png?s=32">
+    {{ $baseIcon := printf "//www.gravatar.com/avatar/%s.png" (. | lower | md5 ) -}}
+    <link rel="icon" type="image/png" href="{{ $baseIcon }}?s=32">
+    <link rel="apple-touch-icon" href="{{ $baseIcon }}?s=192">
     {{ end -}}
 
     {{ template "_internal/schema.html" . }}
