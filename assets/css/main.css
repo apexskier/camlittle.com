@@ -847,14 +847,13 @@ footer {
   border-radius: 3px;
   margin-bottom: var(--copy-spacing);
 
-  & .tag {
-    margin-bottom: 0;
-  }
-
   & > *,
-  & > .tags,
   & > time {
     margin-bottom: var(--copy-spacing-sm);
+  }
+
+  & > .tags {
+    margin-bottom: 0;
   }
 
   & > time {
