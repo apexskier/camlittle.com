@@ -304,7 +304,7 @@ li:target {
   perspective: 100px;
 }
 
-header {
+#primary-header {
   text-align: center;
 
   @media only screen and (min-width: 45em) {
@@ -517,7 +517,7 @@ textarea {
 }
 
 #sidebar nav,
-header nav,
+#primary-header nav,
 nav.pagination-nav {
   color: var(--text);
   font-size: 120%;
@@ -902,7 +902,8 @@ footer {
   }
 }
 
-.highlight .chroma {
+.highlight .chroma,
+pre {
   border-radius: 3px;
 }
 
@@ -1022,6 +1023,12 @@ pre {
   padding: 0.5em 1em;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+
+  /* matches chroma styling colors */
+  background-color: #f0f3f3;
+  @media (prefers-color-scheme: dark) {
+    background-color: #202020;
+  }
 }
 
 code {

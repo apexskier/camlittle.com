@@ -1,0 +1,127 @@
+.code-comparison {
+  display: flex;
+
+  & > * {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-right: var(--copy-spacing);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.example-code {
+  margin-bottom: var(--copy-spacing);
+  & .highlight:last-child .chroma {
+    margin-bottom: 0;
+  }
+}
+
+.example-code,
+input[name^="lang"][value="all"]:checked ~ .lang-controls,
+input[name^="lang"][value="all"]:checked ~ * .lang-controls,
+input[name^="lang"] {
+  display: none;
+}
+
+input[name^="lang"] + label::before {
+  content: "☐";
+  margin-right: var(--copy-spacing-sm);
+}
+input[name^="lang"]:checked + label::before {
+  content: "☒"; /* or ☑? */
+}
+
+input[name^="lang"]:checked {
+  &[value="ts"] ~ .example-code[data-lang="ts"],
+  &[value="ts"] ~ * .example-code[data-lang="ts"],
+  &[value="kt"] ~ .example-code[data-lang="kt"],
+  &[value="kt"] ~ * .example-code[data-lang="kt"],
+  &[value="openapi"] ~ .example-code[data-lang="openapi"],
+  &[value="openapi"] ~ * .example-code[data-lang="openapi"],
+  &[value="go"] ~ .example-code[data-lang="go"],
+  &[value="go"] ~ * .example-code[data-lang="go"],
+  &[value="all"] ~ .example-code,
+  &[value="all"] ~ * .example-code {
+    display: block;
+  }
+  &[value="ts"] ~ span.example-code[data-lang="ts"],
+  &[value="ts"] ~ * span.example-code[data-lang="ts"],
+  &[value="kt"] ~ span.example-code[data-lang="kt"],
+  &[value="kt"] ~ * span.example-code[data-lang="kt"],
+  &[value="openapi"] ~ span.example-code[data-lang="openapi"],
+  &[value="openapi"] ~ * span.example-code[data-lang="openapi"],
+  &[value="go"] ~ span.example-code[data-lang="go"],
+  &[value="go"] ~ * span.example-code[data-lang="go"],
+  &[value="all"] ~ span.example-code,
+  &[value="all"] ~ * span.example-code {
+    display: inline;
+  }
+
+  &[value="all"]:checked {
+    & ~ .example-code[data-lang="ts"]::before,
+    & ~ * .example-code[data-lang="ts"]::before {
+      content: "Typescript";
+    }
+    & ~ .example-code[data-lang="kt"]::before,
+    & ~ * .example-code[data-lang="kt"]::before {
+      content: "Kotlin";
+    }
+    & ~ .example-code[data-lang="go"]::before,
+    & ~ * .example-code[data-lang="go"]::before {
+      content: "Go";
+    }
+    & ~ .example-code[data-lang="openapi"]::before,
+    & ~ * .example-code[data-lang="openapi"]::before {
+      content: "OpenAPI Specification";
+    }
+  }
+
+  &[value="ts"] ~ .lang-controls label[for="lang-ts"],
+  &[value="kt"] ~ .lang-controls label[for="lang-kt"],
+  &[value="go"] ~ .lang-controls label[for="lang-go"],
+  &[value="openapi"] ~ .lang-controls label[for="lang-openapi"] {
+    /* matches chroma styling colors */
+    background-color: #f0f3f3;
+    @media (prefers-color-scheme: dark) {
+      background-color: #202020;
+    }
+  }
+}
+
+.lang-controls label,
+input[name^="lang"][value="all"]:checked ~ .example-code::before,
+input[name^="lang"][value="all"]:checked ~ * .example-code::before {
+  display: inline-block;
+  font-family: monospace;
+  padding: 0 var(--copy-spacing-sm);
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  background-color: #ccc;
+  @media (prefers-color-scheme: dark) {
+    background-color: #333;
+  }
+}
+
+.lang-controls {
+  display: none;
+}
+
+.lang-controls label {
+  margin-right: var(--copy-spacing-sm);
+
+  &[for="lang-ts"]::before {
+    content: "Typescript";
+  }
+  &[for="lang-kt"]::before {
+    content: "Kotlin";
+  }
+  &[for="lang-go"]::before {
+    content: "Go";
+  }
+  &[for="lang-openapi"]::before {
+    content: "OpenAPI Specification";
+  }
+}
