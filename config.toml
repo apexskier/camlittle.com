@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "Cameron Little's Website"
 
 enableGitInfo = true
+enableRobotsTXT = true
 
 [params]
   description = "A collection of Cameron Little's thoughts and projects."
