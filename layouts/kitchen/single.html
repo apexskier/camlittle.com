@@ -11,17 +11,20 @@
 
     {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
 
-    <p style="display: flex; flex-wrap: wrap;">
+    <div class="full-width kitchen-gallery">
     {{ range .Resources -}}
     {{ if eq .MediaType.MainType "image" -}}
-        <a href="{{ .RelPermalink }}" class="a-no-border" style="margin-bottom: 1em; margin-right: 1em;">
+        <a href="{{ .RelPermalink }}" class="a-no-border">
             {{- partial "img" (dict "Resource" . "height" 300) -}}
         </a>
     {{- end -}}
     {{ if eq .MediaType.MainType "video" -}}
-        <video controls height="300" style="margin-bottom: 1em; margin-right: 1em;" src="{{ .RelPermalink }}" alt="{{ .Title }}"></video>
+        {{/* safari has some weird bugs with video element styling */}}
+        <video controls height="300" style="height: 300px;" alt="{{ .Title }}">
+            <source src="{{ .RelPermalink }}" />
+        </video>
     {{- end -}}
     {{- end -}}
-    </p>
+    </div>
 </article>
 {{ end }}

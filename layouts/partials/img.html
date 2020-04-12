@@ -8,7 +8,11 @@
 {{ if (and (not $h) $w) -}}
 {{ $h = mul $w (div $img.Height (float $img.Width)) -}}
 {{ end -}}
-<picture>
+<!-- <pre>
+    h: {{ $h }}
+    w: {{ $w }}
+</pre> -->
+<picture title="{{ $alt }}">
     {{/* order matters here - but it's behaving in reverse of the equivalent css */ -}}
     {{ partial "imgSource" (dict "img" $img "x" 1200 "h" $h "w" $w ) }}{{/* Laptops (and langer) */}}
     {{ partial "imgSource" (dict "img" $img "x" 992 "h" $h "w" $w ) }}{{/* Tablet-landscape (and larger) */}}
@@ -17,6 +21,7 @@
     <img
         {{ if .height }}height="{{ $h }}"{{ end -}}
         {{ if .width }}width="{{ $w }}"{{ end -}}
+        style="{{ if .height }}height: {{ $h }}px;{{ end }}{{ if .width }}height: {{ $w }}px;{{ end }}"
         src="{{ $img.RelPermalink }}"
         alt="{{ $alt }}"
     />

@@ -828,9 +828,20 @@ footer {
     }
   }
 
-  & img {
+  & img,
+  & video {
     box-shadow: var(--minimal-box-shadow);
     border-radius: 3px;
+  }
+
+  .kitchen-gallery {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      display: block;
+      margin-right: 1em;
+    }
   }
 }
 
