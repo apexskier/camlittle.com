@@ -1,7 +1,7 @@
 ---
 title: "Mozzarella grilled cheese french toast"
 date: 2020-04-02T07:04:58+02:00
-tags: ["kitchen"]
+tags: ["kitchen", "sourdough"]
 recipe_link: 
 recipe_source: 
 

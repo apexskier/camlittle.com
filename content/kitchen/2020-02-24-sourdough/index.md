@@ -1,7 +1,7 @@
 ---
 title: "Sourdough"
 date: 2020-02-24T08:45:43+01:00
-tags: ["kitchen"]
+tags: ["kitchen", "sourdough"]
 
 resources:
 - src: "starter.jpeg"
