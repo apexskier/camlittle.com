@@ -2,7 +2,6 @@
 title: "Sourdough Crêpes Suzette"
 date: 2020-04-12T10:05:07+02:00
 tags: ["kitchen", "sourdough", "its-alive"]
-images: ["09-plated.jpeg"]
 recipe_link: https://www.youtube.com/watch?v=Ze9jxpur47M&t=1716s
 recipe_source: It's Alive | Bon Appétit
 
@@ -23,7 +22,7 @@ resources:
   title: "Crepes in sauce"
 - src: "08-flambe.mov"
   title: "Flambe!"
-- src: "09-plated.jpeg"
+- src: "09-plated-feature.jpeg"
   title: "Plated"
 - src: "10-detail.jpeg"
   title: "Detail"
