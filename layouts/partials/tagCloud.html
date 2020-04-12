@@ -17,7 +17,7 @@
 
     {{ $baseMargin := 4.0 }}
 
-    {{range $key, $val := . -}}
+    {{range $val := . -}}
     {{ $countPercent := div (sub .count $minCount) $countDelta -}}
     {{ $sizePercent := add $minSize (mul $countPercent $sizeDelta) -}}
     {{ $margin := math.Floor (mul $baseMargin $sizePercent) }}
@@ -27,7 +27,7 @@
         data-count-percent="{{ math.Floor (mul $countPercent 10) }}"
     >
         <a
-            href="{{ "tags" | absURL }}/{{ $key | urlize }}/"
+            href="{{ "tags" | absURL }}/{{ .name | urlize }}/"
             style="margin: 0 {{ $margin }}px {{ $margin }}px;"
         >
             {{ .name }}
