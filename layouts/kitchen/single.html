@@ -11,7 +11,7 @@
 
     {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
 
-    <div class="full-width kitchen-gallery">
+    <div class="kitchen-gallery">
     {{ range .Resources -}}
     {{ if eq .MediaType.MainType "image" -}}
         <a href="{{ .RelPermalink }}" class="a-no-border">
