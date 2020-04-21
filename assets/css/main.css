@@ -411,8 +411,8 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 1em;
-  margin-bottom: var(--copy-spacing-sm);
+  margin-top: var(--copy-spacing);
+  margin-bottom: 1rem;
   font-weight: 400;
 }
 
