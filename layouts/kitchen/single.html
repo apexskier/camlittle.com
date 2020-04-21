@@ -3,10 +3,11 @@
 <article class="post-content">
     <h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
 
+    {{ $absRelPermalink := printf "/%s" $.RelPermalink }}
     {{ $images := slice -}}
-    {{ $imageMatches := findRE "src=['\"](\\.\\/.+?)['\"]" .Content -}}
+    {{ $imageMatches := findRE "src=['\"](.+?)['\"]" .Content -}}
     {{ range $imageMatches -}}
-    {{ $val := strings.TrimLeft "./" (substr . 5 (sub (len .) 6)) -}}
+    {{ $val := strings.TrimLeft $absRelPermalink (substr . 5 (sub (len .) 6)) -}}
     {{ with $.Resources.GetMatch $val -}}
     {{ $images = $images | append . -}}
     {{ end -}}

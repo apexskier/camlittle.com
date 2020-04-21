@@ -39,7 +39,7 @@ Overall, this was a very rewarding experience, both in tastiness and sheer amoun
 
 {{< gallery "assembling.jpeg" "table photo.jpeg" >}}
 
-<img src="./final cake.jpeg" alt="The final product" height="500" />
+<img src="final cake.jpeg" alt="The final product" height="500" />
 
 ---
 
