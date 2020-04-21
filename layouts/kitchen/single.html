@@ -3,6 +3,15 @@
 <article class="post-content">
     <h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
 
+    {{ $images := slice -}}
+    {{ $imageMatches := findRE "src=['\"](\\.\\/.+?)['\"]" .Content -}}
+    {{ range $imageMatches -}}
+    {{ $val := strings.TrimLeft "./" (substr . 5 (sub (len .) 6)) -}}
+    {{ with $.Resources.GetMatch $val -}}
+    {{ $images = $images | append . -}}
+    {{ end -}}
+    {{ end -}}
+
     {{if .Params.recipe_link -}}
     <p class="kitchen-source">
         <a href="{{ .Params.recipe_link }}" target="_blank">Recipe{{if .Params.recipe_source }} from {{ .Params.recipe_source }}{{ end }}</a>
@@ -12,7 +21,8 @@
     {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
 
     <div class="kitchen-gallery">
-    {{ range .Resources -}}
+    {{/* Emit a gallery of the images that weren't in the post body */ -}}
+    {{ range $images | symdiff .Resources -}}
     {{ if eq .MediaType.MainType "image" -}}
         <a href="{{ .RelPermalink }}" class="a-no-border">
             {{- partial "img" (dict "Resource" . "height" 300) -}}
