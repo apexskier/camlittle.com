@@ -2,6 +2,7 @@
 title: Apps
 url: /apps/
 menu: main
+tags: ["apps"]
 ---
 
 [GPX to Photos](https://apps.apple.com/us/app/gpx-to-photos/id1403201208)
