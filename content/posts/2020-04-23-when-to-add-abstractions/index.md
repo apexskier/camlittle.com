@@ -1,7 +1,7 @@
 ---
 title: "When should you add abstraction?"
 slug: "when-to-add-abstractions"
-date: 2020-04-23 17:44:00 -0100
+date: 2020-04-23T17:44:00+02:00
 tags: ["tech", "philosophy", "api-design"]
 ---
 
