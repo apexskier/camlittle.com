@@ -1,16 +1,8 @@
 ---
-title: "When is magic useful?"
-slug: "abstraction"
-date: 2020-03-08 16:30:00 -0100
+title: "When should you add abstraction?"
+slug: "when-to-add-abstractions"
+date: 2020-04-23 17:44:00 -0100
 tags: ["tech", "philosophy", "api-design"]
-draft: true
----
-
-Alternate titles:
-
-* When is magic useful?
-* Layers of abstraction
-
 ---
 
 I've made the mistake of adding layers of abstraction too early several times
