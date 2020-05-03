@@ -5,7 +5,7 @@ menu: main
 tags: ["tech"]
 ---
 
-I've been using a system for naming my devices several years now, starting from when I learned about computer naming schemes at ResTek[^1]. I've taken inspiration from [RFC 1178 - "Choosing a Name for Your Computer"](https://tools.ietf.org/html/rfc1178)[^2].
+I've been using a system for naming my devices several years now, starting when I learned about computer naming schemes at ResTek[^1]. I've taken inspiration from [RFC 1178 - "Choosing a Name for Your Computer"](https://tools.ietf.org/html/rfc1178)[^2].
 
 This page exists to document my current and historical names.
 
