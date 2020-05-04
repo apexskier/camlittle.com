@@ -2,7 +2,7 @@
 title: "Levels of understanding"
 slug: "levels-of-understanding"
 date: 2020-03-26T20:56:07+01:00
-tags: ["tech", "philosophy"]
+tags: ["philosophy"]
 ---
 
 Over my time working in the real world I've learned a lot about what it means to actually understand something. Naturally, this includes realizing that I don't understand everything as well as I'd like to. I've also learned a lot about the process of learning, which has given me insights that have helped me grow faster along the way.
