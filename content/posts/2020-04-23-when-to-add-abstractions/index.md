@@ -13,7 +13,7 @@ needing to change consumer behavior.
 
 The issue is that I can't see the future. It's close to impossible to
 understand the details of the future use cases I'm building for, and more often
-than not I'm going to get it not quite right. Once that happens, the work I put
+then not I'm going to get it not quite right. Once that happens, the work I put
 in building my abstraction layer is far less valuable and it often gets in the
 way, making my job harder.
 
