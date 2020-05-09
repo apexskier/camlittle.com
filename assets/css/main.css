@@ -426,6 +426,42 @@ h1 {
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+
+  & .heading-link {
+    border-bottom: none;
+
+    &::before {
+      opacity: 0;
+      content: "🔗";
+      font-size: 12px;
+      position: absolute;
+      transform: translateX(-100%);
+      padding: 4px;
+      height: 100%;
+      box-sizing: border-box;
+      transition: opacity 60ms ease-in-out;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    & .heading-link::before {
+      opacity: 1;
+    }
+  }
+
+  &:target .heading-link {
+    display: none;
+  }
+}
+
 h2,
 h3,
 h4,
