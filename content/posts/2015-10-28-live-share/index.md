@@ -2,7 +2,7 @@
 title: "Live Share"
 slug: "live-share"
 date: 2015-10-28 11:15:00 -0700
-tags: ["tech", "apps"]
+tags: ["tech", "apps", "project"]
 ---
 
 <img src="thumbnail.jpg" alt="Live Share icon" style="float: right;margin-left: 12px;">

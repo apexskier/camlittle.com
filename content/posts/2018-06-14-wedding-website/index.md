@@ -2,7 +2,7 @@
 title: "Wedding Website"
 slug: "wedding-website"
 date: 2018-06-14 00:00:00 -0700
-tags: ["tech", "web"]
+tags: ["tech", "web", "project"]
 ---
 
 I'm getting married!

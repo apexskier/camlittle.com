@@ -1,7 +1,7 @@
 ---
 title: "How to bake your own wedding cake"
 date: 2020-03-22T17:27:25+01:00
-tags: ["kitchen"]
+tags: ["kitchen", "project"]
 ---
 
 I [got married](http://localhost:1313/posts/wedding-website/) last May (2019), and one of my main duties was making our wedding cake, which was a big undertaking.
