@@ -1,7 +1,9 @@
 ---
 title: Projects
 url: /projects/
-menu: main
+menu: 
+  main:
+    identifier: projects
 tags: ["apps"]
 ---
 
@@ -34,3 +36,5 @@ tags: ["apps"]
 ## And even more
 
 You can see more dead projects on [my GitHub profile](https://github.com/apexskier?tab=repositories&type=source).
+
+{{< subMenu >}}

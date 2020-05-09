@@ -1,7 +1,9 @@
 ---
 title: Video
 url: /video/
-menu: main
+menu: 
+  main:
+    parent: projects
 ---
 
 [Vimeo](https://vimeo.com/apexskier)

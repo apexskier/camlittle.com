@@ -1,0 +1,9 @@
+{{ $result := "" }}
+
+{{ range .Menus }}
+{{ with partial "findMenuEntryInMenu" (dict "Page" $.Page "Menu" .) }}
+{{ $result = . }}
+{{ end }}
+{{ end }}
+
+{{ return $result }}

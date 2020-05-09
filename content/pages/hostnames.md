@@ -1,7 +1,9 @@
 ---
 title: Hostnames
 url: /hostnames/
-menu: main
+menu: 
+  main:
+    parent: about
 tags: ["tech"]
 ---
 

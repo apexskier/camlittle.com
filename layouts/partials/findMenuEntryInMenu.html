@@ -1,0 +1,13 @@
+{{ $result := "" }}
+
+{{ range .Menu }}
+{{ if eq .Page $.Page }}
+{{ $result = . }}
+{{ else }}
+{{ with partial "findMenuEntryInMenu" (dict "Page" $.Page "Menu" .Children ) }}
+{{ $result = . }}
+{{ end }}
+{{ end }}
+{{ end }}
+
+{{ return $result }}
