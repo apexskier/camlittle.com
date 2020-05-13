@@ -262,12 +262,12 @@ body {
 */
 
 *:target {
-  display: inline-block;
   border-radius: 3px;
   background-color: var(--text);
   color: var(--background);
   padding: var(--copy-spacing-sm) 0.4em;
   box-shadow: var(--highlight-box-shadow);
+  width: max-content;
 
   & a {
     &,
@@ -333,51 +333,6 @@ li:target {
 
       &:hover {
         color: var(--text-hover);
-      }
-    }
-  }
-
-  & nav {
-    display: inline-block;
-    line-height: 0;
-
-    &:target {
-      border-radius: 3px;
-      background-color: var(--text);
-      padding: calc(var(--copy-spacing-sm) * 2);
-
-      & a {
-        &,
-        &:focus,
-        &:hover {
-          & svg path {
-            fill: var(--background);
-          }
-        }
-      }
-    }
-
-    & svg {
-      height: 20px;
-
-      & path {
-        fill: var(--text);
-      }
-    }
-
-    & a {
-      padding-right: 0.5em;
-      display: inline-block;
-
-      &:last-child {
-        padding-right: 0;
-      }
-
-      &:focus,
-      &:hover {
-        & svg path {
-          fill: var(--text-hover);
-        }
       }
     }
   }
@@ -503,7 +458,7 @@ input[type="submit"] {
 }
 
 #sidebar nav,
-#primary-header nav,
+nav.social-links,
 nav.pagination-nav {
   color: var(--text);
   font-size: 120%;
@@ -558,6 +513,51 @@ nav.pagination-nav {
       text-decoration: underline;
       color: var(--text-hover);
       border-bottom: none;
+    }
+  }
+}
+
+nav.social-links {
+  display: inline-block;
+  line-height: 0;
+
+  &:target {
+    border-radius: 3px;
+    background-color: var(--text);
+    padding: calc(var(--copy-spacing-sm) * 2);
+
+    & a {
+      &,
+      &:focus,
+      &:hover {
+        & svg path {
+          fill: var(--background);
+        }
+      }
+    }
+  }
+
+  & svg {
+    height: 20px;
+
+    & path {
+      fill: var(--text);
+    }
+  }
+
+  & a {
+    padding-right: 0.5em;
+    display: inline-block;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &:focus,
+    &:hover {
+      & svg path {
+        fill: var(--text-hover);
+      }
     }
   }
 }
