@@ -1,3 +1,31 @@
 User-agent: *
 
 Sitemap: {{ "sitemap.xml" | absURL }}
+
+# ::::-----------.............................................................----
+# :::-------------...............................................................-
+# ::-------------.................................................................
+# :-------------..................................................................
+# ------------....................................................................
+# ----------......................................................................
+# --------........................................................................
+# -------.........................................................................
+# ------......................................................`````````````.......
+# -----......................`````````````````````````````````````````````````````
+# .............```````````````````````````````````````````````````````````````````
+# ...........```````````````````````````````````````````.-...::./:.```````````````
+# -.............`````````````````` `      `````````````+hdyyyhhshys/-`````````````
+# -----...........``````.```..-.```` ``    ````````../ymdmdmdddyhhhys.````````````
+# -------...------.....--.......-:-.````  `````./ooyhddmmmmmmmddhhdhyys:-.```````.
+# ::----:::/so++//::::+so+++:/yyddhyo/+/+oyyy+/+syossssdmmmmmmmmmddhdhddyys++-.``.
+# hysssyyyhhdhhhysyhyssosyyyhhddmmdyydddhmmmdhyo+::--+oshdmdddddmdddddddhhhhdhy/:/
+# ddhddddhdddhdhyyhhhdyyhhyydddddmmddddddddmhdddhsssossooyydmddhdmmmdyyhddhyyhhddh
+# NmdddhhhhdhhdhysyyddhyhhyshhyyydmdmhhhdmhmdhhhmmNmdmmhsymmmNmmdmNNmdhhmmmdhdmmmm
+# hdhdmdddddhsyhyosyyhhyhhyohdhsyhdddmhydmdmdhhydhmmmNNNmmmmddmddddmmmNNNNNNNNmddd
+# dmmmmmNNmdhdhmhoooosyydmssosssyydhmNmhmdNmmmmdyhhhhdmNNmdmNNmhhhhhhhNNNNNNNNmdyd
+# yyydddmdddddmmmddo++oohyssshyyhdNdmmdmNNNmmdddhmddhmdmmmmdmmmNmmddhhNNNNNNmmmhyd
+# ooossyyhdmmmmmmdmhshddddhmNNNmyhdhddNNNNNNmddhydyyhddmNmdmmmdmmdhdmNmmmdmddmmdmm
+# oosydmmNNNmNmhdddddmmhmddmNNmhhdmdNNNNmNNNNmdddmhyhhhyhhhmddhhhdyhhmmdyhddddhhyy
+# NmmMNNmNNmmNmdmNNNNNmdmdddddhyyhhdhyymNNNNNNNNmddmddhhhyhhhhhhdysydhyhyyyyhysoos
+# MMNNdmddmdhddmdmmNmmdmddyyyysyhhhhhmmNNNmmNMNNMNNmmmddo/++shysyydddmdmdhyoooossy
+# MMNmhhhyyssossyhyysyshhmdhyhdmmNmdmmmNmmmNNMMMNNmmmmhyyyssssssyNmNNNNNms++oooyyh

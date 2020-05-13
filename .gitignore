@@ -1,4 +1,5 @@
 node_modules/
 _gen/
 public/
+resources/
 assets/css/highlight_*

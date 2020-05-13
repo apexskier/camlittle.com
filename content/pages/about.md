@@ -8,7 +8,7 @@ menu:
 
 I’m a software engineer at [Remitly](https://grnh.se/3c4028751) where I’m
 working on our international product team. I recently moved to
-[Kraków, Poland](https://aackleinkrakow.blogspot.com) with
+[Kraków, Poland 🇵🇱](https://aackleinkrakow.blogspot.com) with
 [my wife](https://cameronandaisha.love) to help start our new European
 engineering office. I graduated with a degree in Computer Science from Western
 Washington University, where I worked for
