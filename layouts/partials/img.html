@@ -1,17 +1,28 @@
-{{ $img := default .Resource -}}
+{{ $img := .Resource -}}
 {{ $alt := default $img.Title .alt -}}
+{{ if eq $img.MediaType.MainType "video" -}}
+{{/* safari has some weird bugs with video element styling */ -}}
+<video autoplay controls height="300" style="height: 300px;" alt="{{ $alt }}">
+    <source src="{{ $img.RelPermalink }}" />
+</video>
+{{ else -}}
 {{ $h := default $img.Height .height -}}
 {{ $w := default $img.Width .width -}}
+{{/* don't use larger dimensions than intrinsic */ -}}
+{{ if gt $h $img.Height -}}
+{{ $h = $img.Height -}}
+{{ end -}}
+{{ if gt $w $img.Width -}}
+{{ $w = $img.Width -}}
+{{ end -}}
+{{/* get width if only height explicitly specified */ -}}
 {{ if (and (not $w) $h) -}}
 {{ $w = mul $h (div $img.Width (float $img.Height)) -}}
 {{ end -}}
+{{/* get height if only width explicitly specified */ -}}
 {{ if (and (not $h) $w) -}}
 {{ $h = mul $w (div $img.Height (float $img.Width)) -}}
 {{ end -}}
-<!-- <pre>
-    h: {{ $h }}
-    w: {{ $w }}
-</pre> -->
 <picture title="{{ $alt }}">
     {{/* order matters here - but it's behaving in reverse of the equivalent css */ -}}
     {{ partial "imgSource" (dict "img" $img "x" 1200 "h" $h "w" $w ) }}{{/* Laptops (and langer) */}}
@@ -21,8 +32,9 @@
     <img
         {{ if .height }}height="{{ $h }}"{{ end -}}
         {{ if .width }}width="{{ $w }}"{{ end -}}
-        style="{{ if .height }}height: {{ $h }}px;{{ end }}{{ if .width }}height: {{ $w }}px;{{ end }}"
+        style="{{ if .height }}max-height: {{ $h }}px;{{ end }}{{ if .width }}max-width: {{ $w }}px;{{ end }}"
         src="{{ $img.RelPermalink }}"
         alt="{{ $alt }}"
     />
 </picture>
+{{- end -}}

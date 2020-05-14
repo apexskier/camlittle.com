@@ -2,17 +2,19 @@
 <html lang="{{ .Site.Language }}">
     {{- partial "head.html" . -}}
     <body>
-        <div id="container">
-            <div id="content">
-                <div id="headerish">
-                    {{- partial "header.html" . -}}
-                    {{- partial "primaryNavigation.html" . -}}
+        <div id="wrapper">
+            <div id="container">
+                <div id="content">
+                    <div id="headerish">
+                        {{- partial "header.html" . -}}
+                        {{- partial "primaryNavigation.html" . -}}
+                    </div>
+    
+                    <main id="main">{{- block "main" . }}{{- end }}</main>
                 </div>
-
-                <main id="main">{{- block "main" . }}{{- end }}</main>
+    
+                {{- partial "footer.html" . -}}
             </div>
-
-            {{- partial "footer.html" . -}}
         </div>
     </body>
 </html>

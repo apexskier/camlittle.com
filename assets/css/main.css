@@ -192,22 +192,30 @@ a {
 }
 
 html {
+  scroll-behavior: smooth;
+
   &::before {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
+    z-index: -1;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
     content: "";
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-color: rgba(255, 165, 0, 0.08) transparent transparent transparent;
-    border-width: 300px 300px 0 0;
+
+    /* blueprint - https://codepen.io/matteodesanti/pen/PmQKmV */
+    background-color: #06c;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.2) 2px,
+        transparent 2px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.2) 2px, transparent 1px),
+      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
   }
 }
 
 body {
-  scroll-behavior: smooth;
   background-color: var(--background);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -215,6 +223,32 @@ body {
   font-size: 16px;
   line-height: 1.4;
   margin: 0;
+  min-height: 100vh;
+}
+
+#wrapper {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: var(--background);
+  /* orange triangle, this used to be a pseudo element, but I want it relative to the body, not #container and I don't want it to overlay content */
+  background-image: linear-gradient(
+      45deg,
+      transparent 25%,
+      transparent 25%,
+      transparent 75%,
+      transparent 75%,
+      transparent
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(255, 165, 0, 0.08) 75%,
+      rgba(255, 165, 0, 0.08)
+    );
+  background-size: 600px 600px;
+  background-repeat: no-repeat;
 }
 
 /* Media query debugging... (used for responsive image testing) */
@@ -301,7 +335,6 @@ li:target {
   max-width: 1024px;
   margin: 0 auto;
   padding: 1.5em;
-  perspective: 100px;
 }
 
 #primary-header {
@@ -334,7 +367,7 @@ li:target {
         color: var(--text-hover);
       }
     }
-    
+
     & img {
       border-radius: 100%;
       border-top-left-radius: 0;
@@ -684,8 +717,13 @@ main {
     }
   }
 
-  & p img:last-child {
-    margin-bottom: 0;
+  & p {
+    & img,
+    & video {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   & .post-gallery {
