@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width">
+		<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		:root {
+			--ghost-box-size: 38px;
+			--shadow-size-y: 10px;
+		}
+		
+		html {
+			background-color: #fffc00; /* _snap_ */
+			height: calc(100% - var(--shadow-size-y));
+		}
+		body {
+			/* not supported */
+			margin-top: calc(var(--shadow-size-y) - var(--ghost-box-size));
+			/* this can't be the exact ghost box size because the browser will clip my box-shadow if it's in overscroll area */
+			/* margin-top: -28px; */
+			height: 100%;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+		}
+		p {
+			margin-bottom: 12px;
+		}
+		#wrapper {
+			background-color: white;
+			z-index: 2;
+			margin-bottom: var(--shadow-size-y);
+			min-height: calc(100% - var(--shadow-size-y));
+			padding-bottom: env(safe-area-inset-bottom);
+			padding-top: env(safe-area-inset-top);
+			padding-left: env(safe-area-inset-left);
+			padding-right: env(safe-area-inset-right);
+		}
+		#wrapper:active {
+			background-color: red;
+		}
+		#wrapper::before {
+			content: "";
+			box-shadow: 0 0 var(--shadow-size-y) rgba(0, 0, 0, 0.2);
+			width: 100%;
+			height: calc(100% - 2*var(--shadow-size-y));
+			position: absolute;
+			z-index: -2;
+		}
+		#content {
+			padding: 16px;
+			font-size: 20px;
+			text-align: center;
+		}
+		#ghost {
+			z-index: -1;
+			width: 100vw;
+			height: var(--ghost-box-size);
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+		}
+		#hands-wrapper {
+			position: sticky;
+			width: 0;
+			height: 0;
+			z-index: -1;
+			transform: translateY(12px);
+			top: 10px;
+		}
+		#body-wrapper {
+			position: sticky;
+			width: 0;
+			height: 0;
+			z-index: -1;
+			transform: translateY(11px);
+			top: 10px;
+			bottom: 85vh;
+		}
+		#fly-guy-wrapper {
+			position: sticky;
+			width: 0;
+			height: 0;
+			z-index: -1;
+			transform: translateY(11px);
+			top: 10px;
+			bottom: 85vh;
+			display: none;
+		}
+		svg {
+			display: block;
+		}
+		#hands, #body, #fly-guy {
+			z-index: -1;
+			transform: translateX(-50%);
+		}
+		</style>
+	</head>
+	<body tabindex="0">
+		<div id="ghost">
+			<div id="body-wrapper">
+				<svg id="body" width="35" height="28" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M33.904 27.5c-1.115-1.513-1.199-3.214-1.002-8.322.067-1.755.098-2.989.098-4.414C33 7.444 25.5.5 17.5.5S2 7.444 2 14.764c0 1.425.031 2.66.098 4.414.197 5.108.113 6.81-1.002 8.322h32.808z" stroke="#000" fill="#FFF"/><ellipse fill="#000" cx="10" cy="13.5" rx="2" ry="2.5"/><ellipse fill="#000" cx="25" cy="13.5" rx="2" ry="2.5"/><path d="M9 19c0 2 4.25 4 8.5 4s8.5-2 8.5-4" stroke="#000" stroke-linecap="round"/></g></svg>
+			</div>
+			<div id="hands-wrapper">
+				<svg id="hands" width="47" height="7" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" stroke="#000" fill-rule="evenodd"><ellipse cx="5" cy="3.5" rx="4.5" ry="3"/><ellipse cx="42" cy="3.5" rx="4.5" ry="3"/></g></svg>
+			</div>
+			<div id="fly-guy-wrapper">
+				<svg id="fly-guy" width="56" height="91" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient x1="50%" y1="98.952%" x2="50%" y2="0%" id="b"><stop stop-opacity="0" offset="0%"/><stop offset="100%"/></linearGradient><linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="c"><stop stop-color="#DE1B19" offset="0%"/><stop stop-color="#E2191A" offset="18.707%"/><stop stop-color="#FFDB00" offset="19.456%"/><stop stop-color="#FFDB05" offset="38.24%"/><stop stop-color="#2AF03F" offset="39.225%"/><stop stop-color="#2BF13A" offset="59.878%"/><stop stop-color="#0DCDF0" offset="60.26%"/><stop stop-color="#03D0F0" offset="79.858%"/><stop stop-color="#8641A1" offset="80.068%"/><stop stop-color="#82429D" offset="100%"/></linearGradient><path id="a" d="M20 23h15v69H20z"/></defs><g fill="none" fill-rule="evenodd"><path d="M43.174 32.439v-.002s0 0 0 0zm0-.002s0 0 0 0l-.001-.002c-.552-1.15-.664-2.186-.3-3.066.53-1.285 1.618-1.875 3.87-2.61.42-.136.591-.195.758-.262 1.622-.658 2.213-1.292 2.203-1.82-.007-.377-.391-.8-1.05-1.04l-.02-.009a2.02 2.02 0 00-.774-.15c-.23 0-.453.039-.627.122-1.061.51-2.041.79-2.954.825-.122-.005-.398-.049-1.028-.157l-.39-.067-.025-.395c-.064-1.043-.052-1.563.066-4.628.067-1.755.098-2.989.098-4.414C43 7.444 35.5.5 27.5.5S12 7.444 12 14.764c0 1.425.031 2.66.098 4.414.121 3.153.133 3.712.055 4.785l-.033.454-.454.01-.118.003c-.92 0-1.96-.282-3.098-.83a1.014 1.014 0 00-.438-.085c-.772 0-1.606.52-1.706 1.06-.099.536.418 1.201 2.193 1.922.167.068.333.125.757.263 2.25.733 3.34 1.324 3.87 2.61.365.88.252 1.917-.293 3.051l-.007.015-.002.005c-.153.366-.42.923-.805 1.61a22.004 22.004 0 01-2.227 3.25c-2.472 2.984-5.53 5.04-9.213 5.663-.045.007-.082.055-.079.113a.56.56 0 00.044.182c.362.871 2.382 1.791 6.72 2.48.722.113.91.58 1.264 2.248.133.625.204.93.31 1.3.059.21.108.238.337.238.211 0 .45-.039 1.08-.165.254-.051.376-.075.536-.105a14.215 14.215 0 012.723-.272c.771 0 1.567.07 2.366.205 1.137.195 2.165.698 3.482 1.602.299.205.535.374 1.072.764 3.043 2.21 4.588 2.946 7.212 2.946.079 0 .16-.003.304-.01.142.006.275.01.403.01 2.625 0 4.17-.736 7.217-2.95 2.15-1.56 3.124-2.118 4.55-2.362a14.166 14.166 0 012.366-.205c1.134 0 2.067.115 3.26.354.472.096.839.143 1.079.143h.065c.176 0 .22-.034.272-.216.108-.374.187-.711.31-1.29.35-1.649.552-2.129 1.264-2.241 4.336-.688 6.359-1.608 6.72-2.476a.543.543 0 00.044-.18c.003-.059-.035-.107-.08-.115-3.683-.623-6.743-2.678-9.213-5.663a21.986 21.986 0 01-2.227-3.25 16.055 16.055 0 01-.806-1.61z" stroke="#000" fill="#FFFFFE"/><ellipse fill="#000" cx="20" cy="13.5" rx="2" ry="2.5"/><ellipse fill="#000" cx="35" cy="13.5" rx="2" ry="2.5"/><path d="M19.026 19h16.948c.332 4.667-2.493 7-8.474 7s-8.806-2.333-8.474-7z" stroke="#000" fill="#FE84A3" stroke-linejoin="round"/><mask id="d" fill="#fff"><use xlink:href="#a"/></mask><use fill="url(#b)" xlink:href="#a"/><path fill="url(#c)" mask="url(#d)" d="M20 23h15v69H20z"/></g></svg>
+			</div>
+		</div>
+		<div id="wrapper">
+			<div id="content">
+				<p><b>pull down ⬇</b></p>
+				<p>Fun css tricks in the overflow area.</p>
+				<p>Only confirmed working on iOS 13.4 Safari.</p>
+			</div>
+		</div>
+	</body>
+</html>

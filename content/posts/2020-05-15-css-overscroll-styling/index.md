@@ -1,6 +1,6 @@
 ---
 title: "Css Overscroll Styling"
-date: 2020-05-14T08:32:52+02:00
+date: 2020-05-15T20:32:52+02:00
 tags: ["tech", "web", "css", "tutorial"]
 ---
 
@@ -124,3 +124,13 @@ However, the browser support is pretty limited. As discovered above, desktop bro
 Unfortunately, there's some glitchy behavior on desktop Safari where the background texture shows through un-rendered content.
 
 ![Glitches in desktop Safari](glitchy.mov)
+
+### Bonus!
+
+We can use a hidden element and `position: sticky` to emulate snapchat's pull-to-refresh ghost animation with pure CSS.
+
+![The real thing in snapchat](snapchat-demo.mov)
+
+![My reproduction](css-snapchat-demo.mov)
+
+[Try it here](snap-ghost.html)

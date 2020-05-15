@@ -251,6 +251,19 @@ body {
   background-repeat: no-repeat;
 }
 
+#easter-bun {
+  position: sticky;
+  text-align: center;
+  z-index: -1;
+  top: 150px;
+  height: 0px;
+  transform: translateY(-40px); /* height of image + lower padding */
+}
+
+#easter-bun img {
+  z-index: -1;
+}
+
 /* Media query debugging... (used for responsive image testing) */
 /*
 @media (min-width: 480px) {
