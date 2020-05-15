@@ -1,0 +1,15 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : false,
+      "script" : ".\/build.sh"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : ".\/dev.sh"
+    }
+  },
+  "identifier" : "0B5BD871-A151-4EE7-8355-46F10A10EE27",
+  "openLogOnRun" : "start",
+  "persistent" : true
+}

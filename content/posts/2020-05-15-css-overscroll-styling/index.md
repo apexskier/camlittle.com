@@ -6,7 +6,7 @@ tags: ["tech", "web", "css", "tutorial"]
 
 You may have heard about the [`overscroll-behavior`](https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior) css property. It allows you to disable the default behavior when someone scrolls beyond the bounds of your website.
 
-![Basic overscroll behavior](basic-overscroll.mov)
+![Basic overscroll behavior](basic-overscroll.mp4)
 
 But maybe you don't want to disable that nice physics interaction and want to have some fun with it instead. The goal here is to use css to add some sort of "hidden" content in the background of the site that's only visible when over-scrolling.
 
@@ -45,7 +45,7 @@ body {
 }
 ```
 
-![no overscroll behavior](no-overscroll.mov)
+![no overscroll behavior](no-overscroll.mp4)
 
 2. Add fake fixed elements that don't scroll
 
@@ -79,11 +79,11 @@ body {
 
 Well, not really. On desktop, even `position: fixed` and `position: sticky` won't scroll into the overflow area, just like a `background-image` of `<html>`. Another issue is that html pseudo elements display _above_ the background of the `<body>`. Generally, a pseudo element follows the standard [stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context): `body { background-color: white }` _should_ cover pseudo elements of `<html>` the same as it covers `<html>`.
 
-![desktop pseudo element overscroll behavior](desktop-pseudo-elements.mov)
+![desktop pseudo element overscroll behavior](desktop-pseudo-elements.mp4)
 
 However, this confirms that iOS _doesn't_ scroll fixed content when overscrolling. The body background issue persists though.
 
-![ios pseudo element overscroll behavior](ios-pseudo-elements.mov)
+![ios pseudo element overscroll behavior](ios-pseudo-elements.mp4)
 
 3. Add a wrapper element
 
@@ -119,18 +119,18 @@ html::before {
 
 However, the browser support is pretty limited. As discovered above, desktop browsers scroll `fixed` elements during overscroll, meaning they're not "revealed" like I want. In iOS Safari, however, it's a pretty nice effect.
 
-![Final effect](final-effect.mov)
+![Final effect](final-effect.mp4)
 
 Unfortunately, there's some glitchy behavior on desktop Safari where the background texture shows through un-rendered content.
 
-![Glitches in desktop Safari](glitchy.mov)
+![Glitches in desktop Safari](glitchy.mp4)
 
 ### Bonus!
 
 We can use a hidden element and `position: sticky` to emulate snapchat's pull-to-refresh ghost animation with pure CSS.
 
-![The real thing in snapchat](snapchat-demo.mov)
+![The real thing in snapchat](snapchat-demo.mp4)
 
-![My reproduction](css-snapchat-demo.mov)
+![My reproduction](css-snapchat-demo.mp4)
 
 [Try it here](snap-ghost.html)
