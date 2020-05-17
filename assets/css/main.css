@@ -251,17 +251,26 @@ body {
   background-repeat: no-repeat;
 }
 
-#easter-bun {
+.easter-bun {
   position: sticky;
   text-align: center;
   z-index: -1;
-  top: 150px;
   height: 0px;
-  transform: translateY(-40px); /* height of image + lower padding */
 }
-
-#easter-bun img {
+.easter-bun img {
   z-index: -1;
+}
+#easter-bun {
+  top: 150px;
+  transform: translateY(-40px); /* height of image */
+}
+#easter-bun-paws {
+  top: 120px;
+  transform: translateY(-40px); /* height of image */
+}
+#easter-bun-butt {
+  bottom: 150px;
+  transform: translateY(-5px); /* ??? */
 }
 
 /* Media query debugging... (used for responsive image testing) */

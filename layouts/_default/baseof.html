@@ -2,9 +2,11 @@
 <html lang="{{ .Site.Language }}">
     {{- partial "head.html" . -}}
     <body>
-        <div id="easter-bun">
-            <!-- Rabbit by Freepik (https://www.flaticon.com/authors/freepik) from Flaticon (www.flaticon.com) -->
-            <img src="/easter-bunny.svg" />
+        <div id="easter-bun" class="easter-bun">
+            <img src="/easter-bunny-top.svg" height="40" />
+        </div>
+        <div id="easter-bun-paws" class="easter-bun">
+            <img src="/easter-bunny-paws.svg" height="40" />
         </div>
         <div id="wrapper">
             <div id="container">
@@ -19,6 +21,9 @@
     
                 {{- partial "footer.html" . -}}
             </div>
+        </div>
+        <div id="easter-bun-butt" class="easter-bun">
+            <img src="/easter-bunny-butt.svg" height="16" />
         </div>
     </body>
 </html>
