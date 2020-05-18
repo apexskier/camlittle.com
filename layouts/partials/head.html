@@ -16,11 +16,11 @@
     <meta name="viewport" content="width=device-width">
     <link rel="canonical" href="{{ .Permalink }}">
 
-    {{ $style := resources.Get "css/main.css" | postCSS | toCSS | minify | fingerprint }}
+    {{ $style := resources.Get "css/main.css" | postCSS | toCSS | minify | fingerprint "md5" }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}">
-    {{ $highlight_light_style := resources.Get "css/highlight_light.css" | toCSS | minify | fingerprint }}
+    {{ $highlight_light_style := resources.Get "css/highlight_light.css" | toCSS | minify | fingerprint "md5" }}
     <link rel="stylesheet" href="{{ $highlight_light_style.RelPermalink }}">
-    {{ $highlight_dark_style := resources.Get "css/highlight_dark.css" | toCSS | minify | fingerprint }}
+    {{ $highlight_dark_style := resources.Get "css/highlight_dark.css" | toCSS | minify | fingerprint "md5" }}
     <link rel="stylesheet" href="{{ $highlight_dark_style.RelPermalink }}" media="(prefers-color-scheme: dark)">
     {{ range .Page.Resources.ByType "css" -}}
     {{ $style := . | postCSS | toCSS | minify | fingerprint -}}

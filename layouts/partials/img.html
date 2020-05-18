@@ -3,7 +3,7 @@
 {{ if eq $img.MediaType.MainType "video" -}}
 {{/* safari has some weird bugs with video element styling */ -}}
 <video autoplay controls height="300" style="height: 300px;" alt="{{ $alt }}">
-    {{ with $img | resources.Fingerprint "md5" }}
+    {{ with $img | fingerprint "md5" }}
     <source src="{{ .RelPermalink }}" />
     {{ end }}
 </video>
@@ -35,7 +35,7 @@
         {{ if .height }}height="{{ $h }}"{{ end -}}
         {{ if .width }}width="{{ $w }}"{{ end -}}
         style="{{ if .height }}max-height: {{ $h }}px;{{ end }}{{ if .width }}max-width: {{ $w }}px;{{ end }}"
-        {{ with $img | resources.Fingerprint "md5" }}src="{{ $img.RelPermalink }}"{{ end }}
+        {{ with $img | fingerprint "md5" }}src="{{ $img.RelPermalink }}"{{ end }}
         alt="{{ $alt }}"
     />
 </picture>
