@@ -4,11 +4,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
 
-    {{ with .Site.Params.email -}}
-    {{ $baseIcon := printf "//www.gravatar.com/avatar/%s.png" (. | lower | md5 ) -}}
-    <link rel="icon" type="image/png" href="{{ $baseIcon }}?s=32">
-    <link rel="apple-touch-icon" href="{{ $baseIcon }}?s=192">
-    {{ end -}}
+    <link rel="icon" type="image/png" href="/profile.jpg?s=32">
+    <link rel="apple-touch-icon" href="/profile.jpg?s=192">
 
     {{ template "_internal/schema.html" . }}
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">

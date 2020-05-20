@@ -1,24 +1,21 @@
 <header id="primary-header">
     <h1>
         <a href="{{ relref . "/" }}">
-            {{ with .Site.Params.email -}}
-            {{ $baseIcon := printf "//www.gravatar.com/avatar/%s.png" (. | lower | md5 ) -}}
             <picture title="{{ $.Site.Params.Author }}">
                 <source
                     media="(-webkit-min-device-pixel-ratio: 3)"
-                    srcset="{{ $baseIcon }}?s=288"
+                    srcset="/profile.jpg?s=288"
                 />
                 <source
                     media="(-webkit-min-device-pixel-ratio: 2)"
-                    srcset="{{ $baseIcon }}?s=192"
+                    srcset="/profile.jpg?s=192"
                 />
                 <img
                     height="96" width="96"
-                    src="{{ $baseIcon }}?s=96"
+                    src="/profile.jpg?s=96"
                     alt="{{ $.Site.Params.Author }}"
                 />
             </picture>
-            {{ end -}}
         </a>
     </h1>
 </header>
