@@ -4,12 +4,12 @@
     <body>
         <div id="easter-bun" class="easter-bun">
             {{ with resources.Get "bunny/top.svg" | fingerprint "md5" }}
-            <img src="{{ .Permalink }}" height="40" alt="" />
+            <img src="{{ .RelPermalink }}" height="40" alt="" />
             {{ end }}
         </div>
         <div id="easter-bun-paws" class="easter-bun">
             {{ with resources.Get "bunny/paws.svg" | fingerprint "md5" }}
-            <img src="{{ .Permalink }}" height="40" alt="" />
+            <img src="{{ .RelPermalink }}" height="40" alt="" />
             {{ end }}
         </div>
         <div id="wrapper">
@@ -28,7 +28,7 @@
         </div>
         <div id="easter-bun-butt" class="easter-bun">
             {{ with resources.Get "bunny/butt.svg" | fingerprint "md5" }}
-            <img src="{{ .Permalink }}" height="16" alt="" />
+            <img src="{{ .RelPermalink }}" height="16" alt="" />
             {{ end }}
         </div>
     </body>

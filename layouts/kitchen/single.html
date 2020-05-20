@@ -25,7 +25,7 @@
     {{/* Emit a gallery of the images that weren't in the post body */ -}}
     {{ range $images | symdiff .Resources -}}
     {{ if eq .MediaType.MainType "image" -}}
-        <a href="{{ .RelPermalink }}" class="a-no-border">
+        <a href="{{ .RelPermalink }}" class="no-border">
             {{- partial "img" (dict "Resource" . "height" 300) -}}
         </a>
     {{- end -}}

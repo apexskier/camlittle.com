@@ -183,7 +183,7 @@ a {
     border-bottom: 1px dotted;
   }
 
-  &.a-no-border {
+  &.no-border {
     &,
     &:visited {
       border-bottom: none;
@@ -197,7 +197,12 @@ html {
   &::before {
     z-index: -1;
     position: fixed;
-    height: 100vh;
+    /* height: 100vh; */
+    /* this is a weird hack to fix the fact that desktop chrome adds un-accounted for vertical space at the bottom of the page
+       for my bottom bunny image, even though it's contain in a zero-height wrapper.
+       Other browsers (Safari, iOS Safari, Firefox) don't do this, but this doesn't appear to hurt them
+    */
+    height: calc(100vh - 16px);
     width: 100vw;
     content: "";
 
@@ -259,6 +264,8 @@ body {
 }
 .easter-bun img {
   z-index: -1;
+  display: block; /* don't add extra whitespace to height */
+  margin: 0 auto;
 }
 #easter-bun {
   top: 150px;
@@ -270,7 +277,6 @@ body {
 }
 #easter-bun-butt {
   bottom: 150px;
-  transform: translateY(-5px); /* ??? */
 }
 
 /* Media query debugging... (used for responsive image testing) */
