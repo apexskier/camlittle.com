@@ -1,5 +1,5 @@
 ---
-title: "Butternut Squash Pasties"
+title: "Butternut squash pasties"
 date: 2020-02-25T08:39:10+01:00
 tags: ["kitchen"]
 recipe_link: https://www.thekitchn.com/recipe-butternut-squash-sage-a-98771

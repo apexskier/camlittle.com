@@ -1,5 +1,5 @@
 ---
-title: "Sourdough Crêpes Suzette"
+title: "Sourdough crêpes suzette"
 date: 2020-04-12T10:05:07+02:00
 tags: ["kitchen", "sourdough", "its-alive"]
 recipe_link: https://www.youtube.com/watch?v=Ze9jxpur47M&t=1716s

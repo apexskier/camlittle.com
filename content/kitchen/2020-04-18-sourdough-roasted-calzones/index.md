@@ -1,5 +1,5 @@
 ---
-title: "Sourdough Roasted Calzones"
+title: "Sourdough roasted calzones"
 date: 2020-04-21T20:38:41+02:00
 tags: ["kitchen", "sourdough"]
 ---

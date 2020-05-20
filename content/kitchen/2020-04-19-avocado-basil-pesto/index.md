@@ -1,5 +1,5 @@
 ---
-title: "Avocado Basil Pesto"
+title: "Avocado basil pesto"
 date: 2020-04-19T20:34:57+02:00
 tags: ["kitchen"]
 ---
