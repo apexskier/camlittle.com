@@ -1,7 +1,7 @@
 ---
 title: "Avocado basil pesto"
 date: 2020-04-19T20:34:57+02:00
-tags: ["kitchen"]
+tags: ["kitchen", "dinner"]
 ---
 
 Aisha made a quick pesto sauce that was amazing. We put it on pasta, but it was great on crackers as well.

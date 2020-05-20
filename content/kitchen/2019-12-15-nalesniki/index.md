@@ -1,7 +1,7 @@
 ---
 title: "Nalesniki"
 date: 2019-12-15T08:58:35+01:00
-tags: ["kitchen"]
+tags: ["kitchen", "breakfast"]
 recipe_link: https://www.thespruceeats.com/polish-thin-crepes-recipe-1137096
 recipe_source: The Spruce Eats
 

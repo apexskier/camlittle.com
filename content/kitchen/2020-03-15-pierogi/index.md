@@ -1,7 +1,7 @@
 ---
 title: "Pierogi"
 date: 2020-03-15T07:37:14+01:00
-tags: ["kitchen"]
+tags: ["kitchen", "dinner"]
 recipe_link: https://www.kingarthurflour.com/recipes/homemade-pierogi-recipe
 recipe_source: King Arthur Flour
 

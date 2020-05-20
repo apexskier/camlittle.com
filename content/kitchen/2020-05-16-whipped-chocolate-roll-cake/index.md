@@ -1,7 +1,7 @@
 ---
 title: "Whipped chocolate roll cake"
 date: 2020-05-16T19:27:37+02:00
-tags: ["kitchen"]
+tags: ["kitchen", "baking", "dessert"]
 
 resources:
 - src: ""

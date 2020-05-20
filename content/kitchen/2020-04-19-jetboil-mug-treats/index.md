@@ -1,7 +1,7 @@
 ---
 title: "Jetboil Mug Treats"
 date: 2020-04-19T12:40:48+02:00
-tags: ["kitchen", "outdoors"]
+tags: ["kitchen", "outdoors", "baking", "dessert"]
 ---
 
 I'm antsy during this lockdown, so I wanted to share some backcountry baking I did with my Jetboil last July. I'd been wanting to try ultralight baking in the wilderness for a while and decided to try it on a quick overnight trip. After some research, I decided to go with a pre-made microwavable cake mix to maximize my chance of success.

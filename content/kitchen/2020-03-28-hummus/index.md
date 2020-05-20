@@ -1,7 +1,7 @@
 ---
 title: "Hummus"
 date: 2020-03-28T10:45:07+01:00
-tags: ["kitchen"]
+tags: ["kitchen", "snack"]
 
 resources:
 - src: "hummus.jpg"

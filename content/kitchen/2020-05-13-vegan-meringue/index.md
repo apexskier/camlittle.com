@@ -1,7 +1,7 @@
 ---
 title: "Vegan meringue"
 date: 2020-05-13T19:12:50+02:00
-tags: ["kitchen"]
+tags: ["kitchen", "dessert", "baking"]
 recipe_link: https://www.greatbritishchefs.com/recipes/aquafaba-meringues-recipe
 recipe_source: Mildreds Vegan Cookbook
 

@@ -1,7 +1,7 @@
 ---
 title: "Sourdough roasted calzones"
 date: 2020-04-21T20:38:41+02:00
-tags: ["kitchen", "sourdough"]
+tags: ["kitchen", "sourdough", "baking", "dinner"]
 ---
 
 I threw together a 50% hydration sourdough, proofed for 4 or 5 hours, then deflated and rolled into sheets.
