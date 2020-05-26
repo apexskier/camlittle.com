@@ -3,7 +3,7 @@ title: To learn
 url: /to-learn/
 menu: 
   main:
-    parent: about
+    parent: projects
 ---
 
 Things I want to learn more about, get better at, or just play with.
