@@ -9,6 +9,6 @@
 
 <article class="post-content">
     {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
-    {{ partial "chaser" . }}
+    {{ partial "single/chaser" . }}
 </article>
 {{ end }}
