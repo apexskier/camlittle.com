@@ -13,7 +13,7 @@
             {{- end -}}
         </li>
         {{ end }}
-        {{ range ((where .Site.Pages "Kind" "section").Reverse | append (where .Site.Pages "Kind" "taxonomyTerm")) }}
+        {{ range ((where .Site.Pages "Params.rss" true) | append (where .Site.Pages "Kind" "taxonomyTerm")) }}
         {{ if ne .Type "pages" }}
         <li>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
