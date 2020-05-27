@@ -1,4 +1,4 @@
-{{ $absRelPermalink := printf "/%s" $.RelPermalink }}
+{{ $absRelPermalink := printf "/%s" $.RelPermalink -}}
 {{ $images := slice -}}
 {{ $imageMatches := findRE "src=['\"](.+?)['\"]" .Content -}}
 {{ range $imageMatches -}}
@@ -9,14 +9,14 @@
 {{ end -}}
 {{ range $images | symdiff .Resources -}}
 {{ if eq .MediaType.MainType "image" -}}
-  <a href="{{ $.Site.BaseURL }}{{ .RelPermalink }}" class="no-border">
+  <a href="{{ .RelPermalink | absURL }}">
     {{- replaceRE "(href|src|srcset)=\"/" (printf "$1=\"%s" $.Site.BaseURL) (partial "img" (dict "Resource" . "height" 300)) | safeHTML  -}}
   </a>
 {{- end -}}
 {{ if eq .MediaType.MainType "video" -}}
-  {{/* safari has some weird bugs with video element styling */}}
-  <video controls height="300" style="height: 300px;" alt="{{ .Title }}">
-    <source src="{{ $.Site.BaseURL }}{{ .RelPermalink }}" />
+  {{/* safari has some weird bugs with video element styling */ -}}
+  <video controls height="300" alt="{{ .Title }}">
+    <source src="{{ .RelPermalink | absURL }}" />
   </video>
 {{- end -}}
 {{- end -}}	

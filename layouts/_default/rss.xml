@@ -1,1 +1,1 @@
-{{ define "channel" }}{{ end }}
+{{ define "empty" }}{{ end }}

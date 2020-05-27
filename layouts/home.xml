@@ -4,6 +4,6 @@
     {{ $pages = append $pages .Pages }}
   {{ end }}
   {{ range first 50 (sort $pages "Date" "desc") }}
-    {{ .Render "item" }}
+    {{ .Render "rss/item" }}
   {{ end }}
 {{ end }}
