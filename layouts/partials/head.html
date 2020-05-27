@@ -25,9 +25,19 @@
     {{ end -}}
 
     {{ with .OutputFormats.Get "RSS" -}}
-    <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
-    <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
-    {{ end -}}
+    <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Title }} on {{ $.Site.Title }}" />
+    <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Title }} on {{ $.Site.Title }}" />
+    {{ else }}
+    {{ range .Site.Sections }}
+    {{ if ne .Type "pages" }}
+    {{ $section := . }}
+    {{ with .OutputFormats.Get "RSS" -}}
+    <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $section.Title }} on {{ $.Site.Title }}" />
+    <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $section.Title }} on {{ $.Site.Title }}" />
+    {{ end }}
+    {{ end }}
+    {{ end }}
+    {{ end }}
 
     {{ template "_internal/opengraph.html" . }}
 </head>
