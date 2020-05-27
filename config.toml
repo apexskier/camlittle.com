@@ -6,11 +6,12 @@ titleCaseStyle = "Chicago"
 enableGitInfo = true
 enableRobotsTXT = true
 
-[params]
-  description = "A collection of Cameron Little's thoughts and projects."
-  author = "Cameron Little"
+[author]
+  name = "Cameron Little"
   email = "cameron@camlittle.com"
 
+[params]
+  description = "A collection of Cameron Little's thoughts and projects."
   gitUrl = "https://github.com/apexskier/camlittle.com/commit/"
 
   [params.sitemap]
@@ -28,6 +29,10 @@ enableRobotsTXT = true
 
 [taxonomies]
   tag = "tags"
+  
+[outputs]
+  home = ["HTML"]
+  section = ["HTML", "RSS"]
 
 [markup]
   [markup.goldmark]

@@ -8,10 +8,7 @@
 {{- end }}
 
 <article class="post-content">
-    {{ $content := .Content -}}
-    {{ $content = .Content | replaceRE "<table" "<div class='table'><table" -}}
-    {{ $content = .Content | replaceRE "</table>" "</div></table>" -}}
-    {{ .Content | safeHTML }}
+    {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
     {{ partial "chaser" . }}
 </article>
 {{ end }}
