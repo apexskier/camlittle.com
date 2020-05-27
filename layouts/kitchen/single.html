@@ -3,16 +3,6 @@
 <article class="post-content">
     <h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
 
-    {{ $absRelPermalink := printf "/%s" $.RelPermalink }}
-    {{ $images := slice -}}
-    {{ $imageMatches := findRE "src=['\"](.+?)['\"]" .Content -}}
-    {{ range $imageMatches -}}
-    {{ $val := strings.TrimLeft $absRelPermalink (substr . 5 (sub (len .) 6)) -}}
-    {{ with $.Resources.GetMatch $val -}}
-    {{ $images = $images | append . -}}
-    {{ end -}}
-    {{ end -}}
-
     {{if .Params.recipe_link -}}
     <p class="kitchen-source">
         <a href="{{ .Params.recipe_link }}" target="_blank">Recipe{{if .Params.recipe_source }} from {{ .Params.recipe_source }}{{ end }}</a>
@@ -23,18 +13,18 @@
 
     <div class="kitchen-gallery">
     {{/* Emit a gallery of the images that weren't in the post body */ -}}
-    {{ range $images | symdiff .Resources -}}
-    {{ if eq .MediaType.MainType "image" -}}
+    {{ range (partial "usedResources" .) | symdiff .Resources -}}
+        {{ if eq .MediaType.MainType "image" -}}
         <a href="{{ .RelPermalink }}" class="no-border">
             {{- partial "img" (dict "Resource" . "height" 300) -}}
         </a>
-    {{- end -}}
-    {{ if eq .MediaType.MainType "video" -}}
+        {{- end -}}
+        {{ if eq .MediaType.MainType "video" -}}
         {{/* safari has some weird bugs with video element styling */}}
         <video controls height="300" style="height: 300px;" alt="{{ .Title }}">
             <source src="{{ .RelPermalink }}" />
         </video>
-    {{- end -}}
+        {{- end -}}
     {{- end -}}
     </div>
 </article>
