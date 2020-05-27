@@ -1,0 +1,9 @@
+{{ define "items" }}
+  {{ $pages := slice }}
+  {{ range where .Site.Pages "Params.rss" true }}
+    {{ $pages = append $pages .Pages }}
+  {{ end }}
+  {{ range first 50 (sort $pages "Date" "desc") }}
+    {{ .Render "item" }}
+  {{ end }}
+{{ end }}

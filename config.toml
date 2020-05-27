@@ -29,10 +29,6 @@ enableRobotsTXT = true
 
 [taxonomies]
   tag = "tags"
-  
-[outputs]
-  home = ["HTML"]
-  section = ["HTML", "RSS"]
 
 [markup]
   [markup.goldmark]

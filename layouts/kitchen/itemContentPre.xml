@@ -1,0 +1,3 @@
+{{if .Params.recipe_link -}}
+<b><a href="{{ .Params.recipe_link }}" target="_blank">Recipe{{if .Params.recipe_source }} from {{ .Params.recipe_source }}{{ end }}</a></b>
+{{- end }}

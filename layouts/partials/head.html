@@ -24,17 +24,16 @@
     <link rel="stylesheet" href="{{ $style.RelPermalink }}">
     {{ end -}}
 
-    {{ with .OutputFormats.Get "RSS" -}}
-    <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Title }} on {{ $.Site.Title }}" />
-    <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Title }} on {{ $.Site.Title }}" />
-    {{ else }}
+    {{ with ($.GetPage "/").OutputFormats.Get "RSS" -}}
+    <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="Everything on {{ $.Site.Title }}" />
+    <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="Everything on {{ $.Site.Title }}" />
+    {{ end }}
     {{ range .Site.Sections }}
     {{ if .Params.rss }}
     {{ $section := . }}
     {{ with .OutputFormats.Get "RSS" -}}
     <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $section.Title }} on {{ $.Site.Title }}" />
     <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $section.Title }} on {{ $.Site.Title }}" />
-    {{ end }}
     {{ end }}
     {{ end }}
     {{ end }}

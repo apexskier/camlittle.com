@@ -1,0 +1,21 @@
+<item>
+  <title>{{ .Title }}</title>
+  <link>{{ .Permalink }}</link>
+  <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+  <guid>{{ .Permalink }}</guid>
+  <description>{{ .Summary | html }}</description>
+  {{ with default (.Resources.GetMatch "*thumbnail*") (.Resources.GetMatch "*feature*") -}}
+  {{ $img := . -}}
+  {{ if gt $img.Width 600 -}}
+  {{ $img = .Resize "600x" -}}
+  {{ end -}}
+  <enclosure url="{{ .Permalink }}" length="{{ len .Content }}" type="{{ .MediaType }}" />
+  {{ end -}}
+  <content:encoded>
+  {{ `<![CDATA[` | safeHTML -}}
+  {{ .Render "itemContentPre" }}
+  {{ .Render "itemContent" }}
+  {{ .Render "itemContentPost" }}
+  {{ `]]>` | safeHTML -}}
+  </content:encoded>
+</item>
