@@ -15,8 +15,9 @@ I name each of my computers after [Washington rivers](https://www.americanwhitew
 
 | Name | Description | Year acquired | Active |
 | ---- | ----------- | ------------- | ------ |
-| Chehalis | work MacBook Pro (15-inch, 2019) | 2019 | ✅ |
+| Chehalis | work MacBook Pro (15-inch, 2019) | 2019 |
 | Chelan | work MacBook Pro 15” (late 2016) | 2016 |
+| Chinook | work MacBook Pro (16-inch, 2019) | 2020 | ✅ |
 | Dungeness | iPhone 5 | 2012 |
 | Dungeness | iPhone 6S | 2015 |
 | Dungeness | iPhone Xs | 2018 | ✅ |
