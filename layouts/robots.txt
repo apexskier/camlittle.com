@@ -1,6 +1,8 @@
 User-agent: *
 
-Sitemap: {{ "sitemap.xml" | absURL }}
+Sitemap: https://camlittle.com/sitemap.xml
+
+Disallow: /typescript.novaextension # this redirects to something not understood by crawlers
 
 # ::::-----------.............................................................----
 # :::-------------...............................................................-
