@@ -3,7 +3,7 @@ module.exports = {
     "postcss-preset-env": {
       stage: 4,
       features: {
-        'nesting-rules': true,
+        "nesting-rules": true,
       },
     },
     cssnano: {
