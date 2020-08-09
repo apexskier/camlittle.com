@@ -36,6 +36,26 @@ function App() {
 
 Here, `HelloProps` is an [interface](https://www.typescriptlang.org/docs/handbook/interfaces.html) that describes exactly what properties the component accepts and requires. This replaces [`PropTypes`](https://reactjs.org/docs/typechecking-with-proptypes.html), but doesn't require running the code to discover problems and allows you to be more specific and refined.
 
+There are two main component-related things you'll touch when writing React code:
+
+1. [`React.ComponentType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L82) is what's in JSX arrow brackets (other than html primitives)
+2. [`React.ReactElement`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L146-L150) ([`JSX.Element`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L2942)) is what JSX produces
+
+```tsx
+import * as React from "react";
+
+class Test extends React.Component<{ Comp: React.ComponentType }> {
+    render() {
+        const el: React.ReactElement = <this.props.Comp />;
+        return <>{el}</>
+    }
+}
+```
+
+`React.ComponentType` is composed of `React.ComponentClass`, for class-based components, and `React.FunctionComponent`[^1] for functional components.
+
+You might encounter a more "exotic" types of component extending from [`React.ExoticType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L355) like forwarded ref components, context providers, and memoized components. These have different behavior restrictions at runtime, so most difficuties you'll encounter are intentional.
+
 ## Don't export properties types
 
 As a codebase grows, it makes sense to export these interfaces to reuse in other components and keep things DRY, especially as your codebase expands and as you start making use of [higher-order components](https://reactjs.org/docs/higher-order-components.html) and [composition](https://reactjs.org/docs/composition-vs-inheritance.html).
@@ -116,8 +136,12 @@ Sharing interfaces is especially attractive to those coming from an object-orien
 
 [Higher-order components](https://reactjs.org/docs/higher-order-components.html) are an advanced React pattern to reuse component logic. In TypeScript, higher-order components are usually [generic](https://www.typescriptlang.org/docs/handbook/generics.html) to decouple them from the components being wrapped.
 
-When writing or refactoring a higher-order component into TypeScript, we need to consider the properties the wrapped component uses and the properties the new, returned component uses. Furthermore, the wrapped components properties are split into those that the higher-order component
+Property typing higher-order components is a pain in the ass.
 
+When writing or refactoring a higher-order component into TypeScript, you need to understand the **parameter component's properties** and **the returned component's properties**. The parameter component's properties can be divided into those that the higher-order component uses, and those that it doesn't. The last of these; those that the higher-order component doesn't need to know about, are generally represented by a generic type: let's call it `P`.
+
+
+You also occasionally need to know the type of component returned
 
 - three types to consider: A generic one, the props the wrapped component uses that have nothing to do with your extra behavior, the props that the returned component now require, and the props that the hoc interacts with on the returned component
 - use widest component type possible, only reason to not do this is for ref forwarding
@@ -189,13 +213,25 @@ Overlapping properties
 
 Higher-order components and typescript can be a pain, but each upgrade of TypeScript seems to make it smoother (or maybe it's just me learning). I'm hopeful that [#10727](https://github.com/microsoft/TypeScript/issues/10727) will address some of the remaining issues and [#9252](https://github.com/microsoft/TypeScript/issues/9252).
 
+## Nullable or optional props?
+
+```tsx
+interface MyComponentProps {
+    requiredProp: string;
+    optionalProp?: string;
+    nullableProp: string | null;
+}
+```
+
+If a property isn't required, I generally advise making it nullable instead of optional. Optional properties can be fully omitted, which means they're easy to forget. Nullable properties require explicitness, which is especially helpful when introducing a new property into a large codebase---the compiler will tell you if you've missed anything.
+
+Only use optional properties when the property has a default value or if forgetting it won't break the user experience.
+
+Avoid using optional and nullable properties. They have the disadvantages of optionals and make the codebase more complex.
+
+I also recommend not using `undefined` within variable declarations, also because it makes it easy to make accidental mistakes. This also helps avoid needing `nullableProp={value ?? null}`.
+
 ---
-
-Different Component Types
-
- HOCs
-
-Nullable vs optional props
 
 Gotchas
 
@@ -280,3 +316,5 @@ document.body.appendChild(getLoaderScript);
 -->
 
 At time of writing, typescript is at v3.9.2
+
+[^1]: Previously called React.SFC (stateless functional component)
