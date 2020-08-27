@@ -132,6 +132,24 @@ function Test() {
 
 Sharing interfaces is especially attractive to those coming from an object-oriented world. Try to avoid habitutally using inheritance and conformance; in TypeScript type checking "focuses on the _shape_ that values have".
 
+## Nullable or optional props?
+
+```tsx
+interface MyComponentProps {
+    requiredProp: string;
+    optionalProp?: string;
+    nullableProp: string | null;
+}
+```
+
+If a property isn't required, I generally advise making it nullable instead of optional. Optional properties can be fully omitted, which means they're easy to forget. Nullable properties require explicitness, which is especially helpful when introducing a new property into a large codebase---the compiler will tell you if you've missed anything.
+
+Only use optional properties when the property has a default value or if forgetting it won't break the user experience.
+
+Avoid using optional and nullable properties. They have the disadvantages of optionals and make the codebase more complex.
+
+I also recommend not using `undefined` within variable declarations, also because it makes it easy to make accidental mistakes. This also helps avoid needing `nullableProp={value ?? null}`.
+
 ## Typing higher-order components
 
 [Higher-order components](https://reactjs.org/docs/higher-order-components.html) are an advanced React pattern to reuse component logic. In TypeScript, higher-order components are usually [generic](https://www.typescriptlang.org/docs/handbook/generics.html) to decouple them from the components being wrapped.
@@ -213,23 +231,9 @@ Overlapping properties
 
 Higher-order components and typescript can be a pain, but each upgrade of TypeScript seems to make it smoother (or maybe it's just me learning). I'm hopeful that [#10727](https://github.com/microsoft/TypeScript/issues/10727) will address some of the remaining issues and [#9252](https://github.com/microsoft/TypeScript/issues/9252).
 
-## Nullable or optional props?
+## Refs
 
-```tsx
-interface MyComponentProps {
-    requiredProp: string;
-    optionalProp?: string;
-    nullableProp: string | null;
-}
-```
-
-If a property isn't required, I generally advise making it nullable instead of optional. Optional properties can be fully omitted, which means they're easy to forget. Nullable properties require explicitness, which is especially helpful when introducing a new property into a large codebase---the compiler will tell you if you've missed anything.
-
-Only use optional properties when the property has a default value or if forgetting it won't break the user experience.
-
-Avoid using optional and nullable properties. They have the disadvantages of optionals and make the codebase more complex.
-
-I also recommend not using `undefined` within variable declarations, also because it makes it easy to make accidental mistakes. This also helps avoid needing `nullableProp={value ?? null}`.
+Refs are another place where typing
 
 ---
 
@@ -243,77 +247,6 @@ Gotchas
 Statics
 
 Refs
-
-<!--
-<script>
-// First set up the VSCode loader in a script tag
-const getLoaderScript = document.createElement("script");
-getLoaderScript.src = "https://www.typescriptlang.org/v2/js/vs.loader.js";
-getLoaderScript.async = true;
-getLoaderScript.onload = () => {
-  // Now the loader is ready, tell require where it can get the version of monaco, and the sandbox
-  // This version uses the latest version of the sandbox, which is used on the TypeScript website
-
-  // For the monaco version you can use unpkg or the TypeSCript web infra CDN
-  // You can see the available releases for TypeScript here:
-  // https://typescript.azureedge.net/indexes/releases.json
-  //
-  require.config({
-    paths: {
-      vs: "https://typescript.azureedge.net/cdn/3.9.2/monaco/min/vs",
-      // vs: 'https://unpkg.com/@typescript-deploys/monaco-editor@3.9.2/min/vs',
-      sandbox: "https://www.typescriptlang.org/v2/js/sandbox",
-    },
-    // This is something you need for monaco to work
-    ignoreDuplicateModules: ["vs/editor/editor.main"],
-  });
-
-  // Grab a copy of monaco, TypeScript and the sandbox
-  require([
-    "vs/editor/editor.main",
-    "vs/language/typescript/tsWorker",
-    "sandbox/index",
-  ], (main, _tsWorker, tsSandbox) => {
-    const isOK = main && window.ts && tsSandbox;
-    if (!isOK) {
-      console.error("Could not get all the dependencies of sandbox set up!");
-      console.error("main", !!main, "ts", !!window.ts, "sandbox", !!tsSandbox);
-      return;
-    }
-
-    const codeBlocks = document.querySelectorAll(".chroma .language-tsx")
-    const counter = 0;
-    for (const block of codeBlocks) {
-      const initialCode = block.innerText;
-      const parent = block.parentNode;
-      parent.textContent = "";
-
-      const div = document.createElement("div");
-      div.id = `ts-sandbox-${counter}`;
-      parent.appendChild(div);
-
-      // Create a sandbox and embed it into the the div #monaco-editor-embed
-      const sandboxConfig = {
-        text: initialCode,
-        compilerOptions: {
-            jsx: "react"
-        },
-        monacoSettings: {
-            readOnly: true,
-            scrollBeyondLastLine: false,
-            scrollBeyondLastColumn: false,
-        },
-        domID: div.id,
-      };
-
-      const sandbox = tsSandbox.createTypeScriptSandbox(sandboxConfig, main, window.ts);
-    }
-  });
-};
-
-document.body.appendChild(getLoaderScript);
-</script>
--->
 
 At time of writing, typescript is at v3.9.2
 
