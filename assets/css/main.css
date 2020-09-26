@@ -177,12 +177,6 @@ a {
     color: var(--anchor-visited);
   }
 
-  &,
-  &:visited {
-    text-decoration: none;
-    border-bottom: 1px dotted;
-  }
-
   &.no-border {
     &,
     &:visited {
@@ -498,7 +492,7 @@ hr {
   border: 0;
   margin: var(--copy-spacing) 0;
   padding: 0;
-  border-top: 1px dotted var(--text);
+  border-top: 1px solid var(--text);
 }
 
 small {
@@ -816,10 +810,6 @@ iframe {
   max-width: 100%;
 }
 
-canvas {
-  border: 1px dotted var(--text);
-}
-
 blockquote {
   background-color: var(--callout-bg);
   box-shadow: var(--inset-box-shadow);
@@ -893,10 +883,13 @@ footer,
 }
 
 footer {
+  margin-top: calc(var(--copy-spacing) * 3);
   text-align: left;
 }
 
-.post-content {
+article {
+  line-height: 1.5;
+  
   /* try to keep things readable
    * https://baymard.com/blog/line-length-readability
   */
@@ -941,6 +934,11 @@ footer {
       display: block;
       margin-right: 1em;
     }
+  }
+  
+  & canvas {
+    border: 1px solid var(--text);
+    box-shadow: var(--minimal-box-shadow);
   }
 }
 

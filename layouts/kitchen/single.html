@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ partial "single/meta" . }}
-<article class="post-content">
+<article>
     <h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
 
     {{if .Params.recipe_link -}}

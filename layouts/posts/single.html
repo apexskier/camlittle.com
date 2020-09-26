@@ -7,7 +7,7 @@
 {{ .TableOfContents }}
 {{- end }}
 
-<article class="post-content">
+<article>
     {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
     {{ partial "single/chaser" . }}
 </article>
