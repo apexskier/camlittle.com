@@ -1,7 +1,7 @@
 {
   "actions" : {
     "build" : {
-      "enabled" : false,
+      "enabled" : true,
       "script" : ".\/build.sh"
     },
     "run" : {

@@ -2,12 +2,12 @@
 <html lang="{{ .Site.Language }}">
     {{- partial "head.html" . -}}
     <body>
-        <div id="easter-bun" class="easter-bun">
+        <div id="bun" class="bun" style="display: none">
             {{ with resources.Get "bunny/top.svg" | fingerprint "md5" }}
             <img src="{{ .RelPermalink }}" height="40" alt="" />
             {{ end }}
         </div>
-        <div id="easter-bun-paws" class="easter-bun">
+        <div id="bun-paws" class="bun" style="display: none">
             {{ with resources.Get "bunny/paws.svg" | fingerprint "md5" }}
             <img src="{{ .RelPermalink }}" height="40" alt="" />
             {{ end }}
@@ -26,7 +26,7 @@
                 {{- partial "footer.html" . -}}
             </div>
         </div>
-        <div id="easter-bun-butt" class="easter-bun">
+        <div id="bun-butt" class="bun" style="display: none">
             {{ with resources.Get "bunny/butt.svg" | fingerprint "md5" }}
             <img src="{{ .RelPermalink }}" height="16" alt="" />
             {{ end }}
