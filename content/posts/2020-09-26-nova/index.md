@@ -2,7 +2,6 @@
 title: "Nova.app"
 date: 2020-09-26T12:42:55+02:00
 tags: [tech, typescript, project]
-draft: true
 ---
 
 Over the last couple months, I've been playing around with the new text editor [Nova](http://nova.app) by [Panic](http://panic.com) and writing extensions for it.
