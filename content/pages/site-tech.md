@@ -34,6 +34,8 @@ This site's tech stack throughout the years.
   [Hugo](https://gohugo.io) static site with a custom theme. I chose Hugo since
   it's the top starred static site generator on
   [StaticGen](https://www.staticgen.com) that doesn't rely on client-side rendering.
+  I'm familiar with Go style templates, which Hugo uses. Since switching, I've
+  even [contributed to the project](https://github.com/gohugoio/hugo/commits?author=apexskier).
   It has a good mix of power and simplicity and ships as a standalone
   binary (no ruby installation to deal with). I still use Digital Ocean and
   nginx, but now host several other sites and [tools](/apps).

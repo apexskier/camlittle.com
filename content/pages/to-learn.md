@@ -16,3 +16,4 @@ Things I want to learn more about, get better at, or just play with.
 - [ ] Serverless/P2P WebRTC
 - [ ] Alternative(s) to webpack
   - [ ] [Snowpack](https://github.com/pikapkg/snowpack)
+  - [ ] [Rome](https://romefrontend.dev)
