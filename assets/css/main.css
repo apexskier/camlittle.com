@@ -709,7 +709,8 @@ main {
   & video,
   & pre,
   & figure,
-  & table {
+  & table,
+  & details {
     margin-bottom: var(--copy-spacing);
   }
 
@@ -884,26 +885,47 @@ footer {
 
 article {
   line-height: 1.5;
-  
+
   /* try to keep things readable
    * https://baymard.com/blog/line-length-readability
   */
-  & > * {
-    max-width: 520px;
+  &,
+  & > details {
+    & > * {
+      max-width: 520px;
+    }
+
+    & > details,
+    & > .table,
+    & > .highlight,
+    & > .full-width {
+      max-width: calc(100% + 1.5em * 2);
+      overflow: auto;
+      margin-left: -1.5em;
+      margin-right: -1.5em;
+
+      @media only screen and (min-width: 45em) {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
   }
 
-  & > .table,
-  & > .highlight,
-  & > .full-width {
-    max-width: calc(100% + 1.5em * 2);
-    overflow: auto;
-    margin-left: -1.5em;
-    margin-right: -1.5em;
+  & details {
+    padding-left: var(--copy-spacing);
 
-    @media only screen and (min-width: 45em) {
-      max-width: 100%;
-      margin-left: 0;
-      margin-right: 0;
+    & > summary {
+      cursor: pointer;
+      margin-bottom: var(--copy-spacing-sm);
+
+      & > *:only-child {
+        display: inline;
+      }
+    }
+
+    & > *:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -930,7 +952,7 @@ article {
       margin-right: 1em;
     }
   }
-  
+
   & canvas {
     border: 1px solid var(--text);
     box-shadow: var(--minimal-box-shadow);
