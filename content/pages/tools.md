@@ -33,9 +33,10 @@ My current graphical editor of choice is [Visual Studio Code](https://code.visua
 
 - [Apple Photos](https://www.apple.com/ios/photos/) - my current choice for photo organization
 - [Dark Sky](https://darksky.net/app) - weather
-- [GPX to Photos](https://apps.apple.com/us/app/gpx-to-photos/id1403201208) - my own tool for geotagging photos
 - [Gaia GPS](https://apps.apple.com/us/app/gaia-gps-hiking-offroad-maps/id1201979492) - the best gps app on iOS
-- [Mobile Passport](https://apps.apple.com/us/app/mobile-passport/id907024887) - get back into the US so fast it feels like you're not allowed to
+- [GPX to Photos](https://apps.apple.com/us/app/gpx-to-photos/id1403201208) - my own tool for geotagging photos
+- [Jakdojade](https://jakdojade.pl/krakow/trasa/) - transit app for Kraków
+- [Mobile Passport](https://apps.apple.com/us/app/mobile-passport/id907024887) - get back into the US so fast it feels like you're cheating
 - [Parcel](https://parcelapp.net/) - delivery tracking
 - [Peloton](https://www.onepeloton.com/app) - the at-home workouts are quite great
 - [Prompt](https://panic.com/prompt/) - iOS ssh/terminal emulator
