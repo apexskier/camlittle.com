@@ -3,11 +3,8 @@ title: "React and TypeScript"
 date: 2020-07-03T18:53:48+02:00
 tags: ["tech", "web"]
 draft: true
+toc: true
 ---
-
-I recently saw [a tweet](https://twitter.com/_dte/status/1278941464588890115) from [Daniel Eden](https://daneden.me).
-
-<!-- {{< tweet 1278941464588890115 >}} -->
 
 Here are some of my tips and best practices, mostly coming from experience working in a large-scale, real world React/TypeScript codebase.
 
@@ -54,7 +51,7 @@ class Test extends React.Component<{ Comp: React.ComponentType }> {
 
 `React.ComponentType` is composed of `React.ComponentClass`, for class-based components, and `React.FunctionComponent`[^1] for functional components.
 
-You might encounter a more "exotic" types of component extending from [`React.ExoticType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L355) like forwarded ref components, context providers, and memoized components. These have different behavior restrictions at runtime, so most difficuties you'll encounter are intentional.
+You might encounter a more "exotic" types of component extending from [`React.ExoticType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L355) like forwarded ref components, context providers, and memoized components. These have different behavior restrictions at runtime, so most difficulties you'll encounter have a good reason behind them.
 
 ## Don't export properties types
 
@@ -102,7 +99,13 @@ export function BarButton(props: FooButtonProps) {
 
 Now, changes to `BarButton` don't affect `FooButton` unless actually necessary.
 
-In the following example, the new property `b` on `FooButton` doesn't require adding a `b` property to `BarButton`.
+<details>
+
+<summary>
+
+In this example, the new property `b` on `FooButton` doesn't require adding a `b` property to `BarButton`.
+
+</summary>
 
 ```tsx
 import * as React from "react";
@@ -130,7 +133,9 @@ function Test() {
 
 [Playground link](https://www.typescriptlang.org/play/?jsx=2&ssl=1&ssc=1&pln=21&pc=2#code/JYWwDg9gTgLgBAKjgQwM5wEoFNkGN4BmUEIcARFDvmQNwBQdwAdjFlAXlnAGIQQBCAVxgwITAArEw6AN504ClAC44TQSABGbeorgaVazdrgB6E3BgALYOhspVWAO5wwUtjACedAL4MAJli4ADbIlHAEgkz4wGI8fEIiYgAUrhDSKrwCwqISUqgAlCrYeDAAdMX4AKJBWCBYLPSMLGwcuFz8oQk5kmmy8orIBupaUPS+dAHBoVwRUTAxTHAdUF3JqelxWYm5vYWYVGUVMNW19TCNkyFhuGKo8DdMfsDzYshBKhp8NchMjbPRsQAKlg7kl8nA5LoHncltlYgBeOAPJ4vJhvOAAfk2q0WKmWOJ0ikoMEEUEWAB4cSh4TIAIwAJgAzN49DSACwAVgAbCyTAA+MZAA)
 
-Sharing interfaces is especially attractive to those coming from an object-oriented world. Try to avoid habitutally using inheritance and conformance; in TypeScript type checking "focuses on the _shape_ that values have".
+</details>
+
+Sharing interfaces is especially attractive to those coming from an object-oriented world. I advise trying to avoid habitually using inheritance and conformance and instead focusing on "[the _shape_ that values have](https://www.typescriptlang.org/docs/handbook/interfaces.html)".
 
 ## Nullable or optional props?
 
@@ -150,32 +155,27 @@ Avoid using optional and nullable properties. They have the disadvantages of opt
 
 I also recommend not using `undefined` within variable declarations, also because it makes it easy to make accidental mistakes. This also helps avoid needing `nullableProp={value ?? null}`.
 
-## Typing higher-order components
+## Higher-order components
 
-[Higher-order components](https://reactjs.org/docs/higher-order-components.html) are an advanced React pattern to reuse component logic. In TypeScript, higher-order components are usually [generic](https://www.typescriptlang.org/docs/handbook/generics.html) to decouple them from the components being wrapped.
+[Higher-order components](https://reactjs.org/docs/higher-order-components.html) are an advanced React pattern to reuse component logic. In TypeScript, higher-order components are [generic](https://www.typescriptlang.org/docs/handbook/generics.html) to decouple them from the components being wrapped.
 
 Property typing higher-order components is a pain in the ass.
 
-When writing or refactoring a higher-order component into TypeScript, you need to understand the **parameter component's properties** and **the returned component's properties**. The parameter component's properties can be divided into those that the higher-order component uses, and those that it doesn't. The last of these; those that the higher-order component doesn't need to know about, are generally represented by a generic type: let's call it `P`.
+When writing or refactoring a higher-order component into TypeScript, you need to understand the **parameter component's properties** and **the returned component's properties**. The parameter component's properties can be divided into **those that the higher-order component uses** and **those that it doesn't**. Those that the higher-order component doesn't need to know about are generally represented by a generic type: let's call it `P`.
 
+On occasion, you need to know the type of component returned. If possible I recommend using the widest type possible (`React.ComponentType`) or relying on type interference (not specifying an explicit return type). The cases when you may need an explicitly narrower type is if your component returns an exotic type, like a ref forwarder.
 
-You also occasionally need to know the type of component returned
+By convention, I use the names "Provides" and "Requires". Provided properties are those that the higher order component provides to its parameter component, and required properties are those additionally required by the returned component.
 
-- three types to consider: A generic one, the props the wrapped component uses that have nothing to do with your extra behavior, the props that the returned component now require, and the props that the hoc interacts with on the returned component
-- use widest component type possible, only reason to not do this is for ref forwarding
-
-<!-- 
 ```tsx
 function withExtraFunctionality<P>(
     WrappedComponent: React.ComponentType<P & ExtraFunctionalityProvidesProps>
-) {
-    return function ExtraFunctionality(props: P & ExtraFunctionalityRequiresProps) {
-        // ...
-    }
-}
-``` -->
+): React.ComponentType<P & ExtraFunctionalityRequiresProps>;
+```
 
-[Playground link](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAKjgQwM5wEoFNkGN4BmUEIcARFDvmQNwBQdAJlrgDbKVwECuAdvsAi84AcywwAIsFRh2ATwByyEFgAUuEpF5ZeMAFyYqMAHQBRVlhW6AKnLBYAlAdQwowXiPp13MLFAJ4WHCmAB6uyABifAJCyKzAMHIACsQAbsDMqCkQYOgA3nRwRSjOru6ehcUARqVuHvQAvgw+fgG4QaHhUfwwgrxxCXLYAI7cwJRZxLlwBcVwNXAudRVzuLXljQw8PX1wAO4JABadUJHRvbHxiQA8SQB8qpVFAOqnYPaMAMKaQjr6hngTN9wL8bHYsLc4AAyYJhU7dGL9K7JNIZLCTHKoO50JwA-DGYFaP62eyQmEnM47S6DEZjCbZXJ3GZPLjnXYUhEXJGDR5zOZgKaoAxJaGwrps6mJWnjdEM1AshzMvnFAD0KsWhw4WEYABo4C0oNyAF7auCsCAiYC4PVYYwiYws1ZCFxwADayAAunAALx4kzcVBYADKMGQvlUZDIDnoyqKjuKlBg3ENcGur2Q721hNB8GQ3ryyAaM2MJYFmKLKruMeKTTmHIl3MSxkY0lkyEUyiCvoABgcYMc4ZTEQNEqoACR5MSSVvyJQqVTpzNfH7aXQOBoObvVoqJ5PCetUxtyTZMFjsTjbRFwABCaCw2dXMFUZdyBjycEY6w8cA3BmwgOMf98HMSw-i8NU4BFdwCD8ShGDgDQoEofBWDkFB8g-L8RB-OgNF4F1Fw+W9AwfP4fX2I4D2HZFVGI+8Vz+aMGGuOjSN0D9vTIRgyDgSt6DTN4iLvNj4EYTjuPmTiqh43BONwHi+KAA)
+<details>
+
+<summary>A more complete example of a fully typed higher order component</summary>
 
 ```tsx
 import * as React from "react";
@@ -216,24 +216,93 @@ const WrappedBaseComponent = withExtraFunctionality(BaseComponent);
 <WrappedBaseComponent d="d" b="b" c="c" />;
 ```
 
-A common error I encounter here is some form of
+[Playground link](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAKjgQwM5wEoFNkGN4BmUEIcARFDvmQNwBQdAJlrgDbKVwECuAdvsAi84AcywwAIsFRh2ATwByyEFgAUuEpF5ZeMAFyYqMAHQBRVlhW6AKnLBYAlAdQwowXiPp13MLFAJ4WHCmAB6uyABifAJCyKzAMHIACsQAbsDMqCkQYOgA3nRwRSjOru6ehcUARqVuHvQAvgw+fgG4QaHhUfwwgrxxCXLYAI7cwJRZxLlwBcVwNXAudRVzuLXljQw8PX1wAO4JABadUJHRvbHxiQA8SQB8qpVFAOqnYPaMAMKaQjr6hngTN9wL8bHYsLc4AAyYJhU7dGL9K7JNIZLCTHKoO50JwA-DGYFaP62eyQmEnM47S6DEZjCbZXJ3GZPLjnXYUhEXJGDR5zOZgKaoAxJaGwrps6mJWnjdEM1AshzMvnFAD0KsWhw4WEYABo4C0oNyAF7auCsCAiYC4PVYYwiYws1ZCFxwADayAAunAALx4kzcVBYADKMGQvlUZDIDnoyqKjuKlBg3ENcGur2Q721hNB8GQ3ryyAaM2MJYFmKLKruMeKTTmHIl3MSxkY0lkyEUyiCvoABgcYMc4ZTEQNEqoACR5MSSVvyJQqVTpzNfH7aXQOBoObvVoqJ5PCetUxtyTZMFjsTjbRFwABCaCw2dXMFUZdyBjycEY6w8cA3BmwgOMf98HMSw-i8NU4BFdwCD8ShGDgDQoEofBWDkFB8g-L8RB-OgNF4F1Fw+W9AwfP4fX2I4D2HZFVGI+8Vz+aMGGuOjSN0D9vTIRgyDgSt6DTN4iLvNj4EYTjuPmTiqh43BONwHi+KAA)
+
+</details>
+
+A common error I encounter here is some variety of the following:
 
 ```txt
 'P' could be instantiated with an arbitrary type which could be unrelated to…
 ```
 
-This generally happens when a higher-order component "steals" properties from its wrapped component. It highlights the issue that the properties names might overlap with ones legitimately needed by the wrapped component.
-What's happening is that the keys of `ExtraFunctionalityRequiresProps` are being encapsulated within `withExtraFunctionality`, but they _may_ be also used by `P`. 
+The most common cause of this is the higher-order component "stealing" properties from the wrapped component (or TypeScript thinks that's the cause). It highlights the issue that a property name visible to the higher order component could overlap with one in `P` that's required by the wrapped component.
 
-What this indicates is that while `ExtraFunctionalityRequiresProps` is attempted to be stripped from `P` may contain
+<details>
 
-Overlapping properties
+<summary>An example of stolen props in a higher order component</summary>
+
+```tsx
+import * as React from "react";
+
+interface ExtraFunctionalityProvidesProps {
+    a: string;
+}
+
+interface ExtraFunctionalityRequiresProps {
+    b: string;
+    c: string;
+}
+
+function withExtraFunctionality<P>(
+    WrappedComponent: React.ComponentType<P & ExtraFunctionalityProvidesProps>
+): React.ComponentType<P & ExtraFunctionalityRequiresProps> {
+    return function ExtraFunctionality(
+        props: P & ExtraFunctionalityRequiresProps
+    ) {
+        // shared, internalized logic, e.g.
+        const [a] = React.useState("");
+        const { b, ...rest } = props;
+        // do something with b
+        
+        //      ↓ error
+        return <WrappedComponent a={a} {...rest} />;
+    }
+}
+
+declare function BaseComponent(props: { d: string }): React.ReactElement;
+
+// P inferred correctly as { d: string }
+const WrappedBaseComponent = withExtraFunctionality(BaseComponent);
+
+<BaseComponent d="d" />;
+<WrappedBaseComponent d="d" b="b" c="c" />;
+```
+
+[Playground link](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAKjgQwM5wEoFNkGN4BmUEIcARFDvmQNwBQdwAdjFlAXlnAKIAeMUZADEArk3zAITZABtgMAJ4AFYgDdgAEyyoVEMOgDedOCZQAuOKgHMA5vQC+DZq3ace-QaPExJ0uYuwARxFgSh1ifTgjUzgAIwsrKFt6GNwE6yY7Okc6AjEJKTgAd3kACz4BYXyfKVl5BQAeJQA+AApjUwB1QTAwLA0AYRJIJiwWC2w8GAA6IfApMZgAFQU+prgAMndKrwK-et11LXC9VGa6AEoJqhm5kcWVtaVN7c9q3zqArGDQ7V19ZpRDomSgwERQJhwPLeXyvKow2r+BTtGIxMARVAWZ5bCpvBH7L4-ML-VDAuAXIGo0wAempllKyEoGgANHBnGx9gAvfpwGQQGzAXCsrDTGzTMmpKRWOAAbWQAF04ABeTA3aYiVBYADKMGQrFaZDIFxSVLguCl8AMcVZ01tYXg9mVcHRpxNVNpcA0EEsJCwMFKtmKZTiEtMoZMHtRgGTCOBsYhQcNwUHgyENbrIXr9O4LFgoJUGZCOgy26b2x3U5puuCOHJaXAyRlcaF7OAAITQWGzoxYrRd+gsVo06SSmWrV1VU2mk3w3BkWBAi3odA9z2YBDjPPNUEo+BkChQhk9w8DjnNTGl6czGnbmq7iydJX9uPhe0+yJvneGOZgxoYDQ-d65hoSpkBoZBwBW9Bpj0fTXh2gHwMBoHgbEIGxOBuAgbg4GQUAA)
+
+</details>
 
 Higher-order components and typescript can be a pain, but each upgrade of TypeScript seems to make it smoother (or maybe it's just me learning). I'm hopeful that [#10727](https://github.com/microsoft/TypeScript/issues/10727) will address some of the remaining issues and [#9252](https://github.com/microsoft/TypeScript/issues/9252).
 
 ## Refs
 
-Refs are another place where typing
+[Refs](https://reactjs.org/docs/refs-and-the-dom.html) are another place where typing can be tricky. The main cause of this is not understanding the fundamentals of what refs are---a pointer to the underlying runtime object driving your component. The `React.createRef` function takes a single type parameter that describes this object.
+
+```tsx
+function Component() {
+    const ref = React.createRef<HTMLDivElement>();
+    ref.current?.scrollTop;
+    return <div ref={ref} />;
+}
+```
+
+When using refs to other components (not DOM elements or other ["basic" components](https://reactnative.dev/docs/components-and-apis#basic-components)), it works the same way.
+
+```tsx
+function Component() {
+    const ref = React.createRef<ChildComponent>();
+    ref.current?.doSomething;
+    return <ChildComponent ref={ref} />;
+}
+
+declare class ChildComponent extends React.Component {
+    doSomething(): void;
+    render(): JSX.Element;
+}
+```
+
+As your app gets more complex, so will your ref usage.
 
 ---
 
@@ -245,8 +314,6 @@ Gotchas
 `contextTypes`
 
 Statics
-
-Refs
 
 At time of writing, typescript is at v3.9.2
 
