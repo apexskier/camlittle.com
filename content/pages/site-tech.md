@@ -31,16 +31,15 @@ This site's tech stack throughout the years.
 
 * June 2014
   
-    [Jekyll](https://jekyllrb.com) static site with a custom theme. I chose Jekyll
-    because it's pretty universal and produces a static site. Around this time I
-    also switched to [DigitalOcean](https://www.digitalocean.com) for hosting and
-    an [nginx](https://www.nginx.com) web server.
-  
+  [Jekyll](https://jekyllrb.com) static site with a custom theme. I chose Jekyll
+  because it's pretty universal and produces a static site. Around this time I
+  also switched to [DigitalOcean](https://www.digitalocean.com) for hosting and
+  an [nginx](https://www.nginx.com) web server.
   
 * Feb 2012
 
   Transferred my domain name to [Namecheap](https://namecheap.com). At some
-  point, I switched to the [Stacey](http://www.staceyapp.com) CMS with a custom
+  point, I switched to the [Stacey](https://github.com/kolber/stacey) CMS with a custom
   theme. I chose Stacey because it's very lightweight and PHP was the language I
   was primarily using at the time. Hosted on 
   [Dreamhost](https://www.dreamhost.com) with [Apache](https://httpd.apache.org).
