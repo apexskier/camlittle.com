@@ -612,22 +612,6 @@ nav.social-links {
   display: inline-block;
   line-height: 0;
 
-  &:target {
-    border-radius: 3px;
-    background-color: var(--text);
-    padding: calc(var(--copy-spacing-sm) * 2);
-
-    & a {
-      &,
-      &:focus,
-      &:hover {
-        & svg path {
-          fill: var(--background);
-        }
-      }
-    }
-  }
-
   & svg {
     height: 20px;
 
