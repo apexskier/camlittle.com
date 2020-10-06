@@ -19,15 +19,20 @@ This site's tech stack throughout the years.
   It has a good mix of power and simplicity and ships as a standalone
   binary (no ruby installation to deal with). I still use Digital Ocean and
   nginx, but now host several other sites and [tools](/apps).
-  I'm using [docker](https://www.docker.com) and 
-  [docker-compose](https://docs.docker.com/compose/) to provision and isolate
-  each app.
+  I'm using [docker](https://www.docker.com),
+  [docker-compose](https://docs.docker.com/compose/), and some custom scripts
+  to provision and isolate each app.
 
   For newer apps, I generally use docker from the start. Some have
   images published to [GitHub packages](https://github.com/features/packages),
   some don't. For older projects I'm not really planning to revisit or have
   archived, I reverse-engineered Dockerfiles and stored them in my
   host-configuration repo.
+
+* October 2016
+
+  Added [https](https://crt.sh/?caid=16418) support through [Let's
+  Encrypt](https://letsencrypt.org/).
 
 * June 2014
   
