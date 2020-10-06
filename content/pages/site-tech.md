@@ -9,26 +9,6 @@ tags: ["tech"]
 
 This site's tech stack throughout the years.
 
-* Sep 2010
-
-  Registered [camlittle.com](https://camlittle.com) with GoDaddy and set up a
-  homemade PHP website.
-
-* Feb 2012
-
-  Transferred my domain name to [Namecheap](https://namecheap.com). At some
-  point, I switched to the [Stacey](http://www.staceyapp.com) CMS with a custom
-  theme. I chose Stacey because it's very lightweight and PHP was the language I
-  was primarily using at the time. Hosted on 
-  [Dreamhost](https://www.dreamhost.com) with [Apache](https://httpd.apache.org).
-
-* June 2014
-
-  [Jekyll](https://jekyllrb.com) static site with a custom theme. I chose Jekyll
-  because it's pretty universal and produces a static site. Around this time I
-  also switched to [DigitalOcean](https://www.digitalocean.com) for hosting and
-  an [nginx](https://www.nginx.com) web server.
-
 * March 2020
 
   [Hugo](https://gohugo.io) static site with a custom theme. I chose Hugo since
@@ -48,3 +28,26 @@ This site's tech stack throughout the years.
   some don't. For older projects I'm not really planning to revisit or have
   archived, I reverse-engineered Dockerfiles and stored them in my
   host-configuration repo.
+
+* June 2014
+  
+    [Jekyll](https://jekyllrb.com) static site with a custom theme. I chose Jekyll
+    because it's pretty universal and produces a static site. Around this time I
+    also switched to [DigitalOcean](https://www.digitalocean.com) for hosting and
+    an [nginx](https://www.nginx.com) web server.
+  
+  
+* Feb 2012
+
+  Transferred my domain name to [Namecheap](https://namecheap.com). At some
+  point, I switched to the [Stacey](http://www.staceyapp.com) CMS with a custom
+  theme. I chose Stacey because it's very lightweight and PHP was the language I
+  was primarily using at the time. Hosted on 
+  [Dreamhost](https://www.dreamhost.com) with [Apache](https://httpd.apache.org).
+
+* Sep 2010
+
+  Registered [camlittle.com](https://camlittle.com) with GoDaddy and set up a
+  homemade PHP website.
+
+
