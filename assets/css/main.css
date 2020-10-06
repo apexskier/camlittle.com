@@ -336,6 +336,7 @@ li:target {
   display: list-item;
   color: var(--text);
 
+  max-width: fit-content;
   margin-bottom: var(--copy-spacing);
 
   & *:last-child {
