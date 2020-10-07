@@ -2,6 +2,12 @@
 {{ with . | fingerprint "md5" }}
 <img src="{{ .RelPermalink }}" class="thumbnail" alt="thumbnail" />
 {{ end }}
+{{ else if (eq .Width .Height )}}
+{{ with .Resize "132x132" }}
+{{ with . | fingerprint "md5" }}
+<img src="{{ .RelPermalink }}" class="thumbnail" alt="thumbnail" />
+{{ end }}
+{{ end }}
 {{ else }}
 {{ with .Fill "132x132" }}
 {{ with . | fingerprint "md5" }}
