@@ -6,9 +6,9 @@ draft: true
 toc: true
 ---
 
-Here are some of my tips and best practices, mostly coming from experience working in a large-scale, real world React/TypeScript codebase.
+Here are some of my tips and best practices, mostly coming from experience working in a large-scale, real world React/React Native/TypeScript[^1] codebase.
 
-Lets start with a basic example of creating and using a component.
+Let's start with a basic example of creating and using a component.
 
 ```tsx
 interface HelloProps {
@@ -49,7 +49,7 @@ class Test extends React.Component<{ Comp: React.ComponentType }> {
 }
 ```
 
-`React.ComponentType` is composed of `React.ComponentClass`, for class-based components, and `React.FunctionComponent`[^1] for functional components.
+`React.ComponentType` is composed of `React.ComponentClass`, for class-based components, and `React.FunctionComponent`[^2] for functional components.
 
 You might encounter a more "exotic" types of component extending from [`React.ExoticType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L355) like forwarded ref components, context providers, and memoized components. These have different behavior restrictions at runtime, so most difficulties you'll encounter have a good reason behind them.
 
@@ -302,19 +302,147 @@ declare class ChildComponent extends React.Component {
 }
 ```
 
-As your app gets more complex, so will your ref usage.
+As your app gets more complex, so will your ref usage. It's tempting to create an interface 
 
----
+## PropTypes
 
-Gotchas
+If you're migrating a JavaScript React project to TypeScript, you're hopefully already using [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html) to provide some degree of runtime type checking to your project. With TypeScript, PropTypes become mostly unnecessary. TypeScript's type system is much more powerful and can replace any PropType except for strict shapes[^3] and custom validator functions.
 
-- returning null from functional components
-- using arrays directly within components (return or inside)
+<details>
 
-`contextTypes`
+<summary>For example</summary>
 
-Statics
+```js
+function Component(props) { /* ... */ }
+Component.propTypes = {
+    optionalUnion: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+        PropTypes.instanceOf(Message)
+    ]),
+    
+    optionalObjectWithShape: PropTypes.shape({
+        color: PropTypes.string,
+        fontSize: PropTypes.number
+    }),
+}
+```
 
-At time of writing, typescript is at v3.9.2
+```tsx
+function Component(props: ComponentProps) { /* ... */ }
+interface ComponentProps {
+    optionalUnion?: string | number | Message;
+    optionalObjectWithShape?: {
+        color: string;
+        fontSize: number;
+    };
+}
+```
 
-[^1]: Previously called React.SFC (stateless functional component)
+</details>
+
+PropTypes are still necessary if using the [legacy context api](https://reactjs.org/docs/legacy-context.html). I recommend pairing `contextTypes` and `childContextTypes` with an interface to add some type safety at build-time.
+
+<details>
+
+```tsx
+import * as React from "react";
+import * as PropTypes from "prop-types";
+
+const messageContextTypes = {
+    color: PropTypes.string,
+};
+
+interface MessageContext {
+    color?: string;
+}
+
+interface MessageListProps {
+    messages: ReadonlyArray<{ text: string }>;
+}
+
+class MessageList extends React.Component<MessageListProps> {
+    static childContextTypes = messageContextTypes;
+
+    getChildContext(): MessageContext {
+        return { color: "purple" };
+    }
+
+    render() {
+        return (
+            <div>
+                {this.props.messages.map((message) => (
+                    <Message text={message.text} />
+                ))}
+            </div>
+        );
+    }
+}
+
+interface MessageProps {
+    text: string;
+}
+
+function Message({ text }: MessageProps) {
+    return (
+        <div>
+            {text} <Button>Delete</Button>
+        </div>
+    );
+}
+
+interface ButtonProps {
+    children: React.ReactNode;
+}
+
+function Button({ children }: ButtonProps, context: MessageContext) {
+    return <button style={{ background: context.color }}>{children}</button>;
+}
+
+Button.contextTypes = messageContextTypes;
+```
+
+[Playground link](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAKjgQwM5wEoFNkGN4BmUEIcARFDvmQNwBQoksiK6ACsWACoCeYW6IiXJhOAWhh8BtOnVwQAdqnggBqZAHMsAYUUwsADxi9+6ALxwA3nThx5AG2gAuOBwjcpqAHTKowBRp0AL6y-vpQBHhYcACyapo6eobw1ra2DtAA-C6+-hr0IQwK4ZG40XGo6loAMsDKbmDoqWmqlQmoLtjIACaK9jwAglBQyDwAPJZw+kY5MH4BcEEAfAWyuPZo6BVVWLXKcMlYCt3oXfheuuCKRzBj2wl7MA2oS1Y2acrIMMC4dgAWwHs3V0xWSJgEcAsrR2IOmxk89Heti0MG0AKBsOSAAoAJQue5aTFGN5pUlwSgwACuUAUVjsEEcUBcZDA1LA9iwZEW9FJhVJlGOWCguJJZNsFOptKxSLFaTG3WAADcljLZWTLDAAd5RO5vND2l4QMgwFisfqtDjIa9pWrbXKCdE4WZLOasF44UE4AB6FV2sU4nEhP1wMZehXK1VpHE8tIhQphIWlcrxLTPUW2OGzeb5YKyAiUhT4YCKWIprBYyZwxb4svPS3NcVYKk0kPhpYa5KesYAIUpMBgiiWABEsBz9KHe-3B6G26siiUonBJwOFGmG-9Ad0BZ0qDAvGcYAA5CDdLC5uj5wvfEvLxQVjdAgXVpd9lfPAA09NBM1LbUJSSMesZQlFsbVlMYACNXxLZQeA5Z1LAgvAAGsNGIAtuhceRvz3DIoCCZZIzFSxcHRLcjiDcCvSgqcFF9KM51vBQvGwuFwXMOBXSJeFTBoIA)
+
+</details>
+
+If you're using the current [context api](https://reactjs.org/docs/context.html#api), you don't have much to worry about. It works very well with TypeScript.
+
+## Return type of render
+
+The return type of a render function must be `JSX.Element | null` in typescript, but the [React docs](https://reactjs.org/docs/react-component.html#render) allow strings, numbers, and arrays.
+
+<details>
+
+<summary>This means that this code is not valid</summary>
+
+```tsx
+import * as React from "react";
+
+function RenderArray() {
+    return [
+        <div key="1">A</div>,
+        <div key="2">B</div>
+    ];
+}
+
+<RenderArray />;
+
+function RenderString() {
+    return "testing";
+}
+
+<RenderString />;
+```
+
+[Playground link](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAKjgQwM5wEoFNkGN4BmUEIcARFDvmQNwBQdBArgHb7AQuZYsAmWUAIJQoyAJ4AKAJRwA3nTiK4lGEyhcA2gqU6APL2AA3OAGssYgLxkAjGQB8g3QHoDhuwBptOxfqOnzVgBM9gBCzq52XnAAuvQAvgy62HwCwqJicE529Iys7JzcKVAAyjBQwCwA5tJyUSpqXGQwWKgwFZW0dAl0STz8JWXtmdlAA)
+
+</details>
+
+This is easy to resolve, just wrap the returns in a fragment: `return <>{value}</>;` ([Playground link](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAKjgQwM5wEoFNkGN4BmUEIcARFDvmQNwBQdBArgHb7AQuZYsAmWUAIJQoyAJ4AKAJRwA3nTiK4lGEyhcAPAD4A2gqUGNvYADc4AayxiAvGQCMZLYI0B6Yya0AafQcVHTFla2AEyOAEKu7lo+cAC6rlr0AL4MGth8AsKiYnAuiQzMbDAcXOn8UADKMFDALADm0nIxKmqaWmQwWKjF9WQJyallAlU19bmJQA)).
+
+[^1]: At time of writing: React v16.13.1, TypeScript v4.0.2
+
+[^2]: Previously called React.SFC (stateless functional component)
+
+[^3]: [Exact types](https://github.com/Microsoft/TypeScript/issues/12936) might provide this in the future
