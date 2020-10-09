@@ -16,8 +16,8 @@ tags: ["apps"]
 [Go template validation](https://camlittle.com/go-template-validation)
 : A web tool tool to visually validate go text and html templates.
 
-[Nova Typescript Extension](https://github.com/apexskier/nova-typescript)
-: Typescript language support for [Panic](https://panic.com/)'s new editor, [Nova](https://panic.com/nova/)
+[Nova Extensions](https://extensions.panic.com/extensions/apexskier/)
+: My extensions for [Panic](https://panic.com/)'s new editor, [Nova](https://nova.app/). I've also written some [sharable utilities for developing extensions](https://github.com/apexskier/nova-extension-utils).
 
 ## Some less useful side projects
 
