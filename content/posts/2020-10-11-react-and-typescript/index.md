@@ -3,7 +3,6 @@ title: "React and TypeScript"
 slug: react-and-typescript
 date: 2020-10-11T11:46:48+02:00
 tags: ["tech", "web"]
-draft: true
 toc: true
 ---
 
