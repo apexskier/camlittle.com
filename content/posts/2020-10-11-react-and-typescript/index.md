@@ -1,6 +1,7 @@
 ---
 title: "React and TypeScript"
-date: 2020-10-07T09:10:48+02:00
+slug: react-and-typescript
+date: 2020-10-11T11:46:48+02:00
 tags: ["tech", "web"]
 draft: true
 toc: true
