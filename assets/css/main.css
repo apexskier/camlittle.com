@@ -1144,6 +1144,7 @@ code {
   border-radius: 3px;
   background-color: var(--callout-bg);
   padding: 2px 4px;
+  font-size: 0.95em;
 }
 
 pre code {

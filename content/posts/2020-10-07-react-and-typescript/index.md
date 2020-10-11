@@ -6,9 +6,9 @@ draft: true
 toc: true
 ---
 
-Here are some of my tips and best practices, mostly coming from experience working in a large-scale, real world React/React Native/TypeScript[^1] codebase.
+Here are some of my tips and best practices for working with React using TypeScript[^1]. These mostly come from my experience working in a large-scale, real world React/React Native/TypeScript codebase. You should have a working knowledge of React and some familiarity with TypeScript before reading this post, although I've including links to further documentation if you can't remember the details.
 
-Let's start with a basic example of creating and using a component.
+Let's start with a basic example of creating and using a component. `HelloProps` is an [interface](https://www.typescriptlang.org/docs/handbook/interfaces.html) that describes exactly what properties the component accepts and requires.
 
 ```tsx
 interface HelloProps {
@@ -31,12 +31,14 @@ function App() {
 }
 ```
 
-Here, `HelloProps` is an [interface](https://www.typescriptlang.org/docs/handbook/interfaces.html) that describes exactly what properties the component accepts and requires. This replaces [`PropTypes`](https://reactjs.org/docs/typechecking-with-proptypes.html), but doesn't require running the code to discover problems and allows you to be more specific and refined.
+There are two main component-related types used when writing React code. I tend to get them mixed up
 
-There are two main component-related things you'll touch when writing React code:
+1. [`React.ComponentType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L82) is what's _in_ your JSX <small>(except for html primitives)</small>
+2. [`React.ReactElement`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L146-L150) <small>(or [`JSX.Element`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L2942))</small> is what your JSX produces
 
-1. [`React.ComponentType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L82) is what's in JSX arrow brackets (other than html primitives)
-2. [`React.ReactElement`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L146-L150) ([`JSX.Element`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L2942)) is what JSX produces
+<details>
+
+<summary>Here's an explicitly annotated code sample</summary>
 
 ```tsx
 import * as React from "react";
@@ -49,61 +51,57 @@ class Test extends React.Component<{ Comp: React.ComponentType }> {
 }
 ```
 
+</details>
+
 `React.ComponentType` is composed of `React.ComponentClass`, for class-based components, and `React.FunctionComponent`[^2] for functional components.
 
-You might encounter a more "exotic" types of component extending from [`React.ExoticType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L355) like forwarded ref components, context providers, and memoized components. These have different behavior restrictions at runtime, so most difficulties you'll encounter have a good reason behind them.
+You also might encounter more "exotic" types of component extending from [`React.ExoticType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L355). These include forwarded ref components, context providers, and memoized components. All have different behavior restrictions at runtime, so most difficulties you'll encounter have a good reason behind them.
+
+## Nullable or optional props?
+
+```tsx
+interface MyComponentProps {
+    requiredProp: string;
+    optionalProp?: string;
+    nullableProp: string | null;
+}
+```
+
+If a property isn't required, you should generally make it nullable instead of optional. Optional properties can be fully omitted, which means they're easy to forget. Nullable properties require explicitness, which is especially helpful when introducing a new property into a large codebase---the compiler will tell you if you've missed anything.
+
+Only use optional properties when the property has a default value or if forgetting it won't break the user experience.
+
+Avoid using properties that are both optional and nullable. They have the disadvantages of optionals and make the codebase more complex.
+
+I also recommend avoiding `undefined` for _any_ variable type, because it allows accidental mistakes through forgotten initialization. This also helps avoid needing `nullableProp={value ?? null}`.
 
 ## Don't export properties types
 
-As a codebase grows, it makes sense to export these interfaces to reuse in other components and keep things DRY, especially as your codebase expands and as you start making use of [higher-order components](https://reactjs.org/docs/higher-order-components.html) and [composition](https://reactjs.org/docs/composition-vs-inheritance.html).
+As a codebase grows, it makes sense to export property interfaces to reuse in other components and keep things [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), especially as your codebase expands and as you start making use of [higher-order components](https://reactjs.org/docs/higher-order-components.html) and [composition](https://reactjs.org/docs/composition-vs-inheritance.html).
 
 ```tsx
 import { ButtonProps } from "../props";
 
-export function FooButton(props: ButtonProps) {
-    // ...
-}
+export function FooButton(props: ButtonProps) {}
 ```
 
 ```tsx
 import { ButtonProps } from "../props";
 
-export function BarButton(props: ButtonProps) {
-    // ...
-}
+export function BarButton(props: ButtonProps) {}
 ```
 
-This is a pattern I used commonly in the past, but it increases coupling and information sharing. If `FooButton` doesn't need a property from `ButtonProps`, you can't remove it without affecting `BarButton`. If `BarButton` needs a new property, you need to supply it everywhere you're using `FooButton`.
+This is a pattern I used commonly in the past. I now avoid it, because it increases coupling and information leaking. If `FooButton` doesn't need a property from `ButtonProps`, you can't remove it without affecting `BarButton`. If `BarButton` needs a new property, you can't hide it from `FooButton` and it's required everywhere `FooButton` is used.
 
-Instead, **each component should own its own properties**.
+Sharing interfaces is especially attractive to those coming from an object-oriented world. I advise trying to avoid habitually using inheritance and conformance and instead focusing on "[the _shape_ that values have](https://www.typescriptlang.org/docs/handbook/interfaces.html)".
 
-```tsx
-interface FooButtonProps {
-    // ...
-}
-
-export function FooButton(props: FooButtonProps) {
-    // ...
-}
-```
-
-```tsx
-interface BarButtonProps {
-    // ...
-}
-
-export function BarButton(props: FooButtonProps) {
-    // ...
-}
-```
-
-Now, changes to `BarButton` don't affect `FooButton` unless actually necessary.
+Instead, **each component should own its own properties**. This results in more explicitness and increases flexibility at the minor cost of duplicated code.
 
 <details>
 
 <summary>
 
-In this example, the new property `b` on `FooButton` doesn't require adding a `b` property to `BarButton`.
+In this example, the new property `b` on `FooButton` doesn't require adding a `b` property to `BarButton` even though we don't know which of the two is used.
 
 </summary>
 
@@ -135,37 +133,17 @@ function Test() {
 
 </details>
 
-Sharing interfaces is especially attractive to those coming from an object-oriented world. I advise trying to avoid habitually using inheritance and conformance and instead focusing on "[the _shape_ that values have](https://www.typescriptlang.org/docs/handbook/interfaces.html)".
-
-## Nullable or optional props?
-
-```tsx
-interface MyComponentProps {
-    requiredProp: string;
-    optionalProp?: string;
-    nullableProp: string | null;
-}
-```
-
-If a property isn't required, I generally advise making it nullable instead of optional. Optional properties can be fully omitted, which means they're easy to forget. Nullable properties require explicitness, which is especially helpful when introducing a new property into a large codebase---the compiler will tell you if you've missed anything.
-
-Only use optional properties when the property has a default value or if forgetting it won't break the user experience.
-
-Avoid using optional and nullable properties. They have the disadvantages of optionals and make the codebase more complex.
-
-I also recommend not using `undefined` within variable declarations, also because it makes it easy to make accidental mistakes. This also helps avoid needing `nullableProp={value ?? null}`.
-
 ## Higher-order components
 
-[Higher-order components](https://reactjs.org/docs/higher-order-components.html) are an advanced React pattern to reuse component logic. In TypeScript, higher-order components are [generic](https://www.typescriptlang.org/docs/handbook/generics.html) to decouple them from the components being wrapped.
+[Higher-order components](https://reactjs.org/docs/higher-order-components.html) are an advanced React pattern for reuse of component logic. In TypeScript, higher-order components are [generic](https://www.typescriptlang.org/docs/handbook/generics.html) to decouple them from the components being wrapped.
 
-Property typing higher-order components is a pain in the ass.
+Properly typing higher-order components is a _pain in the ass_. That being said, I'll try to explain my approach and the problems you'll encounter.
 
-When writing or refactoring a higher-order component into TypeScript, you need to understand the **parameter component's properties** and **the returned component's properties**. The parameter component's properties can be divided into **those that the higher-order component uses** and **those that it doesn't**. Those that the higher-order component doesn't need to know about are generally represented by a generic type: let's call it `P`.
+When writing or refactoring a higher-order component into TypeScript, you need to understand the **wrapped component's properties** and **the returned component's properties**. The wrapped, or parameter, component's properties can be divided into **those that the higher-order component uses** and **those that it doesn't**. Those that the higher-order component doesn't need to know about are generally represented by a generic type: let's call it `P`.
 
 On occasion, you need to know the type of component returned. If possible I recommend using the widest type possible (`React.ComponentType`) or relying on type interference (not specifying an explicit return type). The cases when you may need an explicitly narrower type is if your component returns an exotic type, like a ref forwarder.
 
-By convention, I use the names "Provides" and "Requires". Provided properties are those that the higher order component provides to its parameter component, and required properties are those additionally required by the returned component.
+By convention, I use the names "Provides" and "Requires". Provided properties are those that the higher order component provides to its wrapped component, and required properties are those additionally required by the returned component.
 
 ```tsx
 function withExtraFunctionality<P>(
@@ -220,13 +198,13 @@ const WrappedBaseComponent = withExtraFunctionality(BaseComponent);
 
 </details>
 
-A common error I encounter here is some variety of the following:
+A common error I encounter is some variety of the following:
 
 ```txt
 'P' could be instantiated with an arbitrary type which could be unrelated to…
 ```
 
-The most common cause of this is the higher-order component "stealing" properties from the wrapped component (or TypeScript thinks that's the cause). It highlights the issue that a property name visible to the higher order component could overlap with one in `P` that's required by the wrapped component.
+The most common cause of this is the higher-order component "stealing" properties from the wrapped component (or TypeScript thinks this is happening). It highlights the issue that a property name visible to the higher order component could overlap with one in `P` that's required by the wrapped component.
 
 <details>
 
@@ -273,7 +251,9 @@ const WrappedBaseComponent = withExtraFunctionality(BaseComponent);
 
 </details>
 
-Higher-order components and typescript can be a pain, but each upgrade of TypeScript seems to make it smoother (or maybe it's just me learning). I'm hopeful that [#10727](https://github.com/microsoft/TypeScript/issues/10727) will address some of the remaining issues and [#9252](https://github.com/microsoft/TypeScript/issues/9252).
+To fix this, you'll need to refactor your code to avoid the name conflict or explicitly type Provides and Requires props to prevent the stolen prop, which is error prone.
+
+Higher-order components and TypeScript can be a pain, but each upgrade of TypeScript seems to make it smoother (or maybe it's just me learning). I'm hopeful that [#10727](https://github.com/microsoft/TypeScript/issues/10727), [#9252](https://github.com/microsoft/TypeScript/issues/9252), and [#12936](https://github.com/Microsoft/TypeScript/issues/12936) will address some of the remaining issues.
 
 ## Refs
 
@@ -282,12 +262,12 @@ Higher-order components and typescript can be a pain, but each upgrade of TypeSc
 ```tsx
 function Component() {
     const ref = React.createRef<HTMLDivElement>();
-    ref.current?.scrollTop;
+    ref.current?.scrollTop; // <-- properly typed
     return <div ref={ref} />;
 }
 ```
 
-When using refs to other components (not DOM elements or other ["basic" components](https://reactnative.dev/docs/components-and-apis#basic-components)), it works the same way.
+Most examples show refs to DOM elements and other ["basic" components](https://reactnative.dev/docs/components-and-apis#basic-components), but it works the same way with _any_ component.
 
 ```tsx
 function Component() {
@@ -302,7 +282,7 @@ declare class ChildComponent extends React.Component {
 }
 ```
 
-As your app gets more complex, so will your ref usage. It's tempting to create an interface 
+As your app gets more complex, so will your ref usage. Unfortunately, the way ref types are defined [prevents abstracting to an interface easily](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAKjgQwM5wEoFNkGN4BmUEIcARFDvmQNwBQdwAdjFlAXlnAEJYAWyAG7BocAN504UuABMIAZRJYYfZgHMAFAEoAXHEERgM+gF8GBAK5N8IpnADCJSEywtt4ydNwQmqeJQI4AF5MKhgAOlxKZFZsAgAeXgFhUQAyULwIx3AfVxgAPm16aTgAyIsoShYAfnC5RRBlVSY1YulKGAq7ePtVABsZbOc80qwCILEAkzgAenzTBhksXD7kSjgVtHRe4AGh3JY4LAAPViYZdGxM8P2XQ9AwPqxGlnQkoREoDxL6pRV1bR6AxGNpSKpLKCAuAAKXkAA1wgBRJ4vGCmIA).
 
 ## PropTypes
 
@@ -310,7 +290,11 @@ If you're migrating a JavaScript React project to TypeScript, you're hopefully a
 
 <details>
 
-<summary>For example</summary>
+<summary>
+
+Here's an example of migrating from `PropTypes` to TypeScript
+
+</summary>
 
 ```js
 function Component(props) { /* ... */ }
@@ -344,6 +328,8 @@ interface ComponentProps {
 PropTypes are still necessary if using the [legacy context api](https://reactjs.org/docs/legacy-context.html). I recommend pairing `contextTypes` and `childContextTypes` with an interface to add some type safety at build-time.
 
 <details>
+
+<summary>Here's how I use legacy context in TypeScript</summary>
 
 ```tsx
 import * as React from "react";
@@ -410,7 +396,7 @@ If you're using the current [context api](https://reactjs.org/docs/context.html#
 
 ## Return type of render
 
-The return type of a render function must be `JSX.Element | null` in typescript, but the [React docs](https://reactjs.org/docs/react-component.html#render) allow strings, numbers, and arrays.
+The return type of a render function must be `JSX.Element | null` in TypeScript, but the [React docs](https://reactjs.org/docs/react-component.html#render) allow strings, numbers, and arrays.
 
 <details>
 
@@ -439,7 +425,7 @@ function RenderString() {
 
 </details>
 
-This is easy to resolve, just wrap the returns in a fragment: `return <>{value}</>;` ([Playground link](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAKjgQwM5wEoFNkGN4BmUEIcARFDvmQNwBQdBArgHb7AQuZYsAmWUAIJQoyAJ4AKAJRwA3nTiK4lGEyhcAPAD4A2gqUGNvYADc4AayxiAvGQCMZLYI0B6Yya0AafQcVHTFla2AEyOAEKu7lo+cAC6rlr0AL4MGth8AsKiYnAuiQzMbDAcXOn8UADKMFDALADm0nIxKmqaWmQwWKjF9WQJyallAlU19bmJQA)).
+This is easy to resolve, just [wrap the return in a fragment](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAKjgQwM5wEoFNkGN4BmUEIcARFDvmQNwBQdBArgHb7AQuZYsAmWUAIJQoyAJ4AKAJRwA3nTiK4lGEyhcAPAD4A2gqUGNvYADc4AayxiAvGQCMZLYI0B6Yya0AafQcVHTFla2AEyOAEKu7lo+cAC6rlr0AL4MGth8AsKiYnAuiQzMbDAcXOn8UADKMFDALADm0nIxKmqaWmQwWKjF9WQJyallAlU19bmJQA): `return <>{value}</>`.
 
 [^1]: At time of writing: React v16.13.1, TypeScript v4.0.2
 
