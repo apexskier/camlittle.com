@@ -1,8 +1,13 @@
 ---
 title: "Style Test"
-date: 2020-03-12T19:38:55+01:00
+date: 2020-10-10T19:38:55+01:00
+toc: true
 draft: true
 ---
+
+This has a footnote[^1]
+
+This has a **big** footnote[^2]
 
 ## This is an &lt;h2&gt; tag
 ### This is an &lt;h3&gt; tag
@@ -66,7 +71,55 @@ First Header | Second Header
 Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
 
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] **formatting** and <del>tags</del> supported
 - [x] list syntax required (any unordered or ordered list supported)
 - [x] this is a complete item
 - [ ] this is an incomplete item
+
+## Code fence
+
+```tsx
+import * as m from "module";
+
+console.log(m);
+```
+
+```
+hello world
+```
+
+## Details
+
+<details>
+
+<summary>Details block</summary>
+
+Detailed content goes here.
+
+</details>
+
+<details>
+
+<summary>
+
+Details block with _formatting_.
+
+</summary>
+
+Detailed content goes here.
+
+> More complexity
+
+```
+Code fence
+```
+
+</details>
+
+[^1]: This is a footnote
+
+[^2]: This is a *big* footnote
+
+    With more content
+    
+    Avoid these, they're not very well styled.
