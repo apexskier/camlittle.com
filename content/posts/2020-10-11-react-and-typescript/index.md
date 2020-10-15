@@ -6,7 +6,7 @@ tags: ["tech", "web"]
 toc: true
 ---
 
-Here are some of my tips and best practices for working with React using TypeScript[^1]. These mostly come from my experience working in a large-scale, real world React/React Native/TypeScript codebase. You should have a working knowledge of React and some familiarity with TypeScript before reading this post, although I've including links to further documentation if you can't remember the details.
+Here are some of my tips and best practices for working with React using TypeScript[^1]. These mostly come from my experience working in a large-scale, real-world React/React Native/TypeScript codebase. You should have a working knowledge of React and some familiarity with TypeScript before reading this post, although I've included links to further documentation if you can't remember the details.
 
 Let's start with a basic example of creating and using a component. `HelloProps` is an [interface](https://www.typescriptlang.org/docs/handbook/interfaces.html) that describes exactly what properties the component accepts and requires.
 
@@ -41,7 +41,7 @@ There are two main component-related types used when writing React code. I tend 
 <summary>Here's an explicitly annotated code sample</summary>
 
 ```tsx
-import * as React from "react";
+import * as React from "reactord";
 
 class Test extends React.Component<{ Comp: React.ComponentType }> {
     render() {
@@ -55,7 +55,7 @@ class Test extends React.Component<{ Comp: React.ComponentType }> {
 
 `React.ComponentType` is composed of `React.ComponentClass`, for class-based components, and `React.FunctionComponent`[^2] for functional components.
 
-You also might encounter more "exotic" types of component extending from [`React.ExoticType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L355). These include forwarded ref components, context providers, and memoized components. All have different behavior restrictions at runtime, so most difficulties you'll encounter have a good reason behind them.
+You also might encounter more "exotic" types of components extending from [`React.ExoticType`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/f0841a3126737ab117add60b2011d7a7c10022eb/types/react/index.d.ts#L355). These include forwarded ref components, context providers, and memoized components. All have different behavior restrictions at runtime, so most difficulties you'll encounter have a good reason behind them.
 
 ## Nullable or optional props?
 
@@ -143,7 +143,7 @@ When writing or refactoring a higher-order component into TypeScript, you need t
 
 On occasion, you need to know the type of component returned. If possible I recommend using the widest type possible (`React.ComponentType`) or relying on type interference (not specifying an explicit return type). The cases when you may need an explicitly narrower type is if your component returns an exotic type, like a ref forwarder.
 
-By convention, I use the names "Provides" and "Requires". Provided properties are those that the higher order component provides to its wrapped component, and required properties are those additionally required by the returned component.
+By convention, I use the names "Provides" and "Requires". Provided properties are those that the higher-order component provides to its wrapped component, and required properties are those additionally required by the returned component.
 
 ```tsx
 function withExtraFunctionality<P>(
@@ -153,7 +153,7 @@ function withExtraFunctionality<P>(
 
 <details>
 
-<summary>A more complete example of a fully typed higher order component</summary>
+<summary>A more complete example of a fully typed higher-order component</summary>
 
 ```tsx
 import * as React from "react";
@@ -204,11 +204,11 @@ A common error I encounter is some variety of the following:
 'P' could be instantiated with an arbitrary type which could be unrelated to…
 ```
 
-The most common cause of this is the higher-order component "stealing" properties from the wrapped component (or TypeScript thinks this is happening). It highlights the issue that a property name visible to the higher order component could overlap with one in `P` that's required by the wrapped component.
+The most common cause of this is the higher-order component "stealing" properties from the wrapped component (or TypeScript thinks this is happening). It highlights the issue that a property name visible to the higher-order component could overlap with one in `P` that's required by the wrapped component.
 
 <details>
 
-<summary>An example of stolen props in a higher order component</summary>
+<summary>An example of stolen props in a higher-order component</summary>
 
 ```tsx
 import * as React from "react";
@@ -251,7 +251,7 @@ const WrappedBaseComponent = withExtraFunctionality(BaseComponent);
 
 </details>
 
-To fix this, you'll need to refactor your code to avoid the name conflict or explicitly type Provides and Requires props to prevent the stolen prop, which is error prone.
+To fix this, you'll need to refactor your code to avoid the name conflict or explicitly type Provides and Requires props to prevent the stolen prop, which is error-prone.
 
 Higher-order components and TypeScript can be a pain, but each upgrade of TypeScript seems to make it smoother (or maybe it's just me learning). I'm hopeful that [#10727](https://github.com/microsoft/TypeScript/issues/10727), [#9252](https://github.com/microsoft/TypeScript/issues/9252), and [#12936](https://github.com/Microsoft/TypeScript/issues/12936) will address some of the remaining issues.
 
@@ -325,7 +325,7 @@ interface ComponentProps {
 
 </details>
 
-PropTypes are still necessary if using the [legacy context api](https://reactjs.org/docs/legacy-context.html). I recommend pairing `contextTypes` and `childContextTypes` with an interface to add some type safety at build-time.
+PropTypes are still necessary if using the [legacy context API](https://reactjs.org/docs/legacy-context.html). I recommend pairing `contextTypes` and `childContextTypes` with an interface to add some type safety at build-time.
 
 <details>
 
@@ -392,7 +392,7 @@ Button.contextTypes = messageContextTypes;
 
 </details>
 
-If you're using the current [context api](https://reactjs.org/docs/context.html#api), you don't have much to worry about. It works very well with TypeScript.
+If you're using the current [context API](https://reactjs.org/docs/context.html#api), you don't have much to worry about. It works very well with TypeScript.
 
 ## Return type of render
 
