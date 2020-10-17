@@ -7,6 +7,20 @@ menu:
 tags: ["tech"]
 ---
 
+## Features
+
+Theres are some of the little details I've added to this site that I'm proud of. You can always see how they work in [the source code](https://github.com/apexskier/camlittle.com).
+
+- [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) support
+- custom [responsive image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) support
+- 100% [Lighthouse](https://developers.google.com/web/tools/lighthouse) score on most pages
+- JavaScript is not required <!-- - easter egg -->
+- custom [tag cloud](/tags/)
+- full text RSS
+- zero client-side trackers (I track some stats server-side)
+
+## History
+
 This site's tech stack throughout the years.
 
 * March 2020
