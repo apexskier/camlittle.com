@@ -11,7 +11,7 @@ enableRobotsTXT = true
   email = "cameron@camlittle.com"
 
 [params]
-  description = "A collection of Cameron Little's thoughts and projects."
+  description = "A collection of Cameron Little's thoughts and projects"
   gitUrl = "https://github.com/apexskier/camlittle.com/commit/"
 
   [params.sitemap]

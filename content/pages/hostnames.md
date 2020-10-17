@@ -7,11 +7,11 @@ menu:
 tags: ["tech"]
 ---
 
-I've been using a system for naming my devices several years now, starting when I learned about computer naming schemes at ResTek[^1]. I've taken inspiration from [RFC 1178 - "Choosing a Name for Your Computer"](https://tools.ietf.org/html/rfc1178)[^2].
+I've been using a system for naming my devices for several years now, starting when I learned about computer naming schemes at ResTek[^1]. I've taken inspiration from [RFC 1178 - "Choosing a Name for Your Computer"](https://tools.ietf.org/html/rfc1178)[^2].
 
 This page exists to document my current and historical names.
 
-I name each of my computers after [Washington rivers](https://www.americanwhitewater.org/content/River/state-summary/state/WA/), and generally try to group them by device type via starting letter.
+I name each of my computers after [Washington rivers](https://www.americanwhitewater.org/content/River/state-summary/state/WA/) and try to group them by device type via the starting letter.
 
 | Name | Description | Year acquired | Active |
 | ---- | ----------- | ------------- | ------ |
