@@ -13,11 +13,11 @@ These are some of the little details in the site that I'm proud of. You can alwa
 
 - [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) support
 - custom [responsive image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) support
-- 100% [Lighthouse](https://developers.google.com/web/tools/lighthouse) score on most pages
 - JavaScript is not required <!-- - easter egg -->
 - custom [tag cloud](/tags/)
 - full-text RSS
 - zero client-side trackers (I track some stats server-side)
+- high [Lighthouse](https://developers.google.com/web/tools/lighthouse) and [WebPagetest](https://www.webpagetest.org) scores
 
 ## History
 
