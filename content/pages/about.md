@@ -3,7 +3,7 @@ title: About
 url: /about/
 menu: 
   main:
-    identifier: about
+    weight: 10
 ---
 
 I’m a software engineer at [Remitly](https://grnh.se/3c4028751), where I’m

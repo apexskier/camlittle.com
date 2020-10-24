@@ -3,21 +3,24 @@
     <label class="mobile-toggle-on" for="menu-toggle">Menu</label>
     <label class="mobile-toggle-off" for="menu-toggle">Close</label>
     <ul class="links">
-        {{- $currentPage := . }}
-        <li><a href="{{ relref . "/" }}" title="Home">Home</a> {{ if .IsHome }}<span aria-label="Active"> ⇐</span>{{ end }}</li>
-        {{ range .Site.Menus.main -}}
+        {{ $currentPage := . }}
+        <li>
+            <a href="{{ relref . "/" }}" title="Home">Home</a>
+            {{ if .IsHome }}<span aria-label="Active"> ⇐</span>{{ end }}
+        </li>
+        {{ range .Site.Menus.main }}
         <li>
             <a href="{{ .URL }}">{{ .Title }}</a>
-            {{- if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) -}}
+            {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
             <span aria-label="active"> ⇐</span>
-            {{- end -}}
+            {{ end }}
         </li>
         {{ end }}
-        {{ range ((where .Site.Pages "Params.rss" true) | append (where .Site.Pages "Kind" "taxonomyTerm")) }}
+        {{ range (where .Site.Pages "Kind" "taxonomyTerm") }}
         {{ if ne .Type "pages" }}
         <li>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-            {{- if eq . $ }}<span aria-label="active"> ⇐</span>{{ end -}}
+            {{ if eq . $ }}<span aria-label="active"> ⇐</span>{{ end }}
         </li>
         {{ end }}
         {{ end }}

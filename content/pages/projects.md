@@ -3,7 +3,7 @@ title: Projects
 url: /projects/
 menu: 
   main:
-    identifier: projects
+    weight: 40
 tags: ["apps"]
 ---
 
