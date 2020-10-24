@@ -13,7 +13,7 @@
             {{ end }}
         </div>
         <div id="wrapper">
-            <div id="container">
+            <div id="container" data-type="{{ .Page.Type }}" data-kind="{{ .Page.Kind }}">
                 <div id="content">
                     <div id="headerish">
                         {{- partial "header.html" . -}}

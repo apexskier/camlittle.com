@@ -353,6 +353,20 @@ li:target {
   max-width: 1024px;
   margin: 0 auto;
   padding: 1.5em;
+  
+  & #headerish > * {
+    transition: opacity 200ms ease-in-out;
+  }
+
+  &[data-type="photos"] {
+    & #headerish > * {
+      opacity: 0.2;
+      
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
 }
 
 #primary-header {
@@ -644,11 +658,15 @@ nav.social-links {
 .posts {
   margin: 0;
   padding: 0;
+  
+  & .post-link,
+  & .photo-link {
+    list-style: none;
+    padding: 0;
+  }
 
   & .post-link {
-    list-style: none;
     margin: 0 0 1em;
-    padding: 0;
     display: flex;
 
     & time {
@@ -656,6 +674,18 @@ nav.social-links {
     }
 
     & h3 {
+      margin: 0;
+    }
+  }
+  
+  & .photo-link {
+    margin: 0 0 4em;
+    
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    
+    & img {
       margin: 0;
     }
   }
@@ -686,6 +716,7 @@ main {
   & video {
     max-width: 100%;
     height: auto;
+    max-height: calc(100vh - 3em);
   }
 
   & p,
@@ -869,8 +900,6 @@ footer {
 }
 
 article {
-  line-height: 1.5;
-
   /* try to keep things readable
    * https://baymard.com/blog/line-length-readability
   */
@@ -914,12 +943,6 @@ article {
     }
   }
 
-  & img,
-  & video {
-    box-shadow: var(--minimal-box-shadow);
-    border-radius: 3px;
-  }
-
   .kitchen-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -936,6 +959,16 @@ article {
       display: block;
       margin-right: 1em;
     }
+  }
+}
+
+main {
+  line-height: 1.5;
+
+  & img,
+  & video {
+    box-shadow: var(--minimal-box-shadow);
+    border-radius: 3px;
   }
 
   & canvas {
@@ -984,6 +1017,15 @@ article {
       margin-left: 0;
       list-style: none;
     }
+  }
+}
+
+.photo-meta {
+  display: flex;
+  justify-content: space-between;
+  
+  > *:last-child {
+    text-align: right;
   }
 }
 

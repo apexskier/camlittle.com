@@ -1,0 +1,9 @@
+<li class="photo-link">
+    <a href="{{ .RelPermalink }}">
+        <picture title="{{ .Title }}">
+            <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_640.webp" type="image/webp" />
+            <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_640.jpg" />
+            <img alt="{{ .Title }}" src="https://content.camlittle.com/photos/{{ .Params.photo }}_640.jpg" height="420" />
+        </picture>
+    </a>
+</li>

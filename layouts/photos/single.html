@@ -1,0 +1,27 @@
+{{ define "main" }}
+<picture title="{{ .Title }}">
+    <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.webp 1280w, https://content.camlittle.com/photos/{{ .Params.photo }}_2880.webp 2880w" type="image/webp" />
+    <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg 1280w, https://content.camlittle.com/photos/{{ .Params.photo }}_2880.jpg 2880w" />
+    <img src="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg" />
+</picture>
+
+<section class="photo-meta">
+    <div>
+        <h1>{{ .Title }}</h1>
+        <p>
+            {{ partial "time" .Date }}
+            {{ with .Params.location }}<br />
+            {{ . }}{{ end }}
+        </p>
+    </div>
+    
+    <p>
+        <span title="Camera">📷</span> {{ .Params.camera }}<br />
+        <a href="https://content.camlittle.com/photos/{{ .Params.photo }}_original.jpg">Full size</a>
+    </p>
+</section>
+
+<!-- location: Pieniny Mountains National Park -->
+
+{{ .Content }}
+{{ end }}
