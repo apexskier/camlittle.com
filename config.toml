@@ -2,6 +2,7 @@ baseURL = "https://camlittle.com/"
 languageCode = "en-us"
 title = "Cameron Little's Website"
 titleCaseStyle = "Chicago"
+timeout = 25000
 
 enableGitInfo = true
 enableRobotsTXT = true

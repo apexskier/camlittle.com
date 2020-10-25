@@ -1,4 +1,5 @@
-{{ if or (gt .img.Width .x) (gt .img.Height .y) -}}
+{{ if .img }}
+{{ if or (gt .img.Width .x) (gt .img.Height .y) }}
 <source
     media="(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: {{ .x }}px){{ with .Color }} and (prefers-color-scheme: {{ . }}){{ end }}"
     srcset="{{ (.img.Resize (printf "%dx q90" (mul .x 2)) | fingerprint "md5").RelPermalink }}"
@@ -7,4 +8,5 @@
     media="(min-width: {{ .x }}px){{ with .Color }} and (prefers-color-scheme: {{ . }}){{ end }}"
     srcset="{{ (.img.Resize (printf "%dx q90" .x) | fingerprint "md5").RelPermalink }}"
 />
-{{- end }}
+{{ end }}
+{{ end }}

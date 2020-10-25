@@ -12,14 +12,17 @@
     "aws-sdk": "^2.786.0",
     "cssnano": "^4.1.10",
     "fast-average-color-node": "^1.0.1",
+    "hsluv": "^0.1.0",
     "postcss": "^8.1.6",
     "postcss-cli": "^8.2.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
     "pretty-bytes": "^5.4.1",
-    "sharp": "^0.26.2"
+    "sharp": "^0.26.2",
+    "smartcrop-sharp": "^2.0.3"
   },
   "scripts": {
-    "format": "prettier --write **/*.{css,js}"
-  }
+    "format": "prettier --write **/*.{css,js,yml}"
+  },
+  "dependencies": {}
 }

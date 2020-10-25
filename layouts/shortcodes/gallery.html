@@ -1,16 +1,17 @@
 {{ $minWidth := 10000000.0 }}
 {{ $minHeight := 10000000.0 }}
-{{ range .Params -}}
-    {{ $img := $.Page.Resources.GetMatch . }}
-    {{ $w := $img.Width -}}
-    {{ if lt $w $minWidth -}}
-    {{ $minWidth = float $w }}
-    {{ end -}}
-    {{ $h := $img.Height -}}
-    {{ if lt $h $minHeight -}}
-    {{ $minHeight = float $h }}
-    {{ end -}}
-{{- end -}}
+{{ range .Params }}
+  {{ with $.Page.Resources.GetMatch . }}
+    {{ $w := .Width }}
+    {{ if lt $w $minWidth }}
+      {{ $minWidth = float $w }}
+    {{ end }}
+    {{ $h := .Height }}
+    {{ if lt $h $minHeight }}
+      {{ $minHeight = float $h }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 {{/*
 Each image should be the same height, but a natural width.
 The full row should be 100% width.
@@ -18,13 +19,15 @@ The full row should be 100% width.
 Math will scale everything to min height.
 */}}
 <ul class="post-gallery">
-{{ range .Params -}}
-    {{ $img := ($.Page.Resources.GetMatch .).Resize "600x" -}}
-    {{ $flex := mul (div $img.Width (float $img.Height)) $minHeight -}}
+{{ range .Params }}
+    {{ with $.Page.Resources.GetMatch . }}
+    {{ $img := .Resize "600x" }}
+    {{ $flex := mul (div .Width (float .Height)) $minHeight }}
     <li style="flex: {{ $flex }};">
-        <a href="{{ $img.RelPermalink }}" target="_blank">
-            {{ partial "img" (dict "Resource" $img) }}
+        <a href="{{ .RelPermalink }}" target="_blank">
+            {{ partial "img" (dict "Resource" . "$" $) }}
         </a>
     </li>
-{{- end }}
+    {{ end }}
+{{ end }}
 </ul>
