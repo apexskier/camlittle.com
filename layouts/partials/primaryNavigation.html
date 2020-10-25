@@ -5,7 +5,7 @@
     <ul class="links">
         {{ $currentPage := . }}
         <li>
-            <a href="{{ relref . "/" }}" title="Home">Home</a>
+            <a href="{{ relref . "/" }}">Home</a>
             {{ if .IsHome }}<span aria-label="Active"> ⇐</span>{{ end }}
         </li>
         {{ range .Site.Menus.main }}

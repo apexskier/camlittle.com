@@ -10,7 +10,7 @@
     {{ template "_internal/schema.html" . }}
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
     <meta name="author" content="{{ .Site.Author.name }}">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="canonical" href="{{ .Permalink }}">
 
     {{ $style := resources.Get "css/main.css" | postCSS | toCSS | minify | fingerprint "md5" }}

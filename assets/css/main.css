@@ -238,6 +238,20 @@ body {
     );
   background-size: 600px 600px;
   background-repeat: no-repeat;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#container {
+  width: auto;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1.5em;
+}
+
+#notch {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .bun {
@@ -346,13 +360,6 @@ li:target {
   & * {
     color: var(--background);
   }
-}
-
-#container {
-  width: auto;
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 1.5em;
 }
 
 #primary-header {

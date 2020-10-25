@@ -12,18 +12,20 @@
             <img src="{{ .RelPermalink }}" height="40" alt="" />
             {{ end }}
         </div>
-        <div id="wrapper">
-            <div id="container">
-                <div id="content">
-                    <div id="headerish">
-                        {{- partial "header.html" . -}}
-                        {{- partial "primaryNavigation.html" . -}}
+        <div id="wrapper"><!-- contains orange triangle -->
+            <div id="container"><!-- max-width, centered content -->
+                <div id="notch"><!-- safe area inset padding -->
+                    <div id="content"><!-- responsive design -->
+                        <div id="headerish">
+                            {{- partial "header.html" . -}}
+                            {{- partial "primaryNavigation.html" . -}}
+                        </div>
+        
+                        <main id="main">{{ block "main" . }}{{ end }}</main>
                     </div>
-    
-                    <main id="main">{{ block "main" . }}{{ end }}</main>
+        
+                    {{- partial "footer.html" . -}}
                 </div>
-    
-                {{- partial "footer.html" . -}}
             </div>
         </div>
         <div id="bun-butt" class="bun" style="display: none">
