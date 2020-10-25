@@ -357,16 +357,6 @@ li:target {
   & #headerish > * {
     transition: opacity 200ms ease-in-out;
   }
-
-  html[data-type="photos"] & {
-    & #headerish > * {
-      opacity: 0.2;
-
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-  }
 }
 
 #primary-header {
@@ -1211,6 +1201,11 @@ pre code {
   }
 }
 
+/*
+Most of this relates to css scroll snapping, which is pretty cool
+One big issue is dealing with vh and the toolbar/header resizing on iOS. I haven't really done much
+but hope Apple makes it better
+*/
 html[data-type="photos"][data-kind="section"] {
   /* Ensure the body element scrolls. In Chrome it's the html element by default; in Safari it's body */
 
@@ -1230,6 +1225,16 @@ html[data-type="photos"][data-kind="section"] {
   & #headerish {
     padding-top: 1.5em;
     scroll-snap-align: start;
+    
+    @media only screen and (min-width: 45em) {
+      & > * {
+        opacity: 0.2;
+  
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
   }
 
   & footer {
