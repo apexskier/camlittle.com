@@ -353,10 +353,6 @@ li:target {
   max-width: 1024px;
   margin: 0 auto;
   padding: 1.5em;
-
-  & #headerish > * {
-    transition: opacity 200ms ease-in-out;
-  }
 }
 
 #primary-header {
@@ -521,6 +517,10 @@ input[type="submit"] {
   text-align: center;
   margin-bottom: var(--copy-spacing);
   font-family: Georgia, serif;
+
+  & > * {
+    transition: opacity 200ms ease-in-out;
+  }
 
   & ul {
     margin: 0;
