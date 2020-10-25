@@ -59,6 +59,7 @@ data:image/jpeg;base64,{{.Content | base64Encode}}
 
 {{ .Content }}
 
+<!--
 <div class="palette">
     <div style="background-color: {{ .Params.color.top }}"></div>
     <div style="background-color: {{ .Params.color.left }}"></div>
@@ -66,5 +67,6 @@ data:image/jpeg;base64,{{.Content | base64Encode}}
     <div style="background-color: {{ .Params.color.bottom }}"></div>
     <div style="background-color: {{ .Params.color.average }}"></div>
 </div>
+-->
 
 {{ end }}

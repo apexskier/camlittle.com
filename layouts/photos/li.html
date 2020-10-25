@@ -1,9 +1,42 @@
-<li class="photo-link">
+{{ $mini := .Resources.GetMatch (printf "%s_128.jpg" .Params.photo) }}
+{{ $aspectRatio := div $mini.Width (float $mini.Height) }}
+{{ $id := printf "item-%s" ($mini.Content | md5 | truncate 10 "") }}
+
+<style>
+#{{ $id }} {
+    max-width: calc({{ mul $aspectRatio 100 }}vh - {{ mul $aspectRatio 3 }}em);
+}
+@media only screen and (min-width: 45em) {
+    #{{ $id }} {
+        max-width: calc({{ mul $aspectRatio 100 }}vh - {{ mul $aspectRatio 8 }}em);
+    }
+}
+
+#{{ $id }} picture {
+    {{ with $mini }}
+    {{/* padding based forced aspect ratio */}}
+    padding-bottom: {{ (mul (div .Height (float .Width)) 100) }}%;
+    height: 0;
+    {{ end }}
+    {{ with .Params.color }}
+    {{/* fallback/preloading image */}}
+    {{/* with .Params.color.average }}
+    background-color: {{ . }};
+    {{ end */}}
+    background-image: url(data:image/svg+xml,{{ partial "placeholder.svg" . | safeHTML }});
+    background-repeat: no-repeat;
+    background-size: 100%;
+    {{ end }}
+}
+</style>
+
+<li id="{{ $id }}" class="photo-link">
+    <!-- this outer container forces the padding based aspect ratio to be constrained to the height of the page -->
     <a href="{{ .RelPermalink }}">
         <picture title="{{ .Title }}">
-            <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_640.webp" type="image/webp" />
-            <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_640.jpg" />
-            <img alt="{{ .Title }}" src="https://content.camlittle.com/photos/{{ .Params.photo }}_640.jpg" height="420" />
+            <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.webp" type="image/webp" />
+            <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg" />
+            <img src="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg" />
         </picture>
     </a>
 </li>

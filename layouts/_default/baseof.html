@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ .Site.Language }}">
+<html lang="{{ .Site.Language }}" data-type="{{ .Page.Type }}" data-kind="{{ .Page.Kind }}">
     {{- partial "head.html" . -}}
     <body>
         <div id="bun" class="bun" style="display: none">
@@ -13,7 +13,7 @@
             {{ end }}
         </div>
         <div id="wrapper">
-            <div id="container" data-type="{{ .Page.Type }}" data-kind="{{ .Page.Kind }}">
+            <div id="container">
                 <div id="content">
                     <div id="headerish">
                         {{- partial "header.html" . -}}

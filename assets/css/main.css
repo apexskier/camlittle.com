@@ -358,7 +358,7 @@ li:target {
     transition: opacity 200ms ease-in-out;
   }
 
-  &[data-type="photos"] {
+  html[data-type="photos"] & {
     & #headerish > * {
       opacity: 0.2;
 
@@ -663,6 +663,7 @@ nav.social-links {
   & .photo-link {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
 
   & .post-link {
@@ -674,18 +675,6 @@ nav.social-links {
     }
 
     & h3 {
-      margin: 0;
-    }
-  }
-
-  & .photo-link {
-    margin: 0 0 4em;
-    
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-    
-    & img {
       margin: 0;
     }
   }
@@ -733,7 +722,6 @@ main {
     box-shadow: var(--minimal-box-shadow);
     max-width: 100%;
     height: auto;
-    max-height: calc(100vh - 3em);
   }
 
   & picture {
@@ -1220,6 +1208,91 @@ pre code {
     height: 24px;
     width: 24px;
     margin-right: 8px;
+  }
+}
+
+html[data-type="photos"][data-kind="section"] {
+  /* Ensure the body element scrolls. In Chrome it's the html element by default; in Safari it's body */
+
+  overflow: hidden;
+  height: 100%;
+
+  & body {
+    overflow: scroll;
+    scroll-snap-type: block mandatory;
+    height: 100%;
+  }
+
+  & #container {
+    padding-top: 0;
+  }
+
+  & #headerish {
+    padding-top: 1.5em;
+    scroll-snap-align: start;
+  }
+
+  & footer {
+    scroll-margin-bottom: 1.5em;
+    scroll-snap-align: end;
+  }
+
+  & .photo-link {
+    scroll-snap-align: start;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    height: calc(100vh - 3em);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:first-of-type {
+      /* scroll-snap-align: start; */
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    & picture {
+      margin: 0;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+
+    & a {
+      display: block;
+      width: 100%;
+      max-height: 100%;
+    }
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  & .scroll-bottom-stopper {
+    scroll-snap-stop: always;
+    scroll-snap-align: end;
+  }
+
+  @media only screen and (min-width: 45em) {
+    /*
+    NOTE:
+    there's really weird behavior in chrome when two elements have scroll snapping
+    at the same position (e.g. header in sidebar and top image)
+    To avoid this, disable scroll snapping on one of them
+    */
+
+    & .photo-link {
+      padding-top: 4em;
+      padding-bottom: 4em;
+      height: calc(100vh - 8em);
+      justify-content: flex-start;
+      margin-left: 0;
+    }
   }
 }
 

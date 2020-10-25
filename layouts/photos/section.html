@@ -1,8 +1,5 @@
 {{ define "main" }}
-<h1>
-    {{ .Title }}
-    {{ partial "section/titlePagination" . }}
-</h1>
-
 {{ partial "section/list" . }}
+
+<div class="scroll-bottom-stopper"><!-- when scrolling to the very bottom, stop before footer is revealed --></div>
 {{ end }}
