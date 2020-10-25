@@ -67,47 +67,35 @@ const [, , file, name] = process.argv;
       const sizeH = Math.round(info.height / 8);
       const sizeW = Math.round(info.width / 8);
 
+      async function getAverageColorOfRegion(region) {
+        return getAverageColor(await smallerImage.extract(region).toBuffer());
+      }
+
       const [top, right, left, bottom, average] = await Promise.all([
-        getAverageColor(
-          await smallerImage
-            .extract({
-              top: 0,
-              left: 0,
-              width: info.width,
-              height: sizeH,
-            })
-            .toBuffer()
-        ),
-        getAverageColor(
-          await smallerImage
-            .extract({
-              top: 0,
-              left: info.width - sizeW,
-              width: sizeW,
-              height: info.height,
-            })
-            .toBuffer()
-        ),
-        getAverageColor(
-          await smallerImage
-            .extract({
-              top: 0,
-              left: 0,
-              width: sizeW,
-              height: info.height,
-            })
-            .toBuffer()
-        ),
-        getAverageColor(
-          await smallerImage
-            .extract({
-              top: info.height - sizeH,
-              left: 0,
-              width: info.width,
-              height: sizeH,
-            })
-            .toBuffer()
-        ),
+        getAverageColorOfRegion({
+          top: 0,
+          left: 0,
+          width: info.width,
+          height: sizeH,
+        }),
+        getAverageColorOfRegion({
+          top: 0,
+          left: info.width - sizeW,
+          width: sizeW,
+          height: info.height,
+        }),
+        getAverageColorOfRegion({
+          top: 0,
+          left: 0,
+          width: sizeW,
+          height: info.height,
+        }),
+        getAverageColorOfRegion({
+          top: info.height - sizeH,
+          left: 0,
+          width: info.width,
+          height: sizeH,
+        }),
         getAverageColor(data),
       ]);
 
