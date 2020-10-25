@@ -353,7 +353,7 @@ li:target {
   max-width: 1024px;
   margin: 0 auto;
   padding: 1.5em;
-  
+
   & #headerish > * {
     transition: opacity 200ms ease-in-out;
   }
@@ -361,7 +361,7 @@ li:target {
   &[data-type="photos"] {
     & #headerish > * {
       opacity: 0.2;
-      
+
       &:hover {
         opacity: 0.8;
       }
@@ -658,7 +658,7 @@ nav.social-links {
 .posts {
   margin: 0;
   padding: 0;
-  
+
   & .post-link,
   & .photo-link {
     list-style: none;
@@ -677,7 +677,7 @@ nav.social-links {
       margin: 0;
     }
   }
-  
+
   & .photo-link {
     margin: 0 0 4em;
     
@@ -712,14 +712,10 @@ nav.social-links {
 }
 
 main {
-  & img,
-  & video {
-    max-width: 100%;
-    height: auto;
-    max-height: calc(100vh - 3em);
-  }
+  line-height: 1.5;
 
   & p,
+  & picture,
   & blockquote,
   & img,
   & video,
@@ -728,6 +724,32 @@ main {
   & table,
   & details {
     margin-bottom: var(--copy-spacing);
+  }
+
+  & img,
+  & picture,
+  & video {
+    border-radius: 3px;
+    box-shadow: var(--minimal-box-shadow);
+    max-width: 100%;
+    height: auto;
+    max-height: calc(100vh - 3em);
+  }
+
+  & picture {
+    display: block;
+    overflow: hidden;
+
+    & img,
+    & video {
+      margin-bottom: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+
+  & canvas {
+    border: 1px solid var(--text);
   }
 
   & ul,
@@ -788,6 +810,7 @@ main {
   }
 
   & p {
+    & picture,
     & img,
     & video {
       &:last-child {
@@ -962,21 +985,6 @@ article {
   }
 }
 
-main {
-  line-height: 1.5;
-
-  & img,
-  & video {
-    box-shadow: var(--minimal-box-shadow);
-    border-radius: 3px;
-  }
-
-  & canvas {
-    border: 1px solid var(--text);
-    box-shadow: var(--minimal-box-shadow);
-  }
-}
-
 .meta {
   margin-left: 0;
   display: flex;
@@ -1023,7 +1031,7 @@ main {
 .photo-meta {
   display: flex;
   justify-content: space-between;
-  
+
   > *:last-child {
     text-align: right;
   }
@@ -1200,6 +1208,19 @@ pre code {
   background-color: var(--callout-bg);
   display: inline-block;
   font-size: 120%;
+}
+
+.palette {
+  display: flex;
+  margin-bottom: 1em;
+
+  & > div {
+    border-radius: 3px;
+    box-shadow: var(--minimal-box-shadow);
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
+  }
 }
 
 /*

@@ -1,9 +1,45 @@
 {{ define "main" }}
-<picture title="{{ .Title }}">
+
+{{ $mini := .Resources.GetMatch (printf "%s_128.jpg" .Params.photo) }}
+{{ $aspectRatio := div $mini.Width (float $mini.Height) }}
+
+<!--
+{{ with $mini }}
+data:image/jpeg;base64,{{.Content | base64Encode}}
+{{ end }}
+
+-->
+
+<!-- this outer container forces the padding based aspect ratio to be constrained to the height of the page -->
+{{ with $mini }}<div style="max-width: calc({{ mul $aspectRatio 100 }}vh - {{ mul $aspectRatio 3 }}em);">{{ end }}
+<picture
+    title="{{ .Title }}"
+    style="
+        {{ with $mini }}
+        {{/* padding based forced aspect ratio */}}
+        padding-bottom: {{ (mul (div .Height (float .Width)) 100) }}%;
+        height: 0;
+        {{ end }}
+        {{ with .Params.color }}
+        {{/* fallback/preloading image */}}
+        {{/* with .Params.color.average }}
+        background-color: {{ . }};
+        {{ end */}}
+        background-image: url(data:image/svg+xml,{{ partial "placeholder.svg" . | safeHTML }});
+        background-repeat: no-repeat;
+        background-size: 100%;
+        {{ end }}
+    "   
+>
     <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.webp 1280w, https://content.camlittle.com/photos/{{ .Params.photo }}_2880.webp 2880w" type="image/webp" />
     <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg 1280w, https://content.camlittle.com/photos/{{ .Params.photo }}_2880.jpg 2880w" />
-    <img src="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg" />
+    
+    <img
+        src="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg"
+        {{ with $mini }}height="{{ int (div 2880 $aspectRatio) }}" width="2880"{{end}}
+    />
 </picture>
+{{ with $mini }}</div>{{ end }}
 
 <section class="photo-meta">
     <div>
@@ -21,7 +57,14 @@
     </p>
 </section>
 
-<!-- location: Pieniny Mountains National Park -->
-
 {{ .Content }}
+
+<div class="palette">
+    <div style="background-color: {{ .Params.color.top }}"></div>
+    <div style="background-color: {{ .Params.color.left }}"></div>
+    <div style="background-color: {{ .Params.color.right }}"></div>
+    <div style="background-color: {{ .Params.color.bottom }}"></div>
+    <div style="background-color: {{ .Params.color.average }}"></div>
+</div>
+
 {{ end }}
