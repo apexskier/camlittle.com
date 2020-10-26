@@ -32,7 +32,7 @@
 
 <li id="{{ $id }}" class="photo-link">
     <!-- this outer container forces the padding based aspect ratio to be constrained to the height of the page -->
-    <a href="{{ .RelPermalink }}">
+    <a href="{{ .RelPermalink }}" target="_blank">
         <picture title="{{ .Title }}">
             <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.webp" type="image/webp" />
             <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg" />
