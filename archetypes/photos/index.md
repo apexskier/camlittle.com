@@ -2,7 +2,6 @@
 title: "{{ replace (replaceRE "^\\d{4}-\\d{2}-\\d{2}-(.*)" "$1" .Name) "-" " " | title }}"
 date: {{ replaceRE "(^\\d{4}-\\d{2}-\\d{2})-.*" "$1" .Name }}
 tags: []
-draft: true
 
 photo: {{ .Name }}
 camera: Sony α6300
