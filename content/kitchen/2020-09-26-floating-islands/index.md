@@ -1,7 +1,7 @@
 ---
 title: "Floating islands"
 date: 2020-09-26T10:45:02+02:00
-tags: ["kitchen"]
+tags: ["dessert"]
 recipe_link: https://www.bbcgoodfood.com/recipes/floating-islands
 recipe_source: Anna Glover
 ---

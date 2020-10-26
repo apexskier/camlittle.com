@@ -1,7 +1,7 @@
 ---
 title: "Profiterol"
 date: 2020-09-18T15:16:35+02:00
-tags: ["kitchen", "baking"]
+tags: ["baking"]
 ---
 
 Profiterols are fancy cream puffs made of choux pastry and filled with pastry cream. Choux pastry is notoriously tricky, and this was my first experience with it.

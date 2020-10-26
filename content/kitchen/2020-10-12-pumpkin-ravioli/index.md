@@ -1,7 +1,7 @@
 ---
 title: "Pumpkin ravioli"
 date: 2020-10-12T20:15:48+02:00
-tags: ["kitchen", "dinner"]
+tags: ["dinner"]
 ---
 
 I made some fresh ravioli. It turned out great, but pasta is a lot easier with a pasta maker.
