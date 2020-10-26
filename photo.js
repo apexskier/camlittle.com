@@ -58,7 +58,13 @@ const [, , file, name] = process.argv;
         (async () => {
           const sizedImage = image.clone().resize(res);
           const [{ size }, data] = await Promise.all([
-            sizedImage.clone().toFile(outputFilename),
+            (async () => {
+              const img = sizedImage.clone();
+              if (res == "jpg") {
+                img = img.jpeg({ progressive: true });
+              }
+              return img.toFile(outputFilename);
+            })(),
             (async () => {
               const data = await sizedImage.clone().toBuffer();
               return new Promise((resolve, reject) => {
