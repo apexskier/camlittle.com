@@ -1232,11 +1232,11 @@ html[data-type="photos"][data-kind="section"] {
   & #headerish {
     padding-top: 1.5em;
     scroll-snap-align: start;
-    
+
     @media only screen and (min-width: 45em) {
       & > * {
         opacity: 0.2;
-  
+
         &:hover {
           opacity: 0.8;
         }
