@@ -656,8 +656,7 @@ nav.social-links {
   margin: 0;
   padding: 0;
 
-  & .post-link,
-  & .photo-link {
+  & .post-link {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -1249,7 +1248,7 @@ html[data-type="photos"][data-kind="section"] {
     scroll-snap-align: end;
   }
 
-  & .photo-link {
+  & .photo-item {
     scroll-snap-align: start;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
@@ -1298,7 +1297,7 @@ html[data-type="photos"][data-kind="section"] {
     To avoid this, disable scroll snapping on one of them
     */
 
-    & .photo-link {
+    & .photo-item {
       padding-top: 4em;
       padding-bottom: 4em;
       height: calc(100vh - 8em);

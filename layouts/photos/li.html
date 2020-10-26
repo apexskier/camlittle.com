@@ -24,13 +24,11 @@
     background-color: {{ . }};
     {{ end */}}
     background-image: url(data:image/svg+xml,{{ partial "placeholder.svg" . | safeHTML }});
-    background-repeat: no-repeat;
-    background-size: 100%;
     {{ end }}
 }
 </style>
 
-<li id="{{ $id }}" class="photo-link">
+<li id="{{ $id }}" class="photo-item post-link">
     <!-- this outer container forces the padding based aspect ratio to be constrained to the height of the page -->
     <a href="{{ .RelPermalink }}" target="_blank">
         <picture title="{{ .Title }}">
