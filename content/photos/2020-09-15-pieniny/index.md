@@ -1,7 +1,7 @@
 ---
 title: "Pieniny"
 date: 2020-09-15
-tags: ["photo", "outdoors"]
+tags: ["outdoors"]
 draft: true
 
 photo: 2020-09-15-pieniny

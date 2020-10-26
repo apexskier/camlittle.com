@@ -1,7 +1,7 @@
 ---
 title: "Bohemian Switzerland National Park"
 date: 2020-07-25
-tags: ["photo", "outdoors"]
+tags: ["outdoors"]
 draft: true
 
 photo: 2020-07-25-bohemian-switzerland-national-park
