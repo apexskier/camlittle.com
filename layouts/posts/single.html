@@ -9,6 +9,8 @@
 
 <article>
     {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
+    {{ if (ne .Params.chaser false) }}
     {{ partial "single/chaser" . }}
+    {{ end }}
 </article>
 {{ end }}
