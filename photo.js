@@ -13,6 +13,7 @@ const util = require("util");
 const prettyBytes = require("pretty-bytes");
 const sharp = require("sharp");
 const { getAverageColor } = require("fast-average-color-node");
+const S3 = require("aws-sdk/clients/s3");
 
 const exec = util.promisify(cp.exec);
 const readFile = util.promisify(fs.readFile);
@@ -27,7 +28,7 @@ if (process.argv.length !== 4) {
 const [, , file, name] = process.argv;
 
 (async function () {
-  const prefix = `content/photos/${name}/${name}`;
+  const filePrefix = `content/photos/${name}/${name}`;
   const inputBuffer = await readFile(file);
 
   await exec(`hugo new --kind photos photos/${name}`);
@@ -35,25 +36,54 @@ const [, , file, name] = process.argv;
   const work = [];
 
   work.push(
-    copyFile(file, `${prefix}_original.jpg`).then(async () => {
+    copyFile(file, `${filePrefix}_original.jpg`).then(async () => {
       console.log(`original ${prettyBytes(Buffer.byteLength(inputBuffer))}`);
     })
   );
 
   const image = sharp(inputBuffer);
 
+  process.env["AWS_PROFILE"] = "digitalocean";
+
+  const s3 = new S3({
+    endpoint: "sfo2.digitaloceanspaces.com",
+    region: "sfo2",
+  });
+
   for (const format of ["jpg", "webp"]) {
     for (const res of [128, 640, 1280, 2880]) {
-      const outputFilename = `${prefix}_${res}.${format}`;
+      const outputFilename = `${filePrefix}_${res}.${format}`;
 
       work.push(
-        image
-          .clone()
-          .resize(res)
-          .toFile(outputFilename)
-          .then(async ({ size }) => {
-            console.log(`${res}x ${format} ${prettyBytes(size)}`);
-          })
+        (async () => {
+          const sizedImage = image.clone().resize(res);
+          const [{ size }, data] = await Promise.all([
+            sizedImage.clone().toFile(outputFilename),
+            (async () => {
+              const data = await sizedImage.clone().toBuffer();
+              return new Promise((resolve, reject) => {
+                s3.upload(
+                  {
+                    Key: `photos/${name}_${res}.${format}`,
+                    Body: data,
+                    Bucket: "camlittle-content",
+                    ACL: "public-read",
+                  },
+                  (err, data) => {
+                    if (err) {
+                      reject(err);
+                    } else {
+                      resolve(data);
+                    }
+                  }
+                );
+              });
+            })(),
+          ]);
+          console.log(
+            `${res}x ${format} ${prettyBytes(size)} → ${data.Location}`
+          );
+        })()
       );
     }
   }
