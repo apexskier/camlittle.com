@@ -1,7 +1,7 @@
 ---
 title: "Photos"
 date: 2020-10-26T19:22:28+01:00
-tags: ["projects", "web"]
+tags: ["projects", "web", "tech"]
 chaser: false
 ---
 
@@ -15,7 +15,7 @@ My approach is heavily inspired by [Tom MacWright's /photos](https://macwright.c
 
 To post a photo, I run it through [a script](https://github.com/apexskier/camlittle.com/blob/98004f0cfeb1d4d847ce59d2743daf6a604718ae/photo.js) to process, resize, and upload to [DigitalOcean spaces](https://www.digitalocean.com/products/spaces/) for long term storage. The script also creates a new post that I add some details to (location, title, description…), and all that's left is to publish.
 
-I spent quite a bit of time refining the user experience.
+I spent quite a bit of time refining the user experience and trying out some fun new web technologies for the first time.
 
 I generate [custom CSS](https://github.com/apexskier/camlittle.com/blob/98004f0cfeb1d4d847ce59d2743daf6a604718ae/layouts/photos/li.html#L5-L29) to keep the images centered and constrained within the window. I use [CSS scroll snapping](https://css-tricks.com/practical-css-scroll-snapping/) to snap to and center on them as you scroll through. The page uses no JavaScript.
 
