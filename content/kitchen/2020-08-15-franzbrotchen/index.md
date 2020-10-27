@@ -1,7 +1,7 @@
 ---
 title: "Franzbrötchen"
 date: 2020-08-15T10:32:10+02:00
-tags: ["kitchen", "baking"]
+tags: ["baking"]
 recipe_link: https://food52.com/recipes/66074-luisa-weiss-s-franzbrotchen-cinnamon-sugar-buns
 recipe_source: Luisa Weiss
 ---

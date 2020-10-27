@@ -1,7 +1,7 @@
 ---
 title: "Raspberry hazelnut galette"
 date: 2020-02-09T09:01:24+01:00
-tags: ["kitchen", "dessert", "baking"]
+tags: ["dessert", "baking"]
 recipe_link: https://www.bonappetit.com/recipe/raspberry-hazelnut-galette
 recipe_source: bon appétit
 

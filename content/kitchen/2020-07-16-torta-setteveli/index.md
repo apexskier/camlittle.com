@@ -1,7 +1,7 @@
 ---
 title: "Torta setteveli"
 date: 2020-07-18T11:05:03+02:00
-tags: ["kitchen", "baking", "dessert"]
+tags: ["baking", "dessert"]
 recipe_link: https://thegreatbritishbakeoff.co.uk/recipes/all/prue-leith-torta-setteveli/
 recipe_source: The Great British Bake Off
 

@@ -1,7 +1,7 @@
 ---
 title: "Sourdough crêpes suzette"
 date: 2020-04-12T10:05:07+02:00
-tags: ["kitchen", "sourdough", "its-alive", "dessert"]
+tags: ["sourdough", "its-alive", "dessert"]
 recipe_link: https://www.youtube.com/watch?v=Ze9jxpur47M&t=1716s
 recipe_source: It's Alive | Bon Appétit
 

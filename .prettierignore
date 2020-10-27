@@ -1,0 +1,6 @@
+node_modules/
+_gen/
+public/
+resources/
+assets/css/highlight_*
+static/

@@ -1,7 +1,7 @@
 ---
 title: "Hazelnut buttercrunch toffee"
 date: 2020-05-09T18:59:36+02:00
-tags: ["kitchen", "dessert"]
+tags: ["dessert"]
 recipe_link: https://www.davidlebovitz.com/chocolatealmond/
 recipe_source: David Lebovitz
 

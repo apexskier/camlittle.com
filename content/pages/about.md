@@ -3,6 +3,7 @@ title: About
 url: /about/
 menu: 
   main:
+    identifier: about
     weight: 10
 ---
 
