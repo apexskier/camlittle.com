@@ -13,25 +13,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="canonical" href="{{ .Permalink }}">
 
-    {{ $style := resources.Get "css/main.css" | postCSS | toCSS | minify | fingerprint "md5" }}
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
-    {{ $highlight_light_style := resources.Get "css/highlight_light.css" | toCSS | minify | fingerprint "md5" }}
-    <link rel="stylesheet" href="{{ $highlight_light_style.RelPermalink }}">
-    {{ $highlight_dark_style := resources.Get "css/highlight_dark.css" | toCSS | minify | fingerprint "md5" }}
-    <link rel="stylesheet" href="{{ $highlight_dark_style.RelPermalink }}" media="(prefers-color-scheme: dark)">
-    {{ range .Page.Resources.ByType "css" -}}
-    {{ $style := . | postCSS | toCSS | minify | fingerprint -}}
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
-    {{ end -}}
+    {{ with resources.Get "css/highlight_light.css" | toCSS | minify | fingerprint "md5" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ end }}
+    {{ with resources.Get "css/highlight_dark.css" | toCSS | minify | fingerprint "md5" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" media="(prefers-color-scheme: dark)">
+    {{ end }}
+    
+    {{ $stylesheets := slice (resources.Get "css/main.css") }}
+    {{ with resources.Get (printf "css/%s_%s.css" .Page.Type .Page.Kind) }}
+    {{ $stylesheets = $stylesheets | append . }}
+    {{ end }}
+    {{ range $stylesheets }}
+    {{ with . | postCSS | toCSS | minify | fingerprint "" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ end }}
+    {{ end }}
 
-    {{ with ($.GetPage "/").OutputFormats.Get "RSS" -}}
+    {{ with ($.GetPage "/").OutputFormats.Get "RSS" }}
     <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="Everything on {{ $.Site.Title }}" />
     <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="Everything on {{ $.Site.Title }}" />
     {{ end }}
     {{ range .Site.Sections }}
     {{ if .Params.rss }}
     {{ $section := . }}
-    {{ with .OutputFormats.Get "RSS" -}}
+    {{ with .OutputFormats.Get "RSS" }}
     <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $section.Title }} on {{ $.Site.Title }}" />
     <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $section.Title }} on {{ $.Site.Title }}" />
     {{ end }}
