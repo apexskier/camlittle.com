@@ -1,6 +1,7 @@
 ---
 title: "Photos"
 date: 2020-10-27T20:34:14+01:00
+slug: photos
 tags: ["projects", "web", "tech"]
 chaser: false
 ---
