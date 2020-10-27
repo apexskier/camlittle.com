@@ -706,7 +706,8 @@ main {
   & pre,
   & figure,
   & table,
-  & details {
+  & details,
+  & .margin-bottom {
     margin-bottom: var(--copy-spacing);
   }
 
