@@ -1,0 +1,4 @@
+# raw photos - the excluded files get uploaded to content space
+/*/*_*.webp
+/*/*_*.jpg
+!/*/*_128.jpg

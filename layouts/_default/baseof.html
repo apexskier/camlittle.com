@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="{{ .Site.Language }}">
+<html lang="{{ .Site.Language }}" data-type="{{ .Page.Type }}" data-kind="{{ .Page.Kind }}">
     {{- partial "head.html" . -}}
     <body>
         <div id="bun" class="bun" style="display: none">
             {{ with resources.Get "bunny/top.svg" | fingerprint "md5" }}
-            <img src="{{ .RelPermalink }}" height="40" alt="" />
+            <img src="{{ .RelPermalink }}" height="40" width="33" alt="" />
             {{ end }}
         </div>
         <div id="bun-paws" class="bun" style="display: none">
             {{ with resources.Get "bunny/paws.svg" | fingerprint "md5" }}
-            <img src="{{ .RelPermalink }}" height="40" alt="" />
+            <img src="{{ .RelPermalink }}" height="40" width="33" alt="" />
             {{ end }}
         </div>
         <div id="wrapper"><!-- contains orange triangle -->
@@ -30,7 +30,7 @@
         </div>
         <div id="bun-butt" class="bun" style="display: none">
             {{ with resources.Get "bunny/butt.svg" | fingerprint "md5" }}
-            <img src="{{ .RelPermalink }}" height="16" alt="" />
+            <img src="{{ .RelPermalink }}" height="16" width="37" alt="" />
             {{ end }}
         </div>
     </body>

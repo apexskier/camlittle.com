@@ -1,0 +1,11 @@
+<svg viewBox="0 0 64 64" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<filter id="blurMe">
+		<feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+	</filter>
+	<g filter="url(#blurMe)">
+		<polygon id="Path" fill="{{ .top }}" points="0 0 32 32 64 0"></polygon>
+		<polygon id="Path" fill="{{ .left }}" points="0 64 32 32 0 0"></polygon>
+		<polygon id="Path" fill="{{ .right }}" points="64 0 32 32 64 64"></polygon>
+		<polygon id="Path" fill="{{ .bottom }}" points="64 64 32 32 0 64"></polygon>
+	</g>
+</svg>

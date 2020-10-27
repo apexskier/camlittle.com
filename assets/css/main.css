@@ -525,6 +525,10 @@ input[type="submit"] {
   margin-bottom: var(--copy-spacing);
   font-family: Georgia, serif;
 
+  & > * {
+    transition: opacity 200ms ease-in-out;
+  }
+
   & ul {
     margin: 0;
     padding-left: 0;
@@ -654,8 +658,12 @@ nav.social-links {
 
   & .post-link {
     list-style: none;
-    margin: 0 0 1em;
     padding: 0;
+    margin: 0;
+  }
+
+  & .post-link {
+    margin: 0 0 1em;
     display: flex;
 
     & time {
@@ -689,11 +697,7 @@ nav.social-links {
 }
 
 main {
-  & img,
-  & video {
-    max-width: 100%;
-    height: auto;
-  }
+  line-height: 1.5;
 
   & p,
   & blockquote,
@@ -702,8 +706,39 @@ main {
   & pre,
   & figure,
   & table,
-  & details {
+  & details,
+  & .margin-bottom {
     margin-bottom: var(--copy-spacing);
+  }
+
+  & svg {
+    display: block;
+  }
+
+  & img,
+  & picture,
+  & video {
+    border-radius: 3px;
+    box-shadow: var(--minimal-box-shadow);
+    max-width: 100%;
+    height: auto;
+  }
+
+  & picture {
+    display: block;
+    overflow: hidden;
+    max-width: fit-content;
+
+    & img,
+    & video {
+      margin-bottom: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+
+  & canvas {
+    border: 1px solid var(--text);
   }
 
   & ul,
@@ -764,6 +799,7 @@ main {
   }
 
   & p {
+    & picture,
     & img,
     & video {
       &:last-child {
@@ -788,7 +824,7 @@ main {
       }
     }
 
-    & img {
+    & picture {
       margin-bottom: 0;
     }
   }
@@ -876,8 +912,6 @@ footer {
 }
 
 article {
-  line-height: 1.5;
-
   /* try to keep things readable
    * https://baymard.com/blog/line-length-readability
   */
@@ -921,12 +955,6 @@ article {
     }
   }
 
-  & img,
-  & video {
-    box-shadow: var(--minimal-box-shadow);
-    border-radius: 3px;
-  }
-
   .kitchen-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -939,15 +967,11 @@ article {
       margin-right: 0;
     }
 
-    > * {
+    & > * {
       display: block;
-      margin-right: 1em;
+      margin-right: var(--copy-spacing);
+      margin-bottom: var(--copy-spacing);
     }
-  }
-
-  & canvas {
-    border: 1px solid var(--text);
-    box-shadow: var(--minimal-box-shadow);
   }
 }
 
@@ -991,6 +1015,15 @@ article {
       margin-left: 0;
       list-style: none;
     }
+  }
+}
+
+.photo-meta {
+  display: flex;
+  justify-content: space-between;
+
+  > *:last-child {
+    text-align: right;
   }
 }
 
@@ -1165,6 +1198,19 @@ pre code {
   background-color: var(--callout-bg);
   display: inline-block;
   font-size: 120%;
+}
+
+.palette {
+  display: flex;
+  margin-bottom: 1em;
+
+  & > div {
+    border-radius: 3px;
+    box-shadow: var(--minimal-box-shadow);
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
+  }
 }
 
 /*
