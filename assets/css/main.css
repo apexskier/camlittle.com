@@ -820,7 +820,7 @@ main {
       }
     }
 
-    & img {
+    & picture {
       margin-bottom: 0;
     }
   }
@@ -963,9 +963,10 @@ article {
       margin-right: 0;
     }
 
-    > * {
+    & > * {
       display: block;
-      margin-right: 1em;
+      margin-right: var(--copy-spacing);
+      margin-bottom: var(--copy-spacing);
     }
   }
 }
@@ -1221,12 +1222,30 @@ html[data-type="photos"][data-kind="section"] {
 
   & body {
     overflow: scroll;
+    position: relative;
     scroll-snap-type: block mandatory;
     height: 100%;
   }
 
   & #container {
     padding-top: 0;
+  }
+
+  @media only screen and (min-width: 45em) {
+    & #content {
+      & #headerish {
+        margin-right: 0;
+        position: absolute;
+      }
+
+      & main {
+        text-align: center;
+      }
+
+      & .photo-item:first-of-type {
+        margin-left: calc(12em + var(--copy-spacing));
+      }
+    }
   }
 
   & #headerish {
@@ -1251,9 +1270,9 @@ html[data-type="photos"][data-kind="section"] {
 
   & .photo-item {
     scroll-snap-align: start;
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
-    height: calc(100vh - 3em);
+    padding-top: 6vh;
+    padding-bottom: 6vh;
+    height: calc(100vh - 12vh);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1300,11 +1319,7 @@ html[data-type="photos"][data-kind="section"] {
     */
 
     & .photo-item {
-      padding-top: 4em;
-      padding-bottom: 4em;
-      height: calc(100vh - 8em);
       justify-content: flex-start;
-      margin-left: 0;
     }
   }
 }

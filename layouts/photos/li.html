@@ -4,12 +4,7 @@
 
 <style>
 #{{ $id }} {
-    max-width: calc({{ mul $aspectRatio 100 }}vh - {{ mul $aspectRatio 3 }}em);
-}
-@media only screen and (min-width: 45em) {
-    #{{ $id }} {
-        max-width: calc({{ mul $aspectRatio 100 }}vh - {{ mul $aspectRatio 8 }}em);
-    }
+    max-width: calc({{ mul $aspectRatio 100 }}vh - {{ mul $aspectRatio 12 }}vh);
 }
 
 #{{ $id }} picture {
@@ -32,6 +27,8 @@
     <!-- this outer container forces the padding based aspect ratio to be constrained to the height of the page -->
     <a href="{{ .RelPermalink }}" target="_blank">
         <picture title="{{ .Title }}">
+            <source media="(max-width: 640px)" srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_640.webp" type="image/webp" />
+            <source media="(max-width: 640px)" srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_640.jpg" />
             <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.webp" type="image/webp" />
             <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg" />
             <img src="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg" />
