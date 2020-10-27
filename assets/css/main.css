@@ -700,7 +700,6 @@ main {
   line-height: 1.5;
 
   & p,
-  & picture,
   & blockquote,
   & img,
   & video,
@@ -723,6 +722,7 @@ main {
   & picture {
     display: block;
     overflow: hidden;
+    max-width: fit-content;
 
     & img,
     & video {
@@ -1268,6 +1268,7 @@ html[data-type="photos"][data-kind="section"] {
     }
 
     & picture {
+      max-width: initial;
       margin: 0;
       background-repeat: no-repeat;
       background-size: 100%;
