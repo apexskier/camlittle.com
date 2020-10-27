@@ -68,7 +68,7 @@ footer {
   scroll-snap-align: end;
 }
 
-.photo-item {
+.posts .photo-item {
   scroll-snap-align: start;
   padding-top: 6vh;
   padding-bottom: 6vh;

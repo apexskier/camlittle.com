@@ -4,7 +4,10 @@
 
 <style>
 #{{ $id }} {
-    max-width: calc({{ mul $aspectRatio 100 }}vh - {{ mul $aspectRatio 12 }}vh);
+    /* this is the aspect ratio of the phone * the effective max height (100vh - vertical padding)
+     * it makes sure the photo's height is properly constrained with the padding aspect ratio below
+     */
+    max-width: {{ mul $aspectRatio (sub 100 12) }}vh;
 }
 
 #{{ $id }} picture {
