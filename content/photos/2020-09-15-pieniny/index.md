@@ -2,7 +2,6 @@
 title: "Pieniny"
 date: 2020-09-15
 tags: ["outdoors"]
-draft: true
 
 photo: 2020-09-15-pieniny
 camera: Sony α6300

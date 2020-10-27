@@ -2,7 +2,6 @@
 title: "Wild meadow colors"
 date: 2017-08-23
 tags: ["outdoors"]
-draft: true
 
 photo: 2017-08-23-wild-meadow-colors
 camera: Sony α6300

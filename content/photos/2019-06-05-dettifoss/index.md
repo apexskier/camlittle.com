@@ -2,7 +2,6 @@
 title: "Powerful water"
 date: 2019-06-05
 tags: ["outdoors", "waterfalls"]
-draft: true
 
 photo: 2019-06-05-dettifoss
 camera: Sony α6300

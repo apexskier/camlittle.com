@@ -2,7 +2,6 @@
 title: "Fog Beams"
 date: 2019-07-27
 tags: ["outdoors"]
-draft: true
 
 photo: 2019-07-27-fog-beams
 camera: Sony α6300

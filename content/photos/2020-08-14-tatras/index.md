@@ -2,7 +2,6 @@
 title: "Mountain hut meadow"
 date: 2020-08-14
 tags: ["outdoors"]
-draft: true
 
 photo: 2020-08-14-tatras
 camera: Sony α6300

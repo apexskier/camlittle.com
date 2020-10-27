@@ -2,7 +2,6 @@
 title: "Alpine Start"
 date: 2017-04-28
 tags: ["outdoors"]
-draft: true
 
 photo: 2017-04-28-alpine-start
 camera: Sony α6300
