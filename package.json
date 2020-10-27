@@ -16,6 +16,6 @@
     "prettier": "^2.1.2"
   },
   "scripts": {
-    "format": "prettier --write assets/css/main.css"
+    "format": "prettier --write **/*.{css,js}"
   }
 }
