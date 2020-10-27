@@ -20,7 +20,7 @@ I spent quite a bit of time refining the user experience and trying out some fun
 
 I generate [custom CSS](https://github.com/apexskier/camlittle.com/blob/b4310c00e55425eadcf6b4bebb983ff28b589902/layouts/photos/li.html#L6-L26) to keep the images centered and constrained within the window. I use [CSS scroll snapping](https://css-tricks.com/practical-css-scroll-snapping/) to snap to and center on them as you scroll through. The page uses no JavaScript.
 
-The fanciest feature is a customer placeholder displayed as the images load. My script extracts average colors for the top, left, right, and bottom of the image, then injects them into an inlined SVG background image for the `<picture>` element. The SVG is made of four radial shapes of the extracted average colors, with a blur applied on top of it to form a geometric approximation of a downsampled version of the image.
+The fanciest feature is a custom placeholder displayed as the images load. My script extracts average colors for the top, left, right, and bottom of the image, then injects them into an inlined SVG background image for the `<picture>` element. The SVG is made of four radial shapes of the extracted average colors, with a blur applied on top of it to form a geometric approximation of a downsampled version of the image.
 
 <p>
 	<svg viewBox="0 0 64 64" height="200" width="300" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
