@@ -14,11 +14,11 @@ My approach is heavily inspired by [Tom MacWright's /photos](https://macwright.c
 
 ---
 
-To post a photo, I run it through [a script](https://github.com/apexskier/camlittle.com/blob/98004f0cfeb1d4d847ce59d2743daf6a604718ae/photo.js) to process, resize, and upload to [DigitalOcean spaces](https://www.digitalocean.com/products/spaces/) for long term storage. The script also creates a new post that I add some details to (location, title, description…), and all that's left is to publish.
+To post a photo, I run it through [a script](https://github.com/apexskier/camlittle.com/blob/b4310c00e55425eadcf6b4bebb983ff28b589902/photo.js) to process, resize, and upload to [DigitalOcean spaces](https://www.digitalocean.com/products/spaces/) for long term storage. The script also creates a new post that I add some details to (location, title, description…), and all that's left is to publish.
 
 I spent quite a bit of time refining the user experience and trying out some fun new web technologies for the first time.
 
-I generate [custom CSS](https://github.com/apexskier/camlittle.com/blob/98004f0cfeb1d4d847ce59d2743daf6a604718ae/layouts/photos/li.html#L5-L29) to keep the images centered and constrained within the window. I use [CSS scroll snapping](https://css-tricks.com/practical-css-scroll-snapping/) to snap to and center on them as you scroll through. The page uses no JavaScript.
+I generate [custom CSS](https://github.com/apexskier/camlittle.com/blob/b4310c00e55425eadcf6b4bebb983ff28b589902/layouts/photos/li.html#L6-L26) to keep the images centered and constrained within the window. I use [CSS scroll snapping](https://css-tricks.com/practical-css-scroll-snapping/) to snap to and center on them as you scroll through. The page uses no JavaScript.
 
 The fanciest feature is a customer placeholder displayed as the images load. My script extracts average colors for the top, left, right, and bottom of the image, then injects them into an inlined SVG background image for the `<picture>` element. The SVG is made of four radial shapes of the extracted average colors, with a blur applied on top of it to form a geometric approximation of a downsampled version of the image.
 
