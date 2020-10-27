@@ -711,6 +711,10 @@ main {
     margin-bottom: var(--copy-spacing);
   }
 
+  & svg {
+    display: block;
+  }
+
   & img,
   & picture,
   & video {
