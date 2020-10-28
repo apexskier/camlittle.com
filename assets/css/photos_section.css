@@ -1,10 +1,18 @@
 /*
 Most of this relates to css scroll snapping, which is pretty cool
-One big issue is dealing with vh and the toolbar/header resizing on iOS. I haven't really done much
-but hope Apple makes it better
 */
 
-/* Ensure the body element scrolls. In Chrome it's the html element by default; in Safari it's body */
+/*
+  Ensure the body element scrolls. In Chrome it's the html element by default; in Safari it's body
+
+  This is not fully working.
+  * It disables scrolling to the top of the page by tapping the top of the screen on iOS
+  * It doesn't properly handle the toolbar/header size's impact on vh on iOS. This causes the footer to be clipped
+
+  I've attempted switching which element has scroll-snap-type applied. Setting it to the body appears to make
+  iOS work, but as you scroll back and forth it starts breaking, which I think is a bug. It also appears to break
+  Safari's calculation of initial scroll position on load sometimes.
+ */
 html {
   overflow: hidden;
   position: relative;
