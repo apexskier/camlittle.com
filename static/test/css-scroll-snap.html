@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>scroll snap css test</title>
+	
+		<link rel="icon" type="image/png" href="/profile.jpg?s=32">
+		<link rel="apple-touch-icon" href="/profile.jpg?s=192">
+	
+		<meta name="description" content="Test page for css scroll snapping behavior">
+		<meta name="author" content="Cameron Little">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	</head>
+	<body>
+		<style>
+			body {
+				scroll-snap-type: block mandatory;
+			}
+			.wrapper {
+				padding: 20px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			.wrapper > div {
+				display: block;
+				border: 1px solid;
+				height: 400px;
+				width: 100%;
+			    scroll-snap-align: start;
+			}
+		</style>
+		
+		<div class="wrapper">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</body>
+</html>

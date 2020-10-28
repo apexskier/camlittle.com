@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>env() css test</title>
+	
+		<link rel="icon" type="image/png" href="/profile.jpg?s=32">
+		<link rel="apple-touch-icon" href="/profile.jpg?s=192">
+	
+		<meta name="description" content="Test page for css env() behavior">
+		<meta name="author" content="Cameron Little">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	</head>
+	<body>
+		<style>
+			.wrapper {
+				padding: 20px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			.wrapper > div {
+				display: block;
+				border: 1px solid;
+				margin-bottom: 10px;
+				background-color: red;
+			}
+			div[data-var="safe-area-inset-top"] {
+				height: env(safe-area-inset-top, 100px);
+				width: env(safe-area-inset-top, 100px);
+			}
+			div[data-var="safe-area-inset-left"] {
+				height: env(safe-area-inset-left, 100px);
+				width: env(safe-area-inset-left, 100px);
+			}
+			div[data-var="safe-area-inset-right"] {
+				height: env(safe-area-inset-right, 100px);
+				width: env(safe-area-inset-right, 100px);
+			}
+			div[data-var="safe-area-inset-bottom"] {
+				height: env(safe-area-inset-bottom, 100px);
+				width: env(safe-area-inset-bottom, 100px);
+			}
+			div[data-var="custom"] {
+				height: env(custom, 100px);
+				width: env(custom, 100px);
+			}
+		</style>
+		
+		<div class="wrapper">
+			<div data-var="safe-area-inset-top"></div>
+			<div data-var="safe-area-inset-left"></div>
+			<div data-var="safe-area-inset-right"></div>
+			<div data-var="safe-area-inset-bottom"></div>
+			<div data-var="custom"></div>
+		</div>
+	</body>
+</html>
