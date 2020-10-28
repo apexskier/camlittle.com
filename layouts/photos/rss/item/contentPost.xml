@@ -1,0 +1,2 @@
+{{ with .Params.location }}<p>{{ . }}</p>{{ end }}
+<p><span title="Camera">📷</span> {{ .Params.camera }}</p>
