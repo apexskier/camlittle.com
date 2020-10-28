@@ -7,6 +7,7 @@ but hope Apple makes it better
 /* Ensure the body element scrolls. In Chrome it's the html element by default; in Safari it's body */
 html {
   overflow: hidden;
+  position: relative;
   height: 100%;
 }
 
