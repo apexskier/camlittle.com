@@ -2,6 +2,8 @@
 title: "Mountain hut meadow"
 date: 2020-08-14
 tags: ["outdoors"]
+images:
+  - https://content.camlittle.com/photos/2020-08-14-tatras_1280.jpg
 
 photo: 2020-08-14-tatras
 camera: Sony α6300

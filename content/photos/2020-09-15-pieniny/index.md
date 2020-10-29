@@ -2,6 +2,8 @@
 title: "Pieniny"
 date: 2020-09-15
 tags: ["outdoors"]
+images:
+  - https://content.camlittle.com/photos/2020-09-15-pieniny_1280.jpg
 
 photo: 2020-09-15-pieniny
 camera: Sony α6300

@@ -2,6 +2,8 @@
 title: "Fog Beams"
 date: 2019-07-27
 tags: ["outdoors"]
+images:
+  - https://content.camlittle.com/photos/2019-07-27-fog-beams_1280.jpg
 
 photo: 2019-07-27-fog-beams
 camera: Sony α6300

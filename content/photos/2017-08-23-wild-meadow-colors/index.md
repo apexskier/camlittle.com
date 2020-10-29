@@ -2,6 +2,8 @@
 title: "Wild meadow colors"
 date: 2017-08-23
 tags: ["outdoors"]
+images:
+  - https://content.camlittle.com/photos/2017-08-23-wild-meadow-colors_1280.jpg
 
 photo: 2017-08-23-wild-meadow-colors
 camera: Sony α6300
