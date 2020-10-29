@@ -7,7 +7,7 @@ menu:
     weight: 10
 ---
 
-I’m a software engineer at [Remitly](https://grnh.se/3c4028751), where I’m
+I’m a software developer at [Remitly](https://grnh.se/3c4028751), where I’m
 working on our international product team. I've lived in
 [Kraków, Poland 🇵🇱](https://aackleinkrakow.blogspot.com) since September 2019 with
 [my wife](https://cameronandaisha.love) to help start our new European
