@@ -564,7 +564,7 @@ nav.social-links,
 nav.pagination-nav {
   color: var(--text);
   font-size: 120%;
-  
+
   & .mobile-toggle-on,
   & .mobile-toggle-off {
     padding-top: 0.4em;
@@ -572,7 +572,7 @@ nav.pagination-nav {
     display: flex;
     justify-content: center;
   }
-    
+
   & .mobile-toggle-off {
     padding-left: 1em;
     padding-right: 1em;
