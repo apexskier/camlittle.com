@@ -1,9 +1,8 @@
 ---
 title: Why this slack channel shouldn't be private
-date: 2020-10-29 10:27:00 +0200
+date: 2020-11-01 10:27:00 +0200
 slug: slack-private-channels
 tags: ["philosophy"]
-draft: true
 chaser: false
 ---
 
