@@ -931,26 +931,31 @@ article {
   /* try to keep things readable
    * https://baymard.com/blog/line-length-readability
   */
-  &,
-  & > details {
-    & > * {
-      max-width: 520px;
+  & > * {
+    max-width: 520px;
+  }
+
+  & > details,
+  & > .table,
+  & > .highlight,
+  & > .full-width {
+    max-width: calc(100% + 1.5em * 2);
+    overflow: auto;
+    margin-left: -1.5em;
+    margin-right: -1.5em;
+
+    @media only screen and (min-width: 45em) {
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
     }
+  }
 
-    & > details,
-    & > .table,
-    & > .highlight,
-    & > .full-width {
-      max-width: calc(100% + 1.5em * 2);
-      overflow: auto;
-      margin-left: -1.5em;
-      margin-right: -1.5em;
+  .highlight {
+    margin-bottom: var(--copy-spacing);
 
-      @media only screen and (min-width: 45em) {
-        max-width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-      }
+    & > pre {
+      margin-bottom: 0;
     }
   }
 
@@ -964,6 +969,13 @@ article {
       & > *:only-child {
         display: inline;
       }
+    }
+
+    & > details,
+    & > .table,
+    & > .highlight,
+    & > .full-width {
+      margin-left: calc(0px - var(--copy-spacing));
     }
 
     & > *:last-child {
