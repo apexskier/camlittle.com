@@ -41,7 +41,7 @@ There are two main component-related types used when writing React code. I tend 
 <summary>Here's an explicitly annotated code sample</summary>
 
 ```tsx
-import * as React from "reactord";
+import * as React from "react";
 
 class Test extends React.Component<{ Comp: React.ComponentType }> {
     render() {
