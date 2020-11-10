@@ -706,9 +706,14 @@ nav.social-links {
   box-shadow: var(--inset-box-shadow);
   background-color: var(--callout-bg);
   padding: var(--copy-spacing);
+  max-width: initial;
 
   & *:last-child {
     margin-bottom: 0;
+  }
+  
+  & a {
+    white-space: nowrap;
   }
 }
 
@@ -933,6 +938,7 @@ article {
   */
   & > * {
     max-width: 520px;
+    box-sizing: border-box;
   }
 
   & > details,
