@@ -1,5 +1,5 @@
 {{ with .Page.Resources.GetMatch .Destination -}}
-{{ partial "img" (merge .Params (dict "Resource" . "alt" .Title "height" 300)) }}
+{{ partial "img" (merge .Params (dict "Resource" . "alt" .Title "height" 300 "$" $)) }}
 {{- else -}}
 <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title}} title="{{ . }}"{{ end }} />
 {{- end }}
