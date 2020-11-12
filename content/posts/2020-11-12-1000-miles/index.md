@@ -17,7 +17,7 @@ Some highlights include seeing the old town and some local parks in Gdansk, expl
 
 <figure>
 
-{{< gallery "kosciuszki.dark.png" "pilsudskiego.dark.png" "krakus.dark.png" >}}
+{{< gallery "kosciuszki.light.png" "pilsudskiego.light.png" "krakus.light.png" >}}
 
 <figcaption>Three of the four mounds of Kraków</figcaption>
 
@@ -25,17 +25,13 @@ Some highlights include seeing the old town and some local parks in Gdansk, expl
 
 <figure>
 
-{{< gallery "lockdown.dark.png" "greater-krakow.dark.png" "mazury.dark.png" >}}
+{{< gallery "lockdown.light.png" "greater-krakow.light.png" "mazury.light.png" >}}
 
 <figcaption>Lockdown running in my apartment courtyard, Southern Poland, Masurian Lake District</figcaption>
 
 </figure>
 
 Another aspect I enjoy is tracking statistics. I've used [Strava](https://www.strava.com/athletes/14856714) for the last couple of years to store my historical running information. Throughout my 1,000 miles, I've spent almost six full days moving, climbed 54,775 feet (almost twice the height of Mount Everest), and burned an extra 114,267 calories (around 60 days worth of food for the average person).
-
-You can see [more data here](https://observablehq.com/d/bda8bfd8f9e500a9).
-
-Maps generated with <https://github.com/erik/derive>. Background imagery from [CartoDB](https://carto.com/attribution/).
 
 <figure>
 
