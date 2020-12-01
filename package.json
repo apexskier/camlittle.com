@@ -11,7 +11,7 @@
   "devDependencies": {
     "aws-sdk": "^2.786.0",
     "cssnano": "^4.1.10",
-    "fast-average-color-node": "^1.0.1",
+    "fast-average-color-node": "^1.0.3",
     "hsluv": "^0.1.0",
     "postcss": "^8.1.6",
     "postcss-cli": "^8.2.0",
