@@ -9,7 +9,7 @@
   "author": "Cameron Little <cameron@camlittle.com>",
   "homepage": "https://camlittle.com",
   "devDependencies": {
-    "aws-sdk": "^2.786.0",
+    "aws-sdk": "^2.820.0",
     "cssnano": "^4.1.10",
     "fast-average-color-node": "^1.0.1",
     "hsluv": "^0.1.0",
