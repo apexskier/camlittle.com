@@ -711,7 +711,7 @@ nav.social-links {
   & *:last-child {
     margin-bottom: 0;
   }
-  
+
   & a {
     white-space: nowrap;
   }
@@ -919,7 +919,7 @@ article {
     max-width: 520px;
     box-sizing: border-box;
   }
-  
+
   & > ol,
   & > ul {
     max-width: calc(520px - var(--copy-spacing));
@@ -962,7 +962,7 @@ article {
       margin-right: 0;
     }
   }
-  
+
   & .full-width {
     overflow: visible;
   }
@@ -998,7 +998,7 @@ article {
       margin-bottom: 0;
     }
   }
-  
+
   & figure {
     & figcaption {
       text-align: center;

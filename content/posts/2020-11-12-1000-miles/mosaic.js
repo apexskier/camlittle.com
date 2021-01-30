@@ -36,21 +36,20 @@ function pack(num, width, height) {
 
   const photoPaths = await readDir(photosDir);
   const { size, rows, columns } = pack(photoPaths.length, 6000, 3000);
-  const photoPromises = photoPaths
-    .map(async (file) => {
-      const photoPath = path.join(photosDir, file);
-      try {
-        const buffer = await sharp(await readFile(photoPath))
-          .resize({ width: size, height: size, fit: "cover" })
-          .toBuffer();
-        const color = hsluv.hexToHsluv((await getAverageColor(buffer)).hex);
-        return { buffer, color, photoPath };
-      } catch (err) {
-        console.warn(`error for ${photoPath}`);
-        console.warn(err);
-        return null;
-      }
-    });
+  const photoPromises = photoPaths.map(async (file) => {
+    const photoPath = path.join(photosDir, file);
+    try {
+      const buffer = await sharp(await readFile(photoPath))
+        .resize({ width: size, height: size, fit: "cover" })
+        .toBuffer();
+      const color = hsluv.hexToHsluv((await getAverageColor(buffer)).hex);
+      return { buffer, color, photoPath };
+    } catch (err) {
+      console.warn(`error for ${photoPath}`);
+      console.warn(err);
+      return null;
+    }
+  });
   const photos = (await Promise.all(photoPromises)).filter((data) => !!data);
   photos.sort(colorSorter);
 
