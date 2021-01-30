@@ -31,7 +31,7 @@ jobs:
           node-version: "12.x"
 
       - name: Cache dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -44,10 +44,13 @@ jobs:
           key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-hugomod-
+                
+      - name: Node Dependencies
+        run: npm install
 
       - name: Build
         run: ./build.sh
-    
+
   deploy:
     runs-on: ubuntu-18.04
     needs: build
