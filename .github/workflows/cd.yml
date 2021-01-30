@@ -1,0 +1,62 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Debug
+         run: echo ${{ github }}
+      
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.72.0"
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - uses: actions/cache@v2
+        with:
+          path: /tmp/hugo_cache
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-
+
+      - name: Build
+        run: ./build.sh
+    
+  deploy:
+    runs-on: ubuntu-18.04
+    needs: build
+    steps:
+      - name: Deploy dev
+        if: ${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}
+        run: |
+          rsync -avz --checksum --delete ./public/ cameronlittle@matheny.camlittle.com:/var/www/dev.camlittle.com/
+
+      - name: Deploy prod
+        if: ${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}
+        run: |
+          rsync -avz --checksum --delete ./public/ cameronlittle@matheny.camlittle.com:/var/www/camlittle.com/
