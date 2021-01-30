@@ -49,6 +49,7 @@ jobs:
         run: npm install
 
       - name: Build
+        shell: /bin/bash -et {0}
         run: |
           rm -rf public/
           hugo gen chromastyles --style=manni > assets/css/highlight_light.css
