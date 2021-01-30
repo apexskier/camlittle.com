@@ -49,12 +49,16 @@ jobs:
         run: npm install
 
       - name: Build
-        shell: /bin/bash -et {0}
-        run: |
-          rm -rf public/
-          hugo gen chromastyles --style=manni > assets/css/highlight_light.css
-          hugo gen chromastyles --style=native > assets/css/highlight_dark.css
-          hugo --minify
+        run: rm -rf public/
+  
+      - name: Build
+        run: hugo gen chromastyles --style=manni > assets/css/highlight_light.css
+  
+      - name: Build
+        run: hugo gen chromastyles --style=native > assets/css/highlight_dark.css
+  
+      - name: Build
+        run: hugo --minify
 
   deploy:
     runs-on: ubuntu-18.04
