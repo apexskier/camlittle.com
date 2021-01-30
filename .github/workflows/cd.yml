@@ -15,7 +15,7 @@ jobs:
       - name: Debug
         run: |
           echo ${{ github.event }}
-      
+
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
@@ -45,21 +45,16 @@ jobs:
           key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-hugomod-
-                
+
       - name: Node Dependencies
         run: npm install
 
       - name: Build
-        run: rm -rf public/
-  
-      - name: Build
-        run: hugo gen chromastyles --style=manni > assets/css/highlight_light.css
-  
-      - name: Build
-        run: hugo gen chromastyles --style=native > assets/css/highlight_dark.css
-  
-      - name: Build
-        run: hugo --minify
+        run: |
+          rm -rf public/
+          hugo gen chromastyles --style=manni > assets/css/highlight_light.css
+          hugo gen chromastyles --style=native > assets/css/highlight_dark.css
+          hugo --minify
 
   deploy:
     runs-on: ubuntu-18.04
