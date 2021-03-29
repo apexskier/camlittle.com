@@ -1,7 +1,7 @@
 ---
 title: "Lasagna"
 date: 2021-02-06
-tags: ["baking"]
+tags: ["baking", "dinner"]
 
 resources:
 - src: 1-pre-dough.jpeg

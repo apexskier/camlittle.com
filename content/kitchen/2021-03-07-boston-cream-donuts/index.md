@@ -1,7 +1,7 @@
 ---
 title: "Boston Cream Donuts"
 date: 2021-03-07
-tags: ["baking"]
+tags: ["baking", "dessert"]
 recipe_link: https://cooking.nytimes.com/recipes/1017066-boston-cream-doughnuts
 recipe_source: NYT Cooking
 
