@@ -41,7 +41,7 @@ tags: ["apps"]
 : circa 2014--2016. Almost-popular Go HTTP session authentication package.
 
 [Tap & Seek](https://itunes.apple.com/us/app/see-there-reverse-waypoint/id964698587?mt=8)
-: circa 2015. iOS app for identifying a location through the camera. Read about [the math](https://github.com/apexskier/SeeThere). <small>[source](https://github.com/apexskier/SeeThere)</small>
+: circa 2015. iOS app for identifying a location through the camera. Read about [the math](http://apexskier.github.io/SeeThere/). <small>[source](https://github.com/apexskier/SeeThere)</small>
 
 ## And even more
 
