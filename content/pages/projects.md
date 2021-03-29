@@ -9,7 +9,7 @@ tags: ["apps"]
 ---
 
 [GPX to Photos](https://apps.apple.com/us/app/gpx-to-photos/id1403201208)
-: An iOS / iPadOS application to geotag photos I take with my standalone camera based on a workout or gpx recording. <small>[more information](/gpx-to-photos)</small>
+: An iOS / iPadOS application to geotag my photos based on a workout or gpx recording. <small>[more information](/gpx-to-photos)</small>
 
 [Default Browser](https://defaultbrowser.app/)
 : Simple menubar app for better default browser behavior on macOS.
@@ -20,7 +20,16 @@ tags: ["apps"]
 [Nova Extensions](https://extensions.panic.com/extensions/apexskier/)
 : My extensions for [Panic](https://panic.com/)'s new editor, [Nova](https://nova.app/). I've also written some [sharable utilities for developing extensions](https://github.com/apexskier/nova-extension-utils).
 
+[rrf](https://github.com/apexskier/rrf)
+: Realtime Regexp Filter, a small utility for realtime filtering of text streams in your terminal using regular expressions.
+
+[Release Commenter GitHub action](https://github.com/marketplace/actions/release-commenter)
+: A GitHub Action that automatically comments on and/or labels Issues and PRs when a fix is released for them.
+
 ## Some less useful side projects
+
+[Wedding Website](https://cameronandaisha.love)
+: circa 2019. A website I built for my wedding. There's some fancy nginx config behind the scenes to support a few domain names: [cameronandaisha.love](https://cameronandaisha.love), [aishaandcameron.love](https://aishaandcameron.love), and [ourlittlewedding.love](https://ourlittlewedding.love). I built a custom photobooth on a Raspberry Pi that automatically printed photo strips for our guests and put them on the site. I also built a custom email distribution and tracking system to send RSVP and reminder emails, which I might open source in the future. <small>[website source](https://github.com/apexskier/ourlittlewedding)</small> <small>[photobooth source](https://github.com/apexskier/photobooth)</small>
 
 [Drums](http://drums.camlittle.com)
 : circa 2018. Unfinished drum sheet music builder.
@@ -36,6 +45,6 @@ tags: ["apps"]
 
 ## And even more
 
-You can see more dead projects on [my GitHub profile](https://github.com/apexskier?tab=repositories&type=source).
+You can see more projects on [my GitHub profile](https://github.com/apexskier?tab=repositories&type=source).
 
 {{< subMenu >}}
