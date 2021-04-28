@@ -1,0 +1,31 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "01:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: aws-sdk
+    versions:
+    - 2.820.0
+    - 2.834.0
+  - dependency-name: postcss
+    versions:
+    - 8.2.2
+  - dependency-name: pretty-bytes
+    versions:
+    - 5.5.0
+  - dependency-name: sharp
+    versions:
+    - 0.27.0
+  - dependency-name: postcss-cli
+    versions:
+    - 8.3.1
+  - dependency-name: ini
+    versions:
+    - 1.3.7
+  - dependency-name: fast-average-color-node
+    versions:
+    - 1.0.3
