@@ -16,7 +16,7 @@
     {{ range (partial "usedResources" .) | symdiff .Resources }}
         {{ if eq .MediaType.MainType "image" }}
         <a href="{{ .RelPermalink }}" class="no-border">
-            {{ partial "img" (dict "Resource" . "height" 300) }}
+            {{ partial "img" (dict "Resource" . "height" 300 "$" $) }}
         </a>
         {{ end }}
         {{ if eq .MediaType.MainType "video" }}

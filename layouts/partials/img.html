@@ -27,39 +27,40 @@
   {{ if (and (not $h) $w) }}
     {{ $h = mul $w (div $img.Height (float $img.Width)) }}
   {{ end }}
-  
+
   {{ $colorRegex := "(.+)\\.(dark|light)\\.(.+)" }}
   {{ $filenameColor := (gt (len (findRE $colorRegex $img.Name)) 0) }}
   {{ $darkFile := (index . "$").Page.Resources.GetMatch (replaceRE $colorRegex "$1.dark.$3" $img.Name) }}
   {{ $lightFile := (index . "$").Page.Resources.GetMatch (replaceRE $colorRegex "$1.light.$3" $img.Name) }}
   {{ $colorSupport := and $filenameColor $darkFile $lightFile }}
-  
+  {{ $widths := (index . "$").Page.Site.Data.imageSources.widths }}
+
   <picture title="{{ $alt }}">
       {{/* order matters here - but it's behaving in reverse of the equivalent css */}}
       {{ if $colorSupport }}
-        {{ with $darkFile }}
-          {{ partial "imgSource" (dict "img" . "x" 1200 "h" $h "w" $w "Color" "dark" ) }}
-          {{ partial "imgSource" (dict "img" . "x" 992 "h" $h "w" $w "Color" "dark" ) }}
-          {{ partial "imgSource" (dict "img" . "x" 768 "h" $h "w" $w "Color" "dark" ) }}
-          {{ partial "imgSource" (dict "img" . "x" 480 "h" $h "w" $w "Color" "dark" ) }}
+        {{ with $img := $darkFile }}
+          {{ $hash := .Content | md5 }}
+          {{ range $_, $x := $widths }}
+            {{ partial "imgSource" (dict "img" $img "hash" $hash "x" $x "h" $h "w" $w "Color" "dark") }}
+          {{ end }}
         {{ end }}
-        {{ with $lightFile }}
-          {{ partial "imgSource" (dict "img" . "x" 1200 "h" $h "w" $w "Color" "light" ) }}
-          {{ partial "imgSource" (dict "img" . "x" 992 "h" $h "w" $w "Color" "light" ) }}
-          {{ partial "imgSource" (dict "img" . "x" 768 "h" $h "w" $w "Color" "light" ) }}
-          {{ partial "imgSource" (dict "img" . "x" 480 "h" $h "w" $w "Color" "light" ) }}
+        {{ with $img := $lightFile }}
+          {{ $hash := .Content | md5 }}
+          {{ range $_, $x := $widths }}
+            {{ partial "imgSource" (dict "img" $img "hash" $hash "x" $x "h" $h "w" $w "Color" "light") }}
+          {{ end }}
         {{ end }}
       {{ else }}
-        {{ partial "imgSource" (dict "img" $img "x" 1200 "h" $h "w" $w ) }}{{/* Laptops (and langer) */}}
-        {{ partial "imgSource" (dict "img" $img "x" 992 "h" $h "w" $w ) }}{{/* Tablet-landscape (and larger) */}}
-        {{ partial "imgSource" (dict "img" $img "x" 768 "h" $h "w" $w ) }}{{/* Tablet-portrait (and larger) */}}
-        {{ partial "imgSource" (dict "img" $img "x" 480 "h" $h "w" $w ) }}{{/* Mobile-landscape (and larger) */}}
+        {{ $hash := $img.Content | md5 }}
+        {{ range $_, $x := $widths }}
+          {{ partial "imgSource" (dict "img" $img "hash" $hash "x" $x "h" $h "w" $w ) }}
+        {{ end }}
       {{ end }}
       <img
           {{ if .height }}height="{{ $h }}"{{ end }}
           {{ if .width }}width="{{ $w }}"{{ end }}
           style="{{ if .height }}max-height: {{ $h }}px;{{ end }}{{ if .width }}max-width: {{ $w }}px;{{ end }}"
-          {{ with $img | fingerprint "md5" }}src="{{ $img.RelPermalink }}"{{ end }}
+          src="{{ ($img | fingerprint "md5").RelPermalink }}"
           alt="{{ $alt }}"
       />
   </picture>

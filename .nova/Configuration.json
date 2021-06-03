@@ -1,5 +1,5 @@
 {
   "workspace.preview_append_paths" : false,
-  "workspace.preview_type" : "custom",
+  "workspace.preview_root" : "public",
   "workspace.preview_url" : "http:\/\/localhost:1313"
 }

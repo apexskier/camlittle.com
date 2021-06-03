@@ -1,12 +1,41 @@
 {{ if .img }}
 {{ if or (gt .img.Width .x) (gt .img.Height .y) }}
+{{ $dir := path.Dir .img.RelPermalink }}
+{{ $ext := path.Ext .img.RelPermalink }}
+{{ $pattern := printf "(\\%s)$" $ext }}
+
+{{ $replacement := printf "_%s_%dx0at2x" .hash .x }}
+{{ $retina := replaceRE $pattern $replacement .img.RelPermalink }}
 <source
-    media="(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-width: {{ .x }}px){{ with .Color }} and (prefers-color-scheme: {{ . }}){{ end }}"
-    srcset="{{ (.img.Resize (printf "%dx q90" (mul .x 2)) | fingerprint "md5").RelPermalink }}"
+    media="(-webkit-min-device-pixel-ratio: 2) and (min-width: {{ .x }}px){{ with .Color }} and (prefers-color-scheme: {{ . }}){{ end }}, (min-resolution: 192dpi) and (min-width: {{ .x }}px){{ with .Color }} and (prefers-color-scheme: {{ . }}){{ end }}"
+    srcset="https://content.camlittle.com/site-media{{ $retina }}.webp"
+    type="image/webp"
 />
 <source
-    media="(min-width: {{ .x }}px){{ with .Color }} and (prefers-color-scheme: {{ . }}){{ end }}"
-    srcset="{{ (.img.Resize (printf "%dx q90" .x) | fingerprint "md5").RelPermalink }}"
+    media="(-webkit-min-device-pixel-ratio: 2) and (min-width: {{ .x }}px){{ with .Color }} and (prefers-color-scheme: {{ . }}){{ end }}, (min-resolution: 192dpi) and (min-width: {{ .x }}px){{ with .Color }} and (prefers-color-scheme: {{ . }}){{ end }}"
+    srcset="https://content.camlittle.com/site-media{{ $retina }}.jpg"
+    type="image/jpeg"
+/>
+
+{{ $replacement := printf "_%s_%dx0at1x" .hash .x }}
+{{ $normal := replaceRE $pattern $replacement .img.RelPermalink }}
+<source
+    {{ if .Color }}
+    media="(min-width: {{ .x }}px) and (prefers-color-scheme: {{ .Color }})"
+    {{ else }}
+    media="min-width: {{ .x }}px"
+    {{ end }}
+    srcset="https://content.camlittle.com/site-media{{ $normal }}.webp"
+    type="image/webp"
+/>
+<source
+    {{ if .Color }}
+    media="(min-width: {{ .x }}px) and (prefers-color-scheme: {{ .Color }})"
+    {{ else }}
+    media="min-width: {{ .x }}px"
+    {{ end }}
+    srcset="https://content.camlittle.com/site-media{{ $normal }}.jpg"
+    type="image/jpeg"
 />
 {{ end }}
 {{ end }}
