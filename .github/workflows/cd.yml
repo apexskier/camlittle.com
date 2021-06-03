@@ -61,12 +61,15 @@ jobs:
     if: ${{ github.event_name == 'push' }}
     environment: matheny_prod
     steps:
+      - run: |
+          ls
+
       - name: Upload media
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          node media.js
+          node ./media.js
 
       - name: Setup ssh
         uses: webfactory/ssh-agent@v0.5.2
