@@ -29,6 +29,12 @@ const dryRun = process.argv.includes("--dry-run");
   const s3 = new S3({
     endpoint: "sfo2.digitaloceanspaces.com",
     region: "sfo2",
+    maxRetries: 3,
+    retryDelayOptions: {
+      customBackoff(retryCount) {
+        return retryCount * 100;
+      },
+    },
   });
 
   async function objectExists(key) {
