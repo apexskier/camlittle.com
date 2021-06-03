@@ -58,7 +58,7 @@ jobs:
           hugo gen chromastyles --style=native > assets/css/highlight_dark.css
           hugo --minify
 
-  media:
+  deploy:
     runs-on: ubuntu-20.04
     needs:
       - build
@@ -72,14 +72,6 @@ jobs:
         run: |
           node media.js
 
-  deploy:
-    runs-on: ubuntu-20.04
-    needs:
-      - build
-      - media
-    if: ${{ github.event_name == 'push' && github.event.action == 'unassigned' }}
-    environment: matheny_prod
-    steps:
       - name: Setup ssh
         uses: webfactory/ssh-agent@v0.5.2
         with:
