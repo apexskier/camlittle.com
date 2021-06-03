@@ -2,5 +2,8 @@ node_modules/
 _gen/
 public/
 resources/
+artifact.tgz
+media-script/
 assets/css/highlight_*
 static/
+.env

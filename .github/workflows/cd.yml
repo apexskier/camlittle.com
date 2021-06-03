@@ -8,7 +8,6 @@ on:
     branches:
       - main
 
-
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -61,8 +60,7 @@ jobs:
           hugo --minify
 
       - name: Package artifact
-        run:
-          tar -cvzf artifact.tgz media-script/ public/
+        run: tar -cvzf artifact.tgz media-script/ public/
 
       - name: Upload artifacts for deploy
         uses: actions/upload-artifact@v2
@@ -84,8 +82,7 @@ jobs:
           name: build-artifacts
 
       - name: Unpackage artifact
-        run:
-          tar -xvzf artifact.tgz
+        run: tar -xvzf artifact.tgz
 
       - name: Upload media
         env:
