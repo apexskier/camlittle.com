@@ -1,0 +1,78 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.72.0"
+          extended: true # required for css processing
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Cache hugo caches
+        uses: actions/cache@v2
+        with:
+          path: /tmp/hugo_cache
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-
+
+      - name: Node Dependencies
+        run: npm install
+
+      - name: Build site
+        run: |
+          rm -rf public/
+          hugo gen chromastyles --style=manni > assets/css/highlight_light.css
+          hugo gen chromastyles --style=native > assets/css/highlight_dark.css
+          hugo --minify
+
+  deploy:
+    runs-on: ubuntu-20.04
+    needs:
+      - build
+    if: ${{ github.event_name == 'push' && github.event.action == 'unassigned' }}
+    environment: matheny_prod
+    steps:
+      - name: Upload media
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          node media.js
+
+      - name: Setup ssh
+        uses: webfactory/ssh-agent@v0.5.2
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Rsync prod
+        run: |
+          rsync -avz --checksum --delete ./public/ matheny.camlittle.com:/var/www/camlittle.com/
