@@ -69,7 +69,9 @@ const dryRun = process.argv.includes("--dry-run");
           }
 
           const keyPrefix = `site-media${parsedPermalink.dir}/${parsedPermalink.name}_${mediaData.hash}`;
-          const inputBuffer = await readFile(`./content/${mediaData.filepath}`);
+          const inputBuffer = await readFile(
+            path.join(process.cwd(), "content", mediaData.filepath)
+          );
           console.log(
             `original ${mediaData.filepath} ${prettyBytes(
               Buffer.byteLength(inputBuffer)
