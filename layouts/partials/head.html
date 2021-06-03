@@ -14,19 +14,19 @@
     <link rel="canonical" href="{{ .Permalink }}">
 
     {{ with resources.Get "css/highlight_light.css" | toCSS | minify | fingerprint "md5" }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}">
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
     {{ end }}
     {{ with resources.Get "css/highlight_dark.css" | toCSS | minify | fingerprint "md5" }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="{{ .RelPermalink }}" media="(prefers-color-scheme: dark)" integrity="{{ .Data.Integrity }}">
     {{ end }}
-    
+
     {{ $stylesheets := slice (resources.Get "css/main.css") }}
     {{ with resources.Get (printf "css/%s_%s.css" .Page.Type .Page.Kind) }}
     {{ $stylesheets = $stylesheets | append . }}
     {{ end }}
     {{ range $stylesheets }}
-    {{ with . | postCSS | toCSS | minify | fingerprint "" }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ with . | postCSS | toCSS | minify | fingerprint "md5" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
     {{ end }}
     {{ end }}
 
