@@ -13,10 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - name: Debug
-        run: |
-          echo "${{ toJSON(github) }}"
-
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
@@ -62,7 +58,7 @@ jobs:
     runs-on: ubuntu-20.04
     needs:
       - build
-    if: ${{ github.event_name == 'push' && github.event.action == 'unassigned' }}
+    if: ${{ github.event_name == 'push' }}
     environment: matheny_prod
     steps:
       - name: Upload media
