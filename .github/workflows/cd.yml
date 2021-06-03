@@ -91,10 +91,13 @@ jobs:
         run: |
           node ./media-script
 
-      - name: Setup ssh
+      - name: Setup ssh key
         uses: webfactory/ssh-agent@v0.5.2
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Setup ssh known hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Rsync prod
         run: |
