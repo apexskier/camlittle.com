@@ -1,17 +1,17 @@
 {{ if or (and (eq .MediaType.SubType "svg") (eq .Width .Height)) (and (eq .Width 132) (eq .Height 132)) }}
-{{ with . | fingerprint "md5" }}
-<img src="{{ .RelPermalink }}" class="thumbnail" alt="thumbnail" />
-{{ end }}
+    {{ with . | fingerprint "md5" }}
+        <img src="{{ .RelPermalink }}" class="thumbnail" alt="thumbnail" />
+    {{ end }}
 {{ else if (eq .Width .Height )}}
-{{ with .Resize "132x132" }}
-{{ with . | fingerprint "md5" }}
-<img src="{{ .RelPermalink }}" class="thumbnail" alt="thumbnail" />
-{{ end }}
-{{ end }}
+    {{ with .Resize "132x132" }}
+        {{ with . | fingerprint "md5" }}
+            <img src="{{ .RelPermalink }}" class="thumbnail" alt="thumbnail" />
+        {{ end }}
+    {{ end }}
 {{ else }}
-{{ with .Fill "132x132" }}
-{{ with . | fingerprint "md5" }}
-<img src="{{ .RelPermalink }}" class="thumbnail" alt="thumbnail" />
-{{ end }}
-{{ end }}
+    {{ with .Fill "132x132" }}
+        {{ with . | fingerprint "md5" }}
+            <img src="{{ .RelPermalink }}" class="thumbnail" alt="thumbnail" />
+        {{ end }}
+    {{ end }}
 {{ end }}

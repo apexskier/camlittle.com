@@ -39,3 +39,14 @@ enableRobotsTXT = true
       unsafe = true
   [markup.highlight]
     noClasses = false
+
+[outputFormats]
+  [outputFormats.ImageMetadata]
+    baseName = "image_meta"
+    isPlainText = true
+    mediaType = "application/json"
+    notAlternative = true
+
+[outputs]
+  home = ["HTML", "RSS", "ImageMetadata"]
+    
