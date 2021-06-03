@@ -54,6 +54,16 @@ jobs:
           hugo gen chromastyles --style=native > assets/css/highlight_dark.css
           hugo --minify
 
+      - name: Upload artifacts for deploy
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          retention-days: 2
+          path: |
+            package.json
+            node_modules/
+            public/
+
   deploy:
     runs-on: ubuntu-20.04
     needs:
@@ -61,8 +71,10 @@ jobs:
     if: ${{ github.event_name == 'push' }}
     environment: matheny_prod
     steps:
-      - run: |
-          ls
+      - name: Download artifacts for deploy
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
 
       - name: Upload media
         env:
