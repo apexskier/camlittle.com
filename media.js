@@ -31,9 +31,7 @@ const dryRun = process.argv.includes("--dry-run");
     region: "sfo2",
     maxRetries: 3,
     retryDelayOptions: {
-      customBackoff(retryCount) {
-        return retryCount * 100;
-      },
+      base: 500,
     },
   });
 
