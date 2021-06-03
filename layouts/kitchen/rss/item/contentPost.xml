@@ -1,12 +1,12 @@
-{{ range (partial "usedResources" .) | symdiff .Resources -}}
-  {{ if eq .MediaType.MainType "image" -}}
+{{ range (partial "usedResources" .) | symdiff .Resources }}
+  {{ if eq .MediaType.MainType "image" }}
   <a href="{{ .RelPermalink | absURL }}">
-    {{- replaceRE "(href|src|srcset)=\"/" (printf "$1=\"%s" $.Site.BaseURL) (partial "img" (dict "Resource" . "height" 300)) | safeHTML  -}}
+    {{ replaceRE "(href|src|srcset)=\"/" (printf "$1=\"%s" $.Site.BaseURL) (partial "img" (dict "Resource" . "height" 300)) | safeHTML }}
   </a>
-  {{- end -}}
-  {{ if eq .MediaType.MainType "video" -}}
+  {{ end }}
+  {{ if eq .MediaType.MainType "video" }}
   <video controls height="300" alt="{{ .Title }}">
     <source src="{{ .RelPermalink | absURL }}" />
   </video>
-  {{- end -}}
-{{- end -}}	
+  {{ end }}
+{{ end }}

@@ -86,8 +86,8 @@ temperature, and the next scheduled change. There's also a data page, showing a
 graph of the house's temperature over the last week, the schedule, and various
 user set events not saved as certain.
 
-<img src="on.png" alt="Thermostat on" width="250">
-<img src="off.png" alt="Thermostat off" width="250">
+![Thermostat on](on.png?w=250)
+![Thermostat off](off.png?w=250)
 
 ## Using it in the real world
 

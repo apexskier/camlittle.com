@@ -1,0 +1,25 @@
+{{/*
+This file emits metadata about media in the project so I can build a processing
+pipeline outside of hugo. Having the pipeline fully in Hugo has caused very
+slow build times without caches which prevents CI automation.
+*/}}
+[
+{{ range $i, $page := .Site.Pages }}
+  {{ if $i }},{{ end }}
+  {
+    "page": {{ jsonify $page.Permalink }},
+    "media": [
+    {{ range $j, $resource := append ($page.Resources.ByType "image") ($page.Resources.ByType "video") }}
+      {{ if $j }},{{ end }}
+      {
+        "filepath": {{ jsonify (printf "%s%s" $page.File.Dir $resource.Name) }},
+        "rel_permalink": {{ jsonify $resource.RelPermalink }},
+        "image_pipeline": {{ jsonify (and (eq $resource.MediaType.MainType "image") (ne $resource.MediaType.SubType "svg")) }},
+        "hash": {{ $resource.Content | md5 | jsonify }},
+        "integrity": {{ jsonify ($resource | fingerprint "md5").Data.Integrity }}
+      }
+    {{ end }}
+    ]
+  }
+{{ end }}
+]

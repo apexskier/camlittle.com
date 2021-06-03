@@ -1,0 +1,5 @@
+widths:
+  - 1200 # Laptops (and langer)
+  - 992 # Tablet-landscape (and larger)
+  - 768 # Tablet-portrait (and larger)
+  - 480 # Mobile-landscape (and larger)

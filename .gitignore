@@ -3,3 +3,4 @@ _gen/
 public/
 resources/
 assets/css/highlight_*
+.env

@@ -24,5 +24,7 @@
   "scripts": {
     "format": "prettier --write **/*.{css,js,yml}"
   },
-  "dependencies": {}
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
 }
