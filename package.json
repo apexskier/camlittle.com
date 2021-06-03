@@ -26,6 +26,6 @@
   "scripts": {
     "test": "prettier --list-different '**/*.{css,js,yml}'",
     "format": "prettier --write '**/*.{css,js,yml}'",
-    "build-media-script": "ncc build --out media-script media.js && rm -r media-script/content"
+    "build-media-script": "ncc build --out media-script media.js"
   }
 }

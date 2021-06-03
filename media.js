@@ -16,14 +16,25 @@ const yaml = require("js-yaml");
 const exec = util.promisify(cp.exec);
 const readFile = util.promisify(fs.readFile);
 const copyFile = util.promisify(fs.copyFile);
+const access = util.promisify(fs.access);
 const writeFile = util.promisify(fs.writeFile);
 
+if (process.argv.length <= 2) {
+  console.log(`usage: ${process.argv[0]} ${process.argv[1]} [--dry-run] ./dir`);
+  process.exit(2);
+}
+
 const dryRun = process.argv.includes("--dry-run");
+const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
 
 (async function () {
-  const imageMeta = require(path.join(process.cwd(), "public/image_meta.json"));
+  await access(dir, fs.constants.X_OK);
+
+  const imageMeta = JSON.parse(
+    await readFile(path.join(dir, "public", "image_meta.json"))
+  );
   const imageSources = yaml.load(
-    await readFile(path.join(process.cwd(), "data/imageSources.yml"), "utf8")
+    await readFile(path.join(dir, "data", "imageSources.yml"), "utf8")
   );
 
   const s3 = new S3({
@@ -62,12 +73,12 @@ const dryRun = process.argv.includes("--dry-run");
       const parsedPermalink = path.parse(mediaData.rel_permalink);
       if (!mediaData.image_pipeline) {
         // not an image
-        return;
+        continue;
       }
 
       const keyPrefix = `site-media${parsedPermalink.dir}/${parsedPermalink.name}_${mediaData.hash}`;
       const inputBuffer = await readFile(
-        path.join(process.cwd(), "content", mediaData.filepath)
+        path.join(dir, "public", mediaData.rel_permalink)
       );
       console.log(
         `original ${mediaData.filepath} ${prettyBytes(
@@ -125,5 +136,5 @@ const dryRun = process.argv.includes("--dry-run");
   }
 })().catch((err) => {
   console.error(err);
-  process.exit(2);
+  process.exit(1);
 });

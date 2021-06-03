@@ -15,7 +15,7 @@
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ],
-            "args": ["--dry-run"],
+            "args": ["--dry-run", "${workspaceFolder}"],
             "envFile": "${workspaceFolder}/.env"
         }
     ]
