@@ -36,6 +36,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: Node Dependencies
+        run: npm install
+
+      - name: Test
+        run: npm run test
+
+      - name: Build media script
+        run: ncc build --out media-script media.js
+
       - name: Cache hugo caches
         uses: actions/cache@v2
         with:
@@ -44,18 +53,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-hugomod-
 
-      - name: Node Dependencies
-        run: npm install
-
       - name: Build site
         run: |
           rm -rf public/
           hugo gen chromastyles --style=manni > assets/css/highlight_light.css
           hugo gen chromastyles --style=native > assets/css/highlight_dark.css
           hugo --minify
-
-      - name: Build media script
-        run: ncc build --out media-script media.js
 
       - name: Package artifact
         run:
