@@ -21,9 +21,9 @@ const writeFile = util.promisify(fs.writeFile);
 const dryRun = process.argv.includes("--dry-run");
 
 (async function () {
-  const imageMeta = require("./public/image_meta.json");
+  const imageMeta = require(path.join(process.cwd(), "public/image_meta.json"));
   const imageSources = yaml.load(
-    await readFile("./data/imageSources.yml", "utf8")
+    await readFile(path.join(process.cwd(), "data/imageSources.yml"), "utf8")
   );
 
   const s3 = new S3({

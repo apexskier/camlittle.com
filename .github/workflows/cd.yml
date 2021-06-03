@@ -60,7 +60,7 @@ jobs:
           hugo --minify
 
       - name: Package artifact
-        run: tar -cvzf artifact.tgz media-script/ public/
+        run: tar -cvzf artifact.tgz media-script/ public/ data/
 
       - name: Upload artifacts for deploy
         uses: actions/upload-artifact@v2
