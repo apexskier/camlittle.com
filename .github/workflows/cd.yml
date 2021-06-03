@@ -16,18 +16,12 @@ jobs:
         with:
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: "0.83.1"
-          extended: true # required for css processing
-
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: "14.x"
 
-      - name: Cache dependencies
+      - name: Cache Node dependencies
         uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -42,7 +36,13 @@ jobs:
         run: npm run test
 
       - name: Build media script
-        run: ncc build --out media-script media.js
+        run: npm run build-media-script
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.83.1"
+          extended: true # required for css processing
 
       - name: Cache hugo caches
         uses: actions/cache@v2

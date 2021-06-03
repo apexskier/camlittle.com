@@ -9,10 +9,12 @@
   "author": "Cameron Little <cameron@camlittle.com>",
   "homepage": "https://camlittle.com",
   "devDependencies": {
+    "@vercel/ncc": "^0.28.6",
     "aws-sdk": "^2.820.0",
     "cssnano": "^4.1.10",
     "fast-average-color-node": "^1.0.3",
     "hsluv": "^0.1.0",
+    "js-yaml": "^4.1.0",
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
     "postcss-preset-env": "^6.7.0",
@@ -23,10 +25,7 @@
   },
   "scripts": {
     "test": "prettier --list-different '**/*.{css,js,yml}'",
-    "format": "prettier --write '**/*.{css,js,yml}'"
-  },
-  "dependencies": {
-    "@vercel/ncc": "^0.28.6",
-    "js-yaml": "^4.1.0"
+    "format": "prettier --write '**/*.{css,js,yml}'",
+    "build-media-script": "ncc build --out media-script media.js"
   }
 }
