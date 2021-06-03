@@ -25,6 +25,7 @@
     "format": "prettier --write **/*.{css,js,yml}"
   },
   "dependencies": {
+    "@vercel/ncc": "^0.28.6",
     "js-yaml": "^4.1.0"
   }
 }

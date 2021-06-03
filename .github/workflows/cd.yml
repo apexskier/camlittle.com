@@ -20,7 +20,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: "0.72.0"
+          hugo-version: "0.83.1"
           extended: true # required for css processing
 
       - name: Setup Node
@@ -54,9 +54,12 @@ jobs:
           hugo gen chromastyles --style=native > assets/css/highlight_dark.css
           hugo --minify
 
+      - name: Build media script
+        run: ncc build --out media-script media.js
+
       - name: Package artifact
         run:
-          tar -cvzf artifact.tgz package.json node_modules/ public/
+          tar -cvzf artifact.tgz media-script/ public/
 
       - name: Upload artifacts for deploy
         uses: actions/upload-artifact@v2
@@ -86,7 +89,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          node ./media.js
+          node ./media-script
 
       - name: Setup ssh
         uses: webfactory/ssh-agent@v0.5.2
