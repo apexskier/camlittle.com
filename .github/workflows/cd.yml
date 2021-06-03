@@ -54,15 +54,16 @@ jobs:
           hugo gen chromastyles --style=native > assets/css/highlight_dark.css
           hugo --minify
 
+      - name: Package artifact
+        run:
+          tar -cvzf artifact.tgz package.json node_modules/ public/
+
       - name: Upload artifacts for deploy
         uses: actions/upload-artifact@v2
         with:
           name: build-artifacts
           retention-days: 2
-          path: |
-            package.json
-            node_modules/
-            public/
+          path: artifact.tgz
 
   deploy:
     runs-on: ubuntu-20.04
@@ -75,6 +76,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build-artifacts
+
+      - name: Unpackage artifact
+        run:
+          tar -xvzf artifact.tgz
 
       - name: Upload media
         env:
