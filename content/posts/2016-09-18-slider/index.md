@@ -57,11 +57,9 @@ potentiometer sets speed and a button starts and stops oscillation.
     <img src="final-enclosure.jpg" width="360" alt="Slider control box" />
 </figure>
 
-Take a look at Cole's [Instagram](https://www.instagram.com/coleparamoredrums/)
+Take a look at Cole's [Instagram](https://www.instagram.com/p/BLUP33gD0N9/)
 or [YouTube](https://www.youtube.com/user/cole2paul) to see some shots from the
 final product.
-
-{{< instagram BLUP33gD0N9 >}}
 
 ### What I Learned
 

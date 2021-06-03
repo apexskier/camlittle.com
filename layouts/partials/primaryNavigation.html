@@ -16,7 +16,7 @@
             {{ end }}
         </li>
         {{ end }}
-        {{ range (where .Site.Pages "Kind" "taxonomyTerm") }}
+        {{ range (where .Site.Pages "Kind" "taxonomy") }}
         {{ if ne .Type "pages" }}
         <li>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>

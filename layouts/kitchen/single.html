@@ -3,29 +3,29 @@
 <article>
     <h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
 
-    {{if .Params.recipe_link -}}
+    {{if .Params.recipe_link }}
     <p class="kitchen-source">
         <a href="{{ .Params.recipe_link }}" target="_blank">Recipe{{if .Params.recipe_source }} from {{ .Params.recipe_source }}{{ end }}</a>
     </p>
-    {{- end }}
+    {{ end }}
 
-    {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
+    {{ replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML }}
 
     <div class="kitchen-gallery">
     {{/* Emit a gallery of the images that weren't in the post body */ -}}
-    {{ range (partial "usedResources" .) | symdiff .Resources -}}
-        {{ if eq .MediaType.MainType "image" -}}
+    {{ range (partial "usedResources" .) | symdiff .Resources }}
+        {{ if eq .MediaType.MainType "image" }}
         <a href="{{ .RelPermalink }}" class="no-border">
-            {{- partial "img" (dict "Resource" . "height" 300) -}}
+            {{ partial "img" (dict "Resource" . "height" 300) }}
         </a>
-        {{- end -}}
-        {{ if eq .MediaType.MainType "video" -}}
+        {{ end }}
+        {{ if eq .MediaType.MainType "video" }}
         {{/* safari has some weird bugs with video element styling */}}
         <video controls height="300" style="height: 300px;" alt="{{ .Title }}">
             <source src="{{ .RelPermalink }}" />
         </video>
-        {{- end -}}
-    {{- end -}}
+        {{ end }}
+    {{ end }}
     </div>
 </article>
 {{ end }}

@@ -1,9 +1,9 @@
-{{ $images := slice -}}
-{{ range findRE "src=['\"](.+?)['\"]" .Content -}}
-{{ $val := strings.TrimPrefix $.RelPermalink (substr . 5 (sub (len .) 6)) -}}
-{{ $val }}
-{{ with $.Resources.GetMatch $val -}}
-{{ $images = $images | append . -}}
-{{ end -}}
-{{ end -}}
+{{ $images := slice }}
+{{ range findRE "src=['\"](.+?)['\"]" .Content }}
+	{{ $val := strings.TrimPrefix $.RelPermalink (substr . 5 (sub (len .) 6)) }}
+	{{ $val }}
+	{{ with $.Resources.GetMatch $val }}
+		{{ $images = $images | append . }}
+	{{ end }}
+{{ end }}
 {{ return $images }}
