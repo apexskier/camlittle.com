@@ -748,7 +748,6 @@ main {
   & picture {
     display: block;
     overflow: hidden;
-    max-width: fit-content;
 
     & img,
     & video {
