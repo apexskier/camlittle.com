@@ -78,7 +78,7 @@ const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
 
       const keyPrefix = `site-media${parsedPermalink.dir}/${parsedPermalink.name}_${mediaData.hash}`;
       const inputBuffer = await readFile(
-        path.join(dir, "public", mediaData.rel_permalink)
+        path.join(dir, "public", decodeURI(mediaData.rel_permalink))
       );
       console.log(
         `original ${mediaData.filepath} ${prettyBytes(
