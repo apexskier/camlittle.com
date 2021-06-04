@@ -75,6 +75,7 @@ jobs:
       - build
     if: ${{ github.event_name == 'push' }}
     environment: matheny_prod
+    concurrency: matheny_prod
     steps:
       - name: Download artifacts for deploy
         uses: actions/download-artifact@v2
