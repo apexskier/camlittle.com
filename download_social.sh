@@ -1,3 +1,5 @@
+#!/bin/bash
+
 rm asset/social_icons/*
 
 curl -L -o ./assets/social_icons/fa-codepen.svg https://github.com/FortAwesome/Font-Awesome/raw/master/svgs/brands/codepen.svg
