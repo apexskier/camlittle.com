@@ -23,6 +23,19 @@ These are some of the little details in the site that I'm proud of. You can alwa
 
 This site's tech stack throughout the years.
 
+* June 2021
+
+  The site now auto deploys through GitHub actions.
+
+  I've built my own image processing pipeline using some hacky node scripts that
+  uploads to a DigitalOcean Spaces CDN. I was running into issues where without
+  caches the site would take 10+ minutes to build, primarily due to the number
+  of image variations I support in my responsive image templates, which
+  prevented automating deployments. It's not perfect---there's a fair amount of
+  duplication of knowledge between the hugo and npm sides of things and file
+  fingerprinting could be a lot better, but it's a fairly simple, as it should
+  be for a personal website.
+
 * March 2020
 
   [Hugo](https://gohugo.io) static site with a custom theme. I chose Hugo since
