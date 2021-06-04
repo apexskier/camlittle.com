@@ -37,7 +37,28 @@ const [, , file, name] = process.argv;
 
   work.push(
     copyFile(file, `${filePrefix}_original.jpg`).then(async () => {
-      console.log(`original ${prettyBytes(Buffer.byteLength(inputBuffer))}`);
+      const data = await new Promise((resolve, reject) => {
+        s3.upload(
+          {
+            Key: `photos/${name}_original.jpg`,
+            Body: inputBuffer,
+            Bucket: "camlittle-content",
+            ACL: "public-read",
+          },
+          (err, data) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(data);
+            }
+          }
+        );
+      });
+      console.log(
+        `original ${prettyBytes(Buffer.byteLength(inputBuffer))} → ${
+          data.Location
+        }`
+      );
     })
   );
 
