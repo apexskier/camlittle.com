@@ -12,6 +12,7 @@
     <meta name="author" content="{{ .Site.Author.name }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="preconnect" href="https://content.camlittle.com">
 
     {{ with resources.Get "css/highlight_light.css" | toCSS | minify | fingerprint "md5" }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
