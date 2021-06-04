@@ -5,7 +5,7 @@
 
     {{if .Params.recipe_link }}
     <p class="kitchen-source">
-        <a href="{{ .Params.recipe_link }}" target="_blank">Recipe{{if .Params.recipe_source }} from {{ .Params.recipe_source }}{{ end }}</a>
+        <a href="{{ .Params.recipe_link }}" rel="noopener" target="_blank">Recipe{{if .Params.recipe_source }} from {{ .Params.recipe_source }}{{ end }}</a>
     </p>
     {{ end }}
 
