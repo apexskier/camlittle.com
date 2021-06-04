@@ -100,4 +100,4 @@ jobs:
 
       - name: Rsync prod
         run: |
-          rsync -avz --checksum --delete ./public/ matheny.camlittle.com:/var/www/camlittle.com/
+          rsync -avz --checksum --delete ./public/ ${{ secrets.SSH_USER_HOST }}:/var/www/camlittle.com/
