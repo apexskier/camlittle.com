@@ -10,8 +10,8 @@
   "homepage": "https://camlittle.com",
   "devDependencies": {
     "@vercel/ncc": "^0.28.6",
-    "aws-sdk": "^2.920.0",
-    "cssnano": "^4.1.11",
+    "aws-sdk": "^2.921.0",
+    "cssnano": "^5.0.5",
     "fast-average-color-node": "^1.0.3",
     "hsluv": "^0.1.0",
     "js-yaml": "^4.1.0",
@@ -20,8 +20,7 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.3.0",
     "pretty-bytes": "^5.6.0",
-    "sharp": "^0.27.2",
-    "smartcrop-sharp": "^2.0.3"
+    "sharp": "^0.28.3"
   },
   "scripts": {
     "test": "prettier --list-different '**/*.{css,js,yml}'",

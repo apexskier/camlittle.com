@@ -33,10 +33,10 @@ jobs:
         run: npm install
 
       - name: Test
-        run: npm run test
+        run: yarn run test
 
       - name: Build media script
-        run: npm run build-media-script
+        run: yarn run build-media-script
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
