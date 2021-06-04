@@ -26,6 +26,9 @@ tags: ["apps"]
 [Release Commenter GitHub action](https://github.com/marketplace/actions/release-commenter)
 : A GitHub Action that automatically comments on and/or labels Issues and PRs when a fix is released for them.
 
+[HSLuv Sass](https://github.com/hsluv/hsluv-sass)
+: A pure Sass implementation of the HSLuv color space.
+
 ## Some less useful side projects
 
 [Wedding Website](https://cameronandaisha.love)
