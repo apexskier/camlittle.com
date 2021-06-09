@@ -254,7 +254,10 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
+/* !important here overrides inline display: none, which is used
+to prevent this showing up on first load before the main css has loaded */
 .bun {
+  display: block !important;
   position: sticky;
   text-align: center;
   z-index: -1;
@@ -265,20 +268,15 @@ body {
   display: block; /* don't add extra whitespace to height */
   margin: 0 auto;
 }
-/* !important here overrides inline display: none, which is used
-to prevent this showing up on first load before the main css has loaded */
 #bun {
-  display: block !important;
   top: 150px;
   transform: translateY(-40px); /* height of image */
 }
 #bun-paws {
-  display: block !important;
   top: 120px;
   transform: translateY(-40px); /* height of image */
 }
 #bun-butt {
-  display: block !important;
   bottom: 150px;
 }
 
