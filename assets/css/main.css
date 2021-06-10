@@ -191,12 +191,7 @@ html {
   &::before {
     z-index: -1;
     position: fixed;
-    /* height: 100vh; */
-    /* this is a weird hack to fix the fact that desktop chrome adds un-accounted for vertical space at the bottom of the page
-       for my bottom bunny image, even though it's contain in a zero-height wrapper.
-       Other browsers (Safari, iOS Safari, Firefox) don't do this, but this doesn't appear to hurt them
-    */
-    height: calc(100vh - 16px);
+    height: 100vh;
     width: 100vw;
     content: "";
 

@@ -20,18 +20,25 @@
                             {{- partial "header.html" . -}}
                             {{- partial "primaryNavigation.html" . -}}
                         </div>
-        
+
                         <main id="main">{{ block "main" . }}{{ end }}</main>
                     </div>
-        
+
                     {{- partial "footer.html" . -}}
                 </div>
             </div>
         </div>
+        <!--
+        From my testing, I can't get this to work like I want.
+        It appears that it's not possible to avoid it creating vertical space at
+        the end of the document. I'm guessing this is some rendering behavior,
+        where the document is automatically extended, even if the content isn't
+        effectively visible or wouldn't layout shift other elements.
         <div id="bun-butt" class="bun" style="display: none">
             {{ with resources.Get "bunny/butt.svg" | fingerprint "md5" }}
             <img src="{{ .RelPermalink }}" height="16" width="37" alt="" />
             {{ end }}
         </div>
+        -->
     </body>
 </html>
