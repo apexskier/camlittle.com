@@ -1,8 +1,8 @@
-{{ range .Site.Params.sitemap.entries -}}
-{{ $.Scratch.Add "dot" (slice (dict "Permalink" (printf "%s%s" (strings.TrimRight "/" $.Site.BaseURL) .absURL) "Sitemap" (dict "Priority" -1 "ChangeFreq" "") "Lastmod" (default (time "0001-01-01") .lastMod) )) -}}
-{{ end -}}
-{{ range .Data.Pages -}}
-{{ $.Scratch.Add "dot" (slice (dict "Permalink" .Permalink "Sitemap" .Sitemap "Lastmod" .Lastmod)) -}}
-{{ end -}}
-{{/* https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/sitemap.xml */ -}}
+{{ range .Site.Params.sitemap.entries }}
+{{ $.Scratch.Add "dot" (slice (dict "Permalink" (printf "%s%s" (strings.TrimRight "/" $.Site.BaseURL) .absURL) "Sitemap" (dict "Priority" -1 "ChangeFreq" "") "Lastmod" (default (time "0001-01-01") .lastMod) )) }}
+{{ end }}
+{{ range .Data.Pages }}
+{{ $.Scratch.Add "dot" (slice (dict "Permalink" .Permalink "Sitemap" .Sitemap "Lastmod" .Lastmod)) }}
+{{ end }}
+{{/* https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/sitemap.xml */}}
 {{ template "_internal/_default/sitemap.xml" (dict "Data" (dict "Pages" ($.Scratch.Get "dot"))) }}

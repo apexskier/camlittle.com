@@ -1,9 +1,9 @@
-{{ with partial "findMenuEntry" (dict "Page" .Page "Menus" .Site.Menus) -}}
+{{ with partial "findMenuEntry" (dict "Page" .Page "Menus" .Site.Menus) }}
 <nav>
     <ul>
-        {{ range .Children -}}
+        {{ range .Children }}
         <li><a href="{{ .Page.RelPermalink }}">{{ .Name }}</a></li>
-        {{- end }}
+        {{ end }}
     </ul>
 </nav>
-{{- end }}
+{{ end }}

@@ -3,13 +3,13 @@
 
     <small>~{{ .ReadingTime }} minute{{ if ne .ReadingTime 1 }}s{{ end }}</small>
 
-    {{ with .Params.tags -}}
-    {{ if len . -}}
+    {{ with .Params.tags }}
+    {{ if len . }}
     <ul class="tags">
-    {{ range . -}}
+    {{ range . }}
         <li class="tag"><a href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a></li>{{" "}}
-    {{- end }}
+    {{ end }}
     </ul>
-    {{- end }}
-    {{- end }}
+    {{ end }}
+    {{ end }}
 </aside>

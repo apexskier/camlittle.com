@@ -12,7 +12,7 @@
     {{ replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML }}
 
     <div class="kitchen-gallery">
-    {{/* Emit a gallery of the images that weren't in the post body */ -}}
+    {{/* Emit a gallery of the images that weren't in the post body */}}
     {{ range (partial "usedResources" .) | symdiff .Resources }}
         {{ if eq .MediaType.MainType "image" }}
         <a href="{{ .RelPermalink }}" class="no-border">

@@ -3,9 +3,9 @@
 
 <h2>Latest posts</h2>
 <ul class="posts">
-    {{ range first 5 (where .Site.RegularPages "Type" "posts") -}}
-    {{ .Render "li" }}
-    {{- end }}
+    {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
+        {{ .Render "li" }}
+    {{ end }}
 </ul>
 <a href="/posts">See all posts</a>
 {{ end }}

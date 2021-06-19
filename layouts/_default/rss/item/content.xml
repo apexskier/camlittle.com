@@ -1,2 +1,2 @@
-{{ $content := replaceRE "(href|src|srcset)=\"/" (printf "$1=\"%s" $.Site.BaseURL) .Content -}}
-{{ $content | safeHTML -}}
+{{ $content := replaceRE "(href|src|srcset)=\"/" (printf "$1=\"%s" $.Site.BaseURL) .Content }}
+{{ $content | safeHTML }}

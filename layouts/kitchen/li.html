@@ -1,9 +1,9 @@
 <li class="post-link">
     <!-- <pre>{{ printf "%#v" .Page.Params.Images }}</pre> -->
-    {{ $thumb := index (last 1 (.Resources.ByType "image")) 0 -}}
-    {{ with .Resources.GetMatch "*feature*" -}}
-    {{ $thumb = . -}}
-    {{ end -}}
+    {{ $thumb := index (last 1 (.Resources.ByType "image")) 0 }}
+    {{ with .Resources.GetMatch "*feature*" }}
+    {{ $thumb = . }}
+    {{ end }}
     {{ partial "single/thumbnail" $thumb }}
     <div>
         {{ partial "time" .Date }}

@@ -3,12 +3,10 @@
 
 <h1 id="{{ .Title | urlize }}">{{ .Title }}</h1>
 
-{{ if .Params.toc -}}
-{{ .TableOfContents }}
-{{- end }}
+{{ if .Params.toc }}{{ .TableOfContents }}{{ end }}
 
 <article>
-    {{- replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
+    {{ replace (replace .Content "</table>" "</table></div>") "<table" "<div class='table'><table" | safeHTML -}}
     {{ if (ne .Params.chaser false) }}
     {{ partial "single/chaser" . }}
     {{ end }}

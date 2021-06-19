@@ -11,8 +11,8 @@
 		<link>{{ .Permalink }}</link>
 		<width>144</width>
 	</image>
-	{{ with .Site.LanguageCode }}<language>{{.}}</language>{{ end -}}
-	{{ with .Site.Author.email -}}
+	{{ with .Site.LanguageCode }}<language>{{.}}</language>{{ end }}
+	{{ with .Site.Author.email }}
 	<managingEditor>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</managingEditor>
 	<webMaster>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</webMaster>
 	{{ end }}

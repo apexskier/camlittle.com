@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ .Site.Language }}" data-type="{{ .Page.Type }}" data-kind="{{ .Page.Kind }}">
-    {{- partial "head.html" . -}}
+    {{ partial "head.html" . }}
     <body>
         <div id="bun" class="bun" style="display: none">
             {{ with resources.Get "bunny/top.svg" | fingerprint "md5" }}
@@ -17,14 +17,14 @@
                 <div id="notch"><!-- safe area inset padding -->
                     <div id="content"><!-- responsive design -->
                         <div id="headerish">
-                            {{- partial "header.html" . -}}
-                            {{- partial "primaryNavigation.html" . -}}
+                            {{ partial "header.html" . }}
+                            {{ partial "primaryNavigation.html" . }}
                         </div>
 
                         <main id="main">{{ block "main" . }}{{ end }}</main>
                     </div>
 
-                    {{- partial "footer.html" . -}}
+                    {{ partial "footer.html" . }}
                 </div>
             </div>
         </div>

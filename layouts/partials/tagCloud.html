@@ -1,25 +1,25 @@
 <ul class="all-tags">
-    {{/*make common tags bigger */ -}}
-    {{ $minSize := 1 -}}
-    {{ $maxSize := 1.6 -}}
-    {{ $sizeDelta := sub $maxSize $minSize -}}
+    {{/* make common tags bigger */}}
+    {{ $minSize := 1 }}
+    {{ $maxSize := 1.6 }}
+    {{ $sizeDelta := sub $maxSize $minSize }}
 
-    {{ $minCount := float 1 -}}
-    {{ $maxCount := float 1 -}}
-    {{ range . -}}
-    {{ if gt .count $maxCount -}}
-    {{ $maxCount = .count -}}
-    {{ else if lt .count $minCount -}}
-    {{ $minCount = .count -}}
-    {{ end -}}
-    {{ end -}}
-    {{ $countDelta := sub $maxCount $minCount -}}
+    {{ $minCount := float 1 }}
+    {{ $maxCount := float 1 }}
+    {{ range . }}
+    {{ if gt .count $maxCount }}
+    {{ $maxCount = .count }}
+    {{ else if lt .count $minCount }}
+    {{ $minCount = .count }}
+    {{ end }}
+    {{ end }}
+    {{ $countDelta := sub $maxCount $minCount }}
 
     {{ $baseMargin := 4.0 }}
 
-    {{range $val := . -}}
-    {{ $countPercent := div (sub .count $minCount) $countDelta -}}
-    {{ $sizePercent := add $minSize (mul $countPercent $sizeDelta) -}}
+    {{range $val := . }}
+    {{ $countPercent := div (sub .count $minCount) $countDelta }}
+    {{ $sizePercent := add $minSize (mul $countPercent $sizeDelta) }}
     {{ $margin := math.Floor (mul $baseMargin $sizePercent) }}
     <li
         class="tag"
@@ -34,5 +34,5 @@
             ({{ .count }})
         </a>
     </li>{{" "}}
-    {{- end}}
+    {{ end}}
 </ul>
