@@ -1,4 +1,8 @@
-{{ if or (and (eq .MediaType.SubType "svg") (eq .Width .Height)) (and (eq .Width 132) (eq .Height 132)) }}
+{{ if eq .MediaType.SubType "svg" }}
+    {{ with . | fingerprint "md5" }}
+        <img src="{{ .RelPermalink }}" class="thumbnail" alt="thumbnail" />
+    {{ end }}
+{{ else if and (eq .Width 132) (eq .Height 132) }}
     {{ with . | fingerprint "md5" }}
         <img src="{{ .RelPermalink }}" class="thumbnail" alt="thumbnail" />
     {{ end }}
