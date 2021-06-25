@@ -1,3 +1,18 @@
 {{ if eq .Kind "page" }}
 <meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "ImageObject",
+  "author": {{ .Site.Author.name }},
+  "contentUrl": "https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg",
+  {{ with .Params.location }}
+    "contentLocation": {{ . }},
+  {{ end }}
+  "dateCreated": {{ .Date.Format "2006-01-02T15:04:05Z0700" }},
+  "name": {{ .Title }},
+  "representativeOfPage": true
+}
+</script>
 {{ end }}
