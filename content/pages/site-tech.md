@@ -68,7 +68,7 @@ This site's tech stack throughout the years.
   also switched to [DigitalOcean](https://www.digitalocean.com) for hosting and
   an [nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/) web server.
   
-* Feb 2012
+* February 2012
 
   I transferred my domain name to [Namecheap](https://namecheap.com). At some
   point, I switched to the [Stacey](https://github.com/kolber/stacey) CMS with a custom
@@ -76,7 +76,7 @@ This site's tech stack throughout the years.
   at the time. Hosted on 
   [Dreamhost](https://www.dreamhost.com) with [Apache](https://httpd.apache.org).
 
-* Sep 2010
+* September 2010
 
   Registered [camlittle.com](https://camlittle.com) with GoDaddy and set up a
   homemade PHP website.
