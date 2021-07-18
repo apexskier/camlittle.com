@@ -1,0 +1,3 @@
+{{ with .Resources.GetMatch "*.jpg" }}
+<enclosure url="{{ .Permalink }}" length="{{ len .Content }}" type="{{ .MediaType }}" />
+{{ end }}

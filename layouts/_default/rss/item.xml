@@ -12,6 +12,7 @@
     {{ end }}
     <enclosure url="{{ .Permalink }}" length="{{ len .Content }}" type="{{ .MediaType }}" />
   {{ end }}
+  {{ .Render "rss/item/enclosure" }}
   <description>{{ .Summary | html }}</description>
   <content:encoded>
   {{ `<![CDATA[` | safeHTML -}}
