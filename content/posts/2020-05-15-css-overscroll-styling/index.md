@@ -25,8 +25,6 @@ body {
 
 With a background color on the `<html>` element it's visible when I overscroll. However, this is "fake" content on desktop browsers---the html is still scrolling so its _contents_ aren't shown (for example, a background image).
 
-<!-- TODO video -->
-
 There are a couple of approaches I want to try to get content in there.
 
 1. Don't scroll the html - scroll the body instead
