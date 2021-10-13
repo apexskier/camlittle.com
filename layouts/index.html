@@ -1,11 +1,35 @@
 {{ define "main"}}
 <p class="lead">{{ .Site.Params.Description }}</p>
 
-<h2>Latest posts</h2>
+{{/*
+The featured pages on the home page can have as many posts as are available, but
+only one of other types of content.
+*/}}
+{{ $featuredPages := slice }}
+{{ $featuredTypes := dict }}
+{{ range .Site.RegularPages.ByDate.Reverse }}
+    {{ if lt (len $featuredPages) 5 }}
+        {{ if or (eq .Type "posts") (not (isset $featuredTypes .Type)) }}
+            {{ $featuredPages = $featuredPages | append  . }}
+            {{ $featuredTypes = merge $featuredTypes (dict .Type true) }}
+        {{ end }}
+    {{ end }}
+{{ end }}
 <ul class="posts">
-    {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
-        {{ .Render "li" }}
+    {{ range $featuredPages }}
+        {{ if eq .Type "photos" }}
+        <li class="post-link">
+            {{ partial "single/thumbnail" (.Resources.GetMatch (printf "%s_128.jpg" .Params.photo)) }}
+            <div>
+                {{ partial "time" (default .Params.captureDate .Date) }}
+                <h3>
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h3>
+            </div>
+        </li>
+        {{ else }}
+            {{ .Render "li" }}
+        {{ end }}
     {{ end }}
 </ul>
-<a href="/posts">See all posts</a>
 {{ end }}
