@@ -31,6 +31,13 @@ const [, , file, name] = process.argv;
   const filePrefix = `content/photos/${name}/${name}`;
   const inputBuffer = await readFile(file);
 
+  process.env["AWS_PROFILE"] = "digitalocean";
+
+  const s3 = new S3({
+    endpoint: "sfo2.digitaloceanspaces.com",
+    region: "sfo2",
+  });
+
   await exec(`hugo new --kind photos photos/${name}`);
 
   const work = [];
@@ -63,13 +70,6 @@ const [, , file, name] = process.argv;
   );
 
   const image = sharp(inputBuffer);
-
-  process.env["AWS_PROFILE"] = "digitalocean";
-
-  const s3 = new S3({
-    endpoint: "sfo2.digitaloceanspaces.com",
-    region: "sfo2",
-  });
 
   for (const format of ["jpg", "webp"]) {
     for (const res of [128, 640, 1280, 2880]) {
