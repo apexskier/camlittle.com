@@ -152,10 +152,10 @@ autoprefixer@^9.6.1:
     postcss "^7.0.26"
     postcss-value-parser "^4.0.2"
 
-aws-sdk@^2.921.0:
-  version "2.921.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.921.0.tgz#37bb60630d5ae17e0c61c0052078a766b372fcea"
-  integrity sha512-Xi6MGx0oZByTzKN4WP15RjKejyf/mIxXU0Do8L1wf/Oz5USirjzLXFBPVEt25A43nOQVwXagZ2Ayt81ItcbTXg==
+aws-sdk@^2.1040.0:
+  version "2.1040.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1040.0.tgz#5b2ac87f357f0933cf336a15f048f9016be0f0e8"
+  integrity sha512-xGKYoVNFA46gphJZ5jRykxT96L3YNMO/STmjdW/cl36n61ENfTvH61OO5v2ReoAoReddAV7F0WMXfkzwjYc5Jw==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
