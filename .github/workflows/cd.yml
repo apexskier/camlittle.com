@@ -22,13 +22,8 @@ jobs:
           node-version: 17
           cache: yarn
 
-      - name: Cache Node dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      - name: Install image processing dependencies
+        run: sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
       - name: Node Dependencies
         run: yarn install
