@@ -17,9 +17,10 @@ jobs:
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: "14.x"
+          node-version: 17
+          cache: yarn
 
       - name: Cache Node dependencies
         uses: actions/cache@v2
