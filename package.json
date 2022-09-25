@@ -16,7 +16,7 @@
     "hsluv": "^0.1.0",
     "js-yaml": "^4.1.0",
     "postcss": "^8.3.0",
-    "postcss-cli": "^8.3.1",
+    "postcss-cli": "^10.0.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.7.1",
     "pretty-bytes": "^5.6.0",
