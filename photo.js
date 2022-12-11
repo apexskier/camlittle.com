@@ -3,6 +3,8 @@
 /*
 built on top of https://github.com/tmcw/bespoke
 
+name format should be 2006-01-02-url-slug
+
 future ideas
 - auto pull exif for date?
 */
