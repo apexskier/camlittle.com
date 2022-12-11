@@ -28,15 +28,15 @@ if (process.argv.length !== 4) {
 const [, , file, name] = process.argv;
 
 (async function () {
-  const filePrefix = `content/photos/${name}/${name}`;
-  const inputBuffer = await readFile(file);
-
-  process.env["AWS_PROFILE"] = "digitalocean";
+  const profile = "digitalocean";
 
   const s3 = new S3({
     endpoint: "sfo2.digitaloceanspaces.com",
-    region: "sfo2",
+    profile,
   });
+
+  const filePrefix = `content/photos/${name}/${name}`;
+  const inputBuffer = await readFile(file);
 
   await exec(`hugo new --kind photos photos/${name}`);
 
