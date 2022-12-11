@@ -45,7 +45,7 @@ data:image/jpeg;base64,{{.Content | base64Encode}}
     <div>
         <h1>{{ .Title }}</h1>
         <p>
-            <span title="Date">📅</span> {{ partial "time" (default .Params.captureDate .Date) }}
+            <span title="Date">📅</span> {{ partial "time" (default .Date .Params.captureDate) }}
             {{ with .Params.location }}<br />
             <span title="Location">📍</span> {{ . }}{{ end }}
         </p>
