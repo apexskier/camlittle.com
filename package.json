@@ -16,7 +16,7 @@
     "fast-average-color-node": "^1.0.3",
     "hsluv": "^0.1.0",
     "js-yaml": "^4.1.0",
-    "postcss": "^8.3.0",
+    "postcss": "^8.4.20",
     "postcss-cli": "^8.3.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.7.1",
