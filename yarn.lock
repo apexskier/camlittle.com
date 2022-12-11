@@ -925,10 +925,10 @@ hsla-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/hsla-regex/-/hsla-regex-1.0.0.tgz#c1ce7a3168c8c6614033a4b5f7877f3b225f9c38"
   integrity sha1-wc56MWjIxmFAM6S194d/OyJfnDg=
 
-hsluv@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/hsluv/-/hsluv-0.1.0.tgz#29f40d49642bd56dd0c192122abcc723bb5c2d6c"
-  integrity sha512-ERcanKLAszD2XN3Vh5r5Szkrv9q0oSTudmP0rkiKAGM/3NMc9FLmMZBB7TSqTaXJfSDBOreYTfjezCOYbRKqlw==
+hsluv@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/hsluv/-/hsluv-1.0.0.tgz#d06b2d23c3552f2428bb002e00268c681c425c70"
+  integrity sha512-RqZkmiAbUnQ5JkjDFB81iaAC62fkL7BtQultslKzb7Sqs6wzPljY0YPDEhA9pdsVdGQ6ksfMBp9rJB9JyRlQFQ==
 
 https-proxy-agent@^5.0.0:
   version "5.0.1"

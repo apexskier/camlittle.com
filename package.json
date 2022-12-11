@@ -14,7 +14,7 @@
     "canvas": "^2.10.2",
     "cssnano": "^5.0.5",
     "fast-average-color-node": "^1.0.3",
-    "hsluv": "^0.1.0",
+    "hsluv": "^1.0.0",
     "js-yaml": "^4.1.0",
     "postcss": "^8.3.0",
     "postcss-cli": "^8.3.1",
