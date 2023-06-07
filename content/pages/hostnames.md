@@ -27,7 +27,8 @@ I name each of my computers after [Washington rivers](https://www.americanwhitew
 | Glacier | DigitalOcean Debian development server | 2013 |
 | Matheny | DigitalOcean droplet | 2019 | ✅ |
 | Methow | DigitalOcean droplet | 2014 |
-| Nisqually | MacBook Pro (13-inch, 2019, Four Thunderbolt 3 ports) | 2019 | ✅ |
+| Naches | MacBook Pro 14", 2023 | 2023 | ✅ |
+| Nisqually | MacBook Pro (13-inch, 2019, Four Thunderbolt 3 ports) | 2019 |
 | Nooksack | MacBook Pro 13” (late 2013) | 2014 |
 | Queets | iPad Pro 10.5” (2017) | 2017 | ✅ |
 | Quinault | iPad (2012) | 2012 |
