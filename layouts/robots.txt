@@ -1,8 +1,10 @@
 User-agent: *
+Disallow: /typescript.novaextension # this redirects to something not understood by crawlers
+
+User-agent: GPTBot
+Disallow: /
 
 Sitemap: https://camlittle.com/sitemap.xml
-
-Disallow: /typescript.novaextension # this redirects to something not understood by crawlers
 
 # ::::-----------.............................................................----
 # :::-------------...............................................................-
