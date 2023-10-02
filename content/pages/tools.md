@@ -21,6 +21,7 @@ My current graphical editor of choice is [Visual Studio Code](https://code.visua
 - [1Password](https://1password.com/) - password manager
 - [Amphetamine](https://apps.apple.com/us/app/amphetamine/id937984704?mt=12) - keeps my computer from falling asleep
 - [Apple Photos](https://www.apple.com/ios/photos/) - my current choice for photo organization
+- [CleanShot X](https://cleanshot.sjv.io/camlittle) - better MacOS screenshots (but same keyboard shortcuts!) (affiliate link)
 - [Default Browser](https://defaultbrowser.app) - self-made tool for managing my default browser
 - [Gifski](https://sindresorhus.com/gifski) - High-quality gif encoder
 - [Gitup](https://gitup.co) - visual git tool, I mostly use the history view. Be sure to set up the [CLI tool](https://github.com/git-up/GitUp/wiki/Using-GitUp-Command-Line-Tool)
