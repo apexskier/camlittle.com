@@ -11,7 +11,7 @@
   "devDependencies": {
     "@vercel/ncc": "^0.34.0",
     "aws-sdk": "^2.921.0",
-    "canvas": "^2.10.2",
+    "canvas": "^2.11.2",
     "cssnano": "^5.0.5",
     "fast-average-color-node": "^1.0.3",
     "hsluv": "^0.1.0",
@@ -27,5 +27,6 @@
     "test": "prettier --list-different '**/*.{css,js,yml}'",
     "format": "prettier --write '**/*.{css,js,yml}'",
     "build-media-script": "ncc build --out media-script media.js"
-  }
+  },
+  "dependencies": {}
 }
