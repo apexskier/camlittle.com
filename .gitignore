@@ -6,3 +6,4 @@ artifact.tgz
 media-script/
 assets/css/highlight_*
 .env
+.hugo_build.lock
