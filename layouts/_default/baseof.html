@@ -40,5 +40,10 @@
             {{ end }}
         </div>
         -->
+        {{ with .Page.Resources.Match "*.js" }}
+        {{ range . }}
+        <script type="application/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+        {{ end }}
+        {{ end }}
     </body>
 </html>

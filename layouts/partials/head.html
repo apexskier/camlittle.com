@@ -25,6 +25,9 @@
     {{ with resources.Get (printf "css/%s_%s.css" .Page.Type .Page.Kind) }}
     {{ $stylesheets = $stylesheets | append . }}
     {{ end }}
+    {{ with .Page.Resources.Match "*.css" }}
+    {{ $stylesheets = $stylesheets | append . }}
+    {{ end }}
     {{ range $stylesheets }}
     {{ with . | postCSS | toCSS | minify | fingerprint "md5" }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
