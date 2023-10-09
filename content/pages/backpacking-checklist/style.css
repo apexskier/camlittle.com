@@ -1,0 +1,10 @@
+#main article {
+    /* & li {
+        list-style-type: none;
+        list-style-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzIxMjEyMSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNNS43NSAzaDEyLjVBMi43NSAyLjc1IDAgMCAxIDIxIDUuNzV2MTIuNUEyLjc1IDIuNzUgMCAwIDEgMTguMjUgMjFINS43NUEyLjc1IDIuNzUgMCAwIDEgMyAxOC4yNVY1Ljc1QTIuNzUgMi43NSAwIDAgMSA1Ljc1IDNabTAgMS41Yy0uNjkgMC0xLjI1LjU2LTEuMjUgMS4yNXYxMi41YzAgLjY5LjU2IDEuMjUgMS4yNSAxLjI1aDEyLjVjLjY5IDAgMS4yNS0uNTYgMS4yNS0xLjI1VjUuNzVjMC0uNjktLjU2LTEuMjUtMS4yNS0xLjI1SDUuNzVaIi8+PC9zdmc+Cg==);
+
+        & li {
+            list-style-type: inherit;
+        }
+    } */
+}
