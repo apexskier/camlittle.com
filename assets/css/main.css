@@ -212,7 +212,6 @@ body {
 
 #wrapper {
   min-height: 100vh;
-  min-width: 100vw;
   background-color: var(--background);
   /* orange triangle, this used to be a pseudo element, but I want it relative to the body, not #container and I don't want it to overlay content */
   background-image: linear-gradient(
