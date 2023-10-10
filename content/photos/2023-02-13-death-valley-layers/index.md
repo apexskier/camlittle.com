@@ -1,7 +1,7 @@
 ---
 title: "Death Valley Layers"
 date: 2023-10-09T18:00:07
-tags: ["outdoors"]
+tags: ["outdoors", "sun"]
 images:
   - https://content.camlittle.com/photos/2023-02-13-death-valley-layers_1280.jpg
 

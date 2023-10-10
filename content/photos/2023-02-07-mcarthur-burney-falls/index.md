@@ -1,7 +1,7 @@
 ---
 title: "McArthur-Burney Falls"
 date: 2023-10-09T18:00:05
-tags: ["outdoors"]
+tags: ["outdoors", "waterfall"]
 images:
   - https://content.camlittle.com/photos/2023-02-07-mcarthur-burney-falls_1280.jpg
 

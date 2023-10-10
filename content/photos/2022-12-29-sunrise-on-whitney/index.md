@@ -1,7 +1,7 @@
 ---
 title: "Sunrise on Whitney"
 date: 2022-12-29T15:26:00
-tags: ["outdoors"]
+tags: ["outdoors", "sun"]
 images:
   - https://content.camlittle.com/photos/2022-12-29-sunrise-on-whitney_1280.jpg
 

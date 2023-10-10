@@ -1,7 +1,7 @@
 ---
 title: "Golden Ocean"
 date: 2023-10-09T18:00:03
-tags: ["outdoors"]
+tags: ["outdoors", "sun"]
 images:
   - https://content.camlittle.com/photos/2023-01-24-not-canon-beach_1280.jpg
 

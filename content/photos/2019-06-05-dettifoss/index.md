@@ -1,7 +1,7 @@
 ---
 title: "Powerful water"
 date: 2019-06-05
-tags: ["outdoors", "waterfalls"]
+tags: ["outdoors", "waterfall"]
 images:
   - https://content.camlittle.com/photos/2019-06-05-dettifoss_1280.jpg
 

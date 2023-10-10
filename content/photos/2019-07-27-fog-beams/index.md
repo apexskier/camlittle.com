@@ -1,7 +1,7 @@
 ---
 title: "Fog Beams"
 date: 2019-07-27
-tags: ["outdoors"]
+tags: ["outdoors", "sun"]
 images:
   - https://content.camlittle.com/photos/2019-07-27-fog-beams_1280.jpg
 
