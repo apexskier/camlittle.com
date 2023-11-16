@@ -22,7 +22,8 @@ I name each of my computers after [Washington rivers](https://www.americanwhitew
 | Dungeness | iPhone 5 | 2012 |
 | Dungeness | iPhone 6S | 2015 |
 | Dungeness | iPhone Xs | 2018 |
-| Dungeness | iPhone 12 mini | 2021 | ✅ |
+| Dungeness | iPhone 12 mini | 2021 |
+| Deschutes | iPhone 15 Pro | 2023 | ✅ |
 | Elwha | iMac (refurbished) 21.5"/3.20/2X2G/1TB/5670/SD-USA | 2011 |
 | Glacier | DigitalOcean Debian development server | 2013 |
 | Matheny | DigitalOcean droplet | 2019 | ✅ |
