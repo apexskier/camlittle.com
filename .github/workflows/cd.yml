@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
 
@@ -41,7 +41,7 @@ jobs:
           extended: true # required for css processing
 
       - name: Cache hugo caches
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: /tmp/hugo_cache
           key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
@@ -59,7 +59,7 @@ jobs:
         run: tar -cvzf artifact.tgz media-script/ public/ data/
 
       - name: Upload artifacts for deploy
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           retention-days: 2
@@ -74,7 +74,7 @@ jobs:
     concurrency: matheny_prod
     steps:
       - name: Download artifacts for deploy
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: build-artifacts
 
