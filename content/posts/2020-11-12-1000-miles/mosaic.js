@@ -80,7 +80,7 @@ function pack(num, width, height) {
       // ctx.fillRect(pos.top, pos.left, size, size);
 
       ctx.drawImage(await loadImage(buffer), pos.top, pos.left, size, size);
-    })
+    }),
   );
 
   await new Promise((resolve) => {

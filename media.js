@@ -31,10 +31,10 @@ const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
   await access(dir, fs.constants.X_OK);
 
   const imageMeta = JSON.parse(
-    await readFile(path.join(dir, "public", "image_meta.json"))
+    await readFile(path.join(dir, "public", "image_meta.json")),
   );
   const imageSources = yaml.load(
-    await readFile(path.join(dir, "data", "imageSources.yml"), "utf8")
+    await readFile(path.join(dir, "data", "imageSources.yml"), "utf8"),
   );
 
   const s3 = new S3({
@@ -63,7 +63,7 @@ const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
           } else {
             resolve(true);
           }
-        }
+        },
       );
     });
   }
@@ -78,12 +78,12 @@ const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
 
       const keyPrefix = `site-media${parsedPermalink.dir}/${parsedPermalink.name}_${mediaData.hash}`;
       const inputBuffer = await readFile(
-        path.join(dir, "public", decodeURI(mediaData.rel_permalink))
+        path.join(dir, "public", decodeURI(mediaData.rel_permalink)),
       );
       console.log(
         `original ${mediaData.filepath} ${prettyBytes(
-          Buffer.byteLength(inputBuffer)
-        )}`
+          Buffer.byteLength(inputBuffer),
+        )}`,
       );
       const image = sharp(inputBuffer);
 
@@ -120,12 +120,12 @@ const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
                           } else {
                             resolve(data);
                           }
-                        }
+                        },
                       );
                     });
                     console.log(`uploaded ${data.Key}`);
                   }
-                })()
+                })(),
               );
             }
           }

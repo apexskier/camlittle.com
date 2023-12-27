@@ -60,15 +60,15 @@ const [, , file, name] = process.argv;
             } else {
               resolve(data);
             }
-          }
+          },
         );
       });
       console.log(
         `original ${prettyBytes(Buffer.byteLength(inputBuffer))} → ${
           data.Location
-        }`
+        }`,
       );
-    })
+    }),
   );
 
   const image = sharp(inputBuffer);
@@ -98,15 +98,15 @@ const [, , file, name] = process.argv;
                     } else {
                       resolve(data);
                     }
-                  }
+                  },
                 );
               });
             })(),
           ]);
           console.log(
-            `${res}x ${format} ${prettyBytes(size)} → ${data.Location}`
+            `${res}x ${format} ${prettyBytes(size)} → ${data.Location}`,
           );
-        })()
+        })(),
       );
     }
   }
@@ -163,7 +163,7 @@ const [, , file, name] = process.argv;
 
       contents = contents.replace(`COLOR_INFO:`, parts.join("\n"));
       await writeFile(mdFilePath, contents, "utf8");
-    })()
+    })(),
   );
 
   await Promise.all(work);
