@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/2023-01-28-tree-of-life_1280.jpg
 
-photo: 2023-01-28-tree-of-life
 camera: Sony α6300
 location: Kalaloch, WA
 captureDate: 2023-01-28T14:46:23

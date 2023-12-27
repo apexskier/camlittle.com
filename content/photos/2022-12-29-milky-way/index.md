@@ -5,7 +5,6 @@ tags: [outdoors]
 images:
   - https://content.camlittle.com/photos/2022-12-29-milky-way_1280.jpg
 
-photo: 2022-12-29-milky-way
 camera: Sony α6300
 location: Sequoia & Kings Canyon Wilderness, CA
 captureDate: 2023-08-23

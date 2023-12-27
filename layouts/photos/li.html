@@ -1,4 +1,5 @@
-{{ $mini := .Resources.GetMatch (printf "%s_128.jpg" .Params.photo) }}
+{{ $mini := .Resources.GetMatch "*_128.jpg" }}
+{{ $photo := index (index (strings.FindRESubmatch `(.*)_128\.jpg` $mini.Name 1) 0) 1 }}
 {{ $aspectRatio := div $mini.Width (float $mini.Height) }}
 {{ $id := printf "item-%s" ($mini.Content | md5 | truncate 10 "") }}
 
@@ -30,11 +31,11 @@
     <!-- this outer container forces the padding based aspect ratio to be constrained to the height of the page -->
     <a href="{{ .RelPermalink }}" target="_blank">
         <picture title="{{ .Title }}">
-            <source media="(max-width: 640px)" srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_640.webp" type="image/webp" />
-            <source media="(max-width: 640px)" srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_640.jpg" />
-            <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.webp" type="image/webp" />
-            <source srcset="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg" />
-            <img alt="{{ .Title }}" src="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg" width="1280" height="{{ math.Round (mul $aspectRatio 1280) }}" />
+            <source media="(max-width: 640px)" srcset="https://content.camlittle.com/photos/{{ $photo }}_640.webp" type="image/webp" />
+            <source media="(max-width: 640px)" srcset="https://content.camlittle.com/photos/{{ $photo }}_640.jpg" />
+            <source srcset="https://content.camlittle.com/photos/{{ $photo }}_1280.webp" type="image/webp" />
+            <source srcset="https://content.camlittle.com/photos/{{ $photo }}_1280.jpg" />
+            <img alt="{{ .Title }}" src="https://content.camlittle.com/photos/{{ $photo }}_1280.jpg" width="1280" height="{{ math.Round (mul $aspectRatio 1280) }}" />
         </picture>
     </a>
 </li>

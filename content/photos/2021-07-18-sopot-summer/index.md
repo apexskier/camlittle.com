@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/sopot-summer_1280.jpg
 
-photo: sopot-summer
 camera: Sony α6300
 location: Sopot, Poland
 captureDate: 2021-07-13

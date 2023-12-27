@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/ojcowski-spring-growth_1280.jpg
 
-photo: ojcowski-spring-growth
 camera: Sony α6300
 location: Ojcowski National Park, Poland
 

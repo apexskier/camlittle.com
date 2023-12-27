@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/2023-03-03-white-and-black-canyon_1280.jpg
 
-photo: 2023-03-03-white-and-black-canyon
 camera: Sony α6300
 location: Black Canyon of the Gunnison
 captureDate: 2023-03-03T13:25:12

@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/2021-09-11-lightning_1280.jpg
 
-photo: 2021-09-11-lightning
 camera: Sony α6300
 location: San Rafael Reef, UT
 

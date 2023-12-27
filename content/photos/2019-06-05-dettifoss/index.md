@@ -5,7 +5,6 @@ tags: ["outdoors", "waterfall"]
 images:
   - https://content.camlittle.com/photos/2019-06-05-dettifoss_1280.jpg
 
-photo: 2019-06-05-dettifoss
 camera: Sony α6300
 location: Dettifoss, Iceland
 

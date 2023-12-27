@@ -5,7 +5,6 @@ tags: ["outdoors", "nm"]
 images:
   - https://content.camlittle.com/photos/2023-09-16-below-wheeler_1280.jpg
 
-photo: 2023-09-16-below-wheeler
 camera: Sony α6300
 location: Wheeler Peak, NM
 captureDate: 2023-09-16T08:15:48

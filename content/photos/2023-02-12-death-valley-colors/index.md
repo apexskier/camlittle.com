@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/2023-02-12-death-valley-colors_1280.jpg
 
-photo: 2023-02-12-death-valley-colors
 camera: Sony α6300
 location: Badwater Basin, Death Valley National Park
 captureDate: 2023-02-12T17:33:07

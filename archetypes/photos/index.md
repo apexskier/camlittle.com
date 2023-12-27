@@ -5,7 +5,6 @@ tags: []
 images:
   - https://content.camlittle.com/photos/{{ .Name }}_1280.jpg
 
-photo: {{ .Name }}
 camera: Sony α6300
 location: 
 

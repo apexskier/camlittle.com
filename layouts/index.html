@@ -19,7 +19,7 @@ only one of other types of content.
     {{ range $featuredPages }}
         {{ if eq .Type "photos" }}
         <li class="post-link">
-            {{ partial "single/thumbnail" (.Resources.GetMatch (printf "%s_128.jpg" .Params.photo)) }}
+            {{ partial "single/thumbnail" (.Resources.GetMatch "*_128.jpg") }}
             <div>
                 {{ partial "time" (default .Params.captureDate .Date) }}
                 <h3>

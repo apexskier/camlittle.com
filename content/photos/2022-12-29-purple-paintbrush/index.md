@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/2022-12-29-purple-paintbrush_1280.jpg
 
-photo: 2022-12-29-purple-paintbrush
 camera: Sony α6300
 location: Sequoia & Kings Canyon Wilderness, CA
 captureDate: 2022-08-16T06:03:00

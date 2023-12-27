@@ -5,7 +5,6 @@ tags: ["outdoors", "waterfall"]
 images:
   - https://content.camlittle.com/photos/2023-02-07-mcarthur-burney-falls_1280.jpg
 
-photo: 2023-02-07-mcarthur-burney-falls
 camera: Sony α6300
 location: McArthur-Burney Falls Memorial State Park, CA
 captureDate: 2023-02-07T14:55:59

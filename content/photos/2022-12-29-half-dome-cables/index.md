@@ -5,7 +5,6 @@ tags: [outdoors]
 images:
   - https://content.camlittle.com/photos/2022-12-29-half-dome-cables_1280.jpg
 
-photo: 2022-12-29-half-dome-cables
 camera: Sony α6300
 location: Half Dome, Yosemite National Park, CA
 captureDate: 2022-09-02

@@ -5,7 +5,6 @@ tags: [outdoors]
 images:
   - https://content.camlittle.com/photos/2021-09-05-carlsbad-cactus_1280.jpg
 
-photo: 2021-09-05-carlsbad-cactus
 camera: Sony α6300
 location: Carlsbad Caverns National Park, NM
 

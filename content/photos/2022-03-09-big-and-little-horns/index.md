@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/big-and-little-horns_1280.jpg
 
-photo: big-and-little-horns
 camera: Sony α6300
 location: Capitol Reef National Park, UT
 captureDate: 2022-03-09

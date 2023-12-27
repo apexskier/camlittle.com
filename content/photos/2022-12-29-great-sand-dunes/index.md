@@ -5,7 +5,6 @@ tags: [outdoors]
 images:
   - https://content.camlittle.com/photos/2022-12-29-great-sand-dunes_1280.jpg
 
-photo: 2022-12-29-great-sand-dunes
 camera: Sony α6300
 location: Great Sand Dunes National Park, CO
 captureDate: 2022-09-23

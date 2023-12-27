@@ -5,9 +5,8 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/2021-10-10-seasonal-transition_1280.jpg
 
-photo: 2021-10-10-seasonal-transition
 camera: Sony α6300
-location: Cache National Forest⁩, UT
+location: Cache National Forest, UT
 
 color:
   top: '#dcdde1'

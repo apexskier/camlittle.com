@@ -5,7 +5,6 @@ tags: ["outdoors", "sun"]
 images:
   - https://content.camlittle.com/photos/2019-07-27-fog-beams_1280.jpg
 
-photo: 2019-07-27-fog-beams
 camera: Sony α6300
 location: West Coast Trail, British Columbia
 

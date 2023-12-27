@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/2022-10-24-tetons_1280.jpg
 
-photo: 2022-10-24-tetons
 camera: Sony α6300
 location: Wyoming
 captureDate: 2022-10-24T16:19:27

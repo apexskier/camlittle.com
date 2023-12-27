@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/2022-10-09-snowbasin-fall_1280.jpg
 
-photo: 2022-10-09-snowbasin-fall
 camera: Sony α6300
 location: Snowbasin, UT
 captureDate: 2022-10-09T12:59:49

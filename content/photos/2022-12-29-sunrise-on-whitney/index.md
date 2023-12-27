@@ -5,7 +5,6 @@ tags: ["outdoors", "sun"]
 images:
   - https://content.camlittle.com/photos/2022-12-29-sunrise-on-whitney_1280.jpg
 
-photo: 2022-12-29-sunrise-on-whitney
 camera: Sony α6300
 location: Mount Whitney, CA
 captureDate: 2022-08-16T06:03:00

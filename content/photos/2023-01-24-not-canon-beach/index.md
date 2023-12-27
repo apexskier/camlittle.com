@@ -5,7 +5,6 @@ tags: ["outdoors", "sun"]
 images:
   - https://content.camlittle.com/photos/2023-01-24-not-canon-beach_1280.jpg
 
-photo: 2023-01-24-not-canon-beach
 camera: Sony α6300
 location: Cape Kiwanda State Natural Area, OR
 captureDate: 2023-01-24T16:58:49

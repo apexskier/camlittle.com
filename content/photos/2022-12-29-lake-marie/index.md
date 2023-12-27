@@ -5,7 +5,6 @@ tags: [outdoors]
 images:
   - https://content.camlittle.com/photos/2022-12-29-lake-marie_1280.jpg
 
-photo: 2022-12-29-lake-marie
 camera: Sony α6300
 location: Lake Marie, John Muir Wilderness, CA
 captureDate: 2022-08-25

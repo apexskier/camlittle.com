@@ -1,1 +1,3 @@
-<img src="https://content.camlittle.com/photos/{{ .Params.photo }}_1280.jpg" />
+{{ $mini := .Resources.GetMatch "*_128.jpg" }}
+{{ $photo := index (index (strings.FindRESubmatch `(.*)_128\.jpg` $mini.Name 1) 0) 1 }}
+<img src="https://content.camlittle.com/photos/{{ $photo }}_1280.jpg" />

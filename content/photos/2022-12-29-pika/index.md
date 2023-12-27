@@ -5,7 +5,6 @@ tags: ["outdoors"]
 images:
   - https://content.camlittle.com/photos/2022-12-29-pika_1280.jpg
 
-photo: 2022-12-29-pika
 camera: Sony α6300
 location: Kings Canyon National Park, CA
 captureDate: 2022-08-22
