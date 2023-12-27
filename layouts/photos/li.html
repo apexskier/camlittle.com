@@ -1,6 +1,10 @@
 {{ $mini := .Resources.GetMatch "*_128.jpg" }}
 {{ $photo := index (index (strings.FindRESubmatch `(.*)_128\.jpg` $mini.Name 1) 0) 1 }}
-{{ $aspectRatio := div $mini.Width (float $mini.Height) }}
+{{ $aspectRatio := 1 }}
+{{ $mini := .Resources.GetMatch (printf "%s_128.jpg" .Params.photo) }}
+{{ with $mini }}
+{{ $aspectRatio = div $mini.Width (float $mini.Height) }}
+{{ end }}
 {{ $id := printf "item-%s" ($mini.Content | md5 | truncate 10 "") }}
 
 <style>

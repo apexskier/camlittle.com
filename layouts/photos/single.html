@@ -2,13 +2,16 @@
 
 {{ $mini := .Resources.GetMatch "*_128.jpg" }}
 {{ $photo := index (index (strings.FindRESubmatch `(.*)_128\.jpg` $mini.Name 1) 0) 1 }}
-{{ $aspectRatio := div $mini.Width (float $mini.Height) }}
+{{ $aspectRatio := 1 }}
+{{ $mini := .Resources.GetMatch (printf "%s_128.jpg" .Params.photo) }}
+{{ with $mini }}
+{{ $aspectRatio = div $mini.Width (float $mini.Height) }}
+{{ end }}
 
 <!--
 {{ with $mini }}
 data:image/jpeg;base64,{{.Content | base64Encode}}
 {{ end }}
-
 -->
 
 <!-- this outer container forces the padding based aspect ratio to be constrained to the height of the page -->
