@@ -9,7 +9,7 @@
   "author": "Cameron Little <cameron@camlittle.com>",
   "homepage": "https://camlittle.com",
   "devDependencies": {
-    "@vercel/ncc": "^0.34.0",
+    "@vercel/ncc": "^0.38.1",
     "aws-sdk": "^2.921.0",
     "canvas": "^2.11.2",
     "cssnano": "^6.0.2",
