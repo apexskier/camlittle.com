@@ -956,10 +956,10 @@ has-unicode@^2.0.1:
   resolved "https://registry.yarnpkg.com/has-unicode/-/has-unicode-2.0.1.tgz#e0e6fe6a28cf51138855e086d1691e771de2a8b9"
   integrity sha1-4Ob+aijPUROIVeCG0Wkedx3iqLk=
 
-hsluv@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/hsluv/-/hsluv-0.1.0.tgz#29f40d49642bd56dd0c192122abcc723bb5c2d6c"
-  integrity sha512-ERcanKLAszD2XN3Vh5r5Szkrv9q0oSTudmP0rkiKAGM/3NMc9FLmMZBB7TSqTaXJfSDBOreYTfjezCOYbRKqlw==
+hsluv@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hsluv/-/hsluv-1.0.1.tgz#8f957afd3f928d2de7f7569db7687f811bb2baed"
+  integrity sha512-zCaFTiDqBLQjCCFBu0qg7z9ASYPd+Bxx2GDCVZJsnehjK80S+jByqhuFz0pCd2Aw3FSKr18AWbRlwnKR0YdizQ==
 
 https-proxy-agent@^5.0.0:
   version "5.0.1"
