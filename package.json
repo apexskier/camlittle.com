@@ -10,7 +10,7 @@
   "homepage": "https://camlittle.com",
   "devDependencies": {
     "@vercel/ncc": "^0.34.0",
-    "aws-sdk": "^2.921.0",
+    "aws-sdk": "^2.1548.0",
     "canvas": "^2.11.2",
     "cssnano": "^6.0.2",
     "fast-average-color-node": "^1.0.3",
