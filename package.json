@@ -12,7 +12,7 @@
     "@vercel/ncc": "^0.34.0",
     "aws-sdk": "^2.921.0",
     "canvas": "^2.11.2",
-    "cssnano": "^6.0.2",
+    "cssnano": "^6.0.5",
     "fast-average-color-node": "^1.0.3",
     "hsluv": "^0.1.0",
     "js-yaml": "^4.1.0",
