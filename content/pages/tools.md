@@ -33,8 +33,8 @@ My current graphical editor of choice is [Visual Studio Code](https://code.visua
 ### iOS Apps
 
 - [Apple Photos](https://www.apple.com/ios/photos/) - my current choice for photo organization
-- [Dark Sky](https://darksky.net/app) - weather
-- [Gaia GPS](https://apps.apple.com/us/app/gaia-gps-hiking-offroad-maps/id1201979492) - the best GPS app on iOS
+- [Tempest](https://tempest.earth/tempest-home-weather-system/) - local weather
+- [Gaia GPS](https://apps.apple.com/us/app/gaia-gps-hiking-offroad-maps/id1201979492) - GPS and route planning
 - [GPX to Photos](https://apps.apple.com/us/app/gpx-to-photos/id1403201208) - self-made tool for geotagging photos
 - [Parcel](https://parcelapp.net/) - delivery tracking
 - [Prompt](https://panic.com/prompt/) - iOS ssh/terminal emulator
