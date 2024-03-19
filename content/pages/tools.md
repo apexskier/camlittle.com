@@ -14,7 +14,7 @@ First, my [dotfiles](https://github.com/apexskier/dotfiles) contain a ton of con
 
 I've been using [vim](https://www.vim.org) since college, and I'm pretty dependent on it. It's my go-to for quick changes.
 
-My current graphical editor of choice is [Visual Studio Code](https://code.visualstudio.com/) with [vim emulation](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) (make sure to set up the [CLI tool](https://code.visualstudio.com/docs/editor/command-line)). I'm also exploring using [Nova](https://panic.com/nova/) from Panic, but don't see it becoming my primary editor without vim keybindings.
+My current graphical editor of choice is [Visual Studio Code](https://code.visualstudio.com/) with [vim emulation](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) (make sure to set up the [CLI tool](https://code.visualstudio.com/docs/editor/command-line)).
 
 ### Desktop Apps
 
