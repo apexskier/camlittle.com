@@ -1,6 +1,6 @@
 ---
 title: "Kachina"
-date: 2024-11-15
+date: 2024-11-15T00:11:10
 tags: [outdoors]
 images:
   - https://content.camlittle.com/photos/2024-11-15-kachina_1280.jpg

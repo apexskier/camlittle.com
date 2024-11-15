@@ -1,6 +1,6 @@
 ---
 title: "Gold Hill"
-date: 2024-11-15
+date: 2024-11-15T00:09:28
 tags: [outdoors]
 images:
   - https://content.camlittle.com/photos/2024-11-15-gold-hill_1280.jpg

@@ -1,6 +1,6 @@
 ---
 title: "Lower Yellowstone Falls"
-date: 2024-11-15
+date: 2024-11-15T00:08:05
 tags: [outdoors, waterfall]
 images:
   - https://content.camlittle.com/photos/2024-08-05-lower-yellowstone-falls_1280.jpg

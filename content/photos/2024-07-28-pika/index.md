@@ -1,6 +1,6 @@
 ---
 title: "Pika"
-date: 2024-11-15
+date: 2024-11-15T00:07:28
 tags: [outdoors, wildlife]
 images:
   - https://content.camlittle.com/photos/2024-07-28-pika_1280.jpg

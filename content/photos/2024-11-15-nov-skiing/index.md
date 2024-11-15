@@ -1,6 +1,6 @@
 ---
 title: "Early Season Skiing"
-date: 2024-11-15
+date: 2024-11-15T00:11:11
 tags: [outdoors, skiing]
 images:
   - https://content.camlittle.com/photos/2024-11-15-nov-skiing_1280.jpg
