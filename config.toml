@@ -7,11 +7,11 @@ timeout = 25000
 enableGitInfo = true
 enableRobotsTXT = true
 
-[author]
-  name = "Cameron Little"
-  email = "cameron@camlittle.com"
-
 [params]
+  [params.author]
+    name = "Cameron Little"
+    email = "cameron@camlittle.com"
+
   description = "A collection of Cameron Little's thoughts and projects"
   gitUrl = "https://github.com/apexskier/camlittle.com/commit/"
 
@@ -49,4 +49,3 @@ enableRobotsTXT = true
 
 [outputs]
   home = ["HTML", "RSS", "ImageMetadata"]
-    

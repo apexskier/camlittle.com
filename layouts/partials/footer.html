@@ -1,6 +1,6 @@
 <footer>
     <p>
-        &copy; 2011&ndash;{{ .Site.LastChange.Year }} {{ .Site.Author.name }}
+        &copy; 2011&ndash;{{ .Site.Lastmod.Year }} {{ .Site.Params.Author.name }}
         {{ with .OutputFormats.Get "RSS" }}
         {{ if . }}
         | <a class="atom-rss" href="{{ .RelPermalink }}">RSS</a>

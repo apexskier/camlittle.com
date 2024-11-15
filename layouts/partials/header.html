@@ -1,7 +1,7 @@
 <header id="primary-header">
     <h1>
         <a href="{{ relref . "/" }}">
-            <picture title="{{ $.Site.Author.name }}">
+            <picture title="{{ $.Site.Params.Author.name }}">
                 <source
                     media="(-webkit-min-device-pixel-ratio: 3)"
                     srcset="/profile.jpg?s=288"
@@ -13,7 +13,7 @@
                 <img
                     height="96" width="96"
                     src="/profile.jpg?s=96"
-                    alt="{{ $.Site.Author.name }}"
+                    alt="{{ $.Site.Params.Author.name }}"
                 />
             </picture>
         </a>
