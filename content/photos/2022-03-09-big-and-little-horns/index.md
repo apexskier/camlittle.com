@@ -1,7 +1,7 @@
 ---
 title: "Big and Little Horns"
 date: 2022-12-11T15:01:00
-tags: ["outdoors"]
+tags: ["outdoors", wildlife]
 images:
   - https://content.camlittle.com/photos/big-and-little-horns_1280.jpg
 

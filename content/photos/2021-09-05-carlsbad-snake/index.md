@@ -1,7 +1,7 @@
 ---
 title: Little Snake
 date: 2021-10-12 19:41:00
-tags: [outdoors]
+tags: [outdoors, wildlife]
 images:
   - https://content.camlittle.com/photos/2021-09-05-carlsbad-snake_1280.jpg
 

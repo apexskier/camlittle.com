@@ -5,7 +5,7 @@ tags: []
 images:
   - https://content.camlittle.com/photos/{{ .Name }}_1280.jpg
 
-camera: Sony α6300
+camera: Sony α 7C II
 location: 
 
 COLOR_INFO:
