@@ -1,5 +1,5 @@
 {{ $pageIndex := sub .Paginator.TotalPages .Paginator.PageNumber }}
-{{ $start := add (mul (sub $pageIndex 1) .Paginator.PageSize) .Paginator.Last.NumberOfElements }}
+{{ $start := add (mul (sub $pageIndex 1) .Paginator.PagerSize) .Paginator.Last.NumberOfElements }}
 <ol
     class="posts"
     reversed
