@@ -5,15 +5,15 @@ tags: [tech, swift]
 toc: true
 ---
 
-A project I've recently started makes heavy use of Core Animation. The app runs on both macOS and iOS, and relies on a custom CALayer subclass. Apple has provided bridges between SwiftUI animations and AppKit or UIKit animations (https://developer.apple.com/documentation/swiftui/unifying-your-app-s-animations), but doesn't provide guidance on how to bridge to Core Animation.
+A project I've recently started heavily uses Core Animation. The app runs on macOS and iOS and relies on a custom CALayer subclass. Apple has provided [bridges between SwiftUI and AppKit or UIKit animations](https://developer.apple.com/documentation/swiftui/unifying-your-app-s-animations) but doesn't provide guidance on how to bridge to Core Animation.
 
 I've been working on solving this problem. Though it's not perfect, this post describes what I've come up with.
 
-For convenience, I'm going to write the example code in this post using UIKit only, and code is simplified to focus on the essentials. Full code (runnable on iOS and macOS) can be found in the [sample code GitHub repository](https://github.com/apexskier/swiftui-coreanimation). I assume familiarity with SwiftUI and Core Animation basics in this article, as Apple and others provide good documentation.
+For convenience, the example code in this post uses UIKit only and is simplified to focus on the essentials. Full code (runnable on iOS and macOS) can be found in the [sample code GitHub repository](https://github.com/apexskier/swiftui-coreanimation). I assume familiarity with SwiftUI and Core Animation basics in this article, as Apple and others provide good documentation.
 
 ## Architecture
 
-First, we need to connect SwiftUI to the Core Animation layer. This is done using [`UIViewRepresentable`](https://developer.apple.com/documentation/swiftui/uiviewrepresentable) and [`UIView`](https://developer.apple.com/documentation/uikit/uiview) (and AppKit's `NS` equivalents on macOS).
+First, we need to connect SwiftUI to the Core Animation layer. This uses [`UIViewRepresentable`](https://developer.apple.com/documentation/swiftui/uiviewrepresentable) and [`UIView`](https://developer.apple.com/documentation/uikit/uiview) (AppKit's `NS` equivalents on macOS).
 
 ```mermaid
 flowchart TD
@@ -99,10 +99,10 @@ class CustomLayer: CALayer {
 To summarize why we need each copy of `value`:
 
 * `ContentView`: This is our main source of truth and should be considered the canonical one. SwiftUI and most reactive UI frameworks require top-down state passing.
-* `CustomSwiftUIView`: Also inherent in SwiftUI is the concept of passing properties throughout the hierarchy. SwiftUI will ensure this value doesn't drift from parent. Because this is a binding, we can read and write it, but it could be a plain `var` if read-only access is needed.
+* `CustomSwiftUIView`: Also inherent in SwiftUI is the data propagation model: passing properties throughout the hierarchy with a single source of truth. Because this is a binding, we can read and write it, but it could be a plain `var` if read-only access is needed.
 * `CustomLayer`: This is needed for Core Animation to store intermediate values representing state mid-animation. Core Animation duplicates this again within the ["model" and "presentation" parts of the layer tree](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/CoreAnimationBasics/CoreAnimationBasics.html#//apple_ref/doc/uid/TP40004514-CH2-SW19). Writing to this value directly will result in state drift, you must use the `Coordinator` instead.
 
-Note that we do not need to store the `value` inside the `UIView` layer. (In theory, we could move the drawing code into the `UIView`, but that kind of defeats the point of this post.) Instead, `UIView` can purely rely on the `Coordinator`.
+Note that we do not need to store the `value` inside the `UIView` layer. (In theory, we could move the drawing code into the `UIView`, but that kind of defeats the point of this post.) Instead, `UIView` relies on the `Coordinator`.
 
 ## Animation
 
@@ -171,7 +171,7 @@ class CustomLayer: CALayer {
 
 ### Bridging Animations
 
-Now, we need to transform the `SwiftUI.Animation` into a `CAAnimation`. This is a little more complicated. `SwiftUI.Animation` is fairly opaque. It doesn't provide access to the type of animation, any of its parameters, or any way to execute itself as a function.
+Now, we need to transform the `SwiftUI.Animation` into a `CAAnimation`. This is a little more complicated. `SwiftUI.Animation` is fairly opaque. It doesn't provide access to the type of animation, its configuration, or any way to execute itself as a function.
 
 Instead, we use the fairly hacky technique of parsing the animation's [`description`](https://developer.apple.com/documentation/Swift/CustomStringConvertible) and extracting parameters from it.
 
@@ -228,7 +228,7 @@ However, traditional bezier animation curves are more difficult. SwiftUI produce
 #/BezierAnimation\(duration: (?<duration>\d+\.\d+), curve: \(extension in SwiftUI\):(?<cubicSolver>SwiftUI.UnitCurve.CubicSolver\(ax: (?<ax>-?\d+\.\d+), bx: (?<bx>-?\d+\.\d+), cx: (?<cx>-?\d+\.\d+), ay: (?<ay>-?\d+\.\d+), by: (?<by>-?\d+\.\d+), cy: (?<cy>-?\d+\.\d+)\))\)/#
 ```
 
-However, I haven't yet been able to figure out what the cubic solver actually is and how to convert it's three two-dimensional coordinates (`(ax, ay), (bx, by), (cx, cy)`) into a bezier curve's two two-dimensional control points ([`CAMediaTimingFunction.init(controlPoints:_:_:_:)`](https://developer.apple.com/documentation/quartzcore/camediatimingfunction/1522235-init)).
+However, I haven't yet been able to figure out what the cubic solver is and how to convert its three two-dimensional coordinates (`(ax, ay), (bx, by), (cx, cy)`) into a bezier curve's two two-dimensional control points ([`CAMediaTimingFunction.init(controlPoints:_:_:_:)`](https://developer.apple.com/documentation/quartzcore/camediatimingfunction/1522235-init)).
 
 For now, I've resorted to explicitly matching against standard timing curves I can explicitly create using SwiftUI and Core Animation. For example, ease in's cubic solver is:
 
@@ -248,7 +248,7 @@ case easeInAnimationCubicSolver:
 return caAnimation
 ```
 
-Once the animation is created, we configure the keypath it modifies, its start and end values without our layer's `update` function. We also need to ensure we update spring animation's duration, as it depends depends on the value's range. Core Animation will cut off the animation without this.
+Once the animation is created, we configure the keypath it modifies, and its start and end values without our layer's `update` function. We also need to ensure we update the spring animation's duration, as it depends on the value's range. Core Animation will cut off the animation without this.
 
 ```swift
 self.value = value
@@ -268,7 +268,7 @@ if let caAnimation = transaction.animation?.caAnimation {
 
 ## Final Result
 
-For my final demo, I want to draw something that shows `value` animating. I'll draw a circle that will animate through the vertical center axis of the view. I'll also print the value as text, just to double check it's changing.
+For my final demo, I want to draw something that shows `value` animating. I'll draw a circle that will animate through the vertical center axis of the view. I'll also print the value as text to visually guarantee it's changing.
 
 ```swift
 let diameter = 20.0
@@ -322,16 +322,16 @@ Complete code with an example app and Xcode project can be found at https://gith
 
 ## Taking it further
 
-Although I'm pretty happy with this approach, especially the ability to drive animations from multiple layers in the stack using the same mechanism. However, it's not ideal for a few reasons.
+I'm pretty happy with this approach, especially the ability to drive animations from multiple layers in the stack using the same mechanism. However, it's not ideal for a few reasons.
 
 From [the SwiftUI `spring` documentation](https://developer.apple.com/documentation/swiftui/animation/spring):
 
 > When mixed with other `spring()` or `interactiveSpring()` animations on the same property, each animation will be replaced by their successor, preserving velocity from one animation to the next. Optionally blends the response values between springs over a time period.
 
-My approach does neither of these things. In theory, when `update` is called and an animation is in progress, we could lookup the current animation, and set the new animation's initial velocity appropriately. The blocker is the opaqueness of CAAnimations, which don't provide APIs for access to value or velocity at a given time.
+My approach does neither of these things. In theory, when an animated update propagates while an animation is in progress, we could look up the current animation and set the new animation's initial velocity appropriately. The blocker is the opaqueness of CAAnimations, which don't provide APIs for access to value or velocity at a given time.
 
-Blending response values is even more difficult, as it would require dynamically changing `CAAnimation`s over time, which isn't supported to my knowledge.
+Blending response values is even more difficult, as it would require dynamically changing `CAAnimation`s over time, which isn't supported.
 
-As mentioned above, I haven't figured out SwiftUI's `CubicSolver`, which I think is a private struct implementing `UnitCurve`. It appears to represent a bezier curve, but I haven't figured out the math or how it works. If you have any ideas, please get in touch!
+As mentioned above, I haven't figured out SwiftUI's `CubicSolver`, which I think is a private struct implementing `UnitCurve`. It represents at least bezier curves, but I haven't figured out the math or how it works. If you have any ideas, please get in touch!
 
-Ultimately, these issues are due to the closed nature of SwiftUI and other Apple UIs. At the core, animation curves are math. Standard curves are simple functions over time (`f(time) = value`). Springs are more complex since they're semi-stateful by taking the animated value into account, but are also determinstic. I could implement my own timing curve functions, but I want to avoid duplicating something built-in. Unfortunately, `CABasicAnimation` has no support for this. At first glance at the documentation, SwiftUI's `Animation` appears to support this with [`func animate<V>(value: V, time: TimeInterval, context: inout AnimationContext<V>) -> V?`](https://developer.apple.com/documentation/swiftui/animation/animate(value:time:context:)). However, I have not found a way to get ahold of an `AnimationContext` outside of a custom Animation subclass, which makes this non-viable. SwiftUI's `UnitCurve` has [`value(at:)`](https://developer.apple.com/documentation/swiftui/unitcurve/value(at:)) and [`velocity(at:)`](https://developer.apple.com/documentation/swiftui/unitcurve/velocity(at:)) function that are exactly what I want, but don't have a spring equivalent, and `UnitCurve`s aren't accessible from `Animation`.
+Ultimately, these issues are due to the closed nature of SwiftUI and other Apple UIs. At the core, animation curves are math. Standard curves are simple functions over time (`f(time) = value`). Springs are more complex since they're semi-stateful by taking the animated value into account, but are also deterministic. I'd like to be able to directly call these functions. Unfortunately, `CABasicAnimation` has no support for this. At first glance at the documentation, SwiftUI's `Animation` appears to support this with [`func animate<V>(value: V, time: TimeInterval, context: inout AnimationContext<V>) -> V?`](https://developer.apple.com/documentation/swiftui/animation/animate(value:time:context:)). However, I have not found a way to get ahold of an `AnimationContext` outside of a custom Animation subclass, which makes this non-viable. SwiftUI's `UnitCurve` has [`value(at:)`](https://developer.apple.com/documentation/swiftui/unitcurve/value(at:)) and [`velocity(at:)`](https://developer.apple.com/documentation/swiftui/unitcurve/velocity(at:)) functions that are exactly what I want, but don't have a spring equivalent, and `UnitCurve`s aren't accessible from `Animation`. I could directly implement timing curve functions, but I'd prefer something built-in to avoid building it from scratch.
