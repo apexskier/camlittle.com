@@ -5,36 +5,31 @@ tags: [tech, swift]
 toc: true
 ---
 
-A project I've recently started makes heavy use of Core Animation. The app crosses macOS (AppKit) and iOS (UIKit), and relies on custom CALayer's. Apple has provided bridges between SwiftUI animations and AppKit or UIKit animations (https://developer.apple.com/documentation/swiftui/unifying-your-app-s-animations), but doesn't provide guidance on how to bridge to Core Animation.
+A project I've recently started makes heavy use of Core Animation. The app runs on both macOS and iOS, and relies on a custom CALayer subclass. Apple has provided bridges between SwiftUI animations and AppKit or UIKit animations (https://developer.apple.com/documentation/swiftui/unifying-your-app-s-animations), but doesn't provide guidance on how to bridge to Core Animation.
 
-I've been working on solving this problem, and though it's not perfect, here's what I've come up with.
+I've been working on solving this problem. Though it's not perfect, this post describes what I've come up with.
 
-For convenience, I'm going to write the example code in this post using UIKit only. Full macOS code can be found in the attached GitHub repository.
+For convenience, I'm going to write the example code in this post using UIKit only, and code is simplified to focus on the essentials. Full code (runnable on iOS and macOS) can be found in the [sample code GitHub repository](https://github.com/apexskier/swiftui-coreanimation). I assume familiarity with SwiftUI and Core Animation basics in this article, as Apple and others provide good documentation.
 
 ## Architecture
 
-First, we need to connect SwiftUI to the Core Animation layer. This is done using [`NSViewRepresentable`](https://developer.apple.com/documentation/swiftui/nsviewrepresentable) / [`UIViewRepresentable`](https://developer.apple.com/documentation/swiftui/uiviewrepresentable) and [`NSView`](https://developer.apple.com/documentation/appkit/nsview) / [`UIView`](https://developer.apple.com/documentation/uikit/uiview) (on macOS / iOS respectively).
+First, we need to connect SwiftUI to the Core Animation layer. This is done using [`UIViewRepresentable`](https://developer.apple.com/documentation/swiftui/uiviewrepresentable) and [`UIView`](https://developer.apple.com/documentation/uikit/uiview) (and AppKit's `NS` equivalents on macOS).
 
 ```mermaid
 flowchart TD
     SwiftUI
-    NSViewRepresentable
-    UIViewRepresentable
-    NSView
-    UIView
+    ViewRepresentable[NSViewRepresentable/UIViewRepresentable]
+    View[NSView/UIView]
     CALayer
 
-    SwiftUI --> NSViewRepresentable --> NSView
-    SwiftUI --> UIViewRepresentable --> UIView    
-    UIView --> CALayer
-    NSView --> CALayer
+    SwiftUI --> ViewRepresentable --> View --> CALayer
 ```
 
 ## Data flow
  
-Our animatable property can be passed through each of these layers. This is simpler with one-way data binding, but bidirectional is also possible using the View Representable's coordinator. For completeness, we'll handle bidirectional in this example.
+Our animatable property can be passed through each of these layers. This is simpler with one-way data binding, but by providing access to the SwiftUI binding through the `UIViewRepresentable`'s coordinator, my example code is bidirectional.
 
-This shows how our animatable `value` is passed from SwiftUI into the `CALayer`'s drawing code. (Pseudocode, there's some additional work needed.)
+Here's how our animatable `value` is passed from SwiftUI into our `CALayer`'s draw function.
 
 ```swift
 struct ContentView: some View {
@@ -50,17 +45,20 @@ struct CustomSwiftUIView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> CustomPlatformView {
         let view = CustomPlatformView()
+        // this link allows our UIView to write value (and read if needed outside of standard SwiftUI updates)
         view.delegate = context.coordinator
         return view
     }
 
     func updateUIView(_ uiView: CustomPlatformView, context: Context) {
+        // this "pushes" changes into our CALayer reactively, following standard SwiftUI updates
         (view.layer as? CustomLayer)?.update(
             with: context.transaction,
             value: value
         )
     }
 
+    // The coordinator provides access to the value binding from CustomPlatformView
     class Coordinator: NSObject, CustomDelegate {
         var parent: CustomSwiftUIView
 
@@ -76,6 +74,7 @@ struct CustomSwiftUIView: UIViewRepresentable {
 
 class CustomPlatformView: UIView {
     // this coordinator provides read/write access to the value
+    // for example, a custom gesture recognizer could update the binding
     var coordinator: CustomSwiftUIView.Coordinator?
 
     override class var layerClass: AnyClass {
@@ -97,13 +96,13 @@ class CustomLayer: CALayer {
 }
 ```
 
-As a rule of thumb we avoid duplicate sources of truth for any state. To summarize why we need each copy of `value`
+To summarize why we need each copy of `value`:
 
-* `ContentView`: This is our main source of truth and should be considered the canonical one. SwiftUI requires this.
-* `CustomSwiftUIView`: This is a requirement by SwiftUI, and SwiftUI will ensure this value is kept in sync with its parent. Because this is a binding, we can read and write it.
-* `CustomLayer`: This is needed for Core Animation to store intermediate values representing state mid-animation. Core Animation will duplicate this again within the ["model" and "presentation" parts of the layer tree](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/CoreAnimationBasics/CoreAnimationBasics.html#//apple_ref/doc/uid/TP40004514-CH2-SW19). Writing requires going through the `Coordinator`, otherwise state will drift between the two ends of the archetecture.
+* `ContentView`: This is our main source of truth and should be considered the canonical one. SwiftUI and most reactive UI frameworks require top-down state passing.
+* `CustomSwiftUIView`: Also inherent in SwiftUI is the concept of passing properties throughout the hierarchy. SwiftUI will ensure this value doesn't drift from parent. Because this is a binding, we can read and write it, but it could be a plain `var` if read-only access is needed.
+* `CustomLayer`: This is needed for Core Animation to store intermediate values representing state mid-animation. Core Animation duplicates this again within the ["model" and "presentation" parts of the layer tree](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/CoreAnimationBasics/CoreAnimationBasics.html#//apple_ref/doc/uid/TP40004514-CH2-SW19). Writing to this value directly will result in state drift, you must use the `Coordinator` instead.
 
-Note that we do not need to store the `value` inside the `UIView` layer. (In theory, we could move the drawing code code into the `UIView`, but that kind of defeats the point of this post.) Instead, `UIView` can purely rely on the `Coordinator`
+Note that we do not need to store the `value` inside the `UIView` layer. (In theory, we could move the drawing code into the `UIView`, but that kind of defeats the point of this post.) Instead, `UIView` can purely rely on the `Coordinator`.
 
 ## Animation
 
@@ -119,7 +118,7 @@ Button {
 }
 ```
 
-### Core Animation
+### Custom CALayer Properties
 
 First, we need to enable Core Animation for our custom `value` property. Two things are required:
 
@@ -143,30 +142,34 @@ class CustomLayer: CALayer {
 
 ### Bridging Transactions
 
-The core component of this technique is using SwiftUI's [`Transaction`](https://developer.apple.com/documentation/swiftui/transaction) to determine if an animation is active when a property is changed. Transaction is directly available in `UIViewRepresentable.updateUIView(Self.UIViewType, context: Self.Context)`'s `context.transaction`. We then pass it directly into our custom `CALayer`'s `update` method.
+The core component of this technique is using SwiftUI's [`Transaction`](https://developer.apple.com/documentation/swiftui/transaction) to determine if an animation is active when a property is changed. SwiftUI provides this in the context of a view representable's update, which we can pass directly into our custom `CALayer`'s `update`.
 
 ```swift
+struct CustomSwiftUIView: UIViewRepresentable {
+    func updateUIView(_ uiView: CustomPlatformView, context: Context) {
+        (uiView.layer as? CustomLayer)?.update(
+            with: context.transaction,
+            value: value
+        )
+    }
+}
+
 class CustomLayer: CALayer {
     static private let animationKey = "value-animation-key"
 
-    update(with transaction: SwiftUI.Transaction, value: Double) {
-        CATransaction.begin()
+    func update(with transaction: SwiftUI.Transaction, value: Double) {
+        // additional animation management is omitted
 
-        removeAnimation(forKey: animationKey)
-
-        // create Core Animation CAAnimation
-        let caAnimation: CAAnimation = // ...
-
-        add(caAnimation, forKey: animationKey)
-
-        CATransaction.commit()
-
-        setNeedsDisplay()
+        if let animation = transaction.animation {
+            // create Core Animation CAAnimation from transaction.animation
+            let caAnimation: CAAnimation = ...
+            add(caAnimation, forKey: animationKey)
+        }
     }
 }
 ```
 
-The `CATransaction` isn't strictly necessary, but helps when batching multiple animations together.
+### Bridging Animations
 
 Now, we need to transform the `SwiftUI.Animation` into a `CAAnimation`. This is a little more complicated. `SwiftUI.Animation` is fairly opaque. It doesn't provide access to the type of animation, any of its parameters, or any way to execute itself as a function.
 
@@ -245,28 +248,18 @@ case easeInAnimationCubicSolver:
 return caAnimation
 ```
 
-Once the animation is created, we apply the keypath it modifies and its start and env values without our layer's `update` function:
+Once the animation is created, we configure the keypath it modifies, its start and end values without our layer's `update` function. We also need to ensure we update spring animation's duration, as it depends depends on the value's range. Core Animation will cut off the animation without this.
 
 ```swift
-let fromValue = (presentation() ?? self).value
-let toValue = CGFloat(value)
-self.value = toValue
-
-removeAnimation(forKey: Self.animationKey)
+self.value = value
 
 if let caAnimation = transaction.animation?.caAnimation {
-    switch caAnimation {
-    case let caAnimation as CASpringAnimation:
-        caAnimation.keyPath = Self.nsAnimationKeyPath
-        caAnimation.fromValue = fromValue
-        caAnimation.toValue = toValue
+    caAnimation.keyPath = Self.nsAnimationKeyPath
+    caAnimation.fromValue = (presentation() ?? self).value
+    caAnimation.toValue = value
+    if let caAnimation = caAnimation as? CASpringAnimation {
+        // Core Animation will cut off the animation if the duration is not updated
         caAnimation.duration = caAnimation.settlingDuration
-    case let caAnimation as CABasicAnimation:
-        caAnimation.keyPath = Self.nsAnimationKeyPath
-        caAnimation.fromValue = fromValue
-        caAnimation.toValue = toValue
-    default:
-        fatalError("Unsupported animation type \(caAnimation)")
     }
 
     add(caAnimation, forKey: Self.animationKey)
@@ -275,14 +268,70 @@ if let caAnimation = transaction.animation?.caAnimation {
 
 ## Final Result
 
+For my final demo, I want to draw something that shows `value` animating. I'll draw a circle that will animate through the vertical center axis of the view. I'll also print the value as text, just to double check it's changing.
+
+```swift
+let diameter = 20.0
+
+override func draw(in ctx: CGContext) {
+    ctx.clear(bounds)
+
+    // set graphics context to support NSString drawing
+    UIGraphicsPushContext(ctx)
+    "\(value)".draw(
+        in: bounds,
+        withAttributes: fontAttributes
+    )
+
+    ctx.setFillColor(CGColor(red: 1, green: 0, blue: 0, alpha: 1))
+    ctx.fillEllipse(
+        in: CGRect(
+            origin: CGPoint(
+                x: (bounds.width - diameter) / 2,
+                y: (bounds.height - diameter) * value
+            ),
+            size: CGSize(width: diameter, height: diameter)
+        )
+    )
+}
+```
+
+Another feature I want to show is bidirectional data binding. When you click or tap on the custom view, it will interrupt the animation and set the parent to the current state, to keep everything in sync. We can also animate changes from the internal view using the same SwiftUI `withAnimation` function.
+
+```swift
+@objc func handleTap(gestureRecognizer: UIGestureRecognizer) {
+    guard let coordinator else { return }
+    coordinator.parent.value = (presentation() ?? self).value
+    removeAnimation(forKey: Self.animationKey)
+}
+
+@objc func handleDoubleTap(gestureRecognizer: UIGestureRecognizer) {
+    guard let coordinator else { return }
+    withAnimation {
+        coordinator.parent.value = (presentation() ?? self).value > 0.5 ? 0 : 1
+    }
+}
+```
+
 Complete code with an example app and Xcode project can be found at https://github.com/apexskier/swiftui-coreanimation.
 
-![Final demo of animation](https://content.camlittle.com/swiftui-caanimation%20-%20swiftui-caanimation%20-%202024-11-14%20at%2017.41.53-converted.mp4)
+<figure>
+    <video src="https://content.camlittle.com/swiftui-caanimation%20-%20swiftui-caanimation%20-%202024-11-14%20at%2017.41.53-converted.mp4" width="420" controls muted></video>
+    <figcaption>Final demo of animation</figcaption>
+</figure>
 
----
+## Taking it further
 
-When reading the documentation, I'd hope to be able to use `func animate<V>(value: V, time: TimeInterval, context: inout AnimationContext<V>) -> V?`, but I have not found a way to get ahold of an `AnimationContext` outside of a custom Animation subclass.
+Although I'm pretty happy with this approach, especially the ability to drive animations from multiple layers in the stack using the same mechanism. However, it's not ideal for a few reasons.
 
-Areas for improvement:
+From [the SwiftUI `spring` documentation](https://developer.apple.com/documentation/swiftui/animation/spring):
 
-Maintain velocity of CAAnimation
+> When mixed with other `spring()` or `interactiveSpring()` animations on the same property, each animation will be replaced by their successor, preserving velocity from one animation to the next. Optionally blends the response values between springs over a time period.
+
+My approach does neither of these things. In theory, when `update` is called and an animation is in progress, we could lookup the current animation, and set the new animation's initial velocity appropriately. The blocker is the opaqueness of CAAnimations, which don't provide APIs for access to value or velocity at a given time.
+
+Blending response values is even more difficult, as it would require dynamically changing `CAAnimation`s over time, which isn't supported to my knowledge.
+
+As mentioned above, I haven't figured out SwiftUI's `CubicSolver`, which I think is a private struct implementing `UnitCurve`. It appears to represent a bezier curve, but I haven't figured out the math or how it works. If you have any ideas, please get in touch!
+
+Ultimately, these issues are due to the closed nature of SwiftUI and other Apple UIs. At the core, animation curves are math. Standard curves are simple functions over time (`f(time) = value`). Springs are more complex since they're semi-stateful by taking the animated value into account, but are also determinstic. I could implement my own timing curve functions, but I want to avoid duplicating something built-in. Unfortunately, `CABasicAnimation` has no support for this. At first glance at the documentation, SwiftUI's `Animation` appears to support this with [`func animate<V>(value: V, time: TimeInterval, context: inout AnimationContext<V>) -> V?`](https://developer.apple.com/documentation/swiftui/animation/animate(value:time:context:)). However, I have not found a way to get ahold of an `AnimationContext` outside of a custom Animation subclass, which makes this non-viable. SwiftUI's `UnitCurve` has [`value(at:)`](https://developer.apple.com/documentation/swiftui/unitcurve/value(at:)) and [`velocity(at:)`](https://developer.apple.com/documentation/swiftui/unitcurve/velocity(at:)) function that are exactly what I want, but don't have a spring equivalent, and `UnitCurve`s aren't accessible from `Animation`.
