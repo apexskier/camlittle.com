@@ -1,0 +1,48 @@
+baseURL: https://camlittle.com/
+languageCode: "en-us"
+title: "Cameron Little's Website"
+titleCaseStyle: chicago
+timeout: "30s"
+
+enableGitInfo: true
+enableRobotsTXT: true
+
+params:
+  author:
+    name: Cameron Little
+    email: cameron@camlittle.com
+
+  description: A collection of Cameron Little's thoughts and projects
+  gitUrl: https://github.com/apexskier/camlittle.com/commit/
+
+  sitemap:
+    entries:
+      - absURL: "/go-template-validation"
+      - absURL: "/lightsaber"
+        lastMod: 2018-06-15T05:59:20
+      - absURL: "/highschool-portfolio"
+        lastMod: 2018-06-15T06:09:32
+      - absURL: "/web-usability-coordinator"
+        lastMod: 2018-06-15T06:09:32
+
+taxonomies:
+  tag: "tags"
+
+markup:
+  goldmark:
+    extensions:
+      strikethrough: true
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+outputFormats:
+  ImageMetadata:
+    baseName: "image_meta"
+    isPlainText: true
+    mediaType: "application/json"
+    notAlternative: true
+
+outputs:
+  home: ["HTML", "RSS", "ImageMetadata"]
