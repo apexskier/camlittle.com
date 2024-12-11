@@ -228,9 +228,26 @@ However, traditional bezier animation curves are more difficult. SwiftUI produce
 #/BezierAnimation\(duration: (?<duration>\d+\.\d+), curve: \(extension in SwiftUI\):(?<cubicSolver>SwiftUI.UnitCurve.CubicSolver\(ax: (?<ax>-?\d+\.\d+), bx: (?<bx>-?\d+\.\d+), cx: (?<cx>-?\d+\.\d+), ay: (?<ay>-?\d+\.\d+), by: (?<by>-?\d+\.\d+), cy: (?<cy>-?\d+\.\d+)\))\)/#
 ```
 
-However, I haven't yet been able to figure out what the cubic solver is and how to convert its three two-dimensional coordinates (`(ax, ay), (bx, by), (cx, cy)`) into a bezier curve's two two-dimensional control points ([`CAMediaTimingFunction.init(controlPoints:_:_:_:)`](https://developer.apple.com/documentation/quartzcore/camediatimingfunction/1522235-init)).
+~However, I haven't yet been able to figure out what the cubic solver is and how to convert its three two-dimensional coordinates (`(ax, ay), (bx, by), (cx, cy)`) into a bezier curve's two two-dimensional control points ([`CAMediaTimingFunction.init(controlPoints:_:_:_:)`](https://developer.apple.com/documentation/quartzcore/camediatimingfunction/1522235-init)).~
 
-For now, I've resorted to explicitly matching against standard timing curves I can explicitly create using SwiftUI and Core Animation. For example, ease in's cubic solver is:
+**Update 2024-12-10**
+
+Thanks to Eric from [Play](https://createwithplay.com), I now know how to convert SwiftUI's `CubicSolver` back to the original Bezier control points.
+
+```swift
+let pt1 = (
+    x: cx / 3,
+    y: cy / 3
+)
+let pt2 = (
+    x: (bx + cx) / 3 + pt1.x,
+    y: (by + cy) / 3 + pt1.y
+)
+
+caAnimation.timingFunction = .init(controlPoints: pt1.x, pt1.y, pt2.x, pt2.y)
+```
+
+Previously, I resorted to explicitly matching against standard timing curves I can explicitly create using SwiftUI and Core Animation. For example, ease in's cubic solver is:
 
 ```
 SwiftUI.UnitCurve.CubicSolver(ax: -0.7400000000000002, bx: 0.4800000000000002, cx: 1.26, ay: -2.0, by: 3.0, cy: 0.0)
@@ -332,6 +349,15 @@ My approach does neither of these things. In theory, when an animated update pro
 
 Blending response values is even more difficult, as it would require dynamically changing `CAAnimation`s over time, which isn't supported.
 
-As mentioned above, I haven't figured out SwiftUI's `CubicSolver`, which I think is a private struct implementing `UnitCurve`. It represents at least bezier curves, but I haven't figured out the math or how it works. If you have any ideas, please get in touch!
+~As mentioned above, I haven't figured out SwiftUI's `CubicSolver`, which I think is a private struct implementing `UnitCurve`. It represents at least bezier curves, but I haven't figured out the math or how it works. If you have any ideas, please get in touch!~
 
 Ultimately, these issues are due to the closed nature of SwiftUI and other Apple UIs. At the core, animation curves are math. Standard curves are simple functions over time (`f(time) = value`). Springs are more complex since they're semi-stateful by taking the animated value into account, but are also deterministic. I'd like to be able to directly call these functions. Unfortunately, `CABasicAnimation` has no support for this. At first glance at the documentation, SwiftUI's `Animation` appears to support this with [`func animate<V>(value: V, time: TimeInterval, context: inout AnimationContext<V>) -> V?`](https://developer.apple.com/documentation/swiftui/animation/animate(value:time:context:)). However, I have not found a way to get ahold of an `AnimationContext` outside of a custom Animation subclass, which makes this non-viable. SwiftUI's `UnitCurve` has [`value(at:)`](https://developer.apple.com/documentation/swiftui/unitcurve/value(at:)) and [`velocity(at:)`](https://developer.apple.com/documentation/swiftui/unitcurve/velocity(at:)) functions that are exactly what I want, but don't have a spring equivalent, and `UnitCurve`s aren't accessible from `Animation`. I could directly implement timing curve functions, but I'd prefer something built-in to avoid building it from scratch.
+
+**Update 2024-12-10**
+
+In additional to figuring out `CubicSolver` as mentioned above, I've extended the [demo project on GitHub](https://github.com/apexskier/swiftui-coreanimation) to show SwiftUI and CoreAnimation side by side, so you can visually confirm the animations are the same. SwiftUI has noticeable lag, but overall this approach works.
+
+<figure>
+    <video src="https://content.camlittle.com/iPhone%2016%20Pro%20-%20Simulator%20-%202024-12-10%20at%2018.08.44.mp4" width="420" controls muted></video>
+    <figcaption>Final demo of animation</figcaption>
+</figure>
