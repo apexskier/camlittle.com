@@ -14,20 +14,20 @@ tags: ["apps"]
 [Default Browser](https://defaultbrowser.app/)
 : Simple menubar app for better default browser behavior on macOS.
 
+[Dolphin Controller](https://github.com/apexskier/dolphin-controller)
+: An iOS GameCube controller for the Dolphin emulator.
+
 [Go template validation](https://camlittle.com/go-template-validation)
 : A web tool to visually validate Go text and HTML templates.
 
-[Nova Extensions](https://extensions.panic.com/extensions/apexskier/)
-: My extensions for [Panic](https://panic.com/)'s new editor, [Nova](https://nova.app/). I've also written some [sharable utilities for developing extensions](https://github.com/apexskier/nova-extension-utils).
-
-[rrf](https://github.com/apexskier/rrf)
-: Realtime Regexp Filter, a small utility for realtime filtering of text streams in your terminal using regular expressions.
+[Homebridge plugins](https://github.com/apexskier?tab=repositories&q=homebridge-)
+: Several Homebridge plugins to extend my Apple home automation.
 
 [Release Commenter GitHub action](https://github.com/marketplace/actions/release-commenter)
 : A GitHub Action that automatically comments on and/or labels Issues and PRs when a fix is released for them.
 
-[HSLuv Sass](https://github.com/hsluv/hsluv-sass)
-: A pure Sass implementation of the HSLuv color space.
+[FormKeeper](/formkeeper)
+: A Safari Web Extension to automatically preserve form contents if you accidentally leave the page.
 
 ## Some less useful side projects
 
