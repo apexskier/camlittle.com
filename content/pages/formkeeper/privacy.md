@@ -5,8 +5,6 @@ url: /formkeeper/privacy
 
 **Effective date**: 2024-12-10
 
-This privacy policy applies to the FormKeeper app (hereby referred to as "Application") for mobile devices that was created by Cameron Little (hereby referred to as "Service Provider") as a Commercial service. This service is intended for use "AS IS".
-
 ### How data is used
 
 FormKeeper saves data you or scripts in your browser enter into forms and form fields within websites you grant the extension access to. This data is not transmitted or stored to any external services. All data is stored **locally in your browser** and never shared or uploaded to any third-party service.
