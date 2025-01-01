@@ -11,7 +11,7 @@
   "devDependencies": {
     "@vercel/ncc": "^0.34.0",
     "aws-sdk": "^2.921.0",
-    "canvas": "^2.11.2",
+    "canvas": "^3.0.1",
     "cssnano": "^6.0.2",
     "fast-average-color-node": "^1.0.3",
     "hsluv": "^0.1.0",
