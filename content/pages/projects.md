@@ -26,6 +26,9 @@ tags: ["apps"]
 [FormKeeper](/formkeeper)
 : A Safari Web Extension to automatically preserve form contents if you accidentally leave the page.
 
+[Secret Sharing](/secret-sharing)
+: A micro-web-app to share secrets with others, without a third party ever storing anything.
+
 [Taos Trail Runners](https://taostrailrunners.com)
 : The home page for my local Trail Running club, including a custom email reminder system for weekly run locations.
 
