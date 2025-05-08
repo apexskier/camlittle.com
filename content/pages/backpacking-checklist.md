@@ -11,8 +11,8 @@ Keep your pack light
 ## Basics
 
 * <input type="checkbox" /> Backpack
-* <input type="checkbox" /> Pack rain cover  
-    <small>alt: pack liner (garbage bag will do)</small>
+* <input type="checkbox" /> Backpack waterproof liner (garbage bag will do) 
+    <small>alt: rain cover</small>
 * <input type="checkbox" /> Shoes - one of:
     * Trail runners - <small>lighter weight, more comfortable</small>
     * Hiking boots - <small>waterproof, high tops for ankle support, durable</small>
