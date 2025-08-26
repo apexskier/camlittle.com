@@ -903,6 +903,8 @@ footer {
 }
 
 article {
+  text-wrap: pretty;
+
   /* try to keep things readable
    * https://baymard.com/blog/line-length-readability
   */
