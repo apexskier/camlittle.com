@@ -4,9 +4,6 @@
 built on top of https://github.com/tmcw/bespoke
 
 name format should be 2006-01-02-url-slug
-
-future ideas
-- auto pull exif for date?
 */
 
 const cp = require("child_process");
@@ -16,6 +13,7 @@ const prettyBytes = require("pretty-bytes");
 const sharp = require("sharp");
 const { getAverageColor } = require("fast-average-color-node");
 const S3 = require("aws-sdk/clients/s3");
+const exif = require("exif-js");
 
 const exec = util.promisify(cp.exec);
 const readFile = util.promisify(fs.readFile);
@@ -162,6 +160,33 @@ const [, , file, name] = process.argv;
       }
 
       contents = contents.replace(`COLOR_INFO:`, parts.join("\n"));
+
+      try {
+        const arrayBuffer = inputBuffer.buffer.slice(
+          inputBuffer.byteOffset,
+          inputBuffer.byteOffset + inputBuffer.byteLength,
+        );
+        const exifData = exif.readFromBinaryFile(arrayBuffer);
+        if (exifData && exifData.DateTimeOriginal) {
+          // exif DateTimeOriginal format: "YYYY:MM:DD HH:MM:SS"
+          const exifDate = exifData.DateTimeOriginal.split(" ")
+            .map((v, i) => {
+              if (i === 0) {
+                return v.replace(/:/g, "-");
+              }
+              return v;
+            })
+            .join("T");
+          const captureDate = new Date(exifDate).toISOString();
+          contents = contents.replace(
+            `captureDate: `,
+            `captureDate: ${captureDate}`,
+          );
+        }
+      } catch (e) {
+        console.warn("Could not extract EXIF date:", e);
+      }
+
       await writeFile(mdFilePath, contents, "utf8");
     })(),
   );

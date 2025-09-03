@@ -7,6 +7,7 @@ images:
 
 camera: Sony α 7C II
 location: 
+captureDate: 
 
 COLOR_INFO:
 ---
