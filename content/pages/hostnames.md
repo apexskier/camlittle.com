@@ -18,7 +18,7 @@ I name each of my computers after [Washington rivers](https://www.americanwhitew
 | Chehalis | work MacBook Pro (15-inch, 2019) | 2019 |
 | Chelan | work MacBook Pro 15” (late 2016) | 2016 |
 | Chinook | work MacBook Pro (16-inch, 2019) | 2020 |
-| Chiwawa | work MacBook Pro (16-inch, 2021) | 2022 | ✅ |
+| Chiwawa | work MacBook Pro (16-inch, 2021) | 2022 |
 | Dungeness | iPhone 5 | 2012 |
 | Dungeness | iPhone 6S | 2015 |
 | Dungeness | iPhone Xs | 2018 |
@@ -42,7 +42,7 @@ I've also started naming non-computers after bodies of water
 
 | Name | Description | Year acquired | Active |
 | ---- | ----------- | ------------- | ------ |
-| Crescent | Seagate 4TB drive | 2013 | ✅ |
+| Crescent | Seagate 4TB drive | 2013 | |
 | Padden | DigitalOcean Kubernetes cluster | 2019 |
 | Sutherland | Backblaze B2 bucket | 2019 | ✅ |
 
