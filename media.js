@@ -39,7 +39,8 @@ const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
 
   // Cloudflare R2's S3-compatible endpoint.
   const s3 = new S3({
-    endpoint: "https://b12fc7e0594361391a2e8fab40e3d278.r2.cloudflarestorage.com",
+    endpoint:
+      "https://b12fc7e0594361391a2e8fab40e3d278.r2.cloudflarestorage.com",
     region: "auto",
     signatureVersion: "v4",
     s3ForcePathStyle: true,
