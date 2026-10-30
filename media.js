@@ -71,12 +71,48 @@ const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
   for (const fileData of imageMeta) {
     for (const mediaData of fileData.media) {
       const parsedPermalink = path.parse(mediaData.rel_permalink);
-      if (!mediaData.image_pipeline) {
-        // not an image
+      const keyPrefix = `site-media${parsedPermalink.dir}/${parsedPermalink.name}_${mediaData.hash}`;
+
+      if (mediaData.video) {
+        // keep in sync with layouts/partials/videoUrl.html
+        const key = `${keyPrefix}${parsedPermalink.ext}`;
+        if (await objectExists(key)) {
+          console.log(`already exists ${key}`);
+        } else if (dryRun) {
+          console.log(`would upload ${key}`);
+        } else {
+          const body = await readFile(
+            path.join(dir, "public", decodeURI(mediaData.rel_permalink)),
+          );
+          const data = await new Promise((resolve, reject) => {
+            s3.upload(
+              {
+                Key: key,
+                Body: body,
+                Bucket: "camlittle-content",
+                ACL: "public-read",
+                ContentType: mediaData.media_type,
+                // keys are content-addressed
+                CacheControl: "public, max-age=31536000, immutable",
+              },
+              (err, data) => {
+                if (err) {
+                  reject(err);
+                } else {
+                  resolve(data);
+                }
+              },
+            );
+          });
+          console.log(`uploaded ${data.Key}`);
+        }
         continue;
       }
 
-      const keyPrefix = `site-media${parsedPermalink.dir}/${parsedPermalink.name}_${mediaData.hash}`;
+      if (!mediaData.image_pipeline) {
+        continue;
+      }
+
       const inputBuffer = await readFile(
         path.join(dir, "public", decodeURI(mediaData.rel_permalink)),
       );

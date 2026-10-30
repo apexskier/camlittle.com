@@ -1,0 +1,5 @@
+{{/* Must match the key media.js uploads videos to. */}}
+{{- $dir := path.Dir .RelPermalink -}}
+{{- $ext := path.Ext .RelPermalink -}}
+{{- $name := strings.TrimSuffix $ext (path.Base .RelPermalink) -}}
+{{- return printf "https://content.camlittle.com/site-media%s/%s_%s%s" $dir $name (.Content | md5) $ext -}}

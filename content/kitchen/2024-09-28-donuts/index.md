@@ -6,7 +6,7 @@ recipe_link: https://www.seriouseats.com/yeast-raised-doughnuts-make-at-home-gla
 recipe_source: Serious Eats
 
 resources:
-- src: 0-sunrise.mov
+- src: 0-sunrise.mp4
   title: Sunrise
 - src: 1-rising.jpeg
   title: Donuts proofing in the oven
@@ -14,7 +14,7 @@ resources:
   title: Frying station
 - src: 3-frying.jpeg
   title: Frying donuts
-- src: 3-frying.mov
+- src: 3-frying.mp4
   title: Frying donuts
 - src: 4-assembly.jpeg
   title: Glazing

@@ -6,6 +6,6 @@ tags: ["sourdough", "baking"]
 resources:
 - src: "starter.jpeg"
   title: "Very bubbly sourdough starter"
-- src: "crackling.mov"
+- src: "crackling.mp4"
   title: "Listen closely - fresh out of the oven and crackling"
 ---

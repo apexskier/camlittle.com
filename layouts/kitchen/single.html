@@ -22,7 +22,7 @@
         {{ if eq .MediaType.MainType "video" }}
         {{/* safari has some weird bugs with video element styling */}}
         <video controls height="300" style="height: 300px;" alt="{{ .Title }}">
-            <source src="{{ .RelPermalink }}" />
+            <source src="{{ partial "videoUrl" . }}" type="{{ .MediaType.Type }}" />
         </video>
         {{ end }}
     {{ end }}

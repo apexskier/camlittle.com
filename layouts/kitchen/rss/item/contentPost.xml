@@ -6,7 +6,7 @@
   {{ end }}
   {{ if eq .MediaType.MainType "video" }}
   <video controls height="300" alt="{{ .Title }}">
-    <source src="{{ .RelPermalink | absURL }}" />
+    <source src="{{ partial "videoUrl" . }}" type="{{ .MediaType.Type }}" />
   </video>
   {{ end }}
 {{ end }}

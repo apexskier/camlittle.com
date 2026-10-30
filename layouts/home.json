@@ -15,6 +15,8 @@ slow build times without caches which prevents CI automation.
         "filepath": {{ jsonify (printf "%s%s" $page.File.Dir $resource.Name) }},
         "rel_permalink": {{ jsonify $resource.RelPermalink }},
         "image_pipeline": {{ jsonify (and (eq $resource.MediaType.MainType "image") (ne $resource.MediaType.SubType "svg")) }},
+        "video": {{ jsonify (eq $resource.MediaType.MainType "video") }},
+        "media_type": {{ jsonify $resource.MediaType.Type }},
         "hash": {{ $resource.Content | md5 | jsonify }},
         "integrity": {{ jsonify ($resource | fingerprint "md5").Data.Integrity }}
       }
