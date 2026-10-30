@@ -37,9 +37,13 @@ const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
     await readFile(path.join(dir, "data", "imageSources.yml"), "utf8"),
   );
 
+  // Cloudflare R2's S3-compatible endpoint.
   const s3 = new S3({
-    endpoint: "sfo2.digitaloceanspaces.com",
-    region: "sfo2",
+    endpoint:
+      "https://b12fc7e0594361391a2e8fab40e3d278.r2.cloudflarestorage.com",
+    region: "auto",
+    signatureVersion: "v4",
+    s3ForcePathStyle: true,
     maxRetries: 3,
     retryDelayOptions: {
       base: 500,
@@ -68,15 +72,54 @@ const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
     });
   }
 
+  async function upload(params) {
+    const data = await new Promise((resolve, reject) => {
+      s3.upload(
+        // R2 has no object ACLs; the bucket is public through its custom domain.
+        { Bucket: "camlittle-content", ...params },
+        (err, data) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(data);
+          }
+        },
+      );
+    });
+    console.log(`uploaded ${data.Key}`);
+  }
+
   for (const fileData of imageMeta) {
     for (const mediaData of fileData.media) {
       const parsedPermalink = path.parse(mediaData.rel_permalink);
-      if (!mediaData.image_pipeline) {
-        // not an image
+      const keyPrefix = `site-media${parsedPermalink.dir}/${parsedPermalink.name}_${mediaData.hash}`;
+
+      if (mediaData.video) {
+        // keep in sync with layouts/partials/videoUrl.html
+        const key = `${keyPrefix}${parsedPermalink.ext}`;
+        if (await objectExists(key)) {
+          console.log(`already exists ${key}`);
+        } else if (dryRun) {
+          console.log(`would upload ${key}`);
+        } else {
+          const body = await readFile(
+            path.join(dir, "public", decodeURI(mediaData.rel_permalink)),
+          );
+          await upload({
+            Key: key,
+            Body: body,
+            ContentType: mediaData.media_type,
+            // keys are content-addressed
+            CacheControl: "public, max-age=31536000, immutable",
+          });
+        }
         continue;
       }
 
-      const keyPrefix = `site-media${parsedPermalink.dir}/${parsedPermalink.name}_${mediaData.hash}`;
+      if (!mediaData.image_pipeline) {
+        continue;
+      }
+
       const inputBuffer = await readFile(
         path.join(dir, "public", decodeURI(mediaData.rel_permalink)),
       );
@@ -106,24 +149,7 @@ const dir = path.resolve(process.cwd(), process.argv[process.argv.length - 1]);
                   if (dryRun) {
                     console.log(`would upload ${key}`);
                   } else {
-                    const data = await new Promise((resolve, reject) => {
-                      s3.upload(
-                        {
-                          Key: key,
-                          Body: body,
-                          Bucket: "camlittle-content",
-                          ACL: "public-read",
-                        },
-                        (err, data) => {
-                          if (err) {
-                            reject(err);
-                          } else {
-                            resolve(data);
-                          }
-                        },
-                      );
-                    });
-                    console.log(`uploaded ${data.Key}`);
+                    await upload({ Key: key, Body: body });
                   }
                 })(),
               );

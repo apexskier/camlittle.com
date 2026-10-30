@@ -1,0 +1,3 @@
+/feed.xml /index.xml 301
+/apps /projects/ 301
+/apps/* /projects/ 301

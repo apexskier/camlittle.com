@@ -5,9 +5,7 @@
 {{ if eq $img.MediaType.MainType "video" }}
   {{/* safari has some weird bugs with video element styling */}}
   <video autoplay controls height="300" style="height: 300px;" alt="{{ $alt }}">
-      {{ with $img | fingerprint "md5" }}
-      <source src="{{ .RelPermalink }}" />
-      {{ end }}
+      <source src="{{ partial "videoUrl" $img }}" type="{{ $img.MediaType.Type }}" />
   </video>
 {{ else if ne $img.MediaType.SubType "svg" }}
   {{ $h := default $img.Height .height }}

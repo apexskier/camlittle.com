@@ -1,0 +1,23 @@
+{
+  "name": "camlittle-com",
+  "account_id": "b12fc7e0594361391a2e8fab40e3d278",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-30",
+  // The camlittle.com/* route is attached by Terraform outside this repository.
+  // Declaring routes here too would make the two tools fight over it.
+  "workers_dev": false,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": [
+      "/profile.jpg",
+      "/typescript.novaextension",
+      "/go-template-validation",
+      "/go-template-validation/*",
+      "/strava-tile-proxy",
+      "/strava-tile-proxy/*",
+      "/.well-known/acme-challenge/*"
+    ]
+  }
+}

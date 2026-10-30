@@ -24,13 +24,13 @@ The slider can oscillate back and forth or move in a single direction.
 I've been using [OpenSCAD](http://www.openscad.org/) to model my prints.
 
 <figure>
-    <video src="pully-timelapse.mov" width="420" controls muted></video>
+    <video src="{{< videoUrl "pully-timelapse.mp4" >}}" width="420" controls muted></video>
     <img src="pully-mount.jpg" width="420" alt="Pully mount" />
     <figcaption>Pully mount for the far end of the slider</figcaption>
 </figure>
 
 <figure>
-    <video src="slider-mount-timelapse.mov" width="420" controls muted></video>
+    <video src="{{< videoUrl "slider-mount-timelapse.mp4" >}}" width="420" controls muted></video>
     <img src="slider-mount.jpg" width="420" alt="Slider timing belt mount" />
     <figcaption>Timing belt mount for the camera platform</figcaption>
 </figure>
