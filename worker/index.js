@@ -14,12 +14,6 @@ const SECURITY_HEADERS = {
   "X-Frame-Options": "DENY",
 };
 
-const SECRET_SHARING_HEADERS = {
-  "Referrer-Policy": "no-referrer-when-downgrade",
-  "Permissions-Policy":
-    "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()",
-};
-
 function withHeaders(response, headers) {
   const merged = new Headers(response.headers);
   for (const [name, value] of Object.entries(headers)) {
@@ -47,33 +41,6 @@ async function profile(request, env, url) {
   return response;
 }
 
-function cspNonce() {
-  const bytes = crypto.getRandomValues(new Uint8Array(16));
-  return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
-}
-
-// The app's own <meta> CSP references __CSP_NONCE__, which must be unique per
-// response, so HTML here is never cacheable.
-async function secretSharing(request, env) {
-  const asset = await env.ASSETS.fetch(request);
-  const headers = { ...SECURITY_HEADERS, ...SECRET_SHARING_HEADERS };
-  let response;
-  if (asset.headers.get("Content-Type")?.startsWith("text/html")) {
-    const body = (await asset.text()).replaceAll("__CSP_NONCE__", cspNonce());
-    response = withHeaders(new Response(body, asset), {
-      ...headers,
-      "Cache-Control": "no-store",
-    });
-    response.headers.delete("ETag");
-    response.headers.delete("Content-Length");
-  } else {
-    response = withHeaders(asset, headers);
-  }
-  // The site-wide CSP would block the app's nonce-based styles.
-  response.headers.delete("Content-Security-Policy");
-  return response;
-}
-
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -87,9 +54,6 @@ export default {
         status: 302,
         headers: { Location: "nova://extension/?id=apexskier.typescript" },
       });
-    }
-    if (path === "/secret-sharing" || path.startsWith("/secret-sharing/")) {
-      return secretSharing(request, env);
     }
     if (ORIGIN_PATH_PREFIXES.some((prefix) => path.startsWith(prefix))) {
       return fetch(request);

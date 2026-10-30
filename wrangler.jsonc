@@ -3,10 +3,9 @@
   "account_id": "b12fc7e0594361391a2e8fab40e3d278",
   "main": "worker/index.js",
   "compatibility_date": "2026-10-30",
+  // The camlittle.com/* route is attached by Terraform outside this repository.
+  // Declaring routes here too would make the two tools fight over it.
   "workers_dev": false,
-  // A route rather than a custom domain: paths not served here fall through to
-  // the origin behind the proxied DNS record via fetch(request).
-  "routes": [{ "pattern": "camlittle.com/*", "zone_name": "camlittle.com" }],
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
@@ -14,8 +13,6 @@
     "run_worker_first": [
       "/profile.jpg",
       "/typescript.novaextension",
-      "/secret-sharing",
-      "/secret-sharing/*",
       "/go-template-validation",
       "/strava-tile-proxy",
       "/strava-tile-proxy/*",

@@ -57,20 +57,6 @@ jobs:
           hugo gen chromastyles --style=native > assets/css/highlight_dark.css
           hugo --minify
 
-      - name: Checkout secret-sharing
-        uses: actions/checkout@v4
-        with:
-          repository: apexskier/secret-sharing
-          path: _secret-sharing
-
-      - name: Build secret-sharing
-        working-directory: _secret-sharing
-        run: |
-          corepack enable
-          yarn install --immutable
-          yarn build
-          cp -R dist ../public/secret-sharing
-
       - name: Package artifact
         run: tar -cvzf artifact.tgz media-script/ public/ data/ worker/ wrangler.jsonc
 
