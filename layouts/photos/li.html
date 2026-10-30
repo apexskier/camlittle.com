@@ -14,7 +14,7 @@
 #{{ $id }} picture {
     {{ with $mini }}
     {{/* padding based forced aspect ratio */}}
-    padding-bottom: {{ (mul (div .Height (float .Width)) 100) }}%;
+    padding-bottom: {{ math.Floor (mul (div .Height (float .Width)) 100) }}%;
     height: 0;
     {{ end }}
     {{ with .Params.color }}
