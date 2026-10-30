@@ -7,7 +7,8 @@ const ORIGIN_PATH_PREFIXES = [
   "/.well-known/acme-challenge/",
 ];
 
-// _headers isn't applied to responses built here, so these mirror its /* rule.
+// _headers isn't applied to responses built here, so these mirror its /* rule
+// (minus the CSP, which only matters for documents).
 const SECURITY_HEADERS = {
   "Strict-Transport-Security": "max-age=31536000",
   "X-Content-Type-Options": "nosniff",
