@@ -12,12 +12,7 @@
     "not_found_handling": "404-page",
     "run_worker_first": [
       "/profile.jpg",
-      "/typescript.novaextension",
-      "/go-template-validation",
-      "/go-template-validation/*",
-      "/strava-tile-proxy",
-      "/strava-tile-proxy/*",
-      "/.well-known/acme-challenge/*"
+      "/typescript.novaextension"
     ]
   }
 }

@@ -1,12 +1,6 @@
 const GRAVATAR_URL =
   "https://www.gravatar.com/avatar/248a99f9bda7156fee6c18b3f6346583.jpg";
 
-const ORIGIN_PATH_PREFIXES = [
-  "/go-template-validation",
-  "/strava-tile-proxy",
-  "/.well-known/acme-challenge/",
-];
-
 // _headers isn't applied to responses built here, so these mirror its /* rule
 // (minus the CSP, which only matters for documents).
 const SECURITY_HEADERS = {
@@ -55,9 +49,6 @@ export default {
         status: 302,
         headers: { Location: "nova://extension/?id=apexskier.typescript" },
       });
-    }
-    if (ORIGIN_PATH_PREFIXES.some((prefix) => path.startsWith(prefix))) {
-      return fetch(request);
     }
     return env.ASSETS.fetch(request);
   },
