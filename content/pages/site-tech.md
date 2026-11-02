@@ -23,6 +23,13 @@ These are some of the little details in the site that I'm proud of. You can alwa
 
 This site's tech stack throughout the years.
 
+* Nov 2026
+
+  The site now runs on a CloudFlare worker, and terraform manages my DNS through CloudFlare.
+
+  My DigitalOcean droplet I was running on is way out of date, and I've been using CloudFlare for a number of things and liking it. It's overall cheaper, and I get
+  nicer observability and a dashboard without managing as much infrastructure by hand. I'm using CloudFlare containers to keep a lot of ancient projects alive, which is a little more cumbersome than docker-compose, but I think it's worth it.
+
 * June 2021
 
   The site now auto deploys through GitHub actions.
@@ -80,5 +87,3 @@ This site's tech stack throughout the years.
 
   Registered [camlittle.com](https://camlittle.com) with GoDaddy and set up a
   homemade PHP website.
-
-
