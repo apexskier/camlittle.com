@@ -13,24 +13,25 @@ This page exists to document my current and historical names.
 
 I name each of my computers after [Washington rivers](https://www.americanwhitewater.org/content/River/state-summary/state/WA/) and try to group them by device type via the starting letter.
 
-| Name | Description | Year acquired | Active |
+| Name | Description | Year | Active |
 | ---- | ----------- | ------------- | ------ |
-| Chehalis | work MacBook Pro (15-inch, 2019) | 2019 |
-| Chelan | work MacBook Pro 15” (late 2016) | 2016 |
-| Chinook | work MacBook Pro (16-inch, 2019) | 2020 |
-| Chiwawa | work MacBook Pro (16-inch, 2021) | 2022 |
-| Dungeness | iPhone 5 | 2012 |
-| Dungeness | iPhone 6S | 2015 |
-| Dungeness | iPhone Xs | 2018 |
-| Dungeness | iPhone 12 mini | 2021 |
+| Chehalis | work MacBook Pro (15-inch, 2019) | 2019--2020 |
+| Chelan | work MacBook Pro 15” (late 2016) | 2016--2019 |
+| Chinook | work MacBook Pro (16-inch, 2019) | 2020--2022 |
+| Chiwawa | work MacBook Pro (16-inch, 2021) | 2022--2024 |
+| Dungeness | iPhone 5 | 2012--2015 |
+| Dungeness | iPhone 6S | 2015--2018 |
+| Dungeness | iPhone Xs | 2018--2021 |
+| Dungeness | iPhone 12 mini | 2021 | ✅ |
 | Deschutes | iPhone 15 Pro | 2023 | ✅ |
-| Elwha | iMac (refurbished) 21.5"/3.20/2X2G/1TB/5670/SD-USA | 2011 |
-| Glacier | DigitalOcean Debian development server | 2013 |
-| Matheny | DigitalOcean droplet | 2019 | ✅ |
-| Methow | DigitalOcean droplet | 2014 |
+| Elwha | iMac (refurbished) 21.5"/3.20/2X2G/1TB/5670/SD-USA | 2011--2014 |
+| Glacier | DigitalOcean Debian development server | 2013--2014 |
+| Matheny | DigitalOcean droplet | 2019--2026 | |
+| Methow | DigitalOcean droplet | 2014--2019 |
 | Naches | MacBook Pro 14", 2023 | 2023 | ✅ |
-| Nisqually | MacBook Pro (13-inch, 2019, Four Thunderbolt 3 ports) | 2019 |
-| Nooksack | MacBook Pro 13” (late 2013) | 2014 |
+| Nason | Mac Mini M4 | 2026 | ✅ |
+| Nisqually | MacBook Pro (13-inch, 2019, Four Thunderbolt 3 ports) | 2019--2023 |
+| Nooksack | MacBook Pro 13” (late 2013) | 2014--2019 |
 | Queets | iPad Pro 10.5” (2017) | 2017 |
 | Quinault | iPad (2012) | 2012 |
 | Sauk | Raspberry Pi |
